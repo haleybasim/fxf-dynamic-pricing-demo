@@ -137,6 +137,96 @@
   .screen-header p { font-size: 13px; color: #888; }
   .progress-line { height: 3px; background: #f0e8f8; border-radius: 2px; margin-bottom: 28px; overflow: hidden; }
   .progress-fill { height: 100%; background: linear-gradient(90deg, #4D148C, #FF6200); border-radius: 2px; transition: width 0.5s ease; }
+
+  /* ===== LTLS MODE (Screen 4) ===== */
+  .shell.ltls-mode { width: 900px; height: 600px; min-height: unset; }
+  .shell.ltls-mode .topbar,
+  .shell.ltls-mode .progress-line { display: none; }
+  .shell.ltls-mode .content { padding: 0; display: flex; flex-direction: column; overflow: hidden; height: 100%; }
+  #screen-4 { flex: 1; flex-direction: column; overflow: hidden; margin: 0; }
+  #screen-4.active { display: flex; }
+
+  /* LTLS Nav */
+  .ltls-nav { background: #2a0f66; padding: 0 16px; height: 48px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+  .ltls-nav-left { display: flex; align-items: center; gap: 12px; }
+  .ltls-hamburger { color: rgba(255,255,255,0.8); font-size: 17px; cursor: pointer; }
+  .ltls-logo-txt { font-size: 18px; font-weight: 800; }
+  .ltls-ltl { color: #fbbf24; }
+  .ltls-sel { color: #fff; }
+  .ltls-nav-actions { display: flex; gap: 6px; }
+  .ltls-nav-btn { background: #FF6200; color: #fff; border: none; border-radius: 20px; padding: 5px 11px; font-size: 10px; font-weight: 700; cursor: pointer; letter-spacing: 0.03em; }
+  .ltls-nav-right { display: flex; align-items: center; gap: 10px; }
+  .ltls-search { background: rgba(255,255,255,0.15); border: none; border-radius: 20px; padding: 5px 14px; color: rgba(255,255,255,0.6); font-size: 11px; width: 130px; outline: none; }
+  .ltls-avatar { width: 28px; height: 28px; border-radius: 50%; background: #6d28d9; color: #fff; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+
+  /* LTLS Body */
+  .ltls-body { flex: 1; background: #f3f4f6; overflow-y: auto; padding: 12px 16px 12px; }
+
+  /* Summary card */
+  .ltls-summary { background: #fff; border-radius: 8px; padding: 12px 16px; margin-bottom: 12px; border: 1px solid #e5e7eb; }
+  .ltls-sum-hdr { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .ltls-sum-ttl { font-size: 14px; font-weight: 700; color: #111827; }
+  .ltls-sum-edit { border: 1.5px solid #7c3aed; color: #7c3aed; background: none; border-radius: 4px; padding: 3px 10px; font-size: 11px; font-weight: 600; cursor: pointer; }
+  .ltls-sum-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .ltls-sum-lbl { font-size: 10px; color: #6b7280; margin-bottom: 2px; }
+  .ltls-sum-val { font-size: 12px; font-weight: 500; color: #111827; margin-bottom: 5px; }
+  .ltls-dock-pill { background: #7c3aed; color: #fff; border: none; border-radius: 20px; padding: 3px 10px; font-size: 10px; font-weight: 600; display: inline-block; cursor: default; }
+
+  /* Rates card */
+  .ltls-rates { background: #fff; border-radius: 8px; border: 1px solid #e5e7eb; overflow: hidden; }
+  .ltls-rates-title { text-align: center; padding: 12px 0 4px; font-size: 16px; font-weight: 700; color: #111827; }
+  .ltls-rates-bar { display: flex; justify-content: flex-end; padding: 0 14px 8px; }
+  .ltls-share-btn { border: 1.5px solid #FF6200; color: #FF6200; background: none; border-radius: 6px; padding: 4px 12px; font-size: 11px; font-weight: 700; cursor: pointer; }
+  .ltls-filter-row { display: flex; align-items: center; gap: 20px; padding: 8px 14px; border-top: 1px solid #f3f4f6; border-bottom: 1px solid #e5e7eb; }
+  .ltls-filter-item { display: flex; align-items: center; gap: 7px; font-size: 11px; color: #374151; }
+  .ltls-tog { width: 30px; height: 16px; background: #d1d5db; border-radius: 8px; position: relative; flex-shrink: 0; }
+  .ltls-tog::after { content: ''; position: absolute; width: 12px; height: 12px; background: #fff; border-radius: 50%; top: 2px; left: 2px; }
+  .ltls-info-i { margin-left: auto; width: 16px; height: 16px; background: #9ca3af; border-radius: 50%; color: #fff; font-size: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+
+  /* Date group header */
+  .ltls-dg-hdr { display: flex; align-items: center; gap: 10px; padding: 10px 14px 6px; }
+  .ltls-dg-date { font-size: 13px; font-weight: 700; color: #111827; }
+  .ltls-dg-fastest { color: #FF6200; font-size: 11px; font-weight: 700; }
+  .ltls-dg-need-faster { background: #7c3aed; color: #fff; border: none; border-radius: 20px; padding: 4px 12px; font-size: 10px; font-weight: 600; cursor: pointer; }
+
+  /* Service row */
+  .ltls-svc-row { display: flex; align-items: flex-start; padding: 4px 14px 12px; }
+  .ltls-carrier-col { width: 155px; flex-shrink: 0; padding-top: 3px; padding-right: 10px; }
+  .ltls-fxf-logo { margin-bottom: 3px; line-height: 1; }
+  .fxf-fed { color: #4D148C; font-weight: 900; font-size: 13px; font-family: 'Arial Black', sans-serif; }
+  .fxf-ex  { color: #FF6200; font-weight: 900; font-size: 13px; font-family: 'Arial Black', sans-serif; }
+  .fxf-dot { color: #FF6200; font-weight: 900; font-size: 13px; }
+  .fxf-frt { color: #6b7280; font-size: 8px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-left: 1px; vertical-align: text-top; }
+  .ltls-svc-name { font-size: 11px; color: #374151; }
+  .ltls-opts { flex: 1; display: flex; flex-direction: column; gap: 7px; }
+  .ltls-opt { display: flex; align-items: center; }
+  .ltls-opt-time { min-width: 130px; }
+  .ltls-opt-time-val { font-size: 12px; font-weight: 500; color: #111827; display: block; }
+  .ltls-opt-guar { font-size: 10px; color: #16a34a; font-weight: 600; display: block; }
+  .ltls-opt-price { display: flex; flex-direction: column; align-items: flex-end; margin-left: auto; margin-right: 8px; }
+  .ltls-opt-type { font-size: 10px; color: #6b7280; margin-bottom: 2px; }
+  .ltls-price-pill { background: #FF6200; color: #fff; border: none; border-radius: 6px; padding: 6px 14px; font-size: 12px; font-weight: 700; cursor: pointer; white-space: nowrap; transition: background 0.2s; }
+  .ltls-price-pill:hover { background: #e05500; }
+  .ltls-price-pill.fri { background: #16a34a; }
+  .ltls-price-pill.fri:hover { background: #15803d; }
+  .ltls-chevron { color: #9ca3af; font-size: 14px; cursor: pointer; }
+  .ltls-divider { border: none; border-top: 1px solid #e5e7eb; margin: 0; }
+
+  /* Friday savings banner */
+  .ltls-fri-banner { margin: 6px 14px 8px; background: #f0fdf4; border: 1.5px solid #4ade80; border-radius: 10px; padding: 10px 14px; display: flex; align-items: center; gap: 10px; }
+  .ltls-fri-ico { font-size: 16px; flex-shrink: 0; }
+  .ltls-fri-txt { flex: 1; }
+  .ltls-fri-title { font-size: 12px; font-weight: 700; color: #15803d; margin-bottom: 2px; }
+  .ltls-fri-sub { font-size: 11px; color: #16a34a; line-height: 1.4; }
+  .ltls-fri-sub strong { color: #15803d; }
+  .ltls-fri-cta { background: #16a34a; color: #fff; border: none; border-radius: 8px; padding: 7px 14px; font-size: 11px; font-weight: 700; cursor: pointer; white-space: nowrap; }
+  .ltls-fri-cta:hover { background: #15803d; }
+  .ltls-fri-active { margin: 6px 14px 8px; background: #dcfce7; border: 1.5px solid #4ade80; border-radius: 10px; padding: 9px 14px; display: flex; align-items: center; justify-content: space-between; }
+  .ltls-fri-active-txt { font-size: 12px; font-weight: 600; color: #15803d; }
+  .ltls-fri-revert { background: none; border: 1.5px solid #4ade80; color: #15803d; border-radius: 6px; padding: 4px 10px; font-size: 11px; font-weight: 600; cursor: pointer; }
+
+  /* LTLS footer */
+  .ltls-foot { display: flex; gap: 10px; align-items: center; padding: 10px 16px; background: #fff; border-top: 1px solid #e5e7eb; flex-shrink: 0; }
 </style>
 </head>
 <body>
@@ -319,54 +409,174 @@
       </div>
     </div>
 
-    <!-- Screen 4: Quote -->
+    <!-- Screen 4: LTLS-style rates view -->
     <div class="screen" id="screen-4">
-      <div class="screen-header">
-        <h2>Your dynamic quote</h2>
-        <p>All-in pricing with demand adjustment applied.</p>
-      </div>
-      <div class="quote-header">
-        <div>
-          <div class="quote-lane" id="quote-lane-label">Chicago, IL &#8594; Los Angeles, CA</div>
-          <div class="quote-id">Quote #DYN-2026-<span id="quote-id-num">5591</span> &nbsp; | &nbsp; Valid for 2 hours</div>
+
+      <!-- LTLS Nav -->
+      <div class="ltls-nav">
+        <div class="ltls-nav-left">
+          <span class="ltls-hamburger">&#9776;</span>
+          <span class="ltls-logo-txt"><span class="ltls-ltl">LTL</span> <span class="ltls-sel">Select</span></span>
         </div>
-        <span class="badge badge-high" id="quote-demand-badge" style="font-size:12px;padding:5px 12px;">HIGH DEMAND</span>
-      </div>
-      <div class="quote-breakdown">
-        <div class="breakdown-row">
-          <div class="breakdown-label"><div class="breakdown-dot" style="background:#4D148C;"></div>Base rate (<span id="qb-weight">850</span> lbs, <span id="qb-pallets">4</span> pallets)</div>
-          <div class="breakdown-amount" id="qb-base">$642</div>
+        <div class="ltls-nav-actions">
+          <button class="ltls-nav-btn">BOOK SHIPMENT</button>
+          <button class="ltls-nav-btn">QUICK RATE</button>
+          <button class="ltls-nav-btn">REQUEST PICKUP</button>
+          <button class="ltls-nav-btn">CREATE MANIFEST</button>
         </div>
-        <div class="breakdown-row">
-          <div class="breakdown-label"><div class="breakdown-dot" style="background:#FF6200;"></div>Demand adjustment (<span id="qb-adj-pct">+12%</span>)</div>
-          <div class="breakdown-amount positive" id="qb-demand-adj">+$77</div>
-        </div>
-        <div class="breakdown-row">
-          <div class="breakdown-label"><div class="breakdown-dot" style="background:#999;"></div>Fuel surcharge (all-in)</div>
-          <div class="breakdown-amount" style="color:#888;">Included</div>
-        </div>
-        <div class="breakdown-row">
-          <div class="breakdown-label"><div class="breakdown-dot" style="background:#ddd;"></div>Accessorials</div>
-          <div class="breakdown-amount" style="color:#888;">None selected</div>
+        <div class="ltls-nav-right">
+          <input class="ltls-search" placeholder="&#128269;" readonly>
+          <div class="ltls-avatar">HB</div>
         </div>
       </div>
-      <div class="total-row">
-        <div class="total-label">Dynamic Total</div>
-        <div class="total-amount" id="q-total">$719</div>
-      </div>
-      <div class="vs-row">
-        <div class="vs-box standard">
-          <div class="vs-box-label">Standard LTL quote</div>
-          <div class="vs-box-value" id="vs-standard">$682</div>
-          <div class="vs-box-save premium" id="vs-delta">Dynamic: +$37 vs. standard</div>
+
+      <!-- Scrollable body -->
+      <div class="ltls-body">
+
+        <!-- Summary card -->
+        <div class="ltls-summary">
+          <div class="ltls-sum-hdr">
+            <span class="ltls-sum-ttl">Summary</span>
+            <button class="ltls-sum-edit">EDIT</button>
+          </div>
+          <div class="ltls-sum-grid">
+            <div>
+              <div class="ltls-sum-lbl">Origin</div>
+              <div class="ltls-sum-val" id="ltls-origin-val">Chicago, IL 60601</div>
+              <span class="ltls-dock-pill">Dock Pickup</span>
+            </div>
+            <div>
+              <div class="ltls-sum-lbl">Destination</div>
+              <div class="ltls-sum-val" id="ltls-dest-val">Los Angeles, CA 90001</div>
+              <span class="ltls-dock-pill">Dock Delivery</span>
+            </div>
+            <div>
+              <div class="ltls-sum-lbl">Line Items</div>
+              <div class="ltls-sum-val" id="ltls-items-val">850 lbs, Class 65</div>
+            </div>
+            <div>
+              <div class="ltls-sum-lbl">Ship Date</div>
+              <div class="ltls-sum-val" id="ltls-shipdate-val">06/04/2026</div>
+            </div>
+          </div>
         </div>
-        <div class="vs-box dynamic">
-          <div class="vs-box-label">What you pay</div>
-          <div class="vs-box-value" id="vs-dynamic">$719</div>
-          <div class="vs-box-save" id="vs-why" style="color:#4D148C;">High demand lane, premium applies</div>
+
+        <!-- Rates card -->
+        <div class="ltls-rates">
+          <div class="ltls-rates-title">Rates</div>
+          <div class="ltls-rates-bar">
+            <button class="ltls-share-btn">&#11014; SHARE</button>
+          </div>
+          <div class="ltls-filter-row">
+            <label class="ltls-filter-item"><div class="ltls-tog"></div> Hide Third Party Rates</label>
+            <label class="ltls-filter-item"><div class="ltls-tog"></div> Hide LTL Rates</label>
+            <label class="ltls-filter-item"><div class="ltls-tog"></div> Hide Guaranteed Rates</label>
+            <div class="ltls-info-i">i</div>
+          </div>
+
+          <!-- First date group -->
+          <div class="ltls-dg-hdr">
+            <span class="ltls-dg-date" id="ltls-d1-label">Tue, Jun 9th</span>
+            <span class="ltls-dg-fastest">Fastest</span>
+            <button class="ltls-dg-need-faster">&#10010; Need it faster? Click here</button>
+          </div>
+          <div class="ltls-svc-row">
+            <div class="ltls-carrier-col">
+              <div class="ltls-fxf-logo"><span class="fxf-fed">Fed</span><span class="fxf-ex">Ex</span><span class="fxf-dot">.</span><span class="fxf-frt">Freight</span></div>
+              <div class="ltls-svc-name">FedEx Freight ®Priority</div>
+            </div>
+            <div class="ltls-opts">
+              <div class="ltls-opt">
+                <div class="ltls-opt-time">
+                  <span class="ltls-opt-time-val">10:30 AM</span>
+                  <span class="ltls-opt-guar">Guaranteed</span>
+                </div>
+                <div class="ltls-opt-price">
+                  <span class="ltls-opt-type">3rd Party Pricing</span>
+                  <button class="ltls-price-pill" id="ltls-p1">US$936.00</button>
+                </div>
+                <span class="ltls-chevron">&#9660;</span>
+              </div>
+              <div class="ltls-opt">
+                <div class="ltls-opt-time">
+                  <span class="ltls-opt-time-val">5:00 PM</span>
+                </div>
+                <div class="ltls-opt-price">
+                  <span class="ltls-opt-type">3rd Party Pricing</span>
+                  <button class="ltls-price-pill" id="ltls-p2">US$583.00</button>
+                </div>
+                <span class="ltls-chevron">&#9660;</span>
+              </div>
+            </div>
+          </div>
+
+          <hr class="ltls-divider">
+
+          <!-- Friday savings banner -->
+          <div class="ltls-fri-banner" id="ltls-fri-banner" style="display:none;">
+            <span class="ltls-fri-ico">&#128161;</span>
+            <div class="ltls-fri-txt">
+              <div class="ltls-fri-title">This lane is less busy on Fridays &#8212; you could save <strong id="ltls-fri-save">$46</strong></div>
+              <div class="ltls-fri-sub">Demand drops later in the week. Shift your pickup to <strong id="ltls-fri-date">Fri, Jun 6</strong> for a lower rate on every option.</div>
+            </div>
+            <button class="ltls-fri-cta" onclick="switchToFriday()">See Friday pricing &#8594;</button>
+          </div>
+          <div class="ltls-fri-active" id="ltls-fri-active" style="display:none;">
+            <span class="ltls-fri-active-txt">&#9989; Showing Friday pricing &#8212; ship date updated to <strong id="ltls-fri-active-date">Fri, Jun 6</strong></span>
+            <button class="ltls-fri-revert" onclick="revertToTuesday()">Revert to Tuesday</button>
+          </div>
+
+          <hr class="ltls-divider">
+
+          <!-- Second date group (Economy) -->
+          <div class="ltls-dg-hdr">
+            <span class="ltls-dg-date" id="ltls-d2-label">Thu, Jun 11th</span>
+          </div>
+          <div class="ltls-svc-row">
+            <div class="ltls-carrier-col">
+              <div class="ltls-fxf-logo"><span class="fxf-fed">Fed</span><span class="fxf-ex">Ex</span><span class="fxf-dot">.</span><span class="fxf-frt">Freight</span></div>
+              <div class="ltls-svc-name">FedEx Freight ®Economy</div>
+            </div>
+            <div class="ltls-opts">
+              <div class="ltls-opt">
+                <div class="ltls-opt-time">
+                  <span class="ltls-opt-time-val">10:30 AM</span>
+                  <span class="ltls-opt-guar">Guaranteed</span>
+                </div>
+                <div class="ltls-opt-price">
+                  <span class="ltls-opt-type">3rd Party Pricing</span>
+                  <button class="ltls-price-pill" id="ltls-e1">US$891.00</button>
+                </div>
+                <span class="ltls-chevron">&#9660;</span>
+              </div>
+              <div class="ltls-opt">
+                <div class="ltls-opt-time">
+                  <span class="ltls-opt-time-val">5:00 PM</span>
+                  <span class="ltls-opt-guar">Guaranteed</span>
+                </div>
+                <div class="ltls-opt-price">
+                  <span class="ltls-opt-type">3rd Party Pricing</span>
+                  <button class="ltls-price-pill" id="ltls-e2">US$754.00</button>
+                </div>
+                <span class="ltls-chevron">&#9660;</span>
+              </div>
+              <div class="ltls-opt">
+                <div class="ltls-opt-time">
+                  <span class="ltls-opt-time-val">5:00 PM</span>
+                </div>
+                <div class="ltls-opt-price">
+                  <span class="ltls-opt-type">3rd Party Pricing</span>
+                  <button class="ltls-price-pill" id="ltls-e3">US$532.00</button>
+                </div>
+                <span class="ltls-chevron">&#9660;</span>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="btn-row">
+      </div><!-- /ltls-body -->
+
+      <!-- Footer nav -->
+      <div class="ltls-foot">
         <button class="btn-back" onclick="goTo(3)">&#8592; Back</button>
         <button class="btn-secondary" onclick="goTo(2)" style="margin-left:auto;">Try another lane</button>
         <button class="btn-primary" onclick="goTo(5)">
@@ -374,6 +584,7 @@
           <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </button>
       </div>
+
     </div>
 
     <!-- Screen 5: Use cases -->
@@ -422,11 +633,12 @@
 
 <script>
 var currentScenario = 'chicago-la';
+var viewingFriday = false;
 var scenarios = {
   'chicago-la': {
     originZip: '60601', destZip: '90001', originCity: 'Chicago, IL', destCity: 'Los Angeles, CA',
     utilization: 87, label: 'HIGH DEMAND', badgeClass: 'badge-high',
-    adjPct: 12, base: 642, transit: '3.2 days', shipments: '1,240/mo', onTime: '94%',
+    adjPct: 12, fridayAdjPct: 3, base: 642, transit: '3.2 days', shipments: '1,240/mo', onTime: '94%',
     headline: 'This lane is running hot.',
     body: 'Chicago to Los Angeles is one of the highest-utilization corridors in the FedEx Freight network. Capacity is constrained and demand is outpacing available trucks.',
     trend: [72, 78, 81, 85, 83, 87, 87],
@@ -435,7 +647,7 @@ var scenarios = {
   'la-chicago': {
     originZip: '90001', destZip: '60601', originCity: 'Los Angeles, CA', destCity: 'Chicago, IL',
     utilization: 38, label: 'LOW DEMAND', badgeClass: 'badge-low',
-    adjPct: -16, base: 786, transit: '3.2 days', shipments: '680/mo', onTime: '97%',
+    adjPct: -16, fridayAdjPct: -16, base: 786, transit: '3.2 days', shipments: '680/mo', onTime: '97%',
     headline: 'Backhaul opportunity on this lane.',
     body: 'The westbound return is a classic backhaul scenario. Trucks that deliver into LA need to come back empty. A pricing incentive fills that capacity and generates revenue from deadhead miles.',
     trend: [55, 48, 42, 40, 38, 36, 38],
@@ -444,7 +656,7 @@ var scenarios = {
   'atlanta-dallas': {
     originZip: '30301', destZip: '75201', originCity: 'Atlanta, GA', destCity: 'Dallas, TX',
     utilization: 62, label: 'MODERATE', badgeClass: 'badge-mod',
-    adjPct: 3, base: 524, transit: '1.8 days', shipments: '920/mo', onTime: '96%',
+    adjPct: 3, fridayAdjPct: -4, base: 524, transit: '1.8 days', shipments: '920/mo', onTime: '96%',
     headline: 'Balanced regional corridor.',
     body: 'Atlanta to Dallas runs at steady mid-range utilization. A modest demand adjustment reflects the healthy but not constrained lane, keeping pricing competitive while capturing a small premium.',
     trend: [58, 61, 65, 60, 63, 62, 62],
@@ -454,6 +666,7 @@ var scenarios = {
 
 function selectScenario(id) {
   currentScenario = id;
+  viewingFriday = false;
   document.querySelectorAll('.scenario-card').forEach(function(c) { c.classList.remove('selected'); });
   document.getElementById('sc-' + id).classList.add('selected');
   var s = scenarios[id];
@@ -470,6 +683,9 @@ function goTo(n) {
     else if (i + 1 === n) d.classList.add('active');
   });
   document.getElementById('progress-fill').style.width = (n * 20) + '%';
+  // LTLS mode: hide shell chrome for screen 4
+  var shell = document.querySelector('.shell');
+  if (n === 4) { shell.classList.add('ltls-mode'); } else { shell.classList.remove('ltls-mode'); }
   if (n === 3) renderScreen3();
   if (n === 4) renderScreen4();
 }
@@ -566,44 +782,106 @@ function animateGauge(target, color) {
   }, 16);
 }
 
+function calcPrices(baseRate, adjPct) {
+  var f = 1 + adjPct / 100;
+  return {
+    p1: Math.round(baseRate * 1.30 * f),
+    p2: Math.round(baseRate * 0.81 * f),
+    e1: Math.round(baseRate * 1.24 * f),
+    e2: Math.round(baseRate * 1.05 * f),
+    e3: Math.round(baseRate * 0.74 * f)
+  };
+}
+
+function fmtUSD(n) { return 'US$' + n.toLocaleString() + '.00'; }
+
+function getNextFriday() {
+  var raw = document.getElementById('pickup-date').value;
+  var d = raw ? new Date(raw + 'T00:00:00') : new Date();
+  var day = d.getDay();
+  var diff = (5 - day + 7) % 7 || 7;
+  d.setDate(d.getDate() + diff);
+  return d;
+}
+
 function renderScreen4() {
   var s = scenarios[currentScenario];
   var w = parseInt(document.getElementById('weight').value) || 850;
-  var p = parseInt(document.getElementById('pallets').value) || 4;
-  var weightScale = w / 850;
-  var base = Math.round(s.base * weightScale);
-  var adj = Math.round(base * Math.abs(s.adjPct) / 100);
-  var total = s.adjPct >= 0 ? base + adj : base - adj;
-  var standard = Math.round(base * 1.062);
-  var delta = total - standard;
+  var scale = w / 850;
+  var base = Math.round(s.base * scale);
 
-  document.getElementById('quote-lane-label').textContent = s.originCity + ' → ' + s.destCity;
-  document.getElementById('quote-id-num').textContent = Math.floor(Math.random() * 9000) + 1000;
-  document.getElementById('qb-weight').textContent = w;
-  document.getElementById('qb-pallets').textContent = p;
-  document.getElementById('qb-base').textContent = '$' + base.toLocaleString();
-  document.getElementById('qb-adj-pct').textContent = (s.adjPct >= 0 ? '+' : '') + s.adjPct + '%';
-  document.getElementById('qb-demand-adj').textContent = (s.adjPct >= 0 ? '+$' : '-$') + adj.toLocaleString();
-  document.getElementById('qb-demand-adj').className = 'breakdown-amount ' + (s.adjPct >= 0 ? 'positive' : 'negative');
-  document.getElementById('q-total').textContent = '$' + total.toLocaleString();
-  document.getElementById('vs-standard').textContent = '$' + standard.toLocaleString();
-  document.getElementById('vs-dynamic').textContent = '$' + total.toLocaleString();
-  var badge = document.getElementById('quote-demand-badge');
-  badge.textContent = s.label;
-  badge.className = 'badge ' + s.badgeClass;
-  badge.style.fontSize = '12px';
-  badge.style.padding = '5px 12px';
-  if (delta >= 0) {
-    document.getElementById('vs-delta').textContent = 'Dynamic: +$' + delta.toLocaleString() + ' vs. standard';
-    document.getElementById('vs-delta').className = 'vs-box-save premium';
-    document.getElementById('vs-why').textContent = s.adjPct > 0 ? 'High demand lane, premium applies' : 'Balanced adjustment';
-    document.getElementById('vs-why').style.color = '#4D148C';
-  } else {
-    document.getElementById('vs-delta').textContent = 'Save $' + Math.abs(delta).toLocaleString() + ' vs. standard';
-    document.getElementById('vs-delta').className = 'vs-box-save';
-    document.getElementById('vs-why').textContent = 'Backhaul incentive, lower rate to fill capacity';
-    document.getElementById('vs-why').style.color = '#1a7a3c';
+  var tuePrices = calcPrices(base, s.adjPct);
+  var friPrices = calcPrices(base, s.fridayAdjPct);
+  var prices = viewingFriday ? friPrices : tuePrices;
+  var isFriCheaper = s.fridayAdjPct < s.adjPct;
+  var savings = tuePrices.p2 - friPrices.p2; // savings on the most popular option
+
+  // Summary fields
+  document.getElementById('ltls-origin-val').textContent = s.originCity + ' ' + s.originZip;
+  document.getElementById('ltls-dest-val').textContent = s.destCity + ' ' + s.destZip;
+  document.getElementById('ltls-items-val').textContent = w.toLocaleString() + ' lbs, Class 65';
+  var pd = document.getElementById('pickup-date').value;
+  if (pd) {
+    var d = new Date(pd + 'T00:00:00');
+    document.getElementById('ltls-shipdate-val').textContent =
+      (d.getMonth()+1).toString().padStart(2,'0') + '/' +
+      d.getDate().toString().padStart(2,'0') + '/' + d.getFullYear();
   }
+
+  // Price pills
+  document.getElementById('ltls-p1').textContent = fmtUSD(prices.p1);
+  document.getElementById('ltls-p2').textContent = fmtUSD(prices.p2);
+  document.getElementById('ltls-e1').textContent = fmtUSD(prices.e1);
+  document.getElementById('ltls-e2').textContent = fmtUSD(prices.e2);
+  document.getElementById('ltls-e3').textContent = fmtUSD(prices.e3);
+
+  // Green pills when viewing Friday
+  ['ltls-p1','ltls-p2','ltls-e1','ltls-e2','ltls-e3'].forEach(function(id) {
+    var el = document.getElementById(id);
+    el.classList.toggle('fri', viewingFriday);
+  });
+
+  // Date labels
+  var friDate = getNextFriday();
+  var friLabel = friDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+  if (viewingFriday) {
+    document.getElementById('ltls-d1-label').textContent = friLabel;
+    document.getElementById('ltls-d2-label').textContent = 'Sun, ' + (friDate.getMonth()+1) + '/' + (friDate.getDate()+2);
+  } else {
+    document.getElementById('ltls-d1-label').textContent = 'Tue, Jun 9th';
+    document.getElementById('ltls-d2-label').textContent = 'Thu, Jun 11th';
+  }
+
+  // Friday banner
+  var banner = document.getElementById('ltls-fri-banner');
+  var active = document.getElementById('ltls-fri-active');
+  if (viewingFriday) {
+    banner.style.display = 'none';
+    active.style.display = 'flex';
+    document.getElementById('ltls-fri-active-date').textContent = friLabel;
+  } else if (isFriCheaper && savings > 0) {
+    banner.style.display = 'flex';
+    active.style.display = 'none';
+    document.getElementById('ltls-fri-save').textContent = '$' + savings.toLocaleString();
+    document.getElementById('ltls-fri-date').textContent = friLabel;
+  } else {
+    banner.style.display = 'none';
+    active.style.display = 'none';
+  }
+}
+
+function switchToFriday() {
+  viewingFriday = true;
+  var fri = getNextFriday();
+  document.getElementById('pickup-date').value = fri.toISOString().split('T')[0];
+  renderScreen4();
+}
+
+function revertToTuesday() {
+  viewingFriday = false;
+  var d = new Date();
+  document.getElementById('pickup-date').value = d.toISOString().split('T')[0];
+  renderScreen4();
 }
 
 // Set default date to today
