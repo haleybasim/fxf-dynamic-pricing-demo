@@ -273,6 +273,91 @@
   .ltls-book-cta:hover { background: #166534; }
 
   .ltls-foot { display: flex; gap: 10px; align-items: center; padding: 10px 16px; background: #fff; border-top: 1px solid #e5e7eb; flex-shrink: 0; }
+
+  /* ===== LANE REPORTING DASHBOARD ===== */
+  .lr-page { flex-direction: column; background: #f3f4f6; }
+  .lr-topbar { background: #fff; border-bottom: 1px solid #e5e7eb; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+  .lr-topbar-title { font-size: 17px; font-weight: 700; color: #111827; }
+  .lr-topbar-sub { font-size: 12px; color: #6b7280; margin-top: 2px; }
+  .lr-concept-tag { background: #f0e8f8; color: #4D148C; font-size: 11px; font-weight: 700; padding: 4px 14px; border-radius: 20px; flex-shrink: 0; }
+  .lr-filters { background: #fff; padding: 8px 24px; border-bottom: 1px solid #e5e7eb; display: flex; gap: 8px; align-items: center; flex-shrink: 0; flex-wrap: wrap; }
+  .lr-filter-lbl { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #9ca3af; }
+  .lr-filter { background: #f9fafb; border: 1.5px solid #e5e7eb; border-radius: 20px; padding: 4px 12px; font-size: 11px; color: #374151; cursor: pointer; white-space: nowrap; user-select: none; }
+  .lr-filter.on { border-color: #4D148C; color: #4D148C; background: #f0e8f8; font-weight: 600; }
+  .lr-fsep { width: 1px; height: 18px; background: #e5e7eb; }
+  .lr-kpis { display: grid; grid-template-columns: repeat(4,1fr); background: #fff; border-bottom: 1px solid #e5e7eb; flex-shrink: 0; }
+  .lr-kpi { padding: 14px 20px; border-right: 1px solid #e5e7eb; }
+  .lr-kpi:last-child { border-right: none; }
+  .lr-kpi-lbl { font-size: 11px; color: #6b7280; margin-bottom: 4px; }
+  .lr-kpi-val { font-size: 26px; font-weight: 800; line-height: 1; margin-bottom: 4px; color: #111827; }
+  .lr-kpi-val.red { color: #dc2626; }
+  .lr-kpi-val.amber { color: #d97706; }
+  .lr-kpi-val.green { color: #16a34a; }
+  .lr-kpi-note { font-size: 11px; }
+  .lr-kpi-note.bad { color: #dc2626; }
+  .lr-kpi-note.ok { color: #d97706; }
+  .lr-kpi-note.mute { color: #9ca3af; }
+  .lr-body { padding: 16px 20px; display: flex; flex-direction: column; gap: 14px; }
+  .lr-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .lr-row1 { display: grid; grid-template-columns: 1fr; }
+  .lr-card { background: #fff; border-radius: 10px; border: 1px solid #e5e7eb; padding: 16px 18px; }
+  .lr-card-hdr { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; }
+  .lr-card-title { font-size: 13px; font-weight: 700; color: #111827; }
+  .lr-card-sub { font-size: 11px; color: #9ca3af; margin-top: 2px; }
+  .lr-badge { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px; white-space: nowrap; flex-shrink: 0; }
+  .lr-badge-red { background: #fee2e2; color: #dc2626; }
+  .lr-badge-amber { background: #fef3c7; color: #92400e; }
+  .lr-badge-green { background: #d1fae5; color: #065f46; }
+  .lr-badge-blue { background: #dbeafe; color: #1e40af; }
+  .lr-hbar { margin-bottom: 9px; }
+  .lr-hbar-hdr { display: flex; align-items: center; justify-content: space-between; margin-bottom: 3px; }
+  .lr-hbar-lane { font-size: 11px; color: #374151; font-weight: 500; }
+  .lr-hbar-meta { font-size: 11px; color: #374151; display: flex; align-items: center; gap: 5px; }
+  .lr-hbar-gap { font-weight: 700; color: #dc2626; }
+  .lr-hbar-track { height: 8px; background: #f3f4f6; border-radius: 4px; overflow: hidden; }
+  .lr-hbar-fill { height: 100%; border-radius: 4px; }
+  .lr-ctag { font-size: 10px; font-weight: 700; padding: 1px 6px; border-radius: 4px; display: inline-block; }
+  .c-xpo { background: #dbeafe; color: #1d4ed8; }
+  .c-od  { background: #d1fae5; color: #065f46; }
+  .c-est { background: #fef3c7; color: #92400e; }
+  .c-oth { background: #f3f4f6; color: #6b7280; }
+  .lr-stack { display: flex; height: 22px; border-radius: 6px; overflow: hidden; }
+  .lr-stack-seg { display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: #fff; }
+  .lr-wr { margin-bottom: 10px; }
+  .lr-wr-hdr { display: flex; justify-content: space-between; margin-bottom: 3px; }
+  .lr-wr-lbl { font-size: 11px; color: #374151; }
+  .lr-wr-pct { font-size: 11px; font-weight: 700; color: #111827; }
+  .lr-wr-track { height: 14px; background: #f3f4f6; border-radius: 3px; overflow: hidden; }
+  .lr-wr-fill { height: 100%; border-radius: 3px; display: flex; align-items: center; padding: 0 6px; }
+  .lr-wr-fill span { font-size: 9px; font-weight: 700; color: rgba(255,255,255,0.9); }
+  .lr-dow { display: flex; align-items: flex-end; gap: 8px; height: 80px; }
+  .lr-dow-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .lr-dow-bar { width: 100%; border-radius: 3px 3px 0 0; }
+  .lr-dow-day { font-size: 10px; color: #9ca3af; }
+  .lr-dow-pct { font-size: 10px; font-weight: 700; color: #374151; }
+  .lr-tbl { width: 100%; border-collapse: collapse; }
+  .lr-tbl th { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #9ca3af; text-align: left; padding: 0 8px 8px 0; border-bottom: 1px solid #f3f4f6; }
+  .lr-tbl td { padding: 7px 8px 7px 0; border-bottom: 1px solid #f9fafb; font-size: 12px; color: #374151; vertical-align: middle; }
+  .lr-tbl tr:last-child td { border-bottom: none; }
+  .lr-tbl .tg { color: #16a34a; font-weight: 600; }
+  .lr-tbl .tr { color: #dc2626; font-weight: 700; }
+  .lr-callout { border-radius: 7px; padding: 9px 12px; font-size: 11px; line-height: 1.5; margin-top: 12px; display: flex; gap: 8px; }
+  .lr-callout.green { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; }
+  .lr-callout.amber { background: #fffbeb; border: 1px solid #fde68a; color: #92400e; }
+  .lr-callout.red { background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
+  .lr-callout.blue { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e3a8a; }
+  .lr-callout strong { font-weight: 700; }
+  .lr-acc { display: flex; align-items: center; padding: 7px 0; border-bottom: 1px solid #f9fafb; }
+  .lr-acc:last-child { border-bottom: none; }
+  .lr-acc-name { font-size: 12px; color: #374151; width: 140px; flex-shrink: 0; }
+  .lr-acc-track { flex: 1; margin: 0 10px; height: 6px; background: #fee2e2; border-radius: 3px; overflow: hidden; }
+  .lr-acc-fill { height: 100%; background: #dc2626; border-radius: 3px; }
+  .lr-acc-amt { font-size: 12px; font-weight: 700; color: #dc2626; width: 36px; text-align: right; flex-shrink: 0; }
+  .lr-acc-note { font-size: 10px; color: #9ca3af; width: 110px; text-align: right; flex-shrink: 0; }
+  .lr-fd { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #f9fafb; }
+  .lr-fd:last-child { border-bottom: none; }
+  .lr-fd-lbl { font-size: 12px; color: #374151; }
+  .lr-fd-val { font-size: 13px; font-weight: 700; color: #111827; }
 </style>
 </head>
 <body>
@@ -317,7 +402,7 @@
     <div class="sb-item" id="sb-lane" onclick="showView('lane')">
       <span class="sb-item-ico">&#128202;</span>
       Lane Reporting
-      <span class="sb-badge sb-badge-soon">Soon</span>
+      <span class="sb-badge">Live</span>
     </div>
   </aside>
 
@@ -908,12 +993,452 @@
       <div class="ph-sub">This prototype is in development. Explore how a frictionless guest checkout experience could expand LTL Select's addressable market.</div>
     </div>
 
-    <!-- ===== PLACEHOLDER: LANE REPORTING ===== -->
-    <div id="view-lane" class="ph-view">
-      <div class="ph-icon">&#128202;</div>
-      <span class="ph-tag">COMING SOON</span>
-      <div class="ph-title">Lane Reporting Dashboard</div>
-      <div class="ph-sub">This prototype is in development. A deep analytics view of lane-level performance, pricing trends, and capacity signals across your network.</div>
+    <!-- ===== LANE REPORTING DASHBOARD ===== -->
+    <div id="view-lane" class="lr-page" style="display:none;">
+
+      <!-- Top bar -->
+      <div class="lr-topbar">
+        <div>
+          <div class="lr-topbar-title">Lane Reporting Dashboard</div>
+          <div class="lr-topbar-sub">FedEx Freight competitive intelligence &#8212; quotes processed through LTL Select</div>
+        </div>
+        <span class="lr-concept-tag">CONCEPT PROTOTYPE</span>
+      </div>
+
+      <!-- Filters -->
+      <div class="lr-filters">
+        <span class="lr-filter-lbl">Period</span>
+        <span class="lr-filter on">Last 90 days</span>
+        <span class="lr-filter">30 days</span>
+        <span class="lr-filter">6 months</span>
+        <div class="lr-fsep"></div>
+        <span class="lr-filter-lbl">Carriers</span>
+        <span class="lr-filter on">All carriers</span>
+        <span class="lr-filter">XPO</span>
+        <span class="lr-filter">Old Dominion</span>
+        <span class="lr-filter">Estes</span>
+        <div class="lr-fsep"></div>
+        <span class="lr-filter-lbl">Lane type</span>
+        <span class="lr-filter on">All lanes</span>
+        <span class="lr-filter">National</span>
+        <span class="lr-filter">Regional</span>
+      </div>
+
+      <!-- KPI strip -->
+      <div class="lr-kpis">
+        <div class="lr-kpi">
+          <div class="lr-kpi-lbl">FedEx Win Rate</div>
+          <div class="lr-kpi-val red">34%</div>
+          <div class="lr-kpi-note bad">&#9660; 3pts vs prior period</div>
+        </div>
+        <div class="lr-kpi">
+          <div class="lr-kpi-lbl">Avg Price Gap (when losing)</div>
+          <div class="lr-kpi-val amber">+$52</div>
+          <div class="lr-kpi-note ok">More expensive than winner</div>
+        </div>
+        <div class="lr-kpi">
+          <div class="lr-kpi-lbl">Faster Transit, Still Lost</div>
+          <div class="lr-kpi-val amber">23 lanes</div>
+          <div class="lr-kpi-note ok">FXF faster but priced out</div>
+        </div>
+        <div class="lr-kpi">
+          <div class="lr-kpi-lbl">Accessorial Inflation (avg)</div>
+          <div class="lr-kpi-val red">+$78</div>
+          <div class="lr-kpi-note bad">Uplift on losing quotes</div>
+        </div>
+      </div>
+
+      <!-- Body -->
+      <div class="lr-body">
+
+        <!-- Row 1: Price gap + Who's winning -->
+        <div class="lr-row2">
+
+          <!-- Price gap by lane -->
+          <div class="lr-card">
+            <div class="lr-card-hdr">
+              <div>
+                <div class="lr-card-title">Largest Price Gaps vs. Winning Carrier</div>
+                <div class="lr-card-sub">FedEx price minus winning carrier price &#8212; last 90 days</div>
+              </div>
+              <span class="lr-badge lr-badge-red">6 critical lanes</span>
+            </div>
+            <div class="lr-hbar">
+              <div class="lr-hbar-hdr">
+                <span class="lr-hbar-lane">Chicago &#8594; Los Angeles</span>
+                <span class="lr-hbar-meta"><span class="lr-ctag c-xpo">XPO</span> <span class="lr-hbar-gap">+$148</span> <span style="color:#9ca3af;font-size:10px;">(+21%)</span></span>
+              </div>
+              <div class="lr-hbar-track"><div class="lr-hbar-fill" style="width:100%;background:#dc2626;"></div></div>
+            </div>
+            <div class="lr-hbar">
+              <div class="lr-hbar-hdr">
+                <span class="lr-hbar-lane">Dallas &#8594; Atlanta</span>
+                <span class="lr-hbar-meta"><span class="lr-ctag c-od">Old Dominion</span> <span class="lr-hbar-gap">+$124</span> <span style="color:#9ca3af;font-size:10px;">(+26%)</span></span>
+              </div>
+              <div class="lr-hbar-track"><div class="lr-hbar-fill" style="width:84%;background:#dc2626;"></div></div>
+            </div>
+            <div class="lr-hbar">
+              <div class="lr-hbar-hdr">
+                <span class="lr-hbar-lane">New York &#8594; Miami</span>
+                <span class="lr-hbar-meta"><span class="lr-ctag c-est">Estes</span> <span class="lr-hbar-gap">+$95</span> <span style="color:#9ca3af;font-size:10px;">(+15%)</span></span>
+              </div>
+              <div class="lr-hbar-track"><div class="lr-hbar-fill" style="width:64%;background:#f59e0b;"></div></div>
+            </div>
+            <div class="lr-hbar">
+              <div class="lr-hbar-hdr">
+                <span class="lr-hbar-lane">Boston &#8594; Chicago</span>
+                <span class="lr-hbar-meta"><span class="lr-ctag c-est">Estes</span> <span class="lr-hbar-gap">+$58</span> <span style="color:#9ca3af;font-size:10px;">(+8%)</span></span>
+              </div>
+              <div class="lr-hbar-track"><div class="lr-hbar-fill" style="width:39%;background:#f59e0b;"></div></div>
+            </div>
+            <div class="lr-hbar">
+              <div class="lr-hbar-hdr">
+                <span class="lr-hbar-lane">Seattle &#8594; Phoenix</span>
+                <span class="lr-hbar-meta"><span class="lr-ctag c-xpo">XPO</span> <span class="lr-hbar-gap">+$50</span> <span style="color:#9ca3af;font-size:10px;">(+9%)</span></span>
+              </div>
+              <div class="lr-hbar-track"><div class="lr-hbar-fill" style="width:34%;background:#f59e0b;"></div></div>
+            </div>
+            <div class="lr-hbar">
+              <div class="lr-hbar-hdr">
+                <span class="lr-hbar-lane">Los Angeles &#8594; Denver</span>
+                <span class="lr-hbar-meta"><span class="lr-ctag c-od">Old Dominion</span> <span class="lr-hbar-gap">+$37</span> <span style="color:#9ca3af;font-size:10px;">(+7%)</span></span>
+              </div>
+              <div class="lr-hbar-track"><div class="lr-hbar-fill" style="width:25%;background:#d97706;"></div></div>
+            </div>
+            <div class="lr-callout amber">&#9888; <div><strong>Chicago &#8594; LA is the single largest recovery opportunity.</strong> FXF is 21% more expensive than XPO on one of the highest-volume lanes in the network.</div></div>
+          </div>
+
+          <!-- Who's winning -->
+          <div class="lr-card">
+            <div class="lr-card-hdr">
+              <div>
+                <div class="lr-card-title">Who's Beating FedEx</div>
+                <div class="lr-card-sub">Share of FXF losses by winning carrier, last 90 days</div>
+              </div>
+              <span class="lr-badge lr-badge-blue">3,841 lost bookings</span>
+            </div>
+            <div class="lr-stack" style="margin-bottom:14px;">
+              <div class="lr-stack-seg" style="flex:38;background:#1d4ed8;">XPO 38%</div>
+              <div class="lr-stack-seg" style="flex:29;background:#16a34a;">OD 29%</div>
+              <div class="lr-stack-seg" style="flex:22;background:#d97706;">Est 22%</div>
+              <div class="lr-stack-seg" style="flex:11;background:#9ca3af;font-size:9px;">Oth</div>
+            </div>
+            <div class="lr-hbar">
+              <div class="lr-hbar-hdr">
+                <span class="lr-hbar-meta"><span class="lr-ctag c-xpo">XPO Logistics</span></span>
+                <span class="lr-hbar-meta">Avg gap <span class="lr-hbar-gap">&#8722;$52</span> &nbsp;|&nbsp; 1,459 wins</span>
+              </div>
+              <div class="lr-hbar-track"><div class="lr-hbar-fill" style="width:100%;background:#1d4ed8;"></div></div>
+            </div>
+            <div class="lr-hbar">
+              <div class="lr-hbar-hdr">
+                <span class="lr-hbar-meta"><span class="lr-ctag c-od">Old Dominion</span></span>
+                <span class="lr-hbar-meta">Avg gap <span class="lr-hbar-gap">&#8722;$41</span> &nbsp;|&nbsp; 1,114 wins</span>
+              </div>
+              <div class="lr-hbar-track"><div class="lr-hbar-fill" style="width:76%;background:#16a34a;"></div></div>
+            </div>
+            <div class="lr-hbar">
+              <div class="lr-hbar-hdr">
+                <span class="lr-hbar-meta"><span class="lr-ctag c-est">Estes Express</span></span>
+                <span class="lr-hbar-meta">Avg gap <span class="lr-hbar-gap">&#8722;$38</span> &nbsp;|&nbsp; 845 wins</span>
+              </div>
+              <div class="lr-hbar-track"><div class="lr-hbar-fill" style="width:58%;background:#d97706;"></div></div>
+            </div>
+            <div class="lr-hbar">
+              <div class="lr-hbar-hdr">
+                <span class="lr-hbar-meta"><span class="lr-ctag c-oth">Other carriers</span></span>
+                <span class="lr-hbar-meta">Avg gap <span class="lr-hbar-gap">&#8722;$29</span> &nbsp;|&nbsp; 423 wins</span>
+              </div>
+              <div class="lr-hbar-track"><div class="lr-hbar-fill" style="width:29%;background:#9ca3af;"></div></div>
+            </div>
+            <div style="border-top:1px solid #f3f4f6;padding-top:12px;margin-top:12px;">
+              <div style="font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px;">Avg Transit vs. FXF (when they won)</div>
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+                <div style="text-align:center;background:#f0f9ff;border-radius:6px;padding:8px;">
+                  <div style="font-size:16px;font-weight:800;color:#1d4ed8;">+1.4d</div>
+                  <div style="font-size:10px;color:#9ca3af;">XPO slower</div>
+                </div>
+                <div style="text-align:center;background:#f0fdf4;border-radius:6px;padding:8px;">
+                  <div style="font-size:16px;font-weight:800;color:#16a34a;">+0.8d</div>
+                  <div style="font-size:10px;color:#9ca3af;">OD slower</div>
+                </div>
+                <div style="text-align:center;background:#fffbeb;border-radius:6px;padding:8px;">
+                  <div style="font-size:16px;font-weight:800;color:#d97706;">+1.1d</div>
+                  <div style="font-size:10px;color:#9ca3af;">Estes slower</div>
+                </div>
+              </div>
+            </div>
+            <div class="lr-callout blue">&#128161; <div><strong>FXF has a transit advantage vs. every major competitor</strong> &#8212; but customers consistently choose slower carriers for lower prices. Price is the primary lever.</div></div>
+          </div>
+        </div>
+
+        <!-- Row 2: Win rate by position + Day of week -->
+        <div class="lr-row2">
+
+          <!-- Win rate by price position -->
+          <div class="lr-card">
+            <div class="lr-card-hdr">
+              <div>
+                <div class="lr-card-title">Win Rate by Price Position</div>
+                <div class="lr-card-sub">How often FXF books when ranked 1st, 2nd, or 3rd cheapest</div>
+              </div>
+              <span class="lr-badge lr-badge-amber">$25 breakpoint</span>
+            </div>
+            <div class="lr-wr">
+              <div class="lr-wr-hdr"><span class="lr-wr-lbl">#1 Cheapest option</span><span class="lr-wr-pct">87%</span></div>
+              <div class="lr-wr-track"><div class="lr-wr-fill" style="width:87%;background:#16a34a;"><span>87%</span></div></div>
+            </div>
+            <div class="lr-wr">
+              <div class="lr-wr-hdr"><span class="lr-wr-lbl">#2 Cheapest option</span><span class="lr-wr-pct">31%</span></div>
+              <div class="lr-wr-track"><div class="lr-wr-fill" style="width:31%;background:#d97706;"></div></div>
+            </div>
+            <div class="lr-wr">
+              <div class="lr-wr-hdr"><span class="lr-wr-lbl">#3 Cheapest option</span><span class="lr-wr-pct">8%</span></div>
+              <div class="lr-wr-track"><div class="lr-wr-fill" style="width:8%;background:#dc2626;"></div></div>
+            </div>
+            <div class="lr-wr">
+              <div class="lr-wr-hdr"><span class="lr-wr-lbl">#4+ Cheapest option</span><span class="lr-wr-pct">2%</span></div>
+              <div class="lr-wr-track"><div class="lr-wr-fill" style="width:2%;background:#dc2626;"></div></div>
+            </div>
+            <div style="margin-top:14px;border-top:1px solid #f3f4f6;padding-top:12px;">
+              <div style="font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px;">Win rate by price premium over cheapest option</div>
+              <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;text-align:center;">
+                <div style="background:#d1fae5;border-radius:6px;padding:7px;">
+                  <div style="font-size:14px;font-weight:800;color:#065f46;">74%</div>
+                  <div style="font-size:10px;color:#065f46;">$1&#8211;$25<br>premium</div>
+                </div>
+                <div style="background:#fef3c7;border-radius:6px;padding:7px;">
+                  <div style="font-size:14px;font-weight:800;color:#92400e;">41%</div>
+                  <div style="font-size:10px;color:#92400e;">$26&#8211;$50<br>premium</div>
+                </div>
+                <div style="background:#fee2e2;border-radius:6px;padding:7px;">
+                  <div style="font-size:14px;font-weight:800;color:#991b1b;">18%</div>
+                  <div style="font-size:10px;color:#991b1b;">$51&#8211;$100<br>premium</div>
+                </div>
+                <div style="background:#fee2e2;border-radius:6px;padding:7px;">
+                  <div style="font-size:14px;font-weight:800;color:#991b1b;">4%</div>
+                  <div style="font-size:10px;color:#991b1b;">$100+<br>premium</div>
+                </div>
+              </div>
+            </div>
+            <div class="lr-callout green">&#10003; <div><strong>Within $25, FXF still wins 74% of the time</strong> &#8212; brand and transit trust hold. Above $50, the win rate collapses to 18%. Pricing within $25 of cheapest is the target zone.</div></div>
+          </div>
+
+          <!-- Day of week -->
+          <div class="lr-card">
+            <div class="lr-card-hdr">
+              <div>
+                <div class="lr-card-title">Win Rate by Booking Day</div>
+                <div class="lr-card-sub">Does the day a shipment is booked affect FXF outcomes?</div>
+              </div>
+              <span class="lr-badge lr-badge-amber">14pt Mon&#8211;Fri swing</span>
+            </div>
+            <div class="lr-dow" style="margin-bottom:6px;">
+              <div class="lr-dow-col">
+                <div class="lr-dow-pct">42%</div>
+                <div class="lr-dow-bar" style="height:60px;background:#4D148C;"></div>
+                <div class="lr-dow-day">Mon</div>
+              </div>
+              <div class="lr-dow-col">
+                <div class="lr-dow-pct">39%</div>
+                <div class="lr-dow-bar" style="height:56px;background:#4D148C;"></div>
+                <div class="lr-dow-day">Tue</div>
+              </div>
+              <div class="lr-dow-col">
+                <div class="lr-dow-pct">35%</div>
+                <div class="lr-dow-bar" style="height:50px;background:#7c3aed;"></div>
+                <div class="lr-dow-day">Wed</div>
+              </div>
+              <div class="lr-dow-col">
+                <div class="lr-dow-pct">32%</div>
+                <div class="lr-dow-bar" style="height:46px;background:#f59e0b;"></div>
+                <div class="lr-dow-day">Thu</div>
+              </div>
+              <div class="lr-dow-col">
+                <div class="lr-dow-pct">28%</div>
+                <div class="lr-dow-bar" style="height:40px;background:#dc2626;"></div>
+                <div class="lr-dow-day">Fri</div>
+              </div>
+            </div>
+            <div style="height:1px;background:#f3f4f6;margin-bottom:14px;"></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
+              <div style="background:#f0fdf4;border-radius:6px;padding:10px;text-align:center;">
+                <div style="font-size:18px;font-weight:800;color:#166534;">Mon&#8211;Tue</div>
+                <div style="font-size:11px;color:#166534;font-weight:600;">Best booking days</div>
+                <div style="font-size:10px;color:#9ca3af;margin-top:2px;">Avg win rate: 41%</div>
+              </div>
+              <div style="background:#fef2f2;border-radius:6px;padding:10px;text-align:center;">
+                <div style="font-size:18px;font-weight:800;color:#991b1b;">Thu&#8211;Fri</div>
+                <div style="font-size:11px;color:#991b1b;font-weight:600;">Worst booking days</div>
+                <div style="font-size:10px;color:#9ca3af;margin-top:2px;">Avg win rate: 30%</div>
+              </div>
+            </div>
+            <div class="lr-callout amber">&#9888; <div><strong>Friday bookings are 33% less likely to go to FXF than Monday.</strong> End-of-week spot shopping is price-driven &#8212; a natural candidate for day-of-week dynamic pricing (see Dynamic Pricing prototype).</div></div>
+          </div>
+        </div>
+
+        <!-- Row 3: Transit paradox (full width) -->
+        <div class="lr-row1">
+          <div class="lr-card">
+            <div class="lr-card-hdr">
+              <div>
+                <div class="lr-card-title">Faster Transit, Still Lost &#8212; Speed Advantage Not Converting</div>
+                <div class="lr-card-sub">Lanes where FedEx Freight is faster than the winning carrier but lost the booking on price</div>
+              </div>
+              <span class="lr-badge lr-badge-red">23 lanes identified</span>
+            </div>
+            <table class="lr-tbl">
+              <thead>
+                <tr>
+                  <th>Lane</th>
+                  <th>FXF Transit</th>
+                  <th>Winner Transit</th>
+                  <th>FXF Price</th>
+                  <th>Winner Price</th>
+                  <th>Price Gap</th>
+                  <th>Winner</th>
+                  <th>Speed Advantage</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="font-weight:600;color:#111827;">Chicago &#8594; Seattle</td>
+                  <td class="tg">3.2 days</td>
+                  <td style="color:#9ca3af;">4.8 days</td>
+                  <td>$724</td><td>$612</td>
+                  <td class="tr">&#8722;$112</td>
+                  <td><span class="lr-ctag c-xpo">XPO</span></td>
+                  <td class="tg">+1.6 days faster</td>
+                </tr>
+                <tr>
+                  <td style="font-weight:600;color:#111827;">Atlanta &#8594; Phoenix</td>
+                  <td class="tg">2.8 days</td>
+                  <td style="color:#9ca3af;">4.1 days</td>
+                  <td>$548</td><td>$461</td>
+                  <td class="tr">&#8722;$87</td>
+                  <td><span class="lr-ctag c-od">Old Dominion</span></td>
+                  <td class="tg">+1.3 days faster</td>
+                </tr>
+                <tr>
+                  <td style="font-weight:600;color:#111827;">New York &#8594; Dallas</td>
+                  <td class="tg">3.5 days</td>
+                  <td style="color:#9ca3af;">5.2 days</td>
+                  <td>$812</td><td>$734</td>
+                  <td class="tr">&#8722;$78</td>
+                  <td><span class="lr-ctag c-est">Estes</span></td>
+                  <td class="tg">+1.7 days faster</td>
+                </tr>
+                <tr>
+                  <td style="font-weight:600;color:#111827;">Denver &#8594; Miami</td>
+                  <td class="tg">3.1 days</td>
+                  <td style="color:#9ca3af;">4.6 days</td>
+                  <td>$693</td><td>$628</td>
+                  <td class="tr">&#8722;$65</td>
+                  <td><span class="lr-ctag c-xpo">XPO</span></td>
+                  <td class="tg">+1.5 days faster</td>
+                </tr>
+                <tr>
+                  <td style="font-weight:600;color:#111827;">Chicago &#8594; Phoenix</td>
+                  <td class="tg">2.9 days</td>
+                  <td style="color:#9ca3af;">3.8 days</td>
+                  <td>$567</td><td>$512</td>
+                  <td class="tr">&#8722;$55</td>
+                  <td><span class="lr-ctag c-od">Old Dominion</span></td>
+                  <td class="tg">+0.9 days faster</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="lr-callout red">&#128680; <div><strong>FXF's transit advantage is real but not being monetized.</strong> On these 23 lanes, speed alone doesn't convert &#8212; FXF needs to be within $30&#8211;$40 of competitors for the transit advantage to matter to buyers.</div></div>
+          </div>
+        </div>
+
+        <!-- Row 4: Accessorial impact + Freight Direct -->
+        <div class="lr-row2">
+
+          <!-- Accessorial cost inflation -->
+          <div class="lr-card">
+            <div class="lr-card-hdr">
+              <div>
+                <div class="lr-card-title">Accessorial Cost Inflation</div>
+                <div class="lr-card-sub">How extra fees inflate FXF's apparent price on losing quotes</div>
+              </div>
+              <span class="lr-badge lr-badge-red">Avg +$78 uplift</span>
+            </div>
+            <div class="lr-acc">
+              <div class="lr-acc-name">Liftgate Delivery</div>
+              <div class="lr-acc-track"><div class="lr-acc-fill" style="width:100%;"></div></div>
+              <div class="lr-acc-amt">+$78</div>
+              <div class="lr-acc-note">vs. +$59 avg competitor</div>
+            </div>
+            <div class="lr-acc">
+              <div class="lr-acc-name">Residential Delivery</div>
+              <div class="lr-acc-track"><div class="lr-acc-fill" style="width:83%;"></div></div>
+              <div class="lr-acc-amt">+$65</div>
+              <div class="lr-acc-note">vs. +$48 avg competitor</div>
+            </div>
+            <div class="lr-acc">
+              <div class="lr-acc-name">Limited Access</div>
+              <div class="lr-acc-track"><div class="lr-acc-fill" style="width:67%;"></div></div>
+              <div class="lr-acc-amt">+$52</div>
+              <div class="lr-acc-note">Competitive range</div>
+            </div>
+            <div class="lr-acc">
+              <div class="lr-acc-name">Inside Delivery</div>
+              <div class="lr-acc-track"><div class="lr-acc-fill" style="width:56%;"></div></div>
+              <div class="lr-acc-amt">+$44</div>
+              <div class="lr-acc-note">Competitive range</div>
+            </div>
+            <div class="lr-acc">
+              <div class="lr-acc-name">Liftgate Pickup</div>
+              <div class="lr-acc-track"><div class="lr-acc-fill" style="width:45%;"></div></div>
+              <div class="lr-acc-amt">+$35</div>
+              <div class="lr-acc-note">vs. +$31 avg competitor</div>
+            </div>
+            <div class="lr-callout amber">&#9888; <div><strong>Liftgate and residential fees are the primary culprits.</strong> On quotes with both, FXF appears up to $143 more expensive before base rate comparisons even factor in.</div></div>
+          </div>
+
+          <!-- Freight Direct -->
+          <div class="lr-card">
+            <div class="lr-card-hdr">
+              <div>
+                <div class="lr-card-title">Freight Direct Performance</div>
+                <div class="lr-card-sub">Selection rate and win rate vs. standard LTL alternatives</div>
+              </div>
+              <span class="lr-badge lr-badge-green">71% competitive</span>
+            </div>
+            <div class="lr-fd">
+              <span class="lr-fd-lbl">Selected when eligible</span>
+              <span class="lr-fd-val" style="color:#4D148C;">12%</span>
+            </div>
+            <div class="lr-fd">
+              <span class="lr-fd-lbl">Competitive vs. alternatives</span>
+              <span class="lr-fd-val" style="color:#16a34a;">71%</span>
+            </div>
+            <div class="lr-fd">
+              <span class="lr-fd-lbl">Avg Freight Direct price</span>
+              <span class="lr-fd-val">$834</span>
+            </div>
+            <div class="lr-fd">
+              <span class="lr-fd-lbl">Avg alternative price (eligible quotes)</span>
+              <span class="lr-fd-val">$891</span>
+            </div>
+            <div class="lr-fd">
+              <span class="lr-fd-lbl">Win rate when Freight Direct is selected</span>
+              <span class="lr-fd-val" style="color:#16a34a;">68%</span>
+            </div>
+            <div class="lr-fd">
+              <span class="lr-fd-lbl">Win rate when Freight Direct is not selected</span>
+              <span class="lr-fd-val" style="color:#dc2626;">28%</span>
+            </div>
+            <div style="margin-top:12px;background:#f0e8f8;border-radius:8px;padding:10px 12px;">
+              <div style="font-size:11px;font-weight:700;color:#4D148C;margin-bottom:4px;">Freight Direct opportunity</div>
+              <div style="font-size:11px;color:#4a2080;line-height:1.5;">When selected, Freight Direct wins at 2.4&#215; the rate of standard LTL. A 12% selection rate suggests it isn't being surfaced effectively in the quote flow &#8212; a near-term improvement opportunity.</div>
+            </div>
+            <div class="lr-callout green">&#10003; <div><strong>Freight Direct is FXF's strongest competitive product</strong> in the LTL Select channel &#8212; but it's being left on the table. More prominent placement in the quote flow is a near-term win.</div></div>
+          </div>
+        </div>
+
+      </div>
     </div>
 
   </main>
@@ -923,9 +1448,10 @@
 // ===== VIEW SWITCHING =====
 function showView(view) {
   // Hide all views
-  document.getElementById('view-dashboard').style.display = 'none';
-  document.getElementById('view-dp').style.display = 'none';
-  document.querySelectorAll('.ph-view').forEach(function(el) { el.style.display = 'none'; });
+  ['dashboard','dp','monetize','guest','lane'].forEach(function(v) {
+    var el = document.getElementById('view-' + v);
+    if (el) el.style.display = 'none';
+  });
 
   // Deactivate all sidebar items
   document.querySelectorAll('.sb-item').forEach(function(el) { el.classList.remove('active'); });
