@@ -3,11 +3,96 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FedEx Freight Dynamic LTL Pricing</title>
+<title>LTL Select | Innovation Prototypes</title>
 <style>
+  /* ===== RESET & GLOBAL ===== */
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f7; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
-  .shell { width: 820px; min-height: 560px; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 32px rgba(0,0,0,0.13); display: flex; flex-direction: column; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f3f4f6; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+
+  /* ===== GLOBAL TOPNAV ===== */
+  .g-nav { background: #2a0f66; height: 52px; display: flex; align-items: center; padding: 0 16px; gap: 8px; flex-shrink: 0; }
+  .g-hamburger { color: rgba(255,255,255,0.7); font-size: 18px; cursor: pointer; margin-right: 4px; }
+  .g-logo { font-size: 18px; font-weight: 800; margin-right: 10px; white-space: nowrap; }
+  .g-logo-ltl { color: #fbbf24; }
+  .g-logo-sel { color: #fff; }
+  .g-nav-btn { background: #FF6200; color: #fff; border: none; border-radius: 20px; padding: 5px 11px; font-size: 10px; font-weight: 700; cursor: pointer; letter-spacing: 0.03em; white-space: nowrap; }
+  .g-nav-btn:hover { background: #e05500; }
+  .g-search { background: rgba(255,255,255,0.12); border: none; border-radius: 20px; padding: 6px 16px; color: rgba(255,255,255,0.6); font-size: 12px; width: 200px; outline: none; margin-left: auto; }
+  .g-avatar { width: 32px; height: 32px; border-radius: 50%; background: #6d28d9; color: #fff; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
+  /* ===== APP BODY ===== */
+  .g-body { display: flex; flex: 1; overflow: hidden; }
+
+  /* ===== SIDEBAR ===== */
+  .g-sidebar { width: 240px; background: #fff; border-right: 1px solid #e5e7eb; display: flex; flex-direction: column; flex-shrink: 0; }
+  .sb-home { padding: 12px 16px; border-bottom: 1px solid #f0f0f0; cursor: pointer; display: flex; align-items: center; gap: 8px; }
+  .sb-home:hover { background: #fafafa; }
+  .sb-home-ico { font-size: 14px; color: #9ca3af; }
+  .sb-home-txt { font-size: 13px; color: #374151; font-weight: 500; }
+  .sb-section { padding: 14px 16px 6px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #9ca3af; }
+  .sb-item { display: flex; align-items: center; gap: 10px; padding: 11px 16px; font-size: 13px; font-weight: 500; color: #374151; cursor: pointer; border-left: 3px solid transparent; transition: all 0.15s; user-select: none; }
+  .sb-item:hover { background: #f5f3ff; color: #4D148C; }
+  .sb-item.active { background: #f0e8f8; color: #4D148C; border-left-color: #4D148C; font-weight: 600; }
+  .sb-item-ico { font-size: 15px; width: 20px; text-align: center; flex-shrink: 0; }
+  .sb-badge { margin-left: auto; background: #FF6200; color: #fff; font-size: 9px; font-weight: 700; padding: 2px 6px; border-radius: 10px; }
+  .sb-badge-soon { background: #9ca3af; }
+
+  /* ===== MAIN ===== */
+  .g-main { flex: 1; overflow-y: auto; display: flex; flex-direction: column; }
+
+  /* ===== DASHBOARD VIEW ===== */
+  #view-dashboard { display: flex; flex-direction: column; }
+  .dash-stats-bar { background: #fff; border-bottom: 1px solid #e5e7eb; padding: 10px 20px; display: flex; align-items: center; }
+  .dash-stat { display: flex; align-items: center; gap: 10px; padding: 6px 18px; border-right: 1px solid #e5e7eb; cursor: pointer; }
+  .dash-stat:first-child { padding-left: 0; }
+  .dash-stat-body { }
+  .dash-stat-label { font-size: 11px; color: #6b7280; }
+  .dash-stat-num { font-size: 22px; font-weight: 700; color: #111827; line-height: 1.1; }
+  .dash-stat-ico { font-size: 16px; color: #9ca3af; }
+  .dash-stat-ico.warn { color: #f59e0b; }
+  .dash-stat-ico.alert { color: #ef4444; }
+  .dash-manage { margin-left: auto; font-size: 11px; font-weight: 700; color: #7c3aed; cursor: pointer; text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap; }
+  .dash-toolbar { background: #fff; padding: 10px 20px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #e5e7eb; }
+  .dash-dropdown { display: flex; align-items: center; gap: 6px; background: #7c3aed; color: #fff; border: none; border-radius: 6px; padding: 7px 14px; font-size: 13px; font-weight: 600; cursor: pointer; }
+  .dash-filter-btn { display: flex; align-items: center; gap: 6px; background: none; border: 1.5px solid #d1d5db; border-radius: 6px; padding: 6px 14px; font-size: 13px; font-weight: 600; color: #374151; cursor: pointer; }
+  .dash-list { padding: 12px 20px; }
+  .dash-row { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 12px 16px; display: flex; align-items: center; gap: 14px; margin-bottom: 5px; cursor: pointer; transition: box-shadow 0.15s; }
+  .dash-row:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  .dash-star { color: #d1d5db; font-size: 15px; flex-shrink: 0; width: 18px; }
+  .dash-star.on { color: #fbbf24; }
+  .dash-carrier { flex-shrink: 0; width: 130px; }
+  .fxf-fed { color: #4D148C; font-weight: 900; font-size: 14px; font-family: 'Arial Black', sans-serif; }
+  .fxf-ex  { color: #FF6200; font-weight: 900; font-size: 14px; font-family: 'Arial Black', sans-serif; }
+  .fxf-dot { color: #FF6200; font-weight: 900; font-size: 14px; }
+  .fxf-frt { color: #6b7280; font-size: 9px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-left: 2px; vertical-align: text-top; }
+  .fxfe-tag { font-size: 11px; color: #6b7280; margin-top: 2px; }
+  .dash-pro { width: 140px; flex-shrink: 0; }
+  .dash-pro-label, .dash-bol-label { font-size: 10px; color: #9ca3af; }
+  .dash-pro-num { font-size: 12px; font-weight: 600; color: #111827; display: flex; align-items: center; gap: 4px; }
+  .dash-bol-num { font-size: 12px; color: #374151; }
+  .dash-edit-ico { color: #c4b5e8; font-size: 12px; }
+  .dash-route { flex: 1; font-size: 13px; color: #111827; font-weight: 500; }
+  .dash-amount { width: 100px; text-align: right; font-size: 13px; font-weight: 600; color: #111827; }
+  .dash-status { width: 130px; text-align: right; flex-shrink: 0; }
+  .dash-status-lbl { font-size: 12px; font-weight: 700; }
+  .dash-status-date { font-size: 11px; color: #9ca3af; margin-top: 1px; }
+  .s-dispatched { color: #1d4ed8; }
+  .s-created { color: #374151; }
+  .s-canceled { color: #ef4444; }
+  .dash-chev { color: #d1d5db; font-size: 13px; flex-shrink: 0; }
+
+  /* ===== PROTOTYPE VIEW WRAPPER ===== */
+  #view-dp { display: none; flex: 1; justify-content: center; padding: 28px 20px 32px; min-height: 0; }
+
+  /* ===== PLACEHOLDER VIEWS ===== */
+  .ph-view { flex: 1; display: none; align-items: center; justify-content: center; flex-direction: column; gap: 14px; padding: 60px 40px; text-align: center; }
+  .ph-icon { font-size: 52px; }
+  .ph-tag { background: #f0e8f8; color: #4D148C; font-size: 11px; font-weight: 700; padding: 4px 14px; border-radius: 20px; letter-spacing: 0.05em; }
+  .ph-title { font-size: 22px; font-weight: 700; color: #1a1a2e; }
+  .ph-sub { font-size: 14px; color: #888; max-width: 400px; line-height: 1.7; }
+
+  /* ===== EXISTING PROTOTYPE STYLES ===== */
+  .shell { width: 820px; min-height: 560px; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 32px rgba(0,0,0,0.13); display: flex; flex-direction: column; flex-shrink: 0; align-self: flex-start; }
   .topbar { background: #4D148C; padding: 18px 28px; display: flex; align-items: center; justify-content: space-between; }
   .topbar-logo { display: flex; align-items: center; gap: 12px; }
   .topbar-logo svg { width: 36px; height: 36px; }
@@ -68,7 +153,7 @@
   .detail-field label { font-size: 12px; font-weight: 600; color: #555; }
   .detail-field input { padding: 10px 12px; border: 1.5px solid #ddd; border-radius: 8px; font-size: 14px; color: #1a1a2e; background: #fafafa; }
 
-  /* Screen 3 gauge */
+  /* Screen 3 */
   .gauge-section { display: flex; gap: 32px; align-items: flex-start; }
   .gauge-wrap { flex: 0 0 260px; text-align: center; }
   .gauge-canvas-wrap { position: relative; width: 240px; height: 140px; margin: 0 auto; }
@@ -76,7 +161,6 @@
   .gauge-center { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); text-align: center; }
   .gauge-pct { font-size: 32px; font-weight: 700; color: #1a1a2e; display: block; }
   .gauge-label { font-size: 11px; color: #888; display: block; }
-  .gauge-needle { position: absolute; bottom: 0; left: 50%; transform-origin: bottom center; width: 3px; margin-left: -1.5px; transition: transform 1.2s cubic-bezier(.25,.8,.25,1); }
   .demand-info { flex: 1; }
   .demand-title { font-size: 18px; font-weight: 700; color: #1a1a2e; margin-bottom: 6px; }
   .demand-subtitle { font-size: 13px; color: #777; margin-bottom: 20px; line-height: 1.5; }
@@ -90,31 +174,7 @@
   .trend-bar { flex: 1; background: #e8e0f5; border-radius: 3px 3px 0 0; transition: background 0.3s; }
   .trend-bar.current { background: #4D148C; }
 
-  /* Screen 4 quote */
-  .quote-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; }
-  .quote-lane { font-size: 15px; font-weight: 600; color: #4D148C; }
-  .quote-id { font-size: 12px; color: #aaa; margin-top: 2px; }
-  .quote-breakdown { margin-bottom: 20px; }
-  .breakdown-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #f0f0f0; }
-  .breakdown-row:last-child { border-bottom: none; }
-  .breakdown-label { font-size: 14px; color: #444; display: flex; align-items: center; gap: 8px; }
-  .breakdown-dot { width: 8px; height: 8px; border-radius: 50%; }
-  .breakdown-amount { font-size: 15px; font-weight: 600; color: #1a1a2e; }
-  .breakdown-amount.positive { color: #c44e00; }
-  .breakdown-amount.negative { color: #1a7a3c; }
-  .total-row { background: #4D148C; color: #fff; border-radius: 10px; padding: 16px 18px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
-  .total-label { font-size: 14px; font-weight: 600; }
-  .total-amount { font-size: 22px; font-weight: 700; }
-  .vs-row { display: flex; gap: 12px; }
-  .vs-box { flex: 1; border-radius: 8px; padding: 12px 16px; }
-  .vs-box.standard { background: #f5f5f7; border: 1px solid #e0e0e0; }
-  .vs-box.dynamic { background: #f0e8f8; border: 1px solid #c4a8e0; }
-  .vs-box-label { font-size: 11px; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
-  .vs-box-value { font-size: 20px; font-weight: 700; color: #1a1a2e; }
-  .vs-box-save { font-size: 12px; color: #1a7a3c; font-weight: 600; margin-top: 2px; }
-  .vs-box-save.premium { color: #c44e00; }
-
-  /* Screen 5 use cases */
+  /* Screen 5 */
   .use-cases-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
   .use-case-card { border: 1.5px solid #e8e0f5; border-radius: 10px; padding: 16px; cursor: pointer; transition: all 0.2s; }
   .use-case-card:hover { border-color: #4D148C; transform: translateY(-1px); }
@@ -131,7 +191,6 @@
   .cta-btn { background: #FF6200; color: #fff; border: none; border-radius: 8px; padding: 10px 20px; font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap; }
   .cta-btn:hover { background: #e05500; }
 
-  /* Screen label */
   .screen-header { margin-bottom: 24px; }
   .screen-header h2 { font-size: 20px; font-weight: 700; color: #1a1a2e; margin-bottom: 4px; }
   .screen-header p { font-size: 13px; color: #888; }
@@ -139,30 +198,18 @@
   .progress-fill { height: 100%; background: linear-gradient(90deg, #4D148C, #FF6200); border-radius: 2px; transition: width 0.5s ease; }
 
   /* ===== LTLS MODE (Screen 4) ===== */
-  .shell.ltls-mode { width: 900px; height: 600px; min-height: unset; }
-  .shell.ltls-mode .topbar,
+  .shell.ltls-mode { height: 560px; min-height: unset; }
+  .shell.ltls-mode .topbar { display: none; }
   .shell.ltls-mode .progress-line { display: none; }
   .shell.ltls-mode .content { padding: 0; display: flex; flex-direction: column; overflow: hidden; height: 100%; }
   #screen-4 { flex: 1; flex-direction: column; overflow: hidden; margin: 0; }
   #screen-4.active { display: flex; }
 
-  /* LTLS Nav */
-  .ltls-nav { background: #2a0f66; padding: 0 16px; height: 48px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
-  .ltls-nav-left { display: flex; align-items: center; gap: 12px; }
-  .ltls-hamburger { color: rgba(255,255,255,0.8); font-size: 17px; cursor: pointer; }
-  .ltls-logo-txt { font-size: 18px; font-weight: 800; }
-  .ltls-ltl { color: #fbbf24; }
-  .ltls-sel { color: #fff; }
-  .ltls-nav-actions { display: flex; gap: 6px; }
-  .ltls-nav-btn { background: #FF6200; color: #fff; border: none; border-radius: 20px; padding: 5px 11px; font-size: 10px; font-weight: 700; cursor: pointer; letter-spacing: 0.03em; }
-  .ltls-nav-right { display: flex; align-items: center; gap: 10px; }
-  .ltls-search { background: rgba(255,255,255,0.15); border: none; border-radius: 20px; padding: 5px 14px; color: rgba(255,255,255,0.6); font-size: 11px; width: 130px; outline: none; }
-  .ltls-avatar { width: 28px; height: 28px; border-radius: 50%; background: #6d28d9; color: #fff; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  /* Inner LTLS nav hidden — global nav handles this context */
+  .ltls-nav { display: none; }
 
-  /* LTLS Body */
-  .ltls-body { flex: 1; background: #f3f4f6; overflow-y: auto; padding: 12px 16px 12px; }
+  .ltls-body { flex: 1; background: #f3f4f6; overflow-y: auto; padding: 12px 16px; }
 
-  /* Summary card */
   .ltls-summary { background: #fff; border-radius: 8px; padding: 12px 16px; margin-bottom: 12px; border: 1px solid #e5e7eb; }
   .ltls-sum-hdr { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
   .ltls-sum-ttl { font-size: 14px; font-weight: 700; color: #111827; }
@@ -172,7 +219,6 @@
   .ltls-sum-val { font-size: 12px; font-weight: 500; color: #111827; margin-bottom: 5px; }
   .ltls-dock-pill { background: #7c3aed; color: #fff; border: none; border-radius: 20px; padding: 3px 10px; font-size: 10px; font-weight: 600; display: inline-block; cursor: default; }
 
-  /* Rates card */
   .ltls-rates { background: #fff; border-radius: 8px; border: 1px solid #e5e7eb; overflow: hidden; }
   .ltls-rates-title { text-align: center; padding: 12px 0 4px; font-size: 16px; font-weight: 700; color: #111827; }
   .ltls-rates-bar { display: flex; justify-content: flex-end; padding: 0 14px 8px; }
@@ -183,20 +229,14 @@
   .ltls-tog::after { content: ''; position: absolute; width: 12px; height: 12px; background: #fff; border-radius: 50%; top: 2px; left: 2px; }
   .ltls-info-i { margin-left: auto; width: 16px; height: 16px; background: #9ca3af; border-radius: 50%; color: #fff; font-size: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
 
-  /* Date group header */
   .ltls-dg-hdr { display: flex; align-items: center; gap: 10px; padding: 10px 14px 6px; }
   .ltls-dg-date { font-size: 13px; font-weight: 700; color: #111827; }
   .ltls-dg-fastest { color: #FF6200; font-size: 11px; font-weight: 700; }
   .ltls-dg-need-faster { background: #7c3aed; color: #fff; border: none; border-radius: 20px; padding: 4px 12px; font-size: 10px; font-weight: 600; cursor: pointer; }
 
-  /* Service row */
   .ltls-svc-row { display: flex; align-items: flex-start; padding: 4px 14px 12px; }
   .ltls-carrier-col { width: 155px; flex-shrink: 0; padding-top: 3px; padding-right: 10px; }
   .ltls-fxf-logo { margin-bottom: 3px; line-height: 1; }
-  .fxf-fed { color: #4D148C; font-weight: 900; font-size: 13px; font-family: 'Arial Black', sans-serif; }
-  .fxf-ex  { color: #FF6200; font-weight: 900; font-size: 13px; font-family: 'Arial Black', sans-serif; }
-  .fxf-dot { color: #FF6200; font-weight: 900; font-size: 13px; }
-  .fxf-frt { color: #6b7280; font-size: 8px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-left: 1px; vertical-align: text-top; }
   .ltls-svc-name { font-size: 11px; color: #374151; }
   .ltls-opts { flex: 1; display: flex; flex-direction: column; gap: 7px; }
   .ltls-opt { display: flex; align-items: center; }
@@ -212,7 +252,6 @@
   .ltls-chevron { color: #9ca3af; font-size: 14px; cursor: pointer; }
   .ltls-divider { border: none; border-top: 1px solid #e5e7eb; margin: 0; }
 
-  /* Friday savings banner */
   .ltls-fri-banner { margin: 6px 14px 8px; background: #f0fdf4; border: 1.5px solid #4ade80; border-radius: 10px; padding: 10px 14px; display: flex; align-items: center; gap: 10px; }
   .ltls-fri-ico { font-size: 16px; flex-shrink: 0; }
   .ltls-fri-txt { flex: 1; }
@@ -225,7 +264,6 @@
   .ltls-fri-active-txt { font-size: 12px; font-weight: 600; color: #15803d; }
   .ltls-fri-revert { background: none; border: 1.5px solid #4ade80; color: #15803d; border-radius: 6px; padding: 4px 10px; font-size: 11px; font-weight: 600; cursor: pointer; }
 
-  /* Book now nudge */
   .ltls-book-nudge { margin: 0 14px 10px; background: #f0fdf4; border: 1.5px solid #4ade80; border-radius: 10px; padding: 10px 14px; display: flex; align-items: center; gap: 10px; }
   .ltls-book-ico { font-size: 18px; flex-shrink: 0; }
   .ltls-book-txt { flex: 1; }
@@ -234,424 +272,683 @@
   .ltls-book-cta { background: #15803d; color: #fff; border: none; border-radius: 8px; padding: 7px 14px; font-size: 11px; font-weight: 700; cursor: pointer; white-space: nowrap; }
   .ltls-book-cta:hover { background: #166534; }
 
-  /* LTLS footer */
   .ltls-foot { display: flex; gap: 10px; align-items: center; padding: 10px 16px; background: #fff; border-top: 1px solid #e5e7eb; flex-shrink: 0; }
 </style>
 </head>
 <body>
-<div class="shell">
-  <div class="topbar">
-    <div class="topbar-logo">
-      <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="36" height="36" rx="8" fill="#FF6200"/>
-        <text x="6" y="25" font-family="Arial Black, sans-serif" font-weight="900" font-size="16" fill="white">FXF</text>
-      </svg>
-      <div>
-        <div class="topbar-title">Dynamic LTL Pricing</div>
-        <div class="topbar-subtitle">Powered by real-time lane intelligence</div>
+
+<!-- ===== GLOBAL TOPNAV ===== -->
+<nav class="g-nav">
+  <span class="g-hamburger">&#9776;</span>
+  <span class="g-logo"><span class="g-logo-ltl">LTL</span> <span class="g-logo-sel">Select</span></span>
+  <button class="g-nav-btn">BOOK SHIPMENT</button>
+  <button class="g-nav-btn">QUICK RATE</button>
+  <button class="g-nav-btn">REQUEST PICKUP</button>
+  <button class="g-nav-btn">CREATE MANIFEST</button>
+  <input class="g-search" placeholder="&#128269; Search...">
+  <div class="g-avatar">HB</div>
+</nav>
+
+<!-- ===== APP BODY ===== -->
+<div class="g-body">
+
+  <!-- SIDEBAR -->
+  <aside class="g-sidebar">
+    <div class="sb-home" onclick="showView('dashboard')">
+      <span class="sb-home-ico">&#127968;</span>
+      <span class="sb-home-txt">Dashboard</span>
+    </div>
+    <div class="sb-section">Prototypes</div>
+    <div class="sb-item active" id="sb-dp" onclick="showView('dp')">
+      <span class="sb-item-ico">&#9889;</span>
+      Dynamic Pricing
+      <span class="sb-badge">Live</span>
+    </div>
+    <div class="sb-item" id="sb-monetize" onclick="showView('monetize')">
+      <span class="sb-item-ico">&#128176;</span>
+      Monetizing LTL Select
+      <span class="sb-badge sb-badge-soon">Soon</span>
+    </div>
+    <div class="sb-item" id="sb-guest" onclick="showView('guest')">
+      <span class="sb-item-ico">&#128722;</span>
+      Guest Checkout
+      <span class="sb-badge sb-badge-soon">Soon</span>
+    </div>
+    <div class="sb-item" id="sb-lane" onclick="showView('lane')">
+      <span class="sb-item-ico">&#128202;</span>
+      Lane Reporting
+      <span class="sb-badge sb-badge-soon">Soon</span>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="g-main">
+
+    <!-- ===== DASHBOARD VIEW ===== -->
+    <div id="view-dashboard" style="display:none;">
+      <div class="dash-stats-bar">
+        <div class="dash-stat">
+          <div class="dash-stat-body">
+            <div class="dash-stat-label">Created</div>
+            <div class="dash-stat-num">334</div>
+          </div>
+          <span class="dash-stat-ico">&#9998;</span>
+        </div>
+        <div class="dash-stat">
+          <div class="dash-stat-body">
+            <div class="dash-stat-label">Reweigh</div>
+            <div class="dash-stat-num">0</div>
+          </div>
+          <span class="dash-stat-ico warn">&#9651;</span>
+        </div>
+        <div class="dash-stat">
+          <div class="dash-stat-body">
+            <div class="dash-stat-label">Damage</div>
+            <div class="dash-stat-num">0</div>
+          </div>
+          <span class="dash-stat-ico warn">&#9651;</span>
+        </div>
+        <div class="dash-stat">
+          <div class="dash-stat-body">
+            <div class="dash-stat-label">Warning</div>
+            <div class="dash-stat-num">5</div>
+          </div>
+          <span class="dash-stat-ico warn">&#9651;</span>
+        </div>
+        <div class="dash-stat">
+          <div class="dash-stat-body">
+            <div class="dash-stat-label">Clearance Delay</div>
+            <div class="dash-stat-num">0</div>
+          </div>
+          <span class="dash-stat-ico warn">&#9651;</span>
+        </div>
+        <div class="dash-stat">
+          <div class="dash-stat-body">
+            <div class="dash-stat-label">Other Shipments</div>
+            <div class="dash-stat-num">2</div>
+          </div>
+          <span class="dash-stat-ico">&#128666;</span>
+        </div>
+        <div class="dash-stat" style="border-right:none;">
+          <div class="dash-stat-body">
+            <div class="dash-stat-label">Expected Arrivals</div>
+            <div class="dash-stat-num" style="font-size:14px;padding-top:4px;">&#128666;</div>
+          </div>
+        </div>
+        <div class="dash-manage">Manage Dashboard</div>
+      </div>
+      <div class="dash-toolbar">
+        <button class="dash-dropdown">Shipments &#9660;</button>
+        <button class="dash-filter-btn">&#9776; Filters</button>
+      </div>
+      <div class="dash-list">
+        <!-- Row 1 -->
+        <div class="dash-row">
+          <span class="dash-star">&#9733;</span>
+          <div class="dash-carrier">
+            <div><span class="fxf-fed">Fed</span><span class="fxf-ex">Ex</span><span class="fxf-dot">.</span><span class="fxf-frt">Freight</span></div>
+            <div class="fxfe-tag">FXFE</div>
+          </div>
+          <div class="dash-pro">
+            <div class="dash-pro-label">Pro Number</div>
+            <div class="dash-pro-num">300045220527 <span class="dash-edit-ico">&#9998;</span></div>
+            <div class="dash-bol-label">BOL</div>
+            <div class="dash-bol-num">16966931</div>
+          </div>
+          <div class="dash-route">Samish Lake, WA &#8594; Chicago, IL</div>
+          <div class="dash-amount"></div>
+          <div class="dash-status"><div class="dash-status-lbl s-dispatched">DISPATCHED</div></div>
+          <span class="dash-chev">&#8964;</span>
+        </div>
+        <!-- Row 2 -->
+        <div class="dash-row">
+          <span class="dash-star on">&#9733;</span>
+          <div class="dash-carrier">
+            <div><span class="fxf-fed">Fed</span><span class="fxf-ex">Ex</span><span class="fxf-dot">.</span><span class="fxf-frt">Freight</span></div>
+            <div class="fxfe-tag">(FXFE)</div>
+          </div>
+          <div class="dash-pro">
+            <div class="dash-pro-label">Pro Number</div>
+            <div class="dash-pro-num">300045096099 <span class="dash-edit-ico">&#9998;</span></div>
+            <div class="dash-bol-label">BOL</div>
+            <div class="dash-bol-num">16960050</div>
+          </div>
+          <div class="dash-route">LTL Select Demo LLC &#8594; Test_Contact</div>
+          <div class="dash-amount">US$3155.58</div>
+          <div class="dash-status">
+            <div class="dash-status-lbl s-created">CREATED</div>
+            <div class="dash-status-date">7/20/26</div>
+          </div>
+          <span class="dash-chev">&#8964;</span>
+        </div>
+        <!-- Row 3 -->
+        <div class="dash-row">
+          <span class="dash-star on">&#9733;</span>
+          <div class="dash-carrier">
+            <div><span class="fxf-fed">Fed</span><span class="fxf-ex">Ex</span><span class="fxf-dot">.</span><span class="fxf-frt">Freight</span></div>
+            <div class="fxfe-tag">(FXFE)</div>
+          </div>
+          <div class="dash-pro">
+            <div class="dash-pro-label">Pro Number</div>
+            <div class="dash-pro-num">300045095861 <span class="dash-edit-ico">&#9998;</span></div>
+            <div class="dash-bol-label">BOL</div>
+            <div class="dash-bol-num">16960044</div>
+          </div>
+          <div class="dash-route">LTL Select Demo LLC &#8594; Test_Contact</div>
+          <div class="dash-amount">US$3155.58</div>
+          <div class="dash-status">
+            <div class="dash-status-lbl s-created">CREATED</div>
+            <div class="dash-status-date">7/20/26</div>
+          </div>
+          <span class="dash-chev">&#8964;</span>
+        </div>
+        <!-- Row 4 -->
+        <div class="dash-row">
+          <span class="dash-star on">&#9733;</span>
+          <div class="dash-carrier">
+            <div><span class="fxf-fed">Fed</span><span class="fxf-ex">Ex</span><span class="fxf-dot">.</span><span class="fxf-frt">Freight</span></div>
+            <div class="fxfe-tag">(FXFE)</div>
+          </div>
+          <div class="dash-pro">
+            <div class="dash-pro-label">Pro Number</div>
+            <div class="dash-pro-num">300045095600 <span class="dash-edit-ico">&#9998;</span></div>
+            <div class="dash-bol-label">BOL</div>
+            <div class="dash-bol-num">16960034</div>
+          </div>
+          <div class="dash-route">LTL Select Demo LLC &#8594; Test_Contact</div>
+          <div class="dash-amount">US$3155.58</div>
+          <div class="dash-status">
+            <div class="dash-status-lbl s-created">CREATED</div>
+            <div class="dash-status-date">7/20/26</div>
+          </div>
+          <span class="dash-chev">&#8964;</span>
+        </div>
+        <!-- Row 5 -->
+        <div class="dash-row">
+          <span class="dash-star on">&#9733;</span>
+          <div class="dash-carrier">
+            <div><span class="fxf-fed">Fed</span><span class="fxf-ex">Ex</span><span class="fxf-dot">.</span><span class="fxf-frt">Freight</span></div>
+            <div class="fxfe-tag">(FXFE)</div>
+          </div>
+          <div class="dash-pro">
+            <div class="dash-pro-label">Pro Number</div>
+            <div class="dash-pro-num">300045095287 <span class="dash-edit-ico">&#9998;</span></div>
+            <div class="dash-bol-label">BOL</div>
+            <div class="dash-bol-num">16960030</div>
+          </div>
+          <div class="dash-route">LTL Select Demo LLC &#8594; Test_Contact</div>
+          <div class="dash-amount">US$3155.58</div>
+          <div class="dash-status">
+            <div class="dash-status-lbl s-created">CREATED</div>
+            <div class="dash-status-date">7/20/26</div>
+          </div>
+          <span class="dash-chev">&#8964;</span>
+        </div>
+        <!-- Row 6 -->
+        <div class="dash-row">
+          <span class="dash-star">&#9733;</span>
+          <div class="dash-carrier">
+            <div><span class="fxf-fed">Fed</span><span class="fxf-ex">Ex</span><span class="fxf-dot">.</span><span class="fxf-frt">Freight</span></div>
+            <div class="fxfe-tag">FXFE</div>
+          </div>
+          <div class="dash-pro">
+            <div class="dash-pro-label">Pro Number</div>
+            <div class="dash-pro-num">300045062984 <span class="dash-edit-ico">&#9998;</span></div>
+            <div class="dash-bol-label">BOL</div>
+            <div class="dash-bol-num">16958210</div>
+          </div>
+          <div class="dash-route">Chicago, IL &#8594; Harrison, AR</div>
+          <div class="dash-amount"></div>
+          <div class="dash-status"><div class="dash-status-lbl s-canceled">CANCELED</div></div>
+          <span class="dash-chev">&#8964;</span>
+        </div>
       </div>
     </div>
-    <div class="steps">
-      <div class="step-dot active" id="dot-1"></div>
-      <div class="step-dot" id="dot-2"></div>
-      <div class="step-dot" id="dot-3"></div>
-      <div class="step-dot" id="dot-4"></div>
-      <div class="step-dot" id="dot-5"></div>
-    </div>
-  </div>
 
-  <div class="progress-line" style="margin:0;border-radius:0;">
-    <div class="progress-fill" id="progress-fill" style="width:20%;"></div>
-  </div>
-
-  <div class="content">
-
-    <!-- Screen 1: Welcome -->
-    <div class="screen active" id="screen-1">
-      <div class="hero-tag"><div class="hero-tag-dot"></div>Interactive Demo</div>
-      <h1 class="hero">Smarter freight pricing.<br><span>Built for the way lanes actually work.</span></h1>
-      <p class="hero-sub">Today, every FedEx Freight LTL quote uses the same logic regardless of whether that lane is bursting or empty. Dynamic pricing changes that by reflecting real demand, helping you capture margin when it's there and compete harder when you need volume.</p>
-      <div class="pills">
-        <div class="pill">
-          <div class="pill-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
-          <div>
-            <span class="pill-label">No class required</span>
-            <span class="pill-desc">Dimensional weight pricing</span>
-          </div>
-        </div>
-        <div class="pill">
-          <div class="pill-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
-          <div>
-            <span class="pill-label">Live demand signals</span>
-            <span class="pill-desc">Utilization drives the rate</span>
-          </div>
-        </div>
-        <div class="pill">
-          <div class="pill-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
-          <div>
-            <span class="pill-label">Industry-wide threat</span>
-            <span class="pill-desc">Regional carriers undercutting on lanes</span>
-          </div>
-        </div>
-      </div>
-      <div class="arcbest-note"><strong>Market context:</strong> ArcBest launched Dynamic LTL in 2023. Amazon Freight entered with real-time pricing in 2025, and the threat is spreading: smaller regional carriers are now using dynamic pricing to undercut national carriers on specific lanes and routes where they have home-field advantage. FedEx Freight is the largest LTL carrier in the country without a public answer.</div>
-      <div class="btn-row" style="padding-top:0;">
-        <button class="btn-primary" onclick="goTo(2)">
-          Try it yourself
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Screen 2: Shipment form -->
-    <div class="screen" id="screen-2">
-      <div class="screen-header">
-        <h2>Build your shipment</h2>
-        <p>Pick a lane scenario or enter your own origin and destination.</p>
-      </div>
-      <div class="form-section-label">Choose a lane scenario</div>
-      <div class="scenario-cards">
-        <div class="scenario-card selected" id="sc-chicago-la" onclick="selectScenario('chicago-la')">
-          <div class="lane">Chicago &#8594; Los Angeles</div>
-          <div class="desc">High-demand corridor, peak shipping season</div>
-          <span class="badge badge-high">High demand</span>
-        </div>
-        <div class="scenario-card" id="sc-la-chicago" onclick="selectScenario('la-chicago')">
-          <div class="lane">Los Angeles &#8594; Chicago</div>
-          <div class="desc">Backhaul lane, capacity available</div>
-          <span class="badge badge-low">Low demand</span>
-        </div>
-        <div class="scenario-card" id="sc-atlanta-dallas" onclick="selectScenario('atlanta-dallas')">
-          <div class="lane">Atlanta &#8594; Dallas</div>
-          <div class="desc">Balanced regional corridor</div>
-          <span class="badge badge-mod">Moderate</span>
-        </div>
-      </div>
-      <div class="form-grid">
-        <div class="form-field">
-          <label>Origin ZIP</label>
-          <input type="text" id="origin-zip" value="60601" />
-        </div>
-        <div class="form-field">
-          <label>Destination ZIP</label>
-          <input type="text" id="dest-zip" value="90001" />
-        </div>
-      </div>
-      <div class="form-section-label">Shipment details</div>
-      <div class="shipment-details">
-        <div class="detail-field">
-          <label>Weight (lbs)</label>
-          <input type="number" id="weight" value="850" min="1" max="20000" />
-        </div>
-        <div class="detail-field">
-          <label>Pallets</label>
-          <input type="number" id="pallets" value="4" min="1" max="28" />
-        </div>
-        <div class="detail-field">
-          <label>Pickup date</label>
-          <input type="date" id="pickup-date" />
-        </div>
-      </div>
-      <div class="btn-row">
-        <button class="btn-back" onclick="goTo(1)">&#8592; Back</button>
-        <button class="btn-primary" onclick="goTo(3)">
-          Check lane demand
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Screen 3: Lane intelligence -->
-    <div class="screen" id="screen-3">
-      <div class="screen-header">
-        <h2>Lane intelligence</h2>
-        <p id="lane-desc-3">Real-time capacity and demand signals for your corridor.</p>
-      </div>
-      <div class="gauge-section">
-        <div class="gauge-wrap">
-          <div class="gauge-canvas-wrap">
-            <canvas id="gauge" width="240" height="140"></canvas>
-            <div class="gauge-center">
-              <span class="gauge-pct" id="gauge-pct">0%</span>
-              <span class="gauge-label">utilization</span>
-            </div>
-          </div>
-          <div style="margin-top:12px; font-size:12px; color:#888; display:flex; justify-content:space-between; width:240px;">
-            <span>Empty</span>
-            <span id="demand-level-label" style="font-weight:700;color:#4D148C;">Loading...</span>
-            <span>Full</span>
-          </div>
-        </div>
-        <div class="demand-info">
-          <div class="demand-title" id="demand-headline">Analyzing lane...</div>
-          <div class="demand-subtitle" id="demand-body">Checking real-time capacity signals across this corridor.</div>
-          <div class="lane-stat-grid">
-            <div class="lane-stat">
-              <span class="lane-stat-value" id="stat-recent-quotes">2,840</span>
-              <span class="lane-stat-label">Recent quotes</span>
-            </div>
-            <div class="lane-stat">
-              <span class="lane-stat-value" id="stat-booked">1,240</span>
-              <span class="lane-stat-label">Shipments booked</span>
-            </div>
-            <div class="lane-stat">
-              <span class="lane-stat-value" id="stat-empty-trucks">12 nearby</span>
-              <span class="lane-stat-label">Trucks without loads</span>
-            </div>
-            <div class="lane-stat">
-              <span class="lane-stat-value" id="stat-hist-demand">↑ Trending up</span>
-              <span class="lane-stat-label">Historical demand</span>
-            </div>
-          </div>
-          <div class="trend-bar-wrap">
-            <div class="trend-label">7-day utilization trend</div>
-            <div class="trend-bars" id="trend-bars"></div>
-          </div>
-        </div>
-      </div>
-      <div class="btn-row">
-        <button class="btn-back" onclick="goTo(2)">&#8592; Back</button>
-        <button class="btn-primary" onclick="goTo(4)">
-          Generate dynamic quote
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Screen 4: LTLS-style rates view -->
-    <div class="screen" id="screen-4">
-
-      <!-- LTLS Nav -->
-      <div class="ltls-nav">
-        <div class="ltls-nav-left">
-          <span class="ltls-hamburger">&#9776;</span>
-          <span class="ltls-logo-txt"><span class="ltls-ltl">LTL</span> <span class="ltls-sel">Select</span></span>
-        </div>
-        <div class="ltls-nav-actions">
-          <button class="ltls-nav-btn">BOOK SHIPMENT</button>
-          <button class="ltls-nav-btn">QUICK RATE</button>
-          <button class="ltls-nav-btn">REQUEST PICKUP</button>
-          <button class="ltls-nav-btn">CREATE MANIFEST</button>
-        </div>
-        <div class="ltls-nav-right">
-          <input class="ltls-search" placeholder="&#128269;" readonly>
-          <div class="ltls-avatar">HB</div>
-        </div>
-      </div>
-
-      <!-- Scrollable body -->
-      <div class="ltls-body">
-
-        <!-- Summary card -->
-        <div class="ltls-summary">
-          <div class="ltls-sum-hdr">
-            <span class="ltls-sum-ttl">Summary</span>
-            <button class="ltls-sum-edit">EDIT</button>
-          </div>
-          <div class="ltls-sum-grid">
+    <!-- ===== DYNAMIC PRICING PROTOTYPE ===== -->
+    <div id="view-dp">
+      <div class="shell">
+        <div class="topbar">
+          <div class="topbar-logo">
+            <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="36" height="36" rx="8" fill="#FF6200"/>
+              <text x="6" y="25" font-family="Arial Black, sans-serif" font-weight="900" font-size="16" fill="white">FXF</text>
+            </svg>
             <div>
-              <div class="ltls-sum-lbl">Origin</div>
-              <div class="ltls-sum-val" id="ltls-origin-val">Chicago, IL 60601</div>
-              <span class="ltls-dock-pill">Dock Pickup</span>
+              <div class="topbar-title">Dynamic LTL Pricing</div>
+              <div class="topbar-subtitle">Powered by real-time lane intelligence</div>
             </div>
-            <div>
-              <div class="ltls-sum-lbl">Destination</div>
-              <div class="ltls-sum-val" id="ltls-dest-val">Los Angeles, CA 90001</div>
-              <span class="ltls-dock-pill">Dock Delivery</span>
-            </div>
-            <div>
-              <div class="ltls-sum-lbl">Line Items</div>
-              <div class="ltls-sum-val" id="ltls-items-val">850 lbs, Class 65</div>
-            </div>
-            <div>
-              <div class="ltls-sum-lbl">Ship Date</div>
-              <div class="ltls-sum-val" id="ltls-shipdate-val">06/04/2026</div>
-            </div>
+          </div>
+          <div class="steps">
+            <div class="step-dot active" id="dot-1"></div>
+            <div class="step-dot" id="dot-2"></div>
+            <div class="step-dot" id="dot-3"></div>
+            <div class="step-dot" id="dot-4"></div>
+            <div class="step-dot" id="dot-5"></div>
           </div>
         </div>
 
-        <!-- Rates card -->
-        <div class="ltls-rates">
-          <div class="ltls-rates-title">Rates</div>
-          <div class="ltls-rates-bar">
-            <button class="ltls-share-btn">&#11014; SHARE</button>
-          </div>
-          <div class="ltls-filter-row">
-            <label class="ltls-filter-item"><div class="ltls-tog"></div> Hide Third Party Rates</label>
-            <label class="ltls-filter-item"><div class="ltls-tog"></div> Hide LTL Rates</label>
-            <label class="ltls-filter-item"><div class="ltls-tog"></div> Hide Guaranteed Rates</label>
-            <div class="ltls-info-i">i</div>
-          </div>
-
-          <!-- First date group -->
-          <div class="ltls-dg-hdr">
-            <span class="ltls-dg-date" id="ltls-d1-label">Tue, Jun 9th</span>
-            <span class="ltls-dg-fastest">Fastest</span>
-            <button class="ltls-dg-need-faster">&#10010; Need it faster? Click here</button>
-          </div>
-          <div class="ltls-svc-row">
-            <div class="ltls-carrier-col">
-              <div class="ltls-fxf-logo"><span class="fxf-fed">Fed</span><span class="fxf-ex">Ex</span><span class="fxf-dot">.</span><span class="fxf-frt">Freight</span></div>
-              <div class="ltls-svc-name">FedEx Freight ®Priority</div>
-            </div>
-            <div class="ltls-opts">
-              <div class="ltls-opt">
-                <div class="ltls-opt-time">
-                  <span class="ltls-opt-time-val">10:30 AM</span>
-                  <span class="ltls-opt-guar">Guaranteed</span>
-                </div>
-                <div class="ltls-opt-price">
-                  <span class="ltls-opt-type">Dynamic Rate</span>
-                  <button class="ltls-price-pill" id="ltls-p1">US$936.00</button>
-                </div>
-                <span class="ltls-chevron">&#9660;</span>
-              </div>
-              <div class="ltls-opt">
-                <div class="ltls-opt-time">
-                  <span class="ltls-opt-time-val">5:00 PM</span>
-                </div>
-                <div class="ltls-opt-price">
-                  <span class="ltls-opt-type">Dynamic Rate</span>
-                  <button class="ltls-price-pill" id="ltls-p2">US$583.00</button>
-                </div>
-                <span class="ltls-chevron">&#9660;</span>
-              </div>
-            </div>
-          </div>
-
-          <hr class="ltls-divider">
-
-          <!-- Friday savings banner -->
-          <div class="ltls-fri-banner" id="ltls-fri-banner" style="display:none;">
-            <span class="ltls-fri-ico">&#128161;</span>
-            <div class="ltls-fri-txt">
-              <div class="ltls-fri-title">This lane is less busy on Fridays &#8212; you could save <strong id="ltls-fri-save">$46</strong></div>
-              <div class="ltls-fri-sub">Demand drops later in the week. Shift your pickup to <strong id="ltls-fri-date">Fri, Jun 6</strong> for a lower rate on every option.</div>
-            </div>
-            <button class="ltls-fri-cta" onclick="switchToFriday()">See Friday pricing &#8594;</button>
-          </div>
-          <div class="ltls-fri-active" id="ltls-fri-active" style="display:none;">
-            <span class="ltls-fri-active-txt">&#9989; Showing Friday pricing &#8212; ship date updated to <strong id="ltls-fri-active-date">Fri, Jun 6</strong></span>
-            <button class="ltls-fri-revert" onclick="revertToTuesday()">Revert to Tuesday</button>
-          </div>
-
-          <hr class="ltls-divider">
-
-          <!-- Second date group (Economy) -->
-          <div class="ltls-dg-hdr">
-            <span class="ltls-dg-date" id="ltls-d2-label">Thu, Jun 11th</span>
-          </div>
-          <div class="ltls-svc-row">
-            <div class="ltls-carrier-col">
-              <div class="ltls-fxf-logo"><span class="fxf-fed">Fed</span><span class="fxf-ex">Ex</span><span class="fxf-dot">.</span><span class="fxf-frt">Freight</span></div>
-              <div class="ltls-svc-name">FedEx Freight ®Economy</div>
-            </div>
-            <div class="ltls-opts">
-              <div class="ltls-opt">
-                <div class="ltls-opt-time">
-                  <span class="ltls-opt-time-val">10:30 AM</span>
-                  <span class="ltls-opt-guar">Guaranteed</span>
-                </div>
-                <div class="ltls-opt-price">
-                  <span class="ltls-opt-type">Dynamic Rate</span>
-                  <button class="ltls-price-pill" id="ltls-e1">US$891.00</button>
-                </div>
-                <span class="ltls-chevron">&#9660;</span>
-              </div>
-              <div class="ltls-opt">
-                <div class="ltls-opt-time">
-                  <span class="ltls-opt-time-val">5:00 PM</span>
-                  <span class="ltls-opt-guar">Guaranteed</span>
-                </div>
-                <div class="ltls-opt-price">
-                  <span class="ltls-opt-type">Dynamic Rate</span>
-                  <button class="ltls-price-pill" id="ltls-e2">US$754.00</button>
-                </div>
-                <span class="ltls-chevron">&#9660;</span>
-              </div>
-              <div class="ltls-opt">
-                <div class="ltls-opt-time">
-                  <span class="ltls-opt-time-val">5:00 PM</span>
-                </div>
-                <div class="ltls-opt-price">
-                  <span class="ltls-opt-type">Dynamic Rate</span>
-                  <button class="ltls-price-pill" id="ltls-e3">US$532.00</button>
-                </div>
-                <span class="ltls-chevron">&#9660;</span>
-              </div>
-            </div>
-          </div>
+        <div class="progress-line" style="margin:0;border-radius:0;">
+          <div class="progress-fill" id="progress-fill" style="width:20%;"></div>
         </div>
 
-        <!-- Book now nudge (low-demand lanes) -->
-        <div class="ltls-book-nudge" id="ltls-book-nudge" style="display:none;">
-          <span class="ltls-book-ico">🏷️</span>
-          <div class="ltls-book-txt">
-            <div class="ltls-book-title">This is a great price — capacity is available now</div>
-            <div class="ltls-book-sub">This lane has open capacity and below-average demand. Rates may rise as trucks fill. Lock it in today.</div>
+        <div class="content">
+
+          <!-- Screen 1: Welcome -->
+          <div class="screen active" id="screen-1">
+            <div class="hero-tag"><div class="hero-tag-dot"></div>Interactive Demo</div>
+            <h1 class="hero">Smarter freight pricing.<br><span>Built for the way lanes actually work.</span></h1>
+            <p class="hero-sub">Today, every FedEx Freight LTL quote uses the same logic regardless of whether that lane is bursting or empty. Dynamic pricing changes that by reflecting real demand, helping you capture margin when it's there and compete harder when you need volume.</p>
+            <div class="pills">
+              <div class="pill">
+                <div class="pill-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+                <div>
+                  <span class="pill-label">No class required</span>
+                  <span class="pill-desc">Dimensional weight pricing</span>
+                </div>
+              </div>
+              <div class="pill">
+                <div class="pill-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+                <div>
+                  <span class="pill-label">Live demand signals</span>
+                  <span class="pill-desc">Utilization drives the rate</span>
+                </div>
+              </div>
+              <div class="pill">
+                <div class="pill-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+                <div>
+                  <span class="pill-label">Industry-wide threat</span>
+                  <span class="pill-desc">Regional carriers undercutting on lanes</span>
+                </div>
+              </div>
+            </div>
+            <div class="arcbest-note"><strong>Market context:</strong> ArcBest launched Dynamic LTL in 2023. Amazon Freight entered with real-time pricing in 2025, and the threat is spreading: smaller regional carriers are now using dynamic pricing to undercut national carriers on specific lanes and routes where they have home-field advantage. FedEx Freight is the largest LTL carrier in the country without a public answer.</div>
+            <div class="btn-row" style="padding-top:0;">
+              <button class="btn-primary" onclick="goTo(2)">
+                Try it yourself
+                <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
           </div>
-          <button class="ltls-book-cta">Book now</button>
+
+          <!-- Screen 2: Shipment form -->
+          <div class="screen" id="screen-2">
+            <div class="screen-header">
+              <h2>Build your shipment</h2>
+              <p>Pick a lane scenario or enter your own origin and destination.</p>
+            </div>
+            <div class="form-section-label">Choose a lane scenario</div>
+            <div class="scenario-cards">
+              <div class="scenario-card selected" id="sc-chicago-la" onclick="selectScenario('chicago-la')">
+                <div class="lane">Chicago &#8594; Los Angeles</div>
+                <div class="desc">High-demand corridor, peak shipping season</div>
+                <span class="badge badge-high">High demand</span>
+              </div>
+              <div class="scenario-card" id="sc-la-chicago" onclick="selectScenario('la-chicago')">
+                <div class="lane">Los Angeles &#8594; Chicago</div>
+                <div class="desc">Backhaul lane, capacity available</div>
+                <span class="badge badge-low">Low demand</span>
+              </div>
+              <div class="scenario-card" id="sc-atlanta-dallas" onclick="selectScenario('atlanta-dallas')">
+                <div class="lane">Atlanta &#8594; Dallas</div>
+                <div class="desc">Balanced regional corridor</div>
+                <span class="badge badge-mod">Moderate</span>
+              </div>
+            </div>
+            <div class="form-grid">
+              <div class="form-field">
+                <label>Origin ZIP</label>
+                <input type="text" id="origin-zip" value="60601" />
+              </div>
+              <div class="form-field">
+                <label>Destination ZIP</label>
+                <input type="text" id="dest-zip" value="90001" />
+              </div>
+            </div>
+            <div class="form-section-label">Shipment details</div>
+            <div class="shipment-details">
+              <div class="detail-field">
+                <label>Weight (lbs)</label>
+                <input type="number" id="weight" value="850" min="1" max="20000" />
+              </div>
+              <div class="detail-field">
+                <label>Pallets</label>
+                <input type="number" id="pallets" value="4" min="1" max="28" />
+              </div>
+              <div class="detail-field">
+                <label>Pickup date</label>
+                <input type="date" id="pickup-date" />
+              </div>
+            </div>
+            <div class="btn-row">
+              <button class="btn-back" onclick="goTo(1)">&#8592; Back</button>
+              <button class="btn-primary" onclick="goTo(3)">
+                Check lane demand
+                <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Screen 3: Lane intelligence -->
+          <div class="screen" id="screen-3">
+            <div class="screen-header">
+              <h2>Lane intelligence</h2>
+              <p id="lane-desc-3">Real-time capacity and demand signals for your corridor.</p>
+            </div>
+            <div class="gauge-section">
+              <div class="gauge-wrap">
+                <div class="gauge-canvas-wrap">
+                  <canvas id="gauge" width="240" height="140"></canvas>
+                  <div class="gauge-center">
+                    <span class="gauge-pct" id="gauge-pct">0%</span>
+                    <span class="gauge-label">utilization</span>
+                  </div>
+                </div>
+                <div style="margin-top:12px; font-size:12px; color:#888; display:flex; justify-content:space-between; width:240px;">
+                  <span>Empty</span>
+                  <span id="demand-level-label" style="font-weight:700;color:#4D148C;">Loading...</span>
+                  <span>Full</span>
+                </div>
+              </div>
+              <div class="demand-info">
+                <div class="demand-title" id="demand-headline">Analyzing lane...</div>
+                <div class="demand-subtitle" id="demand-body">Checking real-time capacity signals across this corridor.</div>
+                <div class="lane-stat-grid">
+                  <div class="lane-stat">
+                    <span class="lane-stat-value" id="stat-recent-quotes">2,840</span>
+                    <span class="lane-stat-label">Recent quotes</span>
+                  </div>
+                  <div class="lane-stat">
+                    <span class="lane-stat-value" id="stat-booked">1,240</span>
+                    <span class="lane-stat-label">Shipments booked</span>
+                  </div>
+                  <div class="lane-stat">
+                    <span class="lane-stat-value" id="stat-empty-trucks">12 nearby</span>
+                    <span class="lane-stat-label">Trucks without loads</span>
+                  </div>
+                  <div class="lane-stat">
+                    <span class="lane-stat-value" id="stat-hist-demand">&#8593; Trending up</span>
+                    <span class="lane-stat-label">Historical demand</span>
+                  </div>
+                </div>
+                <div class="trend-bar-wrap">
+                  <div class="trend-label">7-day utilization trend</div>
+                  <div class="trend-bars" id="trend-bars"></div>
+                </div>
+              </div>
+            </div>
+            <div class="btn-row">
+              <button class="btn-back" onclick="goTo(2)">&#8592; Back</button>
+              <button class="btn-primary" onclick="goTo(4)">
+                Generate dynamic quote
+                <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Screen 4: LTLS-style rates view -->
+          <div class="screen" id="screen-4">
+            <div class="ltls-nav"><!-- hidden via CSS --></div>
+            <div class="ltls-body">
+              <div class="ltls-summary">
+                <div class="ltls-sum-hdr">
+                  <span class="ltls-sum-ttl">Summary</span>
+                  <button class="ltls-sum-edit">EDIT</button>
+                </div>
+                <div class="ltls-sum-grid">
+                  <div>
+                    <div class="ltls-sum-lbl">Origin</div>
+                    <div class="ltls-sum-val" id="ltls-origin-val">Chicago, IL 60601</div>
+                    <span class="ltls-dock-pill">Dock Pickup</span>
+                  </div>
+                  <div>
+                    <div class="ltls-sum-lbl">Destination</div>
+                    <div class="ltls-sum-val" id="ltls-dest-val">Los Angeles, CA 90001</div>
+                    <span class="ltls-dock-pill">Dock Delivery</span>
+                  </div>
+                  <div>
+                    <div class="ltls-sum-lbl">Line Items</div>
+                    <div class="ltls-sum-val" id="ltls-items-val">850 lbs, Class 65</div>
+                  </div>
+                  <div>
+                    <div class="ltls-sum-lbl">Ship Date</div>
+                    <div class="ltls-sum-val" id="ltls-shipdate-val">06/04/2026</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ltls-rates">
+                <div class="ltls-rates-title">Rates</div>
+                <div class="ltls-rates-bar">
+                  <button class="ltls-share-btn">&#11014; SHARE</button>
+                </div>
+                <div class="ltls-filter-row">
+                  <label class="ltls-filter-item"><div class="ltls-tog"></div> Hide Third Party Rates</label>
+                  <label class="ltls-filter-item"><div class="ltls-tog"></div> Hide LTL Rates</label>
+                  <label class="ltls-filter-item"><div class="ltls-tog"></div> Hide Guaranteed Rates</label>
+                  <div class="ltls-info-i">i</div>
+                </div>
+
+                <div class="ltls-dg-hdr">
+                  <span class="ltls-dg-date" id="ltls-d1-label">Tue, Jun 9th</span>
+                  <span class="ltls-dg-fastest">Fastest</span>
+                  <button class="ltls-dg-need-faster">&#10010; Need it faster? Click here</button>
+                </div>
+                <div class="ltls-svc-row">
+                  <div class="ltls-carrier-col">
+                    <div class="ltls-fxf-logo"><span class="fxf-fed">Fed</span><span class="fxf-ex">Ex</span><span class="fxf-dot">.</span><span class="fxf-frt">Freight</span></div>
+                    <div class="ltls-svc-name">FedEx Freight &#174;Priority</div>
+                  </div>
+                  <div class="ltls-opts">
+                    <div class="ltls-opt">
+                      <div class="ltls-opt-time">
+                        <span class="ltls-opt-time-val">10:30 AM</span>
+                        <span class="ltls-opt-guar">Guaranteed</span>
+                      </div>
+                      <div class="ltls-opt-price">
+                        <span class="ltls-opt-type">Dynamic Rate</span>
+                        <button class="ltls-price-pill" id="ltls-p1">US$936.00</button>
+                      </div>
+                      <span class="ltls-chevron">&#9660;</span>
+                    </div>
+                    <div class="ltls-opt">
+                      <div class="ltls-opt-time">
+                        <span class="ltls-opt-time-val">5:00 PM</span>
+                      </div>
+                      <div class="ltls-opt-price">
+                        <span class="ltls-opt-type">Dynamic Rate</span>
+                        <button class="ltls-price-pill" id="ltls-p2">US$583.00</button>
+                      </div>
+                      <span class="ltls-chevron">&#9660;</span>
+                    </div>
+                  </div>
+                </div>
+
+                <hr class="ltls-divider">
+
+                <div class="ltls-fri-banner" id="ltls-fri-banner" style="display:none;">
+                  <span class="ltls-fri-ico">&#128161;</span>
+                  <div class="ltls-fri-txt">
+                    <div class="ltls-fri-title">This lane is less busy on Fridays &#8212; you could save <strong id="ltls-fri-save">$46</strong></div>
+                    <div class="ltls-fri-sub">Demand drops later in the week. Shift your pickup to <strong id="ltls-fri-date">Fri, Jun 6</strong> for a lower rate on every option.</div>
+                  </div>
+                  <button class="ltls-fri-cta" onclick="switchToFriday()">See Friday pricing &#8594;</button>
+                </div>
+                <div class="ltls-fri-active" id="ltls-fri-active" style="display:none;">
+                  <span class="ltls-fri-active-txt">&#9989; Showing Friday pricing &#8212; ship date updated to <strong id="ltls-fri-active-date">Fri, Jun 6</strong></span>
+                  <button class="ltls-fri-revert" onclick="revertToTuesday()">Revert to Tuesday</button>
+                </div>
+
+                <hr class="ltls-divider">
+
+                <div class="ltls-dg-hdr">
+                  <span class="ltls-dg-date" id="ltls-d2-label">Thu, Jun 11th</span>
+                </div>
+                <div class="ltls-svc-row">
+                  <div class="ltls-carrier-col">
+                    <div class="ltls-fxf-logo"><span class="fxf-fed">Fed</span><span class="fxf-ex">Ex</span><span class="fxf-dot">.</span><span class="fxf-frt">Freight</span></div>
+                    <div class="ltls-svc-name">FedEx Freight &#174;Economy</div>
+                  </div>
+                  <div class="ltls-opts">
+                    <div class="ltls-opt">
+                      <div class="ltls-opt-time">
+                        <span class="ltls-opt-time-val">10:30 AM</span>
+                        <span class="ltls-opt-guar">Guaranteed</span>
+                      </div>
+                      <div class="ltls-opt-price">
+                        <span class="ltls-opt-type">Dynamic Rate</span>
+                        <button class="ltls-price-pill" id="ltls-e1">US$891.00</button>
+                      </div>
+                      <span class="ltls-chevron">&#9660;</span>
+                    </div>
+                    <div class="ltls-opt">
+                      <div class="ltls-opt-time">
+                        <span class="ltls-opt-time-val">5:00 PM</span>
+                        <span class="ltls-opt-guar">Guaranteed</span>
+                      </div>
+                      <div class="ltls-opt-price">
+                        <span class="ltls-opt-type">Dynamic Rate</span>
+                        <button class="ltls-price-pill" id="ltls-e2">US$754.00</button>
+                      </div>
+                      <span class="ltls-chevron">&#9660;</span>
+                    </div>
+                    <div class="ltls-opt">
+                      <div class="ltls-opt-time">
+                        <span class="ltls-opt-time-val">5:00 PM</span>
+                      </div>
+                      <div class="ltls-opt-price">
+                        <span class="ltls-opt-type">Dynamic Rate</span>
+                        <button class="ltls-price-pill" id="ltls-e3">US$532.00</button>
+                      </div>
+                      <span class="ltls-chevron">&#9660;</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="ltls-book-nudge" id="ltls-book-nudge" style="display:none;">
+                  <span class="ltls-book-ico">&#127991;️</span>
+                  <div class="ltls-book-txt">
+                    <div class="ltls-book-title">This is a great price &#8212; capacity is available now</div>
+                    <div class="ltls-book-sub">This lane has open capacity and below-average demand. Rates may rise as trucks fill. Lock it in today.</div>
+                  </div>
+                  <button class="ltls-book-cta">Book now</button>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="ltls-foot">
+              <button class="btn-back" onclick="goTo(3)">&#8592; Back</button>
+              <button class="btn-secondary" onclick="goTo(2)" style="margin-left:auto;">Try another lane</button>
+              <button class="btn-primary" onclick="goTo(5)">
+                See use cases
+                <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Screen 5: Use cases -->
+          <div class="screen" id="screen-5">
+            <div class="screen-header">
+              <h2>Where dynamic pricing delivers</h2>
+              <p>Four scenarios where capacity-based pricing creates real value for FedEx Freight.</p>
+            </div>
+            <div class="use-cases-grid">
+              <div class="use-case-card">
+                <div class="use-case-icon" style="background:#fef0e8;">&#128200;</div>
+                <div class="use-case-title">Peak demand capture</div>
+                <div class="use-case-desc">When a lane is running at 85%+ utilization, standard pricing leaves margin on the table. Dynamic pricing lets you charge what the market supports.</div>
+                <span class="use-case-impact impact-pos">+8 to +15% revenue uplift</span>
+              </div>
+              <div class="use-case-card">
+                <div class="use-case-icon" style="background:#e8f5ee;">&#128717;</div>
+                <div class="use-case-title">Backhaul incentives</div>
+                <div class="use-case-desc">Return legs with empty capacity sit at 30-45% utilization. A price reduction of 10-18% fills the truck and converts deadhead miles into revenue.</div>
+                <span class="use-case-impact impact-neg">+10 to +18% volume on backhauls</span>
+              </div>
+              <div class="use-case-card">
+                <div class="use-case-icon" style="background:#f0e8f8;">&#128466;</div>
+                <div class="use-case-title">Seasonal surge management</div>
+                <div class="use-case-desc">Q4 retail replenishment, produce seasons, and holiday shipping create predictable demand spikes. Surge pricing protects capacity for premium shippers.</div>
+                <span class="use-case-impact impact-pos">Revenue protection during peak</span>
+              </div>
+              <div class="use-case-card">
+                <div class="use-case-icon" style="background:#fff4e0;">&#9889;</div>
+                <div class="use-case-title">Spot market competition</div>
+                <div class="use-case-desc">Shippers comparing quotes in real time respond to price signals. Dynamic rates let FedEx Freight win incremental spot freight without eroding contract pricing.</div>
+                <span class="use-case-impact impact-neg">Compete on low-demand lanes</span>
+              </div>
+            </div>
+            <div class="cta-banner">
+              <div class="cta-text">
+                <h3>Ready to design this for FedEx Freight?</h3>
+                <p>Metafora has the API expertise and pricing science to build this end to end.</p>
+              </div>
+              <button class="cta-btn" onclick="goTo(1)">Restart demo</button>
+            </div>
+          </div>
+
         </div>
-
-      </div><!-- /ltls-body -->
-
-      <!-- Footer nav -->
-      <div class="ltls-foot">
-        <button class="btn-back" onclick="goTo(3)">&#8592; Back</button>
-        <button class="btn-secondary" onclick="goTo(2)" style="margin-left:auto;">Try another lane</button>
-        <button class="btn-primary" onclick="goTo(5)">
-          See use cases
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </button>
       </div>
-
     </div>
 
-    <!-- Screen 5: Use cases -->
-    <div class="screen" id="screen-5">
-      <div class="screen-header">
-        <h2>Where dynamic pricing delivers</h2>
-        <p>Four scenarios where capacity-based pricing creates real value for FedEx Freight.</p>
-      </div>
-      <div class="use-cases-grid">
-        <div class="use-case-card">
-          <div class="use-case-icon" style="background:#fef0e8;">&#128200;</div>
-          <div class="use-case-title">Peak demand capture</div>
-          <div class="use-case-desc">When a lane is running at 85%+ utilization, standard pricing leaves margin on the table. Dynamic pricing lets you charge what the market supports.</div>
-          <span class="use-case-impact impact-pos">+8 to +15% revenue uplift</span>
-        </div>
-        <div class="use-case-card">
-          <div class="use-case-icon" style="background:#e8f5ee;">&#128717;</div>
-          <div class="use-case-title">Backhaul incentives</div>
-          <div class="use-case-desc">Return legs with empty capacity sit at 30-45% utilization. A price reduction of 10-18% fills the truck and converts deadhead miles into revenue.</div>
-          <span class="use-case-impact impact-neg">+10 to +18% volume on backhauls</span>
-        </div>
-        <div class="use-case-card">
-          <div class="use-case-icon" style="background:#f0e8f8;">&#128466;</div>
-          <div class="use-case-title">Seasonal surge management</div>
-          <div class="use-case-desc">Q4 retail replenishment, produce seasons, and holiday shipping create predictable demand spikes. Surge pricing protects capacity for premium shippers.</div>
-          <span class="use-case-impact impact-pos">Revenue protection during peak</span>
-        </div>
-        <div class="use-case-card">
-          <div class="use-case-icon" style="background:#fff4e0;">&#9889;</div>
-          <div class="use-case-title">Spot market competition</div>
-          <div class="use-case-desc">Shippers comparing quotes in real time respond to price signals. Dynamic rates let FedEx Freight win incremental spot freight without eroding contract pricing.</div>
-          <span class="use-case-impact impact-neg">Compete on low-demand lanes</span>
-        </div>
-      </div>
-      <div class="cta-banner">
-        <div class="cta-text">
-          <h3>Ready to design this for FedEx Freight?</h3>
-          <p>Metafora has the API expertise and pricing science to build this end to end.</p>
-        </div>
-        <button class="cta-btn" onclick="goTo(1)">Restart demo</button>
-      </div>
+    <!-- ===== PLACEHOLDER: MONETIZING ===== -->
+    <div id="view-monetize" class="ph-view">
+      <div class="ph-icon">&#128176;</div>
+      <span class="ph-tag">COMING SOON</span>
+      <div class="ph-title">Monetizing LTL Select</div>
+      <div class="ph-sub">This prototype is in development. Come back soon to explore how LTL Select can create new revenue streams beyond freight brokerage.</div>
     </div>
 
-  </div>
+    <!-- ===== PLACEHOLDER: GUEST CHECKOUT ===== -->
+    <div id="view-guest" class="ph-view">
+      <div class="ph-icon">&#128722;</div>
+      <span class="ph-tag">COMING SOON</span>
+      <div class="ph-title">Guest Checkout on LTL Select</div>
+      <div class="ph-sub">This prototype is in development. Explore how a frictionless guest checkout experience could expand LTL Select's addressable market.</div>
+    </div>
+
+    <!-- ===== PLACEHOLDER: LANE REPORTING ===== -->
+    <div id="view-lane" class="ph-view">
+      <div class="ph-icon">&#128202;</div>
+      <span class="ph-tag">COMING SOON</span>
+      <div class="ph-title">Lane Reporting Dashboard</div>
+      <div class="ph-sub">This prototype is in development. A deep analytics view of lane-level performance, pricing trends, and capacity signals across your network.</div>
+    </div>
+
+  </main>
 </div>
 
 <script>
+// ===== VIEW SWITCHING =====
+function showView(view) {
+  // Hide all views
+  document.getElementById('view-dashboard').style.display = 'none';
+  document.getElementById('view-dp').style.display = 'none';
+  document.querySelectorAll('.ph-view').forEach(function(el) { el.style.display = 'none'; });
+
+  // Deactivate all sidebar items
+  document.querySelectorAll('.sb-item').forEach(function(el) { el.classList.remove('active'); });
+
+  // Show target view
+  if (view === 'dashboard') {
+    document.getElementById('view-dashboard').style.display = 'flex';
+  } else if (view === 'dp') {
+    document.getElementById('view-dp').style.display = 'flex';
+    document.getElementById('sb-dp').classList.add('active');
+  } else if (view === 'monetize') {
+    document.getElementById('view-monetize').style.display = 'flex';
+    document.getElementById('sb-monetize').classList.add('active');
+  } else if (view === 'guest') {
+    document.getElementById('view-guest').style.display = 'flex';
+    document.getElementById('sb-guest').classList.add('active');
+  } else if (view === 'lane') {
+    document.getElementById('view-lane').style.display = 'flex';
+    document.getElementById('sb-lane').classList.add('active');
+  }
+}
+
+// ===== PROTOTYPE JS =====
 var currentScenario = 'chicago-la';
 var viewingFriday = false;
 var scenarios = {
@@ -706,7 +1003,6 @@ function goTo(n) {
     else if (i + 1 === n) d.classList.add('active');
   });
   document.getElementById('progress-fill').style.width = (n * 20) + '%';
-  // LTLS mode: hide shell chrome for screen 4
   var shell = document.querySelector('.shell');
   if (n === 4) { shell.classList.add('ltls-mode'); } else { shell.classList.remove('ltls-mode'); }
   if (n === 3) renderScreen3();
@@ -742,58 +1038,30 @@ function animateGauge(target, color) {
   var canvas = document.getElementById('gauge');
   var ctx = canvas.getContext('2d');
   var cx = 120, cy = 138, r = 108;
-  var start = Math.PI, end = 2 * Math.PI;
-  var arcLen = Math.PI;
+  var start = Math.PI, arcLen = Math.PI;
   var current = 0;
   var pctEl = document.getElementById('gauge-pct');
   var step = target / 60;
 
   function draw(val) {
     ctx.clearRect(0, 0, 240, 140);
-    // Track
-    ctx.beginPath();
-    ctx.arc(cx, cy, r, start, end);
-    ctx.strokeStyle = '#f0e8f8';
-    ctx.lineWidth = 14;
-    ctx.lineCap = 'round';
-    ctx.stroke();
-    // Fill
-    var fillEnd = start + (val / 100) * arcLen;
-    ctx.beginPath();
-    ctx.arc(cx, cy, r, start, fillEnd);
-    ctx.strokeStyle = color;
-    ctx.lineWidth = 14;
-    ctx.lineCap = 'round';
-    ctx.stroke();
-    // Tick marks
+    ctx.beginPath(); ctx.arc(cx, cy, r, start, start + arcLen);
+    ctx.strokeStyle = '#f0e8f8'; ctx.lineWidth = 14; ctx.lineCap = 'round'; ctx.stroke();
+    ctx.beginPath(); ctx.arc(cx, cy, r, start, start + (val / 100) * arcLen);
+    ctx.strokeStyle = color; ctx.lineWidth = 14; ctx.lineCap = 'round'; ctx.stroke();
     for (var i = 0; i <= 10; i++) {
       var angle = start + (i / 10) * arcLen;
-      var x1 = cx + (r - 20) * Math.cos(angle);
-      var y1 = cy + (r - 20) * Math.sin(angle);
-      var x2 = cx + (r - 24) * Math.cos(angle);
-      var y2 = cy + (r - 24) * Math.sin(angle);
       ctx.beginPath();
-      ctx.moveTo(x1, y1);
-      ctx.lineTo(x2, y2);
-      ctx.strokeStyle = '#ddd';
-      ctx.lineWidth = 1.5;
-      ctx.stroke();
+      ctx.moveTo(cx + (r-20)*Math.cos(angle), cy + (r-20)*Math.sin(angle));
+      ctx.lineTo(cx + (r-24)*Math.cos(angle), cy + (r-24)*Math.sin(angle));
+      ctx.strokeStyle = '#ddd'; ctx.lineWidth = 1.5; ctx.stroke();
     }
-    // Needle
-    var needleAngle = start + (val / 100) * arcLen;
-    var nx = cx + (r - 30) * Math.cos(needleAngle);
-    var ny = cy + (r - 30) * Math.sin(needleAngle);
-    ctx.beginPath();
-    ctx.moveTo(cx, cy);
-    ctx.lineTo(nx, ny);
-    ctx.strokeStyle = '#1a1a2e';
-    ctx.lineWidth = 2.5;
-    ctx.lineCap = 'round';
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.arc(cx, cy, 5, 0, 2*Math.PI);
-    ctx.fillStyle = '#1a1a2e';
-    ctx.fill();
+    var na = start + (val / 100) * arcLen;
+    ctx.beginPath(); ctx.moveTo(cx, cy);
+    ctx.lineTo(cx + (r-30)*Math.cos(na), cy + (r-30)*Math.sin(na));
+    ctx.strokeStyle = '#1a1a2e'; ctx.lineWidth = 2.5; ctx.lineCap = 'round'; ctx.stroke();
+    ctx.beginPath(); ctx.arc(cx, cy, 5, 0, 2*Math.PI);
+    ctx.fillStyle = '#1a1a2e'; ctx.fill();
   }
 
   var frame = setInterval(function() {
@@ -829,16 +1097,13 @@ function getNextFriday() {
 function renderScreen4() {
   var s = scenarios[currentScenario];
   var w = parseInt(document.getElementById('weight').value) || 850;
-  var scale = w / 850;
-  var base = Math.round(s.base * scale);
-
+  var base = Math.round(s.base * (w / 850));
   var tuePrices = calcPrices(base, s.adjPct);
   var friPrices = calcPrices(base, s.fridayAdjPct);
   var prices = viewingFriday ? friPrices : tuePrices;
   var isFriCheaper = s.fridayAdjPct < s.adjPct;
-  var savings = tuePrices.p2 - friPrices.p2; // savings on the most popular option
+  var savings = tuePrices.p2 - friPrices.p2;
 
-  // Summary fields
   document.getElementById('ltls-origin-val').textContent = s.originCity + ' ' + s.originZip;
   document.getElementById('ltls-dest-val').textContent = s.destCity + ' ' + s.destZip;
   document.getElementById('ltls-items-val').textContent = w.toLocaleString() + ' lbs, Class 65';
@@ -850,20 +1115,16 @@ function renderScreen4() {
       d.getDate().toString().padStart(2,'0') + '/' + d.getFullYear();
   }
 
-  // Price pills
   document.getElementById('ltls-p1').textContent = fmtUSD(prices.p1);
   document.getElementById('ltls-p2').textContent = fmtUSD(prices.p2);
   document.getElementById('ltls-e1').textContent = fmtUSD(prices.e1);
   document.getElementById('ltls-e2').textContent = fmtUSD(prices.e2);
   document.getElementById('ltls-e3').textContent = fmtUSD(prices.e3);
 
-  // Green pills when viewing Friday
   ['ltls-p1','ltls-p2','ltls-e1','ltls-e2','ltls-e3'].forEach(function(id) {
-    var el = document.getElementById(id);
-    el.classList.toggle('fri', viewingFriday);
+    document.getElementById(id).classList.toggle('fri', viewingFriday);
   });
 
-  // Date labels
   var friDate = getNextFriday();
   var friLabel = friDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
   if (viewingFriday) {
@@ -874,11 +1135,9 @@ function renderScreen4() {
     document.getElementById('ltls-d2-label').textContent = 'Thu, Jun 11th';
   }
 
-  // Book now nudge (low-demand lanes)
   var nudge = document.getElementById('ltls-book-nudge');
   nudge.style.display = (s.adjPct < 0 && !viewingFriday) ? 'flex' : 'none';
 
-  // Friday banner
   var banner = document.getElementById('ltls-fri-banner');
   var active = document.getElementById('ltls-fri-active');
   if (viewingFriday) {
@@ -910,12 +1169,14 @@ function revertToTuesday() {
   renderScreen4();
 }
 
-// Set default date to today
+// Set default date
 (function() {
   var d = new Date();
-  var ds = d.toISOString().split('T')[0];
-  document.getElementById('pickup-date').value = ds;
+  document.getElementById('pickup-date').value = d.toISOString().split('T')[0];
 })();
+
+// Start on Dynamic Pricing view
+showView('dp');
 </script>
 </body>
 </html>
