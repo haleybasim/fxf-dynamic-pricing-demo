@@ -274,90 +274,81 @@
 
   .ltls-foot { display: flex; gap: 10px; align-items: center; padding: 10px 16px; background: #fff; border-top: 1px solid #e5e7eb; flex-shrink: 0; }
 
-  /* ===== LANE REPORTING DASHBOARD ===== */
-  .lr-page { flex-direction: column; background: #f3f4f6; }
-  .lr-topbar { background: #fff; border-bottom: 1px solid #e5e7eb; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
-  .lr-topbar-title { font-size: 17px; font-weight: 700; color: #111827; }
-  .lr-topbar-sub { font-size: 12px; color: #6b7280; margin-top: 2px; }
-  .lr-concept-tag { background: #f0e8f8; color: #4D148C; font-size: 11px; font-weight: 700; padding: 4px 14px; border-radius: 20px; flex-shrink: 0; }
-  .lr-filters { background: #fff; padding: 8px 24px; border-bottom: 1px solid #e5e7eb; display: flex; gap: 8px; align-items: center; flex-shrink: 0; flex-wrap: wrap; }
-  .lr-filter-lbl { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #9ca3af; }
-  .lr-filter { background: #f9fafb; border: 1.5px solid #e5e7eb; border-radius: 20px; padding: 4px 12px; font-size: 11px; color: #374151; cursor: pointer; white-space: nowrap; user-select: none; }
-  .lr-filter.on { border-color: #4D148C; color: #4D148C; background: #f0e8f8; font-weight: 600; }
-  .lr-fsep { width: 1px; height: 18px; background: #e5e7eb; }
-  .lr-kpis { display: grid; grid-template-columns: repeat(4,1fr); background: #fff; border-bottom: 1px solid #e5e7eb; flex-shrink: 0; }
-  .lr-kpi { padding: 14px 20px; border-right: 1px solid #e5e7eb; }
-  .lr-kpi:last-child { border-right: none; }
-  .lr-kpi-lbl { font-size: 11px; color: #6b7280; margin-bottom: 4px; }
-  .lr-kpi-val { font-size: 26px; font-weight: 800; line-height: 1; margin-bottom: 4px; color: #111827; }
-  .lr-kpi-val.red { color: #dc2626; }
-  .lr-kpi-val.amber { color: #d97706; }
-  .lr-kpi-val.green { color: #16a34a; }
-  .lr-kpi-note { font-size: 11px; }
-  .lr-kpi-note.bad { color: #dc2626; }
-  .lr-kpi-note.ok { color: #d97706; }
-  .lr-kpi-note.mute { color: #9ca3af; }
-  .lr-body { padding: 16px 20px; display: flex; flex-direction: column; gap: 14px; }
-  .lr-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .lr-row1 { display: grid; grid-template-columns: 1fr; }
-  .lr-card { background: #fff; border-radius: 10px; border: 1px solid #e5e7eb; padding: 16px 18px; }
-  .lr-card-hdr { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; }
-  .lr-card-title { font-size: 13px; font-weight: 700; color: #111827; }
-  .lr-card-sub { font-size: 11px; color: #9ca3af; margin-top: 2px; }
-  .lr-badge { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px; white-space: nowrap; flex-shrink: 0; }
-  .lr-badge-red { background: #fee2e2; color: #dc2626; }
-  .lr-badge-amber { background: #fef3c7; color: #92400e; }
-  .lr-badge-green { background: #d1fae5; color: #065f46; }
-  .lr-badge-blue { background: #dbeafe; color: #1e40af; }
-  .lr-hbar { margin-bottom: 9px; }
-  .lr-hbar-hdr { display: flex; align-items: center; justify-content: space-between; margin-bottom: 3px; }
-  .lr-hbar-lane { font-size: 11px; color: #374151; font-weight: 500; }
-  .lr-hbar-meta { font-size: 11px; color: #374151; display: flex; align-items: center; gap: 5px; }
-  .lr-hbar-gap { font-weight: 700; color: #dc2626; }
-  .lr-hbar-track { height: 8px; background: #f3f4f6; border-radius: 4px; overflow: hidden; }
-  .lr-hbar-fill { height: 100%; border-radius: 4px; }
-  .lr-ctag { font-size: 10px; font-weight: 700; padding: 1px 6px; border-radius: 4px; display: inline-block; }
+  /* ===== LANE REPORTING DASHBOARD (analytics widget style) ===== */
+  .lr-page { flex-direction: column; overflow-y: auto; background: #f3f4f6; }
+  .lr-topbar { background: #fff; border-bottom: 1px solid #e5e7eb; padding: 11px 20px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+  .lr-topbar-title { font-size: 15px; font-weight: 700; color: #1a1a2e; }
+  .lr-topbar-sub { font-size: 11px; color: #6b7280; margin-top: 2px; }
+  .lr-concept-tag { background: #f0e8f8; color: #4D148C; font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px; flex-shrink: 0; }
+  /* Widget grid */
+  .lr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding: 14px; }
+  .lr-widget { background: #fff; border: 1px solid #e5e7eb; display: flex; flex-direction: column; min-width: 0; }
+  /* Widget header */
+  .lr-w-hdr { padding: 11px 16px 9px; border-bottom: 2px solid #FF6200; display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+  .lr-w-title { font-size: 14px; font-weight: 600; color: #1a1a2e; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .lr-w-date { font-size: 10px; color: #9ca3af; white-space: nowrap; flex-shrink: 0; }
+  /* Icon row */
+  .lr-w-icons { display: flex; gap: 4px; padding: 7px 16px; border-bottom: 1px solid #f3f4f6; }
+  .lr-w-ico { width: 28px; height: 28px; border: 1px solid #e5e7eb; border-radius: 4px; background: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #9ca3af; transition: all 0.15s; padding: 0; flex-shrink: 0; }
+  .lr-w-ico.on { background: #f5f3ff; border-color: #7c3aed; color: #7c3aed; }
+  /* Metric + period row */
+  .lr-ctrl { display: flex; align-items: center; justify-content: space-between; padding: 6px 16px; border-bottom: 1px solid #f3f4f6; gap: 8px; min-height: 0; }
+  .lr-met-grp { display: flex; flex-shrink: 0; }
+  .lr-met { padding: 3px 8px; font-size: 10px; font-weight: 700; letter-spacing: 0.02em; color: #6b7280; background: none; border: 1px solid #e5e7eb; cursor: pointer; line-height: 1.5; transition: all 0.15s; }
+  .lr-met:first-child { border-radius: 4px 0 0 4px; }
+  .lr-met:last-child { border-radius: 0 4px 4px 0; }
+  .lr-met + .lr-met { border-left: none; }
+  .lr-met.on { background: #7c3aed; color: #fff; border-color: #7c3aed; }
+  .lr-per-grp { display: flex; gap: 1px; }
+  .lr-per { padding: 3px 6px; font-size: 10px; font-weight: 700; color: #9ca3af; background: none; border: none; border-radius: 3px; cursor: pointer; line-height: 1.4; transition: all 0.15s; }
+  .lr-per.on { background: #f0e8f8; color: #7c3aed; }
+  /* Data rows */
+  .lr-rows { flex: 1; }
+  .lr-drow { display: flex; align-items: center; justify-content: space-between; padding: 9px 16px; border-bottom: 1px solid #f9fafb; font-size: 13px; }
+  .lr-drow:last-child { border-bottom: none; }
+  .lr-dlbl { color: #374151; display: flex; align-items: center; gap: 6px; min-width: 0; }
+  .lr-dval { font-weight: 700; color: #111827; font-size: 13px; text-align: right; flex-shrink: 0; }
+  .lr-dval.red { color: #dc2626; }
+  .lr-dval.grn { color: #16a34a; }
+  .lr-dval.pur { color: #7c3aed; }
+  .lr-dval.amb { color: #d97706; }
+  /* Carrier tags */
+  .lr-ctag { font-size: 10px; font-weight: 700; padding: 1px 5px; border-radius: 3px; display: inline-block; flex-shrink: 0; }
   .c-xpo { background: #dbeafe; color: #1d4ed8; }
   .c-od  { background: #d1fae5; color: #065f46; }
   .c-est { background: #fef3c7; color: #92400e; }
   .c-oth { background: #f3f4f6; color: #6b7280; }
-  .lr-stack { display: flex; height: 22px; border-radius: 6px; overflow: hidden; }
-  .lr-stack-seg { display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: #fff; }
-  .lr-wr { margin-bottom: 10px; }
-  .lr-wr-hdr { display: flex; justify-content: space-between; margin-bottom: 3px; }
-  .lr-wr-lbl { font-size: 11px; color: #374151; }
-  .lr-wr-pct { font-size: 11px; font-weight: 700; color: #111827; }
-  .lr-wr-track { height: 14px; background: #f3f4f6; border-radius: 3px; overflow: hidden; }
-  .lr-wr-fill { height: 100%; border-radius: 3px; display: flex; align-items: center; padding: 0 6px; }
-  .lr-wr-fill span { font-size: 9px; font-weight: 700; color: rgba(255,255,255,0.9); }
-  .lr-dow { display: flex; align-items: flex-end; gap: 8px; height: 80px; }
-  .lr-dow-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px; }
-  .lr-dow-bar { width: 100%; border-radius: 3px 3px 0 0; }
-  .lr-dow-day { font-size: 10px; color: #9ca3af; }
-  .lr-dow-pct { font-size: 10px; font-weight: 700; color: #374151; }
+  .c-fxf { background: #f0e8f8; color: #4D148C; }
+  /* Win rate bars */
+  .lr-wr-row { display: flex; align-items: center; gap: 10px; padding: 8px 16px; border-bottom: 1px solid #f9fafb; }
+  .lr-wr-row:last-child { border-bottom: none; }
+  .lr-wr-lbl { font-size: 12px; color: #374151; width: 115px; flex-shrink: 0; }
+  .lr-wr-track { flex: 1; height: 10px; background: #f3f4f6; border-radius: 4px; overflow: hidden; }
+  .lr-wr-fill { height: 100%; border-radius: 4px; }
+  .lr-wr-pct { font-size: 12px; font-weight: 700; width: 30px; text-align: right; flex-shrink: 0; }
+  /* Premium grid */
+  .lr-prem-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 4px; padding: 8px 16px; border-top: 1px solid #f3f4f6; }
+  .lr-prem-cell { background: #f9fafb; border-radius: 4px; padding: 6px 4px; text-align: center; }
+  .lr-prem-val { font-size: 14px; font-weight: 800; line-height: 1; }
+  .lr-prem-lbl { font-size: 9px; color: #9ca3af; margin-top: 2px; line-height: 1.3; }
+  /* Day-of-week bars */
+  .lr-day-wrap { padding: 12px 16px 0; display: flex; align-items: flex-end; gap: 8px; height: 80px; }
+  .lr-day-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+  .lr-day-bar { width: 100%; border-radius: 2px 2px 0 0; }
+  .lr-day-lbl { font-size: 10px; color: #9ca3af; }
+  .lr-day-pct { font-size: 10px; font-weight: 700; color: #374151; }
+  .lr-day-line { height: 1px; background: #f3f4f6; margin: 0 16px 0; }
+  /* Compact table */
   .lr-tbl { width: 100%; border-collapse: collapse; }
-  .lr-tbl th { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #9ca3af; text-align: left; padding: 0 8px 8px 0; border-bottom: 1px solid #f3f4f6; }
-  .lr-tbl td { padding: 7px 8px 7px 0; border-bottom: 1px solid #f9fafb; font-size: 12px; color: #374151; vertical-align: middle; }
+  .lr-tbl th { padding: 5px 16px; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: #9ca3af; text-align: left; background: #fafafa; border-bottom: 1px solid #f3f4f6; }
+  .lr-tbl td { padding: 7px 16px; border-bottom: 1px solid #f9fafb; font-size: 12px; color: #374151; vertical-align: middle; }
   .lr-tbl tr:last-child td { border-bottom: none; }
   .lr-tbl .tg { color: #16a34a; font-weight: 600; }
   .lr-tbl .tr { color: #dc2626; font-weight: 700; }
-  .lr-callout { border-radius: 7px; padding: 9px 12px; font-size: 11px; line-height: 1.5; margin-top: 12px; display: flex; gap: 8px; }
-  .lr-callout.green { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; }
-  .lr-callout.amber { background: #fffbeb; border: 1px solid #fde68a; color: #92400e; }
-  .lr-callout.red { background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
-  .lr-callout.blue { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e3a8a; }
-  .lr-callout strong { font-weight: 700; }
-  .lr-acc { display: flex; align-items: center; padding: 7px 0; border-bottom: 1px solid #f9fafb; }
-  .lr-acc:last-child { border-bottom: none; }
-  .lr-acc-name { font-size: 12px; color: #374151; width: 140px; flex-shrink: 0; }
-  .lr-acc-track { flex: 1; margin: 0 10px; height: 6px; background: #fee2e2; border-radius: 3px; overflow: hidden; }
-  .lr-acc-fill { height: 100%; background: #dc2626; border-radius: 3px; }
-  .lr-acc-amt { font-size: 12px; font-weight: 700; color: #dc2626; width: 36px; text-align: right; flex-shrink: 0; }
-  .lr-acc-note { font-size: 10px; color: #9ca3af; width: 110px; text-align: right; flex-shrink: 0; }
-  .lr-fd { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #f9fafb; }
-  .lr-fd:last-child { border-bottom: none; }
-  .lr-fd-lbl { font-size: 12px; color: #374151; }
-  .lr-fd-val { font-size: 13px; font-weight: 700; color: #111827; }
+  .lr-tbl .tb { font-weight: 600; color: #111827; }
+  /* Widget footer */
+  .lr-w-foot { padding: 7px 16px; background: #f9fafb; border-top: 1px solid #f3f4f6; font-size: 11px; color: #6b7280; line-height: 1.4; }
+  .lr-w-foot strong { color: #374151; font-weight: 600; }
 </style>
 </head>
 <body>
@@ -996,7 +987,7 @@
     <!-- ===== LANE REPORTING DASHBOARD ===== -->
     <div id="view-lane" class="lr-page" style="display:none;">
 
-      <!-- Top bar -->
+      <!-- Header -->
       <div class="lr-topbar">
         <div>
           <div class="lr-topbar-title">Lane Reporting Dashboard</div>
@@ -1005,443 +996,313 @@
         <span class="lr-concept-tag">CONCEPT PROTOTYPE</span>
       </div>
 
-      <!-- Filters -->
-      <div class="lr-filters">
-        <span class="lr-filter-lbl">Period</span>
-        <span class="lr-filter on">Last 90 days</span>
-        <span class="lr-filter">30 days</span>
-        <span class="lr-filter">6 months</span>
-        <div class="lr-fsep"></div>
-        <span class="lr-filter-lbl">Carriers</span>
-        <span class="lr-filter on">All carriers</span>
-        <span class="lr-filter">XPO</span>
-        <span class="lr-filter">Old Dominion</span>
-        <span class="lr-filter">Estes</span>
-        <div class="lr-fsep"></div>
-        <span class="lr-filter-lbl">Lane type</span>
-        <span class="lr-filter on">All lanes</span>
-        <span class="lr-filter">National</span>
-        <span class="lr-filter">Regional</span>
-      </div>
+      <!-- Widget grid -->
+      <div class="lr-grid">
 
-      <!-- KPI strip -->
-      <div class="lr-kpis">
-        <div class="lr-kpi">
-          <div class="lr-kpi-lbl">FedEx Win Rate</div>
-          <div class="lr-kpi-val red">34%</div>
-          <div class="lr-kpi-note bad">&#9660; 3pts vs prior period</div>
-        </div>
-        <div class="lr-kpi">
-          <div class="lr-kpi-lbl">Avg Price Gap (when losing)</div>
-          <div class="lr-kpi-val amber">+$52</div>
-          <div class="lr-kpi-note ok">More expensive than winner</div>
-        </div>
-        <div class="lr-kpi">
-          <div class="lr-kpi-lbl">Faster Transit, Still Lost</div>
-          <div class="lr-kpi-val amber">23 lanes</div>
-          <div class="lr-kpi-note ok">FXF faster but priced out</div>
-        </div>
-        <div class="lr-kpi">
-          <div class="lr-kpi-lbl">Accessorial Inflation (avg)</div>
-          <div class="lr-kpi-val red">+$78</div>
-          <div class="lr-kpi-note bad">Uplift on losing quotes</div>
-        </div>
-      </div>
-
-      <!-- Body -->
-      <div class="lr-body">
-
-        <!-- Row 1: Price gap + Who's winning -->
-        <div class="lr-row2">
-
-          <!-- Price gap by lane -->
-          <div class="lr-card">
-            <div class="lr-card-hdr">
-              <div>
-                <div class="lr-card-title">Largest Price Gaps vs. Winning Carrier</div>
-                <div class="lr-card-sub">FedEx price minus winning carrier price &#8212; last 90 days</div>
-              </div>
-              <span class="lr-badge lr-badge-red">6 critical lanes</span>
-            </div>
-            <div class="lr-hbar">
-              <div class="lr-hbar-hdr">
-                <span class="lr-hbar-lane">Chicago &#8594; Los Angeles</span>
-                <span class="lr-hbar-meta"><span class="lr-ctag c-xpo">XPO</span> <span class="lr-hbar-gap">+$148</span> <span style="color:#9ca3af;font-size:10px;">(+21%)</span></span>
-              </div>
-              <div class="lr-hbar-track"><div class="lr-hbar-fill" style="width:100%;background:#dc2626;"></div></div>
-            </div>
-            <div class="lr-hbar">
-              <div class="lr-hbar-hdr">
-                <span class="lr-hbar-lane">Dallas &#8594; Atlanta</span>
-                <span class="lr-hbar-meta"><span class="lr-ctag c-od">Old Dominion</span> <span class="lr-hbar-gap">+$124</span> <span style="color:#9ca3af;font-size:10px;">(+26%)</span></span>
-              </div>
-              <div class="lr-hbar-track"><div class="lr-hbar-fill" style="width:84%;background:#dc2626;"></div></div>
-            </div>
-            <div class="lr-hbar">
-              <div class="lr-hbar-hdr">
-                <span class="lr-hbar-lane">New York &#8594; Miami</span>
-                <span class="lr-hbar-meta"><span class="lr-ctag c-est">Estes</span> <span class="lr-hbar-gap">+$95</span> <span style="color:#9ca3af;font-size:10px;">(+15%)</span></span>
-              </div>
-              <div class="lr-hbar-track"><div class="lr-hbar-fill" style="width:64%;background:#f59e0b;"></div></div>
-            </div>
-            <div class="lr-hbar">
-              <div class="lr-hbar-hdr">
-                <span class="lr-hbar-lane">Boston &#8594; Chicago</span>
-                <span class="lr-hbar-meta"><span class="lr-ctag c-est">Estes</span> <span class="lr-hbar-gap">+$58</span> <span style="color:#9ca3af;font-size:10px;">(+8%)</span></span>
-              </div>
-              <div class="lr-hbar-track"><div class="lr-hbar-fill" style="width:39%;background:#f59e0b;"></div></div>
-            </div>
-            <div class="lr-hbar">
-              <div class="lr-hbar-hdr">
-                <span class="lr-hbar-lane">Seattle &#8594; Phoenix</span>
-                <span class="lr-hbar-meta"><span class="lr-ctag c-xpo">XPO</span> <span class="lr-hbar-gap">+$50</span> <span style="color:#9ca3af;font-size:10px;">(+9%)</span></span>
-              </div>
-              <div class="lr-hbar-track"><div class="lr-hbar-fill" style="width:34%;background:#f59e0b;"></div></div>
-            </div>
-            <div class="lr-hbar">
-              <div class="lr-hbar-hdr">
-                <span class="lr-hbar-lane">Los Angeles &#8594; Denver</span>
-                <span class="lr-hbar-meta"><span class="lr-ctag c-od">Old Dominion</span> <span class="lr-hbar-gap">+$37</span> <span style="color:#9ca3af;font-size:10px;">(+7%)</span></span>
-              </div>
-              <div class="lr-hbar-track"><div class="lr-hbar-fill" style="width:25%;background:#d97706;"></div></div>
-            </div>
-            <div class="lr-callout amber">&#9888; <div><strong>Chicago &#8594; LA is the single largest recovery opportunity.</strong> FXF is 21% more expensive than XPO on one of the highest-volume lanes in the network.</div></div>
+        <!-- WIDGET 1: Win / Loss Overview -->
+        <div class="lr-widget">
+          <div class="lr-w-hdr">
+            <span class="lr-w-title">FXF Win / Loss Overview</span>
+            <span class="lr-w-date">04/21/2026 &#8211; 07/19/2026</span>
           </div>
-
-          <!-- Who's winning -->
-          <div class="lr-card">
-            <div class="lr-card-hdr">
-              <div>
-                <div class="lr-card-title">Who's Beating FedEx</div>
-                <div class="lr-card-sub">Share of FXF losses by winning carrier, last 90 days</div>
-              </div>
-              <span class="lr-badge lr-badge-blue">3,841 lost bookings</span>
-            </div>
-            <div class="lr-stack" style="margin-bottom:14px;">
-              <div class="lr-stack-seg" style="flex:38;background:#1d4ed8;">XPO 38%</div>
-              <div class="lr-stack-seg" style="flex:29;background:#16a34a;">OD 29%</div>
-              <div class="lr-stack-seg" style="flex:22;background:#d97706;">Est 22%</div>
-              <div class="lr-stack-seg" style="flex:11;background:#9ca3af;font-size:9px;">Oth</div>
-            </div>
-            <div class="lr-hbar">
-              <div class="lr-hbar-hdr">
-                <span class="lr-hbar-meta"><span class="lr-ctag c-xpo">XPO Logistics</span></span>
-                <span class="lr-hbar-meta">Avg gap <span class="lr-hbar-gap">&#8722;$52</span> &nbsp;|&nbsp; 1,459 wins</span>
-              </div>
-              <div class="lr-hbar-track"><div class="lr-hbar-fill" style="width:100%;background:#1d4ed8;"></div></div>
-            </div>
-            <div class="lr-hbar">
-              <div class="lr-hbar-hdr">
-                <span class="lr-hbar-meta"><span class="lr-ctag c-od">Old Dominion</span></span>
-                <span class="lr-hbar-meta">Avg gap <span class="lr-hbar-gap">&#8722;$41</span> &nbsp;|&nbsp; 1,114 wins</span>
-              </div>
-              <div class="lr-hbar-track"><div class="lr-hbar-fill" style="width:76%;background:#16a34a;"></div></div>
-            </div>
-            <div class="lr-hbar">
-              <div class="lr-hbar-hdr">
-                <span class="lr-hbar-meta"><span class="lr-ctag c-est">Estes Express</span></span>
-                <span class="lr-hbar-meta">Avg gap <span class="lr-hbar-gap">&#8722;$38</span> &nbsp;|&nbsp; 845 wins</span>
-              </div>
-              <div class="lr-hbar-track"><div class="lr-hbar-fill" style="width:58%;background:#d97706;"></div></div>
-            </div>
-            <div class="lr-hbar">
-              <div class="lr-hbar-hdr">
-                <span class="lr-hbar-meta"><span class="lr-ctag c-oth">Other carriers</span></span>
-                <span class="lr-hbar-meta">Avg gap <span class="lr-hbar-gap">&#8722;$29</span> &nbsp;|&nbsp; 423 wins</span>
-              </div>
-              <div class="lr-hbar-track"><div class="lr-hbar-fill" style="width:29%;background:#9ca3af;"></div></div>
-            </div>
-            <div style="border-top:1px solid #f3f4f6;padding-top:12px;margin-top:12px;">
-              <div style="font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px;">Avg Transit vs. FXF (when they won)</div>
-              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
-                <div style="text-align:center;background:#f0f9ff;border-radius:6px;padding:8px;">
-                  <div style="font-size:16px;font-weight:800;color:#1d4ed8;">+1.4d</div>
-                  <div style="font-size:10px;color:#9ca3af;">XPO slower</div>
-                </div>
-                <div style="text-align:center;background:#f0fdf4;border-radius:6px;padding:8px;">
-                  <div style="font-size:16px;font-weight:800;color:#16a34a;">+0.8d</div>
-                  <div style="font-size:10px;color:#9ca3af;">OD slower</div>
-                </div>
-                <div style="text-align:center;background:#fffbeb;border-radius:6px;padding:8px;">
-                  <div style="font-size:16px;font-weight:800;color:#d97706;">+1.1d</div>
-                  <div style="font-size:10px;color:#9ca3af;">Estes slower</div>
-                </div>
-              </div>
-            </div>
-            <div class="lr-callout blue">&#128161; <div><strong>FXF has a transit advantage vs. every major competitor</strong> &#8212; but customers consistently choose slower carriers for lower prices. Price is the primary lever.</div></div>
+          <div class="lr-w-icons">
+            <button class="lr-w-ico on" title="Table"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="0" y="0" width="5" height="5" rx="0.5"/><rect x="7" y="0" width="5" height="5" rx="0.5"/><rect x="0" y="7" width="5" height="5" rx="0.5"/><rect x="7" y="7" width="5" height="5" rx="0.5"/></svg></button>
+            <button class="lr-w-ico" title="Donut"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 0A6 6 0 1 0 6 12A6 6 0 0 0 6 0ZM6 4A2 2 0 1 1 6 8A2 2 0 0 1 6 4Z"/><path d="M6 0 L6 4 A2 2 0 0 1 8 6 L12 6 A6 6 0 0 0 6 0Z" fill="currentColor" opacity="0.4"/></svg></button>
+            <button class="lr-w-ico" title="Bar"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="0" y="5" width="3" height="7" rx="0.5"/><rect x="4.5" y="2" width="3" height="10" rx="0.5"/><rect x="9" y="0" width="3" height="12" rx="0.5"/></svg></button>
           </div>
+          <div class="lr-ctrl">
+            <div class="lr-met-grp">
+              <button class="lr-met on">COUNT</button>
+              <button class="lr-met">DAY AVG</button>
+              <button class="lr-met">RATE</button>
+            </div>
+            <div class="lr-per-grp">
+              <button class="lr-per">1D</button>
+              <button class="lr-per">7D</button>
+              <button class="lr-per">1M</button>
+              <button class="lr-per on">3M</button>
+              <button class="lr-per">1Y</button>
+              <button class="lr-per">CUSTOM</button>
+            </div>
+          </div>
+          <div class="lr-rows">
+            <div class="lr-drow"><span class="lr-dlbl"><span class="lr-ctag c-fxf">FXF</span> Won</span><span class="lr-dval grn">1,985</span></div>
+            <div class="lr-drow"><span class="lr-dlbl">Competitor Won</span><span class="lr-dval red">3,841</span></div>
+            <div class="lr-drow"><span class="lr-dlbl">Quoted, Not Booked</span><span class="lr-dval">892</span></div>
+            <div class="lr-drow" style="background:#fafafa;"><span class="lr-dlbl" style="font-weight:700;color:#111827;">Total Quotes</span><span class="lr-dval" style="font-size:16px;">6,718</span></div>
+          </div>
+          <div class="lr-w-foot"><strong>Win rate: 34%</strong> &#8212; down 3pts vs. prior 90 days</div>
         </div>
 
-        <!-- Row 2: Win rate by position + Day of week -->
-        <div class="lr-row2">
-
-          <!-- Win rate by price position -->
-          <div class="lr-card">
-            <div class="lr-card-hdr">
-              <div>
-                <div class="lr-card-title">Win Rate by Price Position</div>
-                <div class="lr-card-sub">How often FXF books when ranked 1st, 2nd, or 3rd cheapest</div>
-              </div>
-              <span class="lr-badge lr-badge-amber">$25 breakpoint</span>
-            </div>
-            <div class="lr-wr">
-              <div class="lr-wr-hdr"><span class="lr-wr-lbl">#1 Cheapest option</span><span class="lr-wr-pct">87%</span></div>
-              <div class="lr-wr-track"><div class="lr-wr-fill" style="width:87%;background:#16a34a;"><span>87%</span></div></div>
-            </div>
-            <div class="lr-wr">
-              <div class="lr-wr-hdr"><span class="lr-wr-lbl">#2 Cheapest option</span><span class="lr-wr-pct">31%</span></div>
-              <div class="lr-wr-track"><div class="lr-wr-fill" style="width:31%;background:#d97706;"></div></div>
-            </div>
-            <div class="lr-wr">
-              <div class="lr-wr-hdr"><span class="lr-wr-lbl">#3 Cheapest option</span><span class="lr-wr-pct">8%</span></div>
-              <div class="lr-wr-track"><div class="lr-wr-fill" style="width:8%;background:#dc2626;"></div></div>
-            </div>
-            <div class="lr-wr">
-              <div class="lr-wr-hdr"><span class="lr-wr-lbl">#4+ Cheapest option</span><span class="lr-wr-pct">2%</span></div>
-              <div class="lr-wr-track"><div class="lr-wr-fill" style="width:2%;background:#dc2626;"></div></div>
-            </div>
-            <div style="margin-top:14px;border-top:1px solid #f3f4f6;padding-top:12px;">
-              <div style="font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px;">Win rate by price premium over cheapest option</div>
-              <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;text-align:center;">
-                <div style="background:#d1fae5;border-radius:6px;padding:7px;">
-                  <div style="font-size:14px;font-weight:800;color:#065f46;">74%</div>
-                  <div style="font-size:10px;color:#065f46;">$1&#8211;$25<br>premium</div>
-                </div>
-                <div style="background:#fef3c7;border-radius:6px;padding:7px;">
-                  <div style="font-size:14px;font-weight:800;color:#92400e;">41%</div>
-                  <div style="font-size:10px;color:#92400e;">$26&#8211;$50<br>premium</div>
-                </div>
-                <div style="background:#fee2e2;border-radius:6px;padding:7px;">
-                  <div style="font-size:14px;font-weight:800;color:#991b1b;">18%</div>
-                  <div style="font-size:10px;color:#991b1b;">$51&#8211;$100<br>premium</div>
-                </div>
-                <div style="background:#fee2e2;border-radius:6px;padding:7px;">
-                  <div style="font-size:14px;font-weight:800;color:#991b1b;">4%</div>
-                  <div style="font-size:10px;color:#991b1b;">$100+<br>premium</div>
-                </div>
-              </div>
-            </div>
-            <div class="lr-callout green">&#10003; <div><strong>Within $25, FXF still wins 74% of the time</strong> &#8212; brand and transit trust hold. Above $50, the win rate collapses to 18%. Pricing within $25 of cheapest is the target zone.</div></div>
+        <!-- WIDGET 2: Price Gap by Lane -->
+        <div class="lr-widget">
+          <div class="lr-w-hdr">
+            <span class="lr-w-title">Price Gap by Lane</span>
+            <span class="lr-w-date">04/21/2026 &#8211; 07/19/2026</span>
           </div>
-
-          <!-- Day of week -->
-          <div class="lr-card">
-            <div class="lr-card-hdr">
-              <div>
-                <div class="lr-card-title">Win Rate by Booking Day</div>
-                <div class="lr-card-sub">Does the day a shipment is booked affect FXF outcomes?</div>
-              </div>
-              <span class="lr-badge lr-badge-amber">14pt Mon&#8211;Fri swing</span>
-            </div>
-            <div class="lr-dow" style="margin-bottom:6px;">
-              <div class="lr-dow-col">
-                <div class="lr-dow-pct">42%</div>
-                <div class="lr-dow-bar" style="height:60px;background:#4D148C;"></div>
-                <div class="lr-dow-day">Mon</div>
-              </div>
-              <div class="lr-dow-col">
-                <div class="lr-dow-pct">39%</div>
-                <div class="lr-dow-bar" style="height:56px;background:#4D148C;"></div>
-                <div class="lr-dow-day">Tue</div>
-              </div>
-              <div class="lr-dow-col">
-                <div class="lr-dow-pct">35%</div>
-                <div class="lr-dow-bar" style="height:50px;background:#7c3aed;"></div>
-                <div class="lr-dow-day">Wed</div>
-              </div>
-              <div class="lr-dow-col">
-                <div class="lr-dow-pct">32%</div>
-                <div class="lr-dow-bar" style="height:46px;background:#f59e0b;"></div>
-                <div class="lr-dow-day">Thu</div>
-              </div>
-              <div class="lr-dow-col">
-                <div class="lr-dow-pct">28%</div>
-                <div class="lr-dow-bar" style="height:40px;background:#dc2626;"></div>
-                <div class="lr-dow-day">Fri</div>
-              </div>
-            </div>
-            <div style="height:1px;background:#f3f4f6;margin-bottom:14px;"></div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
-              <div style="background:#f0fdf4;border-radius:6px;padding:10px;text-align:center;">
-                <div style="font-size:18px;font-weight:800;color:#166534;">Mon&#8211;Tue</div>
-                <div style="font-size:11px;color:#166534;font-weight:600;">Best booking days</div>
-                <div style="font-size:10px;color:#9ca3af;margin-top:2px;">Avg win rate: 41%</div>
-              </div>
-              <div style="background:#fef2f2;border-radius:6px;padding:10px;text-align:center;">
-                <div style="font-size:18px;font-weight:800;color:#991b1b;">Thu&#8211;Fri</div>
-                <div style="font-size:11px;color:#991b1b;font-weight:600;">Worst booking days</div>
-                <div style="font-size:10px;color:#9ca3af;margin-top:2px;">Avg win rate: 30%</div>
-              </div>
-            </div>
-            <div class="lr-callout amber">&#9888; <div><strong>Friday bookings are 33% less likely to go to FXF than Monday.</strong> End-of-week spot shopping is price-driven &#8212; a natural candidate for day-of-week dynamic pricing (see Dynamic Pricing prototype).</div></div>
+          <div class="lr-w-icons">
+            <button class="lr-w-ico on" title="Table"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="0" y="0" width="5" height="5" rx="0.5"/><rect x="7" y="0" width="5" height="5" rx="0.5"/><rect x="0" y="7" width="5" height="5" rx="0.5"/><rect x="7" y="7" width="5" height="5" rx="0.5"/></svg></button>
+            <button class="lr-w-ico" title="Donut"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 0A6 6 0 1 0 6 12A6 6 0 0 0 6 0ZM6 4A2 2 0 1 1 6 8A2 2 0 0 1 6 4Z"/></svg></button>
+            <button class="lr-w-ico" title="Bar"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="0" y="5" width="3" height="7" rx="0.5"/><rect x="4.5" y="2" width="3" height="10" rx="0.5"/><rect x="9" y="0" width="3" height="12" rx="0.5"/></svg></button>
           </div>
+          <div class="lr-ctrl">
+            <div class="lr-met-grp">
+              <button class="lr-met on">$ GAP</button>
+              <button class="lr-met">% GAP</button>
+              <button class="lr-met">RANK</button>
+            </div>
+            <div class="lr-per-grp">
+              <button class="lr-per">1D</button>
+              <button class="lr-per">7D</button>
+              <button class="lr-per">1M</button>
+              <button class="lr-per on">3M</button>
+              <button class="lr-per">1Y</button>
+              <button class="lr-per">CUSTOM</button>
+            </div>
+          </div>
+          <div class="lr-rows">
+            <div class="lr-drow"><span class="lr-dlbl">Chicago &#8594; Los Angeles &nbsp;<span class="lr-ctag c-xpo">XPO</span></span><span class="lr-dval red">+$148</span></div>
+            <div class="lr-drow"><span class="lr-dlbl">Dallas &#8594; Atlanta &nbsp;<span class="lr-ctag c-od">OD</span></span><span class="lr-dval red">+$124</span></div>
+            <div class="lr-drow"><span class="lr-dlbl">New York &#8594; Miami &nbsp;<span class="lr-ctag c-est">Estes</span></span><span class="lr-dval amb">+$95</span></div>
+            <div class="lr-drow"><span class="lr-dlbl">Boston &#8594; Chicago &nbsp;<span class="lr-ctag c-est">Estes</span></span><span class="lr-dval amb">+$58</span></div>
+            <div class="lr-drow"><span class="lr-dlbl">Seattle &#8594; Phoenix &nbsp;<span class="lr-ctag c-xpo">XPO</span></span><span class="lr-dval amb">+$50</span></div>
+            <div class="lr-drow"><span class="lr-dlbl">Los Angeles &#8594; Denver &nbsp;<span class="lr-ctag c-od">OD</span></span><span class="lr-dval amb">+$37</span></div>
+          </div>
+          <div class="lr-w-foot"><strong>Avg gap when losing: +$52</strong> &#8212; FXF more expensive than winner</div>
         </div>
 
-        <!-- Row 3: Transit paradox (full width) -->
-        <div class="lr-row1">
-          <div class="lr-card">
-            <div class="lr-card-hdr">
-              <div>
-                <div class="lr-card-title">Faster Transit, Still Lost &#8212; Speed Advantage Not Converting</div>
-                <div class="lr-card-sub">Lanes where FedEx Freight is faster than the winning carrier but lost the booking on price</div>
-              </div>
-              <span class="lr-badge lr-badge-red">23 lanes identified</span>
-            </div>
-            <table class="lr-tbl">
-              <thead>
-                <tr>
-                  <th>Lane</th>
-                  <th>FXF Transit</th>
-                  <th>Winner Transit</th>
-                  <th>FXF Price</th>
-                  <th>Winner Price</th>
-                  <th>Price Gap</th>
-                  <th>Winner</th>
-                  <th>Speed Advantage</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="font-weight:600;color:#111827;">Chicago &#8594; Seattle</td>
-                  <td class="tg">3.2 days</td>
-                  <td style="color:#9ca3af;">4.8 days</td>
-                  <td>$724</td><td>$612</td>
-                  <td class="tr">&#8722;$112</td>
-                  <td><span class="lr-ctag c-xpo">XPO</span></td>
-                  <td class="tg">+1.6 days faster</td>
-                </tr>
-                <tr>
-                  <td style="font-weight:600;color:#111827;">Atlanta &#8594; Phoenix</td>
-                  <td class="tg">2.8 days</td>
-                  <td style="color:#9ca3af;">4.1 days</td>
-                  <td>$548</td><td>$461</td>
-                  <td class="tr">&#8722;$87</td>
-                  <td><span class="lr-ctag c-od">Old Dominion</span></td>
-                  <td class="tg">+1.3 days faster</td>
-                </tr>
-                <tr>
-                  <td style="font-weight:600;color:#111827;">New York &#8594; Dallas</td>
-                  <td class="tg">3.5 days</td>
-                  <td style="color:#9ca3af;">5.2 days</td>
-                  <td>$812</td><td>$734</td>
-                  <td class="tr">&#8722;$78</td>
-                  <td><span class="lr-ctag c-est">Estes</span></td>
-                  <td class="tg">+1.7 days faster</td>
-                </tr>
-                <tr>
-                  <td style="font-weight:600;color:#111827;">Denver &#8594; Miami</td>
-                  <td class="tg">3.1 days</td>
-                  <td style="color:#9ca3af;">4.6 days</td>
-                  <td>$693</td><td>$628</td>
-                  <td class="tr">&#8722;$65</td>
-                  <td><span class="lr-ctag c-xpo">XPO</span></td>
-                  <td class="tg">+1.5 days faster</td>
-                </tr>
-                <tr>
-                  <td style="font-weight:600;color:#111827;">Chicago &#8594; Phoenix</td>
-                  <td class="tg">2.9 days</td>
-                  <td style="color:#9ca3af;">3.8 days</td>
-                  <td>$567</td><td>$512</td>
-                  <td class="tr">&#8722;$55</td>
-                  <td><span class="lr-ctag c-od">Old Dominion</span></td>
-                  <td class="tg">+0.9 days faster</td>
-                </tr>
-              </tbody>
-            </table>
-            <div class="lr-callout red">&#128680; <div><strong>FXF's transit advantage is real but not being monetized.</strong> On these 23 lanes, speed alone doesn't convert &#8212; FXF needs to be within $30&#8211;$40 of competitors for the transit advantage to matter to buyers.</div></div>
+        <!-- WIDGET 3: Carrier Win Share -->
+        <div class="lr-widget">
+          <div class="lr-w-hdr">
+            <span class="lr-w-title">Carrier Win Share vs. FXF</span>
+            <span class="lr-w-date">04/21/2026 &#8211; 07/19/2026</span>
           </div>
+          <div class="lr-w-icons">
+            <button class="lr-w-ico on" title="Table"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="0" y="0" width="5" height="5" rx="0.5"/><rect x="7" y="0" width="5" height="5" rx="0.5"/><rect x="0" y="7" width="5" height="5" rx="0.5"/><rect x="7" y="7" width="5" height="5" rx="0.5"/></svg></button>
+            <button class="lr-w-ico" title="Donut"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 0A6 6 0 1 0 6 12A6 6 0 0 0 6 0ZM6 4A2 2 0 1 1 6 8A2 2 0 0 1 6 4Z"/></svg></button>
+            <button class="lr-w-ico" title="Bar"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="0" y="5" width="3" height="7" rx="0.5"/><rect x="4.5" y="2" width="3" height="10" rx="0.5"/><rect x="9" y="0" width="3" height="12" rx="0.5"/></svg></button>
+          </div>
+          <div class="lr-ctrl">
+            <div class="lr-met-grp">
+              <button class="lr-met on">COUNT</button>
+              <button class="lr-met">% SHARE</button>
+              <button class="lr-met">AVG GAP</button>
+            </div>
+            <div class="lr-per-grp">
+              <button class="lr-per">1D</button>
+              <button class="lr-per">7D</button>
+              <button class="lr-per">1M</button>
+              <button class="lr-per on">3M</button>
+              <button class="lr-per">1Y</button>
+              <button class="lr-per">CUSTOM</button>
+            </div>
+          </div>
+          <div class="lr-rows">
+            <div class="lr-drow"><span class="lr-dlbl"><span class="lr-ctag c-xpo">XPO</span>&nbsp; XPO Logistics</span><span class="lr-dval">1,459</span></div>
+            <div class="lr-drow"><span class="lr-dlbl"><span class="lr-ctag c-od">OD</span>&nbsp; Old Dominion</span><span class="lr-dval">1,114</span></div>
+            <div class="lr-drow"><span class="lr-dlbl"><span class="lr-ctag c-est">Est</span>&nbsp; Estes Express</span><span class="lr-dval">845</span></div>
+            <div class="lr-drow"><span class="lr-dlbl"><span class="lr-ctag c-oth">Oth</span>&nbsp; Other carriers</span><span class="lr-dval">423</span></div>
+            <div class="lr-drow" style="background:#fafafa;"><span class="lr-dlbl" style="font-weight:700;color:#111827;">Total FXF Losses</span><span class="lr-dval" style="font-size:16px;">3,841</span></div>
+          </div>
+          <div class="lr-w-foot">Competitors avg <strong>+1.1 days slower</strong> than FXF &#8212; customers choosing price over speed</div>
         </div>
 
-        <!-- Row 4: Accessorial impact + Freight Direct -->
-        <div class="lr-row2">
-
-          <!-- Accessorial cost inflation -->
-          <div class="lr-card">
-            <div class="lr-card-hdr">
-              <div>
-                <div class="lr-card-title">Accessorial Cost Inflation</div>
-                <div class="lr-card-sub">How extra fees inflate FXF's apparent price on losing quotes</div>
-              </div>
-              <span class="lr-badge lr-badge-red">Avg +$78 uplift</span>
-            </div>
-            <div class="lr-acc">
-              <div class="lr-acc-name">Liftgate Delivery</div>
-              <div class="lr-acc-track"><div class="lr-acc-fill" style="width:100%;"></div></div>
-              <div class="lr-acc-amt">+$78</div>
-              <div class="lr-acc-note">vs. +$59 avg competitor</div>
-            </div>
-            <div class="lr-acc">
-              <div class="lr-acc-name">Residential Delivery</div>
-              <div class="lr-acc-track"><div class="lr-acc-fill" style="width:83%;"></div></div>
-              <div class="lr-acc-amt">+$65</div>
-              <div class="lr-acc-note">vs. +$48 avg competitor</div>
-            </div>
-            <div class="lr-acc">
-              <div class="lr-acc-name">Limited Access</div>
-              <div class="lr-acc-track"><div class="lr-acc-fill" style="width:67%;"></div></div>
-              <div class="lr-acc-amt">+$52</div>
-              <div class="lr-acc-note">Competitive range</div>
-            </div>
-            <div class="lr-acc">
-              <div class="lr-acc-name">Inside Delivery</div>
-              <div class="lr-acc-track"><div class="lr-acc-fill" style="width:56%;"></div></div>
-              <div class="lr-acc-amt">+$44</div>
-              <div class="lr-acc-note">Competitive range</div>
-            </div>
-            <div class="lr-acc">
-              <div class="lr-acc-name">Liftgate Pickup</div>
-              <div class="lr-acc-track"><div class="lr-acc-fill" style="width:45%;"></div></div>
-              <div class="lr-acc-amt">+$35</div>
-              <div class="lr-acc-note">vs. +$31 avg competitor</div>
-            </div>
-            <div class="lr-callout amber">&#9888; <div><strong>Liftgate and residential fees are the primary culprits.</strong> On quotes with both, FXF appears up to $143 more expensive before base rate comparisons even factor in.</div></div>
+        <!-- WIDGET 4: Win Rate by Price Position -->
+        <div class="lr-widget">
+          <div class="lr-w-hdr">
+            <span class="lr-w-title">Win Rate by Price Position</span>
+            <span class="lr-w-date">04/21/2026 &#8211; 07/19/2026</span>
           </div>
-
-          <!-- Freight Direct -->
-          <div class="lr-card">
-            <div class="lr-card-hdr">
-              <div>
-                <div class="lr-card-title">Freight Direct Performance</div>
-                <div class="lr-card-sub">Selection rate and win rate vs. standard LTL alternatives</div>
-              </div>
-              <span class="lr-badge lr-badge-green">71% competitive</span>
-            </div>
-            <div class="lr-fd">
-              <span class="lr-fd-lbl">Selected when eligible</span>
-              <span class="lr-fd-val" style="color:#4D148C;">12%</span>
-            </div>
-            <div class="lr-fd">
-              <span class="lr-fd-lbl">Competitive vs. alternatives</span>
-              <span class="lr-fd-val" style="color:#16a34a;">71%</span>
-            </div>
-            <div class="lr-fd">
-              <span class="lr-fd-lbl">Avg Freight Direct price</span>
-              <span class="lr-fd-val">$834</span>
-            </div>
-            <div class="lr-fd">
-              <span class="lr-fd-lbl">Avg alternative price (eligible quotes)</span>
-              <span class="lr-fd-val">$891</span>
-            </div>
-            <div class="lr-fd">
-              <span class="lr-fd-lbl">Win rate when Freight Direct is selected</span>
-              <span class="lr-fd-val" style="color:#16a34a;">68%</span>
-            </div>
-            <div class="lr-fd">
-              <span class="lr-fd-lbl">Win rate when Freight Direct is not selected</span>
-              <span class="lr-fd-val" style="color:#dc2626;">28%</span>
-            </div>
-            <div style="margin-top:12px;background:#f0e8f8;border-radius:8px;padding:10px 12px;">
-              <div style="font-size:11px;font-weight:700;color:#4D148C;margin-bottom:4px;">Freight Direct opportunity</div>
-              <div style="font-size:11px;color:#4a2080;line-height:1.5;">When selected, Freight Direct wins at 2.4&#215; the rate of standard LTL. A 12% selection rate suggests it isn't being surfaced effectively in the quote flow &#8212; a near-term improvement opportunity.</div>
-            </div>
-            <div class="lr-callout green">&#10003; <div><strong>Freight Direct is FXF's strongest competitive product</strong> in the LTL Select channel &#8212; but it's being left on the table. More prominent placement in the quote flow is a near-term win.</div></div>
+          <div class="lr-w-icons">
+            <button class="lr-w-ico on" title="Table"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="0" y="0" width="5" height="5" rx="0.5"/><rect x="7" y="0" width="5" height="5" rx="0.5"/><rect x="0" y="7" width="5" height="5" rx="0.5"/><rect x="7" y="7" width="5" height="5" rx="0.5"/></svg></button>
+            <button class="lr-w-ico" title="Donut"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 0A6 6 0 1 0 6 12A6 6 0 0 0 6 0ZM6 4A2 2 0 1 1 6 8A2 2 0 0 1 6 4Z"/></svg></button>
+            <button class="lr-w-ico" title="Bar"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="0" y="5" width="3" height="7" rx="0.5"/><rect x="4.5" y="2" width="3" height="10" rx="0.5"/><rect x="9" y="0" width="3" height="12" rx="0.5"/></svg></button>
           </div>
+          <div class="lr-ctrl">
+            <div class="lr-met-grp">
+              <button class="lr-met on">WIN RATE</button>
+              <button class="lr-met">COUNT</button>
+              <button class="lr-met">TREND</button>
+            </div>
+            <div class="lr-per-grp">
+              <button class="lr-per">1D</button>
+              <button class="lr-per">7D</button>
+              <button class="lr-per">1M</button>
+              <button class="lr-per on">3M</button>
+              <button class="lr-per">1Y</button>
+              <button class="lr-per">CUSTOM</button>
+            </div>
+          </div>
+          <div class="lr-wr-row"><span class="lr-wr-lbl">#1 Cheapest</span><div class="lr-wr-track"><div class="lr-wr-fill" style="width:87%;background:#16a34a;"></div></div><span class="lr-wr-pct" style="color:#16a34a;">87%</span></div>
+          <div class="lr-wr-row"><span class="lr-wr-lbl">#2 Cheapest</span><div class="lr-wr-track"><div class="lr-wr-fill" style="width:31%;background:#d97706;"></div></div><span class="lr-wr-pct" style="color:#d97706;">31%</span></div>
+          <div class="lr-wr-row"><span class="lr-wr-lbl">#3 Cheapest</span><div class="lr-wr-track"><div class="lr-wr-fill" style="width:8%;background:#dc2626;"></div></div><span class="lr-wr-pct" style="color:#dc2626;">8%</span></div>
+          <div class="lr-wr-row"><span class="lr-wr-lbl">#4+ Cheapest</span><div class="lr-wr-track"><div class="lr-wr-fill" style="width:2%;background:#dc2626;"></div></div><span class="lr-wr-pct" style="color:#dc2626;">2%</span></div>
+          <div class="lr-prem-grid">
+            <div class="lr-prem-cell"><div class="lr-prem-val" style="color:#065f46;">74%</div><div class="lr-prem-lbl">$1&#8211;$25<br>premium</div></div>
+            <div class="lr-prem-cell"><div class="lr-prem-val" style="color:#92400e;">41%</div><div class="lr-prem-lbl">$26&#8211;$50<br>premium</div></div>
+            <div class="lr-prem-cell" style="background:#fee2e2;"><div class="lr-prem-val" style="color:#991b1b;">18%</div><div class="lr-prem-lbl">$51&#8211;$100<br>premium</div></div>
+            <div class="lr-prem-cell" style="background:#fee2e2;"><div class="lr-prem-val" style="color:#991b1b;">4%</div><div class="lr-prem-lbl">$100+<br>premium</div></div>
+          </div>
+          <div class="lr-w-foot">Within <strong>$25 of cheapest</strong>, FXF still wins 74% &#8212; above $50, win rate collapses to 18%</div>
+        </div>
+
+        <!-- WIDGET 5: Transit Advantage Analysis -->
+        <div class="lr-widget">
+          <div class="lr-w-hdr">
+            <span class="lr-w-title">Transit Advantage Analysis</span>
+            <span class="lr-w-date">04/21/2026 &#8211; 07/19/2026</span>
+          </div>
+          <div class="lr-w-icons">
+            <button class="lr-w-ico on" title="Table"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="0" y="0" width="5" height="5" rx="0.5"/><rect x="7" y="0" width="5" height="5" rx="0.5"/><rect x="0" y="7" width="5" height="5" rx="0.5"/><rect x="7" y="7" width="5" height="5" rx="0.5"/></svg></button>
+            <button class="lr-w-ico" title="Donut"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 0A6 6 0 1 0 6 12A6 6 0 0 0 6 0ZM6 4A2 2 0 1 1 6 8A2 2 0 0 1 6 4Z"/></svg></button>
+            <button class="lr-w-ico" title="Bar"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="0" y="5" width="3" height="7" rx="0.5"/><rect x="4.5" y="2" width="3" height="10" rx="0.5"/><rect x="9" y="0" width="3" height="12" rx="0.5"/></svg></button>
+          </div>
+          <div class="lr-ctrl">
+            <div class="lr-met-grp">
+              <button class="lr-met on">TRANSIT</button>
+              <button class="lr-met">PRICE</button>
+              <button class="lr-met">BOTH</button>
+            </div>
+            <div class="lr-per-grp">
+              <button class="lr-per">1D</button>
+              <button class="lr-per">7D</button>
+              <button class="lr-per">1M</button>
+              <button class="lr-per on">3M</button>
+              <button class="lr-per">1Y</button>
+              <button class="lr-per">CUSTOM</button>
+            </div>
+          </div>
+          <table class="lr-tbl">
+            <thead><tr><th>Lane</th><th>FXF</th><th>Winner</th><th>Price Gap</th><th>Winner</th></tr></thead>
+            <tbody>
+              <tr><td class="tb">Chicago &#8594; Seattle</td><td class="tg">3.2d</td><td style="color:#9ca3af;">4.8d</td><td class="tr">&#8722;$112</td><td><span class="lr-ctag c-xpo">XPO</span></td></tr>
+              <tr><td class="tb">Atlanta &#8594; Phoenix</td><td class="tg">2.8d</td><td style="color:#9ca3af;">4.1d</td><td class="tr">&#8722;$87</td><td><span class="lr-ctag c-od">OD</span></td></tr>
+              <tr><td class="tb">New York &#8594; Dallas</td><td class="tg">3.5d</td><td style="color:#9ca3af;">5.2d</td><td class="tr">&#8722;$78</td><td><span class="lr-ctag c-est">Estes</span></td></tr>
+              <tr><td class="tb">Denver &#8594; Miami</td><td class="tg">3.1d</td><td style="color:#9ca3af;">4.6d</td><td class="tr">&#8722;$65</td><td><span class="lr-ctag c-xpo">XPO</span></td></tr>
+              <tr><td class="tb">Chicago &#8594; Phoenix</td><td class="tg">2.9d</td><td style="color:#9ca3af;">3.8d</td><td class="tr">&#8722;$55</td><td><span class="lr-ctag c-od">OD</span></td></tr>
+            </tbody>
+          </table>
+          <div class="lr-w-foot"><strong>23 lanes</strong> where FXF is faster but loses on price &#8212; transit advantage not converting</div>
+        </div>
+
+        <!-- WIDGET 6: Win Rate by Booking Day -->
+        <div class="lr-widget">
+          <div class="lr-w-hdr">
+            <span class="lr-w-title">Win Rate by Booking Day</span>
+            <span class="lr-w-date">04/21/2026 &#8211; 07/19/2026</span>
+          </div>
+          <div class="lr-w-icons">
+            <button class="lr-w-ico on" title="Table"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="0" y="0" width="5" height="5" rx="0.5"/><rect x="7" y="0" width="5" height="5" rx="0.5"/><rect x="0" y="7" width="5" height="5" rx="0.5"/><rect x="7" y="7" width="5" height="5" rx="0.5"/></svg></button>
+            <button class="lr-w-ico" title="Donut"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 0A6 6 0 1 0 6 12A6 6 0 0 0 6 0ZM6 4A2 2 0 1 1 6 8A2 2 0 0 1 6 4Z"/></svg></button>
+            <button class="lr-w-ico" title="Bar"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="0" y="5" width="3" height="7" rx="0.5"/><rect x="4.5" y="2" width="3" height="10" rx="0.5"/><rect x="9" y="0" width="3" height="12" rx="0.5"/></svg></button>
+          </div>
+          <div class="lr-ctrl">
+            <div class="lr-met-grp">
+              <button class="lr-met on">WIN RATE</button>
+              <button class="lr-met">COUNT</button>
+              <button class="lr-met">TREND</button>
+            </div>
+            <div class="lr-per-grp">
+              <button class="lr-per">1D</button>
+              <button class="lr-per">7D</button>
+              <button class="lr-per">1M</button>
+              <button class="lr-per on">3M</button>
+              <button class="lr-per">1Y</button>
+              <button class="lr-per">CUSTOM</button>
+            </div>
+          </div>
+          <div class="lr-day-wrap">
+            <div class="lr-day-col"><div class="lr-day-pct">42%</div><div class="lr-day-bar" style="height:58px;background:#4D148C;"></div><div class="lr-day-lbl">Mon</div></div>
+            <div class="lr-day-col"><div class="lr-day-pct">39%</div><div class="lr-day-bar" style="height:53px;background:#4D148C;"></div><div class="lr-day-lbl">Tue</div></div>
+            <div class="lr-day-col"><div class="lr-day-pct">35%</div><div class="lr-day-bar" style="height:48px;background:#7c3aed;"></div><div class="lr-day-lbl">Wed</div></div>
+            <div class="lr-day-col"><div class="lr-day-pct">32%</div><div class="lr-day-bar" style="height:44px;background:#f59e0b;"></div><div class="lr-day-lbl">Thu</div></div>
+            <div class="lr-day-col"><div class="lr-day-pct">28%</div><div class="lr-day-bar" style="height:38px;background:#dc2626;"></div><div class="lr-day-lbl">Fri</div></div>
+          </div>
+          <div class="lr-day-line" style="margin-top:0;"></div>
+          <div class="lr-rows">
+            <div class="lr-drow"><span class="lr-dlbl">Monday &#8211; Tuesday</span><span class="lr-dval grn">41% avg win</span></div>
+            <div class="lr-drow"><span class="lr-dlbl">Thursday &#8211; Friday</span><span class="lr-dval red">30% avg win</span></div>
+          </div>
+          <div class="lr-w-foot">Fri bookings <strong>33% less likely</strong> to go to FXF vs Mon &#8212; day-of-week dynamic pricing opportunity</div>
+        </div>
+
+        <!-- WIDGET 7: Accessorial Cost Inflation -->
+        <div class="lr-widget">
+          <div class="lr-w-hdr">
+            <span class="lr-w-title">Accessorial Cost Inflation</span>
+            <span class="lr-w-date">04/21/2026 &#8211; 07/19/2026</span>
+          </div>
+          <div class="lr-w-icons">
+            <button class="lr-w-ico on" title="Table"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="0" y="0" width="5" height="5" rx="0.5"/><rect x="7" y="0" width="5" height="5" rx="0.5"/><rect x="0" y="7" width="5" height="5" rx="0.5"/><rect x="7" y="7" width="5" height="5" rx="0.5"/></svg></button>
+            <button class="lr-w-ico" title="Donut"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 0A6 6 0 1 0 6 12A6 6 0 0 0 6 0ZM6 4A2 2 0 1 1 6 8A2 2 0 0 1 6 4Z"/></svg></button>
+            <button class="lr-w-ico" title="Bar"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="0" y="5" width="3" height="7" rx="0.5"/><rect x="4.5" y="2" width="3" height="10" rx="0.5"/><rect x="9" y="0" width="3" height="12" rx="0.5"/></svg></button>
+          </div>
+          <div class="lr-ctrl">
+            <div class="lr-met-grp">
+              <button class="lr-met on">$ UPLIFT</button>
+              <button class="lr-met">VS COMP</button>
+              <button class="lr-met">IMPACT</button>
+            </div>
+            <div class="lr-per-grp">
+              <button class="lr-per">1D</button>
+              <button class="lr-per">7D</button>
+              <button class="lr-per">1M</button>
+              <button class="lr-per on">3M</button>
+              <button class="lr-per">1Y</button>
+              <button class="lr-per">CUSTOM</button>
+            </div>
+          </div>
+          <div class="lr-rows">
+            <div class="lr-drow"><span class="lr-dlbl">Liftgate Delivery</span><span class="lr-dval red">+$78 <span style="font-size:10px;color:#9ca3af;font-weight:400;">vs +$59 comp</span></span></div>
+            <div class="lr-drow"><span class="lr-dlbl">Residential Delivery</span><span class="lr-dval red">+$65 <span style="font-size:10px;color:#9ca3af;font-weight:400;">vs +$48 comp</span></span></div>
+            <div class="lr-drow"><span class="lr-dlbl">Limited Access</span><span class="lr-dval">+$52 <span style="font-size:10px;color:#9ca3af;font-weight:400;">competitive</span></span></div>
+            <div class="lr-drow"><span class="lr-dlbl">Inside Delivery</span><span class="lr-dval">+$44 <span style="font-size:10px;color:#9ca3af;font-weight:400;">competitive</span></span></div>
+            <div class="lr-drow"><span class="lr-dlbl">Liftgate Pickup</span><span class="lr-dval">+$35 <span style="font-size:10px;color:#9ca3af;font-weight:400;">vs +$31 comp</span></span></div>
+          </div>
+          <div class="lr-w-foot">Liftgate + residential together add <strong>avg $143</strong> before base rate comparison even factors in</div>
+        </div>
+
+        <!-- WIDGET 8: Freight Direct Performance -->
+        <div class="lr-widget">
+          <div class="lr-w-hdr">
+            <span class="lr-w-title">Freight Direct Performance</span>
+            <span class="lr-w-date">04/21/2026 &#8211; 07/19/2026</span>
+          </div>
+          <div class="lr-w-icons">
+            <button class="lr-w-ico on" title="Table"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="0" y="0" width="5" height="5" rx="0.5"/><rect x="7" y="0" width="5" height="5" rx="0.5"/><rect x="0" y="7" width="5" height="5" rx="0.5"/><rect x="7" y="7" width="5" height="5" rx="0.5"/></svg></button>
+            <button class="lr-w-ico" title="Donut"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 0A6 6 0 1 0 6 12A6 6 0 0 0 6 0ZM6 4A2 2 0 1 1 6 8A2 2 0 0 1 6 4Z"/></svg></button>
+            <button class="lr-w-ico" title="Bar"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="0" y="5" width="3" height="7" rx="0.5"/><rect x="4.5" y="2" width="3" height="10" rx="0.5"/><rect x="9" y="0" width="3" height="12" rx="0.5"/></svg></button>
+          </div>
+          <div class="lr-ctrl">
+            <div class="lr-met-grp">
+              <button class="lr-met on">WIN RATE</button>
+              <button class="lr-met">COUNT</button>
+              <button class="lr-met">PRICE</button>
+            </div>
+            <div class="lr-per-grp">
+              <button class="lr-per">1D</button>
+              <button class="lr-per">7D</button>
+              <button class="lr-per">1M</button>
+              <button class="lr-per on">3M</button>
+              <button class="lr-per">1Y</button>
+              <button class="lr-per">CUSTOM</button>
+            </div>
+          </div>
+          <div class="lr-rows">
+            <div class="lr-drow"><span class="lr-dlbl">Selected when eligible</span><span class="lr-dval pur">12%</span></div>
+            <div class="lr-drow"><span class="lr-dlbl">Competitive vs. alternatives</span><span class="lr-dval grn">71%</span></div>
+            <div class="lr-drow"><span class="lr-dlbl">Win rate when FD selected</span><span class="lr-dval grn">68%</span></div>
+            <div class="lr-drow"><span class="lr-dlbl">Win rate when FD not selected</span><span class="lr-dval red">28%</span></div>
+            <div class="lr-drow"><span class="lr-dlbl">Avg Freight Direct price</span><span class="lr-dval">$834</span></div>
+            <div class="lr-drow"><span class="lr-dlbl">Avg competitor price (eligible)</span><span class="lr-dval">$891</span></div>
+          </div>
+          <div class="lr-w-foot">FD wins at <strong>2.4&#215; the rate</strong> of standard LTL &#8212; low 12% selection rate is the near-term opportunity</div>
         </div>
 
       </div>
     </div>
 
-  </main>
+    </main>
 </div>
 
 <script>
@@ -1703,6 +1564,23 @@ function revertToTuesday() {
 
 // Start on Dynamic Pricing view
 showView('dp');
+
+// Lane reporting widget controls — toggle active states on click
+document.addEventListener('click', function(e) {
+  var met = e.target.closest('.lr-met');
+  var per = e.target.closest('.lr-per');
+  var ico = e.target.closest('.lr-w-ico');
+  if (met) {
+    met.parentNode.querySelectorAll('.lr-met').forEach(function(b) { b.classList.remove('on'); });
+    met.classList.add('on');
+  } else if (per) {
+    per.parentNode.querySelectorAll('.lr-per').forEach(function(b) { b.classList.remove('on'); });
+    per.classList.add('on');
+  } else if (ico) {
+    ico.parentNode.querySelectorAll('.lr-w-ico').forEach(function(b) { b.classList.remove('on'); });
+    ico.classList.add('on');
+  }
+});
 </script>
 </body>
 </html>
