@@ -398,6 +398,163 @@
   .gc-success-sub { font-size: 14px; color: #555; max-width: 440px; line-height: 1.7; }
   .gc-success-cta { margin-top: 8px; padding: 12px 36px; background: #FF6200; color: #fff; border: none; border-radius: 4px; font-size: 14px; font-weight: 700; cursor: pointer; letter-spacing: 0.05em; font-family: inherit; }
   .gc-success-cta:hover { background: #e55600; }
+  /* ===== BOOK SHIPMENT FLOW ===== */
+  .bk-page { flex-direction: column; overflow: hidden; background: #ebebeb; }
+  /* Dashboard */
+  .bk-dash { display: flex; flex-direction: column; flex: 1; }
+  .bk-dash-bar { display: flex; align-items: center; gap: 8px; padding: 10px 18px; background: #ebebeb; border-bottom: 1px solid #ddd; flex-shrink: 0; }
+  .bk-dash-btn { padding: 8px 18px; background: #FF6200; color: #fff; border: none; border-radius: 4px; font-size: 12px; font-weight: 800; letter-spacing: 0.05em; cursor: pointer; font-family: inherit; }
+  .bk-dash-btn:hover { background: #e55600; }
+  .bk-sh-pill { margin-left: auto; padding: 6px 16px 6px 14px; background: #5c2d91; color: #fff; border: none; border-radius: 20px; font-size: 13px; cursor: pointer; font-family: inherit; }
+  .bk-dash-empty { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 8px; padding: 20px; }
+  .bk-dash-empty-title { font-size: 17px; color: #222; }
+  .bk-dash-empty-sub { font-size: 13px; color: #999; }
+  /* Booking flow wrapper */
+  .bk-flow { display: none; flex-direction: column; flex: 1; overflow: hidden; }
+  .bk-flow.show { display: flex; }
+  /* Stepper */
+  .bk-stepper { display: flex; background: #fff; border-bottom: 1px solid #e0e0e0; padding: 12px 20px 8px; flex-shrink: 0; }
+  .bk-stp { flex: 1; display: flex; flex-direction: column; align-items: center; position: relative; }
+  .bk-stp::after { content:''; position: absolute; top: 13px; left: calc(50% + 15px); right: calc(-50% + 15px); height: 1.5px; background: #ccc; }
+  .bk-stp:last-child::after { display: none; }
+  .bk-stp.done::after { background: #5c2d91; }
+  .bk-stp-c { width: 26px; height: 26px; border-radius: 50%; background: #ccc; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; z-index: 1; flex-shrink: 0; }
+  .bk-stp.active .bk-stp-c, .bk-stp.done .bk-stp-c { background: #5c2d91; }
+  .bk-stp-l { font-size: 10px; color: #aaa; margin-top: 4px; text-align: center; white-space: nowrap; }
+  .bk-stp.active .bk-stp-l { color: #5c2d91; font-weight: 700; }
+  .bk-stp.done .bk-stp-l { color: #444; }
+  /* Pane */
+  .bk-pane { flex: 1; overflow-y: auto; display: flex; flex-direction: column; }
+  /* Summary card */
+  .bk-sum { background: #fff; border-bottom: 1px solid #e0e0e0; padding: 12px 24px; font-size: 12px; color: #555; line-height: 1.6; flex-shrink: 0; }
+  /* Step 1 centered */
+  .bk-center { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; padding: 40px 20px; }
+  .bk-center h2 { font-size: 20px; font-weight: 500; color: #222; margin: 0; }
+  .bk-date-lbl { font-size: 12px; color: #555; margin-bottom: 6px; }
+  .bk-date-row { display: flex; align-items: center; gap: 10px; border-bottom: 1.5px solid #aaa; padding-bottom: 8px; min-width: 360px; }
+  .bk-date-ico { color: #888; font-size: 18px; }
+  .bk-date-row input { border: none; outline: none; font-size: 16px; color: #111; background: none; font-family: inherit; flex: 1; }
+  /* Two-column split (steps 2,3) */
+  .bk-split { display: flex; flex: 1; min-height: 0; }
+  .bk-split-form { flex: 1; padding: 20px 28px 10px; overflow-y: auto; }
+  .bk-split-map { flex: 0 0 360px; position: relative; overflow: hidden; background: #e5e0d5; }
+  /* Map styles */
+  .bk-map-svg { width: 100%; height: 100%; display: block; }
+  /* Form styles */
+  .bk-form-title { font-size: 18px; font-weight: 700; color: #222; margin: 0 0 18px; text-align: center; }
+  .bk-field { display: flex; flex-direction: column; }
+  .bk-field label { font-size: 11px; color: #888; margin-bottom: 3px; }
+  .bk-field input, .bk-field select { border: none; border-bottom: 1.5px solid #ccc; background: none; font-size: 13px; color: #111; padding: 3px 0; outline: none; font-family: inherit; transition: border-color 0.15s; }
+  .bk-field input:focus, .bk-field select:focus { border-bottom-color: #5c2d91; }
+  .bk-field-row { display: grid; gap: 16px; margin-bottom: 14px; }
+  .bk-col2 { grid-template-columns: 1fr 1fr; }
+  .bk-col3 { grid-template-columns: 1fr 1fr 1fr; }
+  .bk-col4 { grid-template-columns: 1fr 1.2fr 0.8fr 0.8fr; }
+  .bk-col22 { grid-template-columns: 1.8fr 0.7fr 1fr 1fr; }
+  .bk-acc-row { margin-bottom: 12px; }
+  .bk-acc-select { border: none; border-bottom: 1.5px solid #ccc; width: 100%; padding: 6px 0; font-size: 12px; color: #999; background: none; font-family: inherit; cursor: pointer; }
+  .bk-chip { display: inline-flex; align-items: center; gap: 6px; background: #5c2d91; color: #fff; border-radius: 20px; padding: 5px 14px; font-size: 12px; font-weight: 600; margin-top: 8px; cursor: pointer; border: none; font-family: inherit; }
+  /* Btn row */
+  .bk-btn-row { display: flex; justify-content: center; padding: 16px; flex-shrink: 0; }
+  .bk-next-btn, .bk-get-rates-btn { padding: 11px 36px; background: #FF6200; color: #fff; border: none; border-radius: 4px; font-size: 14px; font-weight: 700; cursor: pointer; letter-spacing: 0.05em; font-family: inherit; }
+  .bk-next-btn:hover, .bk-get-rates-btn:hover { background: #e55600; }
+  /* Line Items */
+  .bk-li-wrap { padding: 0 20px 20px; max-width: 960px; margin: 0 auto; width: 100%; box-sizing: border-box; }
+  .bk-li-title { font-size: 20px; font-weight: 700; color: #222; text-align: center; padding: 18px 0 14px; }
+  .bk-li-card { background: #fff; border: 1px solid #ddd; border-radius: 4px; padding: 18px 22px 14px; }
+  .bk-li-section { font-size: 14px; font-weight: 700; color: #222; margin: 0 0 12px; }
+  .bk-li-row { display: grid; gap: 14px; margin-bottom: 12px; }
+  .bk-li-col3 { grid-template-columns: 2fr 1fr 1.2fr; }
+  .bk-li-col3b { grid-template-columns: 1.2fr 1fr 1fr; }
+  .bk-li-split { display: grid; grid-template-columns: 1fr 220px; gap: 20px; }
+  .bk-li-toggles { padding-top: 4px; }
+  .bk-toggle-row { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #555; margin-bottom: 10px; cursor: pointer; }
+  .bk-toggle { width: 32px; height: 17px; border-radius: 9px; background: #ccc; position: relative; flex-shrink: 0; }
+  .bk-toggle::after { content:''; position: absolute; top: 2px; left: 2px; width: 13px; height: 13px; border-radius: 50%; background: #fff; }
+  .bk-check-row { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #555; margin-top: 6px; }
+  .bk-li-divider { height: 1px; background: #eee; margin: 12px 0; }
+  .bk-li-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 12px; border-top: 1px solid #eee; flex-wrap: wrap; gap: 10px; }
+  .bk-add-item { color: #5c2d91; font-weight: 700; font-size: 13px; cursor: pointer; background: none; border: none; font-family: inherit; }
+  .bk-total-wt { font-size: 13px; font-weight: 700; color: #333; letter-spacing: 0.03em; }
+  .bk-lin-ft { display: flex; align-items: baseline; gap: 6px; font-size: 12px; color: #555; }
+  .bk-lin-ft input { width: 44px; border: none; border-bottom: 1px solid #ccc; text-align: center; font-size: 13px; font-weight: 600; background: none; font-family: inherit; outline: none; }
+  /* Rates */
+  .bk-rates-wrap { padding: 0 20px 20px; max-width: 940px; margin: 0 auto; width: 100%; box-sizing: border-box; }
+  .bk-rates-title { font-size: 20px; font-weight: 700; color: #222; text-align: center; padding: 18px 0 14px; }
+  .bk-rate-group { margin-bottom: 4px; }
+  .bk-rate-group-hdr { display: flex; align-items: center; gap: 12px; padding: 10px 0 8px; border-top: 1.5px solid #ddd; }
+  .bk-rate-date { font-size: 17px; font-weight: 400; color: #333; }
+  .bk-fastest { font-size: 12px; font-weight: 700; color: #FF6200; }
+  .bk-faster-btn { padding: 4px 12px; border: 1.5px solid #5c2d91; border-radius: 20px; color: #5c2d91; background: none; font-size: 11px; font-weight: 600; cursor: pointer; font-family: inherit; }
+  .bk-rate-row { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-top: 1px solid #eee; }
+  .bk-fxf-logo { min-width: 160px; }
+  .bk-fxf-brand { font-size: 16px; font-weight: 900; }
+  .bk-fxf-pur { color: #4D148C; }
+  .bk-fxf-org { color: #FF6200; font-size: 12px; }
+  .bk-fxf-svc { font-size: 12px; color: #555; margin-top: 2px; }
+  .bk-rate-mid { flex: 1; }
+  .bk-rate-time-txt { font-size: 14px; color: #333; }
+  .bk-rate-guaranteed { font-size: 11px; color: #16a34a; font-weight: 600; }
+  .bk-rate-qid { font-size: 10px; color: #aaa; margin-top: 4px; }
+  .bk-rate-price-col { text-align: right; min-width: 130px; }
+  .bk-price-lbl { font-size: 10px; color: #555; margin-bottom: 3px; }
+  .bk-rate-btn { background: #FF6200; color: #fff; border: none; border-radius: 3px; padding: 8px 16px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit; }
+  .bk-rate-btn:hover { background: #e55600; }
+  .bk-expand-btn { width: 28px; height: 28px; background: none; border: none; cursor: pointer; color: #888; font-size: 16px; flex-shrink: 0; }
+  .bk-rate-breakdown { background: #f9f9f9; border-top: 1px solid #eee; padding: 10px 14px; margin-top: 2px; }
+  .bk-bd-row { display: flex; justify-content: space-between; font-size: 11px; color: #555; padding: 2px 0; }
+  .bk-bd-total { display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; color: #222; padding: 6px 0 2px; border-top: 1px solid #ccc; }
+  .bk-rate-notice { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #888; padding: 8px 0 4px; }
+  /* Finalize */
+  .bk-fin-wrap { padding: 0 24px 20px; max-width: 780px; margin: 0 auto; width: 100%; box-sizing: border-box; }
+  .bk-fin-title { font-size: 20px; font-weight: 700; color: #222; text-align: center; padding: 18px 0 8px; }
+  .bk-fin-subtitle { font-size: 17px; font-weight: 700; color: #222; margin: 12px 0; }
+  .bk-same-orig { display: flex; align-items: center; gap: 8px; font-size: 14px; color: #444; margin-bottom: 18px; cursor: pointer; }
+  /* Review */
+  .bk-review-outer { display: flex; gap: 18px; padding: 16px 20px; }
+  .bk-review-left { flex: 1; min-width: 0; }
+  .bk-review-right { flex: 0 0 240px; }
+  .bk-review-back { display: inline-flex; padding: 7px 18px; border: 2px solid #FF6200; color: #FF6200; background: none; border-radius: 3px; font-size: 12px; font-weight: 700; cursor: pointer; font-family: inherit; margin-bottom: 12px; }
+  .bk-review-card { background: #fff; border: 1px solid #ddd; border-radius: 4px; padding: 14px 18px; margin-bottom: 12px; }
+  .bk-review-card-hdr { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .bk-review-title { font-size: 16px; font-weight: 700; color: #222; }
+  .bk-edit-btn { padding: 5px 14px; border: 1.5px solid #5c2d91; color: #5c2d91; background: none; border-radius: 3px; font-size: 11px; cursor: pointer; font-family: inherit; }
+  .bk-review-data { font-size: 12px; color: #555; line-height: 1.7; }
+  .bk-review-chip { display: inline-flex; align-items: center; background: #5c2d91; color: #fff; border-radius: 20px; padding: 3px 12px; font-size: 11px; font-weight: 600; }
+  .bk-book-sidebar { background: #fff; border: 1px solid #ddd; border-radius: 4px; padding: 14px 16px; }
+  .bk-book-big-btn { display: block; width: 100%; padding: 11px; background: #ccc; color: #fff; border: none; border-radius: 3px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit; margin-bottom: 14px; letter-spacing: 0.04em; }
+  .bk-book-big-btn.ready { background: #5c2d91; cursor: pointer; }
+  .bk-book-big-btn.ready:hover { background: #4a2278; }
+  .bk-book-info { font-size: 13px; color: #333; line-height: 1.6; text-align: left; }
+  .bk-book-guaranteed { font-size: 11px; color: #16a34a; font-weight: 600; }
+  /* Modals */
+  .bk-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 9000; display: flex; align-items: center; justify-content: center; }
+  .bk-modal-box { background: #fff; border-radius: 6px; max-width: 520px; width: 92%; padding: 28px 30px; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
+  .bk-modal-x { position: absolute; top: 14px; right: 16px; background: none; border: none; font-size: 22px; cursor: pointer; color: #999; line-height: 1; font-family: inherit; }
+  .bk-modal-title { font-size: 20px; font-weight: 700; color: #111; margin: 0 0 12px; }
+  .bk-modal-body { font-size: 14px; color: #444; line-height: 1.6; margin-bottom: 18px; }
+  .bk-sc-box { border: 1px solid #e5e7eb; border-radius: 6px; padding: 14px 16px; display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+  .bk-sc-ico { width: 40px; height: 40px; border-radius: 50%; background: #111; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 20px; flex-shrink: 0; }
+  .bk-sc-lbl { font-size: 11px; color: #888; }
+  .bk-sc-num { font-size: 16px; font-weight: 700; color: #111; }
+  .bk-continue-btn { display: block; width: 100%; padding: 12px; background: #5c2d91; color: #fff; border: none; border-radius: 4px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit; }
+  /* BOL modal */
+  .bk-bol-box { background: #fff; border-radius: 4px; max-width: 900px; width: 95%; max-height: 88vh; display: flex; flex-direction: column; box-shadow: 0 10px 40px rgba(0,0,0,0.25); }
+  .bk-bol-hdr { padding: 16px 22px 12px; border-bottom: 1px solid #eee; flex-shrink: 0; display: flex; justify-content: space-between; align-items: flex-start; }
+  .bk-bol-hdr-l h2 { font-size: 20px; font-weight: 700; margin: 0 0 2px; }
+  .bk-bol-body { display: flex; flex: 1; overflow: hidden; }
+  .bk-bol-sidebar { width: 230px; flex-shrink: 0; padding: 16px 18px; border-right: 1px solid #eee; overflow-y: auto; }
+  .bk-bol-sb-title { font-size: 15px; font-weight: 700; margin: 0 0 3px; }
+  .bk-bol-sb-sys { font-size: 11px; color: #888; margin-bottom: 12px; }
+  .bk-bol-sb-note { font-size: 12px; color: #555; line-height: 1.5; }
+  .bk-bol-preview { flex: 1; overflow-y: auto; padding: 14px; background: #eee; }
+  .bk-bol-doc { background: #fff; border: 1px solid #ccc; padding: 14px 16px; font-size: 10px; font-family: Arial, sans-serif; }
+  .bk-bol-doc table { width: 100%; border-collapse: collapse; }
+  .bk-bol-doc td, .bk-bol-doc th { border: 1px solid #999; padding: 4px 6px; vertical-align: top; font-size: 10px; }
+  .bk-bol-doc .hdr-td { border: none; padding: 2px 4px; font-size: 11px; }
+  .bk-bol-ftns { padding: 12px 20px; border-top: 1px solid #eee; display: flex; justify-content: flex-end; gap: 10px; flex-shrink: 0; }
+  .bk-bol-share { padding: 9px 22px; border: 1.5px solid #5c2d91; color: #5c2d91; background: none; border-radius: 4px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit; }
+  .bk-bol-print { padding: 9px 22px; background: #5c2d91; color: #fff; border: none; border-radius: 4px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit; }
 </style>
 </head>
 <body>
@@ -406,7 +563,7 @@
 <nav class="g-nav">
   <span class="g-hamburger">&#9776;</span>
   <span class="g-logo"><span class="g-logo-ltl">LTL</span> <span class="g-logo-sel">Select</span></span>
-  <button class="g-nav-btn">BOOK SHIPMENT</button>
+  <button class="g-nav-btn" onclick="showView('book');bkShowDash()">BOOK SHIPMENT</button>
   <button class="g-nav-btn">QUICK RATE</button>
   <button class="g-nav-btn">REQUEST PICKUP</button>
   <button class="g-nav-btn">CREATE MANIFEST</button>
@@ -1111,7 +1268,7 @@
           <div class="gc-success-check">&#10003;</div>
           <div class="gc-success-title">Welcome, <span id="gc-welcome-name">there</span>!</div>
           <div class="gc-success-sub">Your FedEx Freight Guest Account has been created. You can now get freight quotes instantly &#8212; no account number required.</div>
-          <button class="gc-success-cta" onclick="showView('dp')">GET YOUR FIRST QUOTE &#8594;</button>
+          <button class="gc-success-cta" onclick="showView('book');bkShowDash()">GET YOUR FIRST QUOTE &#8594;</button>
         </div>
 
       </div>
@@ -1595,22 +1752,514 @@
 
       </div>
     </div>
+
+    <!-- ===== BOOK SHIPMENT FLOW ===== -->
+    <div id="view-book" class="bk-page" style="display:none;">
+
+      <!-- A. Dashboard empty state -->
+      <div id="bk-dash">
+        <div class="bk-dash-bar">
+          <button class="bk-dash-btn" onclick="bkStartFlow()">BOOK SHIPMENT</button>
+          <button class="bk-dash-btn">QUICK RATE</button>
+          <button class="bk-dash-btn">ADD LOCATION</button>
+          <button class="bk-sh-pill">Shipments &#9660;</button>
+        </div>
+        <div class="bk-dash-empty">
+          <div class="bk-dash-empty-title">Welcome to LTL Select! You have no quotes/shipments to display</div>
+          <div class="bk-dash-empty-sub">Quotes and shipments that you create will show up on this dashboard</div>
+        </div>
+      </div>
+
+      <!-- B. 7-step booking flow -->
+      <div id="bk-flow" class="bk-flow">
+
+        <!-- Stepper (rendered by JS) -->
+        <div class="bk-stepper" id="bk-stepper"></div>
+
+        <!-- Step 1: Basic Info -->
+        <div id="bk-s1" class="bk-pane" style="display:none;">
+          <div class="bk-center">
+            <h2>Tell us about your shipment.</h2>
+            <div>
+              <div class="bk-date-lbl">* Ship Date *</div>
+              <div class="bk-date-row">
+                <span class="bk-date-ico">&#128197;</span>
+                <input type="date" id="bk-shipdate">
+              </div>
+            </div>
+            <button class="bk-next-btn" onclick="bkGoTo(2)">NEXT</button>
+          </div>
+        </div>
+
+        <!-- Step 2: Origin -->
+        <div id="bk-s2" class="bk-pane" style="display:none;">
+          <div class="bk-sum" id="bk-sum2"></div>
+          <div class="bk-split" style="flex:1;min-height:0;">
+            <div class="bk-split-form">
+              <div class="bk-form-title">Origin Information</div>
+              <div class="bk-field-row bk-col2">
+                <div class="bk-field"><label>Company Name *</label><input type="text" value="LTL Select Demo LLC"></div>
+                <div></div>
+              </div>
+              <div class="bk-field-row bk-col2">
+                <div class="bk-field"><label>Address 1 *</label><input type="text" value="555 S State"></div>
+                <div class="bk-field"><label>Address 2</label><input type="text" placeholder="Address 2"></div>
+              </div>
+              <div class="bk-field-row bk-col4">
+                <div class="bk-field" style="color:#5c2d91;"><label style="color:#5c2d91;">Zip/Postal Code</label><input type="text" value="90210" style="border-bottom-color:#5c2d91;"></div>
+                <div class="bk-field"><label>City (Select or Enter)</label><input type="text" value="Beverly Hills"></div>
+                <div class="bk-field"><label>State</label><input type="text" value="CA"></div>
+                <div class="bk-field"><label>Country</label><input type="text" value="US"></div>
+              </div>
+              <div class="bk-field-row"><div class="bk-field"><label>Contact Name *</label><input type="text" value="Haley Basim"></div></div>
+              <div class="bk-field-row bk-col22">
+                <div class="bk-field" style="color:#5c2d91;"><label style="color:#5c2d91;">Contact Phone *</label><input type="tel" value="(425) 878-5654" style="border-bottom-color:#5c2d91;"></div>
+                <div class="bk-field"><label>Extension</label><input type="text" placeholder="Extension"></div>
+                <div class="bk-field"><label>Contact Email *</label><input type="email" value="hbasim+33@metafora.net"></div>
+                <div></div>
+              </div>
+              <div class="bk-acc-row"><select class="bk-acc-select"><option>Select Pickup Accessorials</option><option>Liftgate Pickup</option><option>Residential Pickup</option><option>Inside Pickup</option></select></div>
+              <button class="bk-chip">&#10003; Dock Pickup</button>
+            </div>
+            <div class="bk-split-map"><svg class="bk-map-svg" viewBox="0 0 360 420" xmlns="http://www.w3.org/2000/svg">
+  <rect width="360" height="420" fill="#e5e0d5"/>
+  <rect x="0" y="70" width="360" height="8" fill="#d0c8bb"/>
+  <rect x="0" y="140" width="360" height="12" fill="#c8bfb0" opacity="0.8"/>
+  <rect x="0" y="210" width="360" height="8" fill="#d0c8bb"/>
+  <rect x="0" y="280" width="360" height="6" fill="#d0c8bb"/>
+  <rect x="0" y="340" width="360" height="6" fill="#d0c8bb"/>
+  <rect x="70" y="0" width="8" height="420" fill="#d0c8bb"/>
+  <rect x="150" y="0" width="10" height="420" fill="#c8bfb0" opacity="0.8"/>
+  <rect x="230" y="0" width="7" height="420" fill="#d0c8bb"/>
+  <rect x="300" y="0" width="6" height="420" fill="#d0c8bb"/>
+  <rect x="82" y="80" width="58" height="52" fill="#ddd8cc"/>
+  <rect x="162" y="80" width="58" height="52" fill="#ddd8cc"/>
+  <rect x="82" y="152" width="58" height="48" fill="#ddd8cc"/>
+  <rect x="242" y="152" width="48" height="48" fill="#ddd8cc"/>
+  <rect x="82" y="220" width="58" height="52" fill="#ddd8cc"/>
+  <rect x="162" y="220" width="60" height="52" fill="#ddd8cc"/>
+  <rect x="162" y="292" width="58" height="38" fill="#ddd8cc"/>
+  <path d="M 175 195 C 175 195 157 178 157 168 C 157 157.5 165.4 149 175 149 C 184.6 149 193 157.5 193 168 C 193 178 175 195 175 195 Z" fill="#dc2626" stroke="#fff" stroke-width="2.5"/>
+  <circle cx="175" cy="168" r="5" fill="#fff"/>
+  <rect x="0" y="404" width="360" height="16" fill="rgba(255,255,255,0.75)"/>
+  <text x="6" y="415" font-size="8" font-family="Arial,sans-serif" fill="#555">Google</text>
+  <text x="46" y="415" font-size="7" font-family="Arial,sans-serif" fill="#888">Map data &#169;2026 Imagery &#169;2026 NASA | Terms</text>
+</svg></div>
+          </div>
+          <div class="bk-btn-row"><button class="bk-next-btn" onclick="bkGoTo(3)">NEXT</button></div>
+        </div>
+
+        <!-- Step 3: Destination -->
+        <div id="bk-s3" class="bk-pane" style="display:none;">
+          <div class="bk-sum" id="bk-sum3"><strong>Haley Basim</strong> &nbsp; (425) 878-5654 &nbsp; hbasim+33@metafora.net</div>
+          <div class="bk-split" style="flex:1;min-height:0;">
+            <div class="bk-split-form">
+              <div class="bk-form-title">Destination Information</div>
+              <div class="bk-field-row bk-col2">
+                <div class="bk-field"><label>Company Name *</label><input type="text" value="Another Test"></div>
+                <div></div>
+              </div>
+              <div class="bk-field-row bk-col2">
+                <div class="bk-field"><label>Address 1 *</label><input type="text" value="123 Test St"></div>
+                <div class="bk-field"><label>Address 2</label><input type="text" placeholder="Address 2"></div>
+              </div>
+              <div class="bk-field-row bk-col4">
+                <div class="bk-field"><label>Zip/Postal Code</label><input type="text" value="60609"></div>
+                <div class="bk-field"><label>City (Select or Enter)</label><input type="text" value="Stock Yards"></div>
+                <div class="bk-field"><label>State</label><input type="text" value="IL"></div>
+                <div class="bk-field"><label>Country</label><input type="text" value="US"></div>
+              </div>
+              <div class="bk-field-row"><div class="bk-field"><label>Contact Name *</label><input type="text" value="Haley Basim"></div></div>
+              <div class="bk-field-row bk-col22">
+                <div class="bk-field" style="color:#5c2d91;"><label style="color:#5c2d91;">Contact Phone *</label><input type="tel" value="(425) 960-2930" style="border-bottom-color:#5c2d91;"></div>
+                <div class="bk-field"><label>Extension</label><input type="text" placeholder="Extension"></div>
+                <div class="bk-field"><label>Contact Email *</label><input type="email" value="hbasim@metafora.net"></div>
+                <div></div>
+              </div>
+              <div class="bk-acc-row"><select class="bk-acc-select"><option>Select Delivery Accessorials</option><option>Liftgate Delivery</option><option>Residential Delivery</option><option>Inside Delivery</option></select></div>
+              <button class="bk-chip">&#10003; Dock Delivery</button>
+            </div>
+            <div class="bk-split-map"><svg class="bk-map-svg" viewBox="0 0 360 420" xmlns="http://www.w3.org/2000/svg">
+  <rect width="360" height="420" fill="#dbe8e0"/>
+  <rect x="0" y="55" width="360" height="6" fill="#c8d8ce"/>
+  <rect x="0" y="110" width="360" height="10" fill="#bfd0c5" opacity="0.9"/>
+  <rect x="0" y="165" width="360" height="6" fill="#c8d8ce"/>
+  <rect x="0" y="220" width="360" height="14" fill="#bfd0c5" opacity="0.9"/>
+  <rect x="0" y="285" width="360" height="6" fill="#c8d8ce"/>
+  <rect x="0" y="340" width="360" height="6" fill="#c8d8ce"/>
+  <rect x="0" y="380" width="360" height="5" fill="#c8d8ce"/>
+  <rect x="55" y="0" width="6" height="420" fill="#c8d8ce"/>
+  <rect x="110" y="0" width="10" height="420" fill="#bfd0c5" opacity="0.9"/>
+  <rect x="165" y="0" width="6" height="420" fill="#c8d8ce"/>
+  <rect x="220" y="0" width="14" height="420" fill="#bfd0c5" opacity="0.9"/>
+  <rect x="285" y="0" width="6" height="420" fill="#c8d8ce"/>
+  <rect x="330" y="0" width="5" height="420" fill="#c8d8ce"/>
+  <rect x="65" y="65" width="36" height="36" fill="#ccddc6"/>
+  <rect x="120" y="65" width="36" height="36" fill="#ccddc6"/>
+  <rect x="175" y="65" width="36" height="36" fill="#ccddc6"/>
+  <rect x="235" y="65" width="36" height="36" fill="#ccddc6"/>
+  <rect x="65" y="120" width="36" height="36" fill="#ccddc6"/>
+  <rect x="175" y="120" width="36" height="36" fill="#ccddc6"/>
+  <rect x="235" y="120" width="36" height="36" fill="#ccddc6"/>
+  <rect x="65" y="175" width="36" height="36" fill="#ccddc6"/>
+  <rect x="120" y="175" width="36" height="36" fill="#ccddc6"/>
+  <rect x="235" y="175" width="36" height="36" fill="#ccddc6"/>
+  <rect x="65" y="240" width="36" height="60" fill="#ccddc6"/>
+  <rect x="120" y="240" width="85" height="28" fill="#ccddc6"/>
+  <rect x="235" y="240" width="36" height="36" fill="#ccddc6"/>
+  <path d="M 185 175 C 185 175 167 158 167 148 C 167 137.5 175.4 129 185 129 C 194.6 129 203 137.5 203 148 C 203 158 185 175 185 175 Z" fill="#dc2626" stroke="#fff" stroke-width="2.5"/>
+  <circle cx="185" cy="148" r="5" fill="#fff"/>
+  <rect x="0" y="404" width="360" height="16" fill="rgba(255,255,255,0.75)"/>
+  <text x="6" y="415" font-size="8" font-family="Arial,sans-serif" fill="#555">Google</text>
+  <text x="46" y="415" font-size="7" font-family="Arial,sans-serif" fill="#888">Map data &#169;2026 | Terms | Report a map error</text>
+</svg></div>
+          </div>
+          <div class="bk-btn-row"><button class="bk-next-btn" onclick="bkGoTo(4)">NEXT</button></div>
+        </div>
+
+        <!-- Step 4: Line Items -->
+        <div id="bk-s4" class="bk-pane" style="display:none;">
+          <div class="bk-sum"><strong>Contact</strong> &nbsp; Haley Basim &nbsp; (425) 960-2930 &nbsp; hbasim@metafora.net</div>
+          <div class="bk-li-wrap">
+            <div class="bk-li-title">Line Items</div>
+            <div class="bk-li-card">
+              <button class="bk-li-card-close" style="position:absolute;top:10px;right:14px;background:none;border:none;font-size:18px;color:#aaa;cursor:pointer;">&#8963;</button>
+              <div class="bk-li-split">
+                <div>
+                  <div class="bk-li-section">Handling Unit Information</div>
+                  <div class="bk-li-row bk-li-col3">
+                    <div class="bk-field"><label>Package Type *</label>
+                      <select style="border:none;border-bottom:1.5px solid #ccc;background:none;font-size:13px;font-family:inherit;padding:3px 0;outline:none;">
+                        <option>Pallet 48x40</option><option>Pallet 40x48</option><option>Drum</option>
+                      </select>
+                    </div>
+                    <div class="bk-field"><label>H/U Count *</label><input type="number" value="1" min="1"></div>
+                    <div class="bk-field"><label>Total Weight (lb) *</label><input type="number" value="1000" style="background:#e8efff;"></div>
+                  </div>
+                  <div class="bk-li-row bk-li-col3b">
+                    <div class="bk-field"><label>Length (in) *</label><input type="number" value="48"></div>
+                    <div class="bk-field"><label>Width (in) *</label><input type="number" value="40"></div>
+                    <div class="bk-field"><label>Height (in) *</label><input type="number" value="40" style="background:#e8efff;"></div>
+                  </div>
+                  <div class="bk-check-row"><input type="checkbox" id="bk-nostack"><label for="bk-nostack">Do Not Stack</label></div>
+                  <div class="bk-li-divider"></div>
+                  <div class="bk-li-section" style="margin-top:10px;padding-left:16px;">Item Information</div>
+                  <div style="padding-left:16px;">
+                    <div class="bk-li-row bk-li-col3">
+                      <div class="bk-field"><label>Description *</label><input type="text" value="Test" style="background:#e8efff;"></div>
+                      <div class="bk-field"><label>Freight Class *</label>
+                        <select style="border:none;border-bottom:1.5px solid #ccc;background:#e8efff;font-size:13px;font-family:inherit;padding:3px 0;outline:none;">
+                          <option>65</option><option>50</option><option>70</option><option>85</option><option>92.5</option><option>100</option>
+                        </select>
+                      </div>
+                      <div></div>
+                    </div>
+                    <div class="bk-li-row bk-li-col3">
+                      <div class="bk-field"><label>NMFC</label><input type="text" placeholder="NMFC"></div>
+                      <div class="bk-field"><label>Subclass</label><input type="text" placeholder="Subclass"></div>
+                      <div class="bk-field"><label>Total Pieces *</label><input type="number" value="1"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="bk-li-toggles">
+                  <div class="bk-toggle-row"><div class="bk-toggle"></div><span>Specify Weight per H/U</span></div>
+                  <div class="bk-toggle-row"><div class="bk-toggle"></div><span>In-Bond Shipment (Additional surcharges apply)</span></div>
+                  <div class="bk-toggle-row"><div class="bk-toggle"></div><span>MultiClass H/U</span></div>
+                  <div style="height:20px;"></div>
+                  <div class="bk-toggle-row"><div class="bk-toggle"></div><span>Estimate Density-Based Freight Class</span></div>
+                  <div class="bk-toggle-row"><div class="bk-toggle"></div><span>HazMat</span></div>
+                </div>
+              </div>
+              <div class="bk-li-footer">
+                <button class="bk-add-item">&#43; ADD LINE ITEM</button>
+                <div class="bk-total-wt">TOTAL SHIPMENT WEIGHT: 1000 lb</div>
+                <div class="bk-lin-ft">Est. Linear Feet * <input type="number" value="4"></div>
+              </div>
+            </div>
+          </div>
+          <div class="bk-btn-row"><button class="bk-get-rates-btn" onclick="bkGoTo(5)">GET RATES</button></div>
+        </div>
+
+        <!-- Step 5: Rates -->
+        <div id="bk-s5" class="bk-pane" style="display:none;">
+          <div class="bk-rates-wrap">
+            <div class="bk-rates-title">Rates</div>
+            <!-- Date group 1 -->
+            <div class="bk-rate-group">
+              <div class="bk-rate-group-hdr">
+                <span class="bk-rate-date">Fri, Jul 24th</span>
+                <span class="bk-fastest">Fastest</span>
+                <button class="bk-faster-btn">&#43; Need it faster? Click here</button>
+              </div>
+              <!-- FedEx Priority - expanded rate -->
+              <div class="bk-rate-row">
+                <div class="bk-fxf-logo">
+                  <div><span class="bk-fxf-brand bk-fxf-pur">Fed</span><span class="bk-fxf-brand bk-fxf-org">Ex</span><span style="font-size:11px;color:#FF6200;font-weight:700;">.</span></div>
+                  <div style="font-size:10px;color:#FF6200;font-weight:700;margin:-2px 0 2px;">Freight</div>
+                  <div class="bk-fxf-svc">FedEx Freight &#174;Priority</div>
+                </div>
+                <div class="bk-rate-mid">
+                  <div class="bk-rate-time-txt">10:30 AM</div>
+                  <div class="bk-rate-guaranteed">Guaranteed</div>
+                  <div class="bk-rate-qid">ID#: 1494997683</div>
+                </div>
+                <div class="bk-rate-price-col">
+                  <div class="bk-price-lbl">3rd Party Pricing</div>
+                  <button class="bk-rate-btn" onclick="bkSelectRate('FedEx Freight ®Priority','Fri, Jul 24th','10:30 AM','US$2,364.50')">US$2,364.50</button>
+                </div>
+                <button class="bk-expand-btn" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">&#8964;</button>
+              </div>
+              <div class="bk-rate-breakdown" style="display:block;">
+                <div class="bk-bd-row"><span>Item Charge</span><span>US$3,537.50</span></div>
+                <div class="bk-bd-row"><span>GUARANTEED MORNING</span><span>US$212.00</span></div>
+                <div class="bk-bd-row"><span>CALIFORNIA COMPLIANCE</span><span>US$26.50</span></div>
+                <div class="bk-bd-row"><span>Fuel Surcharge</span><span>US$711.00</span></div>
+                <div class="bk-bd-row"><span>OTHER: less 60% discount</span><span>US$&#8722;2,122.50</span></div>
+                <div class="bk-bd-total"><span>Total:</span><span>US$2,364.50</span></div>
+              </div>
+              <!-- 5pm rate -->
+              <div class="bk-rate-row">
+                <div class="bk-fxf-logo"></div>
+                <div class="bk-rate-mid"><div class="bk-rate-time-txt">5:00 PM</div></div>
+                <div class="bk-rate-price-col">
+                  <div class="bk-price-lbl">3rd Party Pricing</div>
+                  <button class="bk-rate-btn" onclick="bkSelectRate('FedEx Freight ®Priority','Fri, Jul 24th','5:00 PM','US$2,059.86')">US$2,059.86</button>
+                </div>
+                <button class="bk-expand-btn" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">&#8964;</button>
+              </div>
+              <div class="bk-rate-breakdown" style="display:none;">
+                <div class="bk-bd-row"><span>Item Charge</span><span>US$3,537.50</span></div>
+                <div class="bk-bd-row"><span>Fuel Surcharge</span><span>US$644.00</span></div>
+                <div class="bk-bd-row"><span>OTHER: less 60% discount</span><span>US$&#8722;2,121.64</span></div>
+                <div class="bk-bd-total"><span>Total:</span><span>US$2,059.86</span></div>
+              </div>
+              <div class="bk-rate-notice">&#9432; All rates are not negotiated, but are calculated using a 60.0% incentive discount estimate.</div>
+            </div>
+            <!-- Date group 2 -->
+            <div class="bk-rate-group">
+              <div class="bk-rate-group-hdr"><span class="bk-rate-date">Tue, Jul 28th</span></div>
+              <div class="bk-rate-row">
+                <div class="bk-fxf-logo">
+                  <div><span class="bk-fxf-brand bk-fxf-pur">Fed</span><span class="bk-fxf-brand bk-fxf-org">Ex</span><span style="font-size:11px;color:#FF6200;font-weight:700;">.</span></div>
+                  <div style="font-size:10px;color:#FF6200;font-weight:700;margin:-2px 0 2px;">Freight</div>
+                  <div class="bk-fxf-svc">FedEx Freight &#174;Economy</div>
+                </div>
+                <div class="bk-rate-mid"><div class="bk-rate-time-txt">10:30 AM</div><div class="bk-rate-guaranteed">Guaranteed</div></div>
+                <div class="bk-rate-price-col">
+                  <div class="bk-price-lbl">3rd Party Pricing</div>
+                  <button class="bk-rate-btn" onclick="bkSelectRate('FedEx Freight ®Economy','Tue, Jul 28th','10:30 AM','US$2,186.37')">US$2,186.37</button>
+                </div>
+                <button class="bk-expand-btn" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">&#8964;</button>
+              </div>
+              <div class="bk-rate-breakdown" style="display:none;">
+                <div class="bk-bd-row"><span>Item Charge</span><span>US$3,537.50</span></div>
+                <div class="bk-bd-row"><span>GUARANTEED MORNING</span><span>US$212.00</span></div>
+                <div class="bk-bd-row"><span>Fuel Surcharge</span><span>US$648.00</span></div>
+                <div class="bk-bd-row"><span>OTHER: less 60% discount</span><span>US$&#8722;2,211.13</span></div>
+                <div class="bk-bd-total"><span>Total:</span><span>US$2,186.37</span></div>
+              </div>
+              <div class="bk-rate-row">
+                <div class="bk-fxf-logo"></div>
+                <div class="bk-rate-mid"><div class="bk-rate-time-txt">5:00 PM</div><div class="bk-rate-guaranteed">Guaranteed</div></div>
+                <div class="bk-rate-price-col">
+                  <div class="bk-price-lbl">3rd Party Pricing</div>
+                  <button class="bk-rate-btn" onclick="bkSelectRate('FedEx Freight ®Economy','Tue, Jul 28th','5:00 PM','US$2,074.28')">US$2,074.28</button>
+                </div>
+                <button class="bk-expand-btn" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">&#8964;</button>
+              </div>
+              <div class="bk-rate-breakdown" style="display:none;"><div class="bk-bd-total"><span>Total:</span><span>US$2,074.28</span></div></div>
+              <div class="bk-rate-row">
+                <div class="bk-fxf-logo"></div>
+                <div class="bk-rate-mid"><div class="bk-rate-time-txt">5:00 PM</div></div>
+                <div class="bk-rate-price-col">
+                  <div class="bk-price-lbl">3rd Party Pricing</div>
+                  <button class="bk-rate-btn" onclick="bkSelectRate('FedEx Freight ®Economy','Tue, Jul 28th','5:00 PM','US$1,881.72')">US$1,881.72</button>
+                </div>
+                <button class="bk-expand-btn" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">&#8964;</button>
+              </div>
+              <div class="bk-rate-breakdown" style="display:none;"><div class="bk-bd-total"><span>Total:</span><span>US$1,881.72</span></div></div>
+              <div class="bk-rate-notice">&#9432; All rates are not negotiated, but are calculated using a 60.0% incentive discount estimate.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 6: Finalize / Billing -->
+        <div id="bk-s6" class="bk-pane" style="display:none;">
+          <div class="bk-sum" id="bk-sum6"></div>
+          <div class="bk-fin-wrap">
+            <div class="bk-fin-title">Finalize</div>
+            <div class="bk-fin-subtitle">Billing Information</div>
+            <label class="bk-same-orig"><input type="checkbox" style="width:16px;height:16px;"> Same as Origin</label>
+            <div class="bk-field-row"><div class="bk-field"><label>Company Name *</label><input type="text" placeholder="Company Name"></div></div>
+            <div class="bk-field-row bk-col2">
+              <div class="bk-field"><label>Address 1 *</label><input type="text" placeholder="Address 1"></div>
+              <div class="bk-field"><label>Address 2</label><input type="text" placeholder="Address 2"></div>
+            </div>
+            <div class="bk-field-row bk-col4">
+              <div class="bk-field"><label>Zip/Postal Code</label><input type="text" placeholder=""></div>
+              <div class="bk-field"><label>City</label><input type="text" placeholder=""></div>
+              <div class="bk-field"><label>State</label><input type="text" placeholder=""></div>
+              <div class="bk-field"><label>Country</label><select style="border:none;border-bottom:1.5px solid #ccc;background:none;font-size:13px;font-family:inherit;padding:3px 0;outline:none;"><option>US</option><option>CA</option><option>MX</option></select></div>
+            </div>
+            <div class="bk-field-row"><div class="bk-field"><label>Contact Name *</label><input type="text" placeholder="Contact Name"></div></div>
+            <div class="bk-field-row bk-col22">
+              <div class="bk-field"><label>Contact Phone *</label><input type="tel" placeholder=""></div>
+              <div class="bk-field"><label>Extension</label><input type="text" placeholder="Extension"></div>
+              <div class="bk-field"><label>Contact Email *</label><input type="email" placeholder=""></div>
+              <div></div>
+            </div>
+          </div>
+          <div class="bk-btn-row"><button class="bk-next-btn" onclick="bkGoTo(7)">NEXT</button></div>
+        </div>
+
+        <!-- Step 7: Review and Book -->
+        <div id="bk-s7" class="bk-pane" style="display:none;">
+          <div class="bk-review-outer">
+            <div class="bk-review-left">
+              <button class="bk-review-back" onclick="bkGoTo(5)">&#8592; BACK TO RATES</button>
+              <div class="bk-review-card">
+                <div class="bk-review-card-hdr"><div class="bk-review-title">Basic Info</div></div>
+                <div class="bk-review-data">Ship Date<br><strong id="bk-rev-date">07/21/2026</strong></div>
+              </div>
+              <div class="bk-review-card">
+                <div class="bk-review-card-hdr"><div class="bk-review-title">Origin</div><button class="bk-edit-btn" onclick="bkGoTo(2)">EDIT</button></div>
+                <div class="bk-review-data" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                  <div><strong>Address</strong><br>LTL Select Demo LLC<br>555 S State<br>Beverly Hills, CA 90210</div>
+                  <div><strong>Accessorials</strong><br><span class="bk-review-chip">Dock Pickup</span></div>
+                </div>
+                <div class="bk-review-data" style="margin-top:12px;"><strong>Contact</strong><br>Haley Basim<br>(425) 878-5654<br>hbasim+33@metafora.net</div>
+              </div>
+              <div class="bk-review-card">
+                <div class="bk-review-card-hdr"><div class="bk-review-title">Destination</div><button class="bk-edit-btn" onclick="bkGoTo(3)">EDIT</button></div>
+                <div class="bk-review-data" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                  <div><strong>Address</strong><br>Another Test<br>123 Test St<br>Stock Yards, IL 60609</div>
+                  <div><strong>Accessorials</strong><br><span class="bk-review-chip">Dock Delivery</span></div>
+                </div>
+                <div class="bk-review-data" style="margin-top:12px;"><strong>Contact</strong><br>Haley Basim<br>(425) 960-2930<br>hbasim@metafora.net</div>
+              </div>
+              <div class="bk-review-card">
+                <div class="bk-review-card-hdr"><div class="bk-review-title">Line Items</div></div>
+                <div class="bk-review-data">Test, 1000lb, Class 65 &#8211; PLT4840, H/U Count: 1</div>
+              </div>
+            </div>
+            <div class="bk-review-right">
+              <div class="bk-book-sidebar">
+                <button class="bk-book-big-btn ready" onclick="bkBookShipment()">BOOK SHIPMENT</button>
+                <div class="bk-book-info">
+                  <div class="bk-book-date" id="bk-sel-date">Friday, Jul 24th</div>
+                  <div class="bk-book-guaranteed" id="bk-sel-time">10:30 AM &mdash; Guaranteed</div>
+                  <br>
+                  <span class="bk-fxf-brand bk-fxf-pur" style="font-size:14px;">Fed</span><span class="bk-fxf-brand bk-fxf-org" style="font-size:14px;">Ex</span><span style="font-size:10px;color:#FF6200;font-weight:700;">.</span>
+                  <div style="font-size:9px;color:#FF6200;font-weight:700;margin:-2px 0 2px;">Freight</div>
+                  <div id="bk-sel-svc" style="font-size:12px;color:#555;">FedEx Freight &#174;Priority</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /bk-flow -->
+
+      <!-- MODAL 1: Pickup Scheduling -->
+      <div id="bk-pickup-modal" class="bk-overlay" style="display:none;">
+        <div class="bk-modal-box">
+          <button class="bk-modal-x" onclick="document.getElementById('bk-pickup-modal').style.display='none'">&#215;</button>
+          <div class="bk-modal-title">Pickup Requires Scheduling</div>
+          <div class="bk-modal-body">In order for your shipment to be picked up, you must schedule it by calling the service center.</div>
+          <div class="bk-sc-box">
+            <div class="bk-sc-ico">&#128222;</div>
+            <div>
+              <div class="bk-sc-lbl">Pickup Service Center: SLG</div>
+              <div class="bk-sc-num">323-269-9800 Ext. 3</div>
+            </div>
+          </div>
+          <button class="bk-continue-btn" onclick="bkShowBOL()">CONTINUE</button>
+        </div>
+      </div>
+
+      <!-- MODAL 2: Bill of Lading -->
+      <div id="bk-bol-modal" class="bk-overlay" style="display:none;">
+        <div class="bk-bol-box">
+          <div class="bk-bol-hdr">
+            <div class="bk-bol-hdr-l">
+              <h2>Manage Document</h2>
+              <div style="font-size:11px;color:#888;">BOL &#35; 341836 &nbsp;|&nbsp; Quote ID: 1494997683</div>
+            </div>
+            <button style="background:none;border:none;font-size:22px;cursor:pointer;color:#999;line-height:1;" onclick="document.getElementById('bk-bol-modal').style.display='none'">&#215;</button>
+          </div>
+          <div class="bk-bol-body">
+            <div class="bk-bol-sidebar">
+              <div class="bk-bol-sb-title">Bill of Lading</div>
+              <div class="bk-bol-sb-sys">System File</div>
+              <div class="bk-bol-sb-note">Domestic shipping does not require a BOL when using the FedEx Freight shipping label (except for shipments containing hazardous materials).</div>
+            </div>
+            <div class="bk-bol-preview">
+              <div class="bk-bol-doc">
+                <table>
+                  <tr>
+                    <td style="width:35%;text-align:center;font-weight:900;font-size:14px;border:1px solid #999;padding:8px;">
+                      <span style="color:#4D148C;font-size:16px;">Fed</span><span style="color:#FF6200;font-size:16px;">Ex</span><span style="color:#FF6200;font-size:10px;font-weight:700;">.</span><br>
+                      <span style="font-size:9px;color:#FF6200;font-weight:700;">Freight</span>
+                    </td>
+                    <td style="width:30%;text-align:center;font-size:10px;color:#888;border:1px solid #999;padding:6px;">PLACE PRO STICKER HERE</td>
+                    <td style="font-size:9px;border:1px solid #999;padding:5px;line-height:1.7;">
+                      STRAIGHT BILL OF LADING<br>
+                      BOL # 341836<br>
+                      PO #<br>
+                      REF #
+                    </td>
+                  </tr>
+                </table>
+                <table style="margin-top:4px;">
+                  <tr>
+                    <td style="width:15%;font-weight:700;font-size:9px;padding:4px;background:#f5f5f5;">FROM (SHIPPER):</td>
+                    <td style="font-size:9px;padding:4px;line-height:1.6;">LTL Select Demo LLC<br>Haley Basim<br>555 S State<br>Beverly Hills, CA 90210<br>(425) 878-5654</td>
+                    <td style="width:15%;font-weight:700;font-size:9px;padding:4px;background:#f5f5f5;">TO (CONSIGNEE):</td>
+                    <td style="font-size:9px;padding:4px;line-height:1.6;">Another Test<br>Haley Basim<br>123 Test St<br>Stock Yards, IL 60609<br>(425) 960-2930</td>
+                  </tr>
+                </table>
+                <table style="margin-top:4px;"><tr><td style="font-size:9px;padding:5px;line-height:1.7;"><strong>Special instructions:</strong> &nbsp; PRIORITY A.M. Delivery<br><strong>JM60 COURTESY DISCOUNT APPLIES &#8211; Id: 1494997683 &#8211;</strong><br>Dock Delivery</td></tr></table>
+                <table style="margin-top:4px;border-collapse:collapse;">
+                  <tr style="background:#333;color:#fff;">
+                    <th style="padding:4px 6px;font-size:9px;">pcs</th><th style="padding:4px 6px;font-size:9px;">Units</th><th style="padding:4px 6px;font-size:9px;">Packaging</th><th style="padding:4px 6px;font-size:9px;">Haz Mat</th><th style="padding:4px 6px;font-size:9px;width:35%;">Kind of Packages, Description of Articles</th><th style="padding:4px 6px;font-size:9px;">DIMS(in)</th><th style="padding:4px 6px;font-size:9px;">NMFC</th><th style="padding:4px 6px;font-size:9px;">WEIGHT (lbs)</th><th style="padding:4px 6px;font-size:9px;">CLASS</th>
+                  </tr>
+                  <tr>
+                    <td style="padding:4px 6px;font-size:9px;text-align:center;">1</td><td style="padding:4px 6px;font-size:9px;text-align:center;">1</td><td style="padding:4px 6px;font-size:9px;">PLT4840</td><td style="padding:4px 6px;font-size:9px;text-align:center;">&#9744;</td><td style="padding:4px 6px;font-size:9px;">Test</td><td style="padding:4px 6px;font-size:9px;">48x40x40</td><td style="padding:4px 6px;font-size:9px;">&#8211;</td><td style="padding:4px 6px;font-size:9px;">1000</td><td style="padding:4px 6px;font-size:9px;">65.0</td>
+                  </tr>
+                </table>
+                <table style="margin-top:4px;"><tr><td style="font-size:9px;padding:4px;"><strong>Totals</strong></td></tr><tr><td style="font-size:9px;padding:3px 5px;">Units: 1 &nbsp;&nbsp; Spots: &nbsp;&nbsp; Weight: 1000 lbs</td></tr></table>
+                <table style="margin-top:6px;">
+                  <tr>
+                    <td style="font-size:9px;padding:4px;line-height:1.8;width:50%;">Billing terms: &nbsp; COLLECT: &#9744;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PREPAID: &#9746;<br>Account # &#42;&#42;&#42;&#42;3785 &nbsp; THIRD PARTY: &#9744;<br>Quote ID: 1494997683</td>
+                    <td style="font-size:9px;padding:4px;line-height:1.8;">Billing to:<br>LTL Select Demo LLC<br>555 S State<br>Beverly Hills, CA 90210</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="bk-bol-ftns">
+            <button class="bk-bol-share">SHARE</button>
+            <button class="bk-bol-print" onclick="window.print()">PRINT</button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /view-book -->
+
     </main>
 </div>
 
 <script>
 // ===== VIEW SWITCHING =====
 function showView(view) {
-  // Hide all views
-  ['dashboard','dp','monetize','guest','lane'].forEach(function(v) {
+  ['dashboard','dp','monetize','guest','lane','book'].forEach(function(v) {
     var el = document.getElementById('view-' + v);
     if (el) el.style.display = 'none';
   });
-
-  // Deactivate all sidebar items
   document.querySelectorAll('.sb-item').forEach(function(el) { el.classList.remove('active'); });
-
-  // Show target view
+  // Sidebar: hide when booking
+  var sb = document.querySelector('.g-sidebar');
+  if (sb) sb.style.display = view === 'book' ? 'none' : '';
   if (view === 'dashboard') {
     document.getElementById('view-dashboard').style.display = 'flex';
   } else if (view === 'dp') {
@@ -1625,6 +2274,8 @@ function showView(view) {
   } else if (view === 'lane') {
     document.getElementById('view-lane').style.display = 'flex';
     document.getElementById('sb-lane').classList.add('active');
+  } else if (view === 'book') {
+    document.getElementById('view-book').style.display = 'flex';
   }
 }
 
@@ -1909,6 +2560,100 @@ function revertToTuesday() {
       document.getElementById('gc-terms-bar').style.display = 'none';
     }
   });
+})();
+
+
+// ===== BOOK SHIPMENT FLOW =====
+var BK_STEPS = ['Basic Info','Origin','Destination','Line Items','Rates','Finalize','Review and Book'];
+var bkCurStep = 0;
+var bkSelectedRate = {svc:'FedEx Freight ®Priority', date:'Fri, Jul 24th', time:'10:30 AM', price:'US$2,364.50'};
+
+function bkShowDash() {
+  var dash = document.getElementById('bk-dash');
+  var flow = document.getElementById('bk-flow');
+  if (dash) dash.style.display = 'flex';
+  if (flow) flow.classList.remove('show');
+  bkCurStep = 0;
+}
+
+function bkStartFlow() {
+  var dash = document.getElementById('bk-dash');
+  var flow = document.getElementById('bk-flow');
+  if (dash) dash.style.display = 'none';
+  if (flow) flow.classList.add('show');
+  bkGoTo(1);
+}
+
+function bkRenderStepper(cur) {
+  var el = document.getElementById('bk-stepper');
+  if (!el) return;
+  var h = '';
+  BK_STEPS.forEach(function(name, i) {
+    var n = i + 1;
+    var cls = n < cur ? 'done' : (n === cur ? 'active' : '');
+    var inner = n < cur ? '&#10003;' : n;
+    h += '<div class="bk-stp ' + cls + '"><div class="bk-stp-c">' + inner + '</div><div class="bk-stp-l">' + name + '</div></div>';
+  });
+  el.innerHTML = h;
+}
+
+function bkGoTo(step) {
+  bkCurStep = step;
+  for (var i = 1; i <= 7; i++) {
+    var p = document.getElementById('bk-s' + i);
+    if (p) p.style.display = 'none';
+  }
+  var cur = document.getElementById('bk-s' + step);
+  if (cur) { cur.style.display = 'flex'; cur.scrollTop = 0; }
+  bkRenderStepper(step);
+  bkUpdateSummaries(step);
+}
+
+function bkUpdateSummaries(step) {
+  var d = document.getElementById('bk-shipdate');
+  var dateStr = d ? d.value : '2026-07-21';
+  var parts = dateStr.split('-');
+  var fmtDate = parts.length === 3 ? (parts[1] + '/' + parts[2] + '/' + parts[0]) : '07/21/2026';
+
+  if (step === 2) {
+    var s = document.getElementById('bk-sum2');
+    if (s) { s.innerHTML = '<strong>Ship Date</strong><br>' + fmtDate; }
+  }
+  if (step === 6) {
+    var s6 = document.getElementById('bk-sum6');
+    if (s6) { s6.innerHTML = '<span class="bk-fxf-brand bk-fxf-pur" style="font-size:14px;">Fed</span><span class="bk-fxf-brand bk-fxf-org" style="font-size:14px;">Ex</span> &nbsp; ' + (bkSelectedRate.svc || '') + ' &nbsp; <span style="color:#16a34a;font-size:11px;font-weight:600;">Guaranteed</span>'; }
+  }
+  if (step === 7) {
+    var rd = document.getElementById('bk-rev-date');
+    if (rd) rd.textContent = fmtDate;
+    var sd = document.getElementById('bk-sel-date');
+    if (sd) sd.textContent = bkSelectedRate.date || 'Friday, Jul 24th';
+    var st = document.getElementById('bk-sel-time');
+    if (st) st.innerHTML = (bkSelectedRate.time || '10:30 AM') + ' &mdash; Guaranteed';
+    var ss = document.getElementById('bk-sel-svc');
+    if (ss) ss.textContent = bkSelectedRate.svc || 'FedEx Freight ®Priority';
+  }
+}
+
+function bkSelectRate(svc, date, time, price) {
+  bkSelectedRate = {svc: svc, date: date, time: time, price: price};
+  bkGoTo(6);
+}
+
+function bkBookShipment() {
+  document.getElementById('bk-pickup-modal').style.display = 'flex';
+}
+
+function bkShowBOL() {
+  document.getElementById('bk-pickup-modal').style.display = 'none';
+  document.getElementById('bk-bol-modal').style.display = 'flex';
+}
+
+// Init ship date to today
+(function() {
+  var d = new Date();
+  var el = document.getElementById('bk-shipdate');
+  if (el) el.value = d.toISOString().split('T')[0];
 })();
 
 // Start on Dynamic Pricing view
