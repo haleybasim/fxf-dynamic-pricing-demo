@@ -274,80 +274,81 @@
 
   .ltls-foot { display: flex; gap: 10px; align-items: center; padding: 10px 16px; background: #fff; border-top: 1px solid #e5e7eb; flex-shrink: 0; }
 
-  /* ===== LANE REPORTING DASHBOARD (analytics widget style) ===== */
+  /* ===== LANE REPORTING DASHBOARD ===== */
   .lr-page { flex-direction: column; overflow-y: auto; background: #f3f4f6; }
   .lr-topbar { background: #fff; border-bottom: 1px solid #e5e7eb; padding: 11px 20px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
   .lr-topbar-title { font-size: 15px; font-weight: 700; color: #1a1a2e; }
   .lr-topbar-sub { font-size: 11px; color: #6b7280; margin-top: 2px; }
   .lr-concept-tag { background: #f0e8f8; color: #4D148C; font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px; flex-shrink: 0; }
-  /* Widget grid */
   .lr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding: 14px; }
   .lr-widget { background: #fff; border: 1px solid #e5e7eb; display: flex; flex-direction: column; min-width: 0; }
-  /* Widget header */
-  .lr-w-hdr { padding: 11px 16px 9px; border-bottom: 2px solid #FF6200; display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
-  .lr-w-title { font-size: 14px; font-weight: 600; color: #1a1a2e; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .lr-w-hdr { padding: 10px 14px 8px; border-bottom: 2px solid #FF6200; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .lr-w-title { font-size: 13px; font-weight: 700; color: #1a1a2e; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .lr-w-date { font-size: 10px; color: #9ca3af; white-space: nowrap; flex-shrink: 0; }
-  /* Icon row */
-  .lr-w-icons { display: flex; gap: 4px; padding: 7px 16px; border-bottom: 1px solid #f3f4f6; }
-  .lr-w-ico { width: 28px; height: 28px; border: 1px solid #e5e7eb; border-radius: 4px; background: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #9ca3af; transition: all 0.15s; padding: 0; flex-shrink: 0; }
-  .lr-w-ico.on { background: #f5f3ff; border-color: #7c3aed; color: #7c3aed; }
-  /* Metric + period row */
-  .lr-ctrl { display: flex; align-items: center; justify-content: space-between; padding: 6px 16px; border-bottom: 1px solid #f3f4f6; gap: 8px; min-height: 0; }
-  .lr-met-grp { display: flex; flex-shrink: 0; }
-  .lr-met { padding: 3px 8px; font-size: 10px; font-weight: 700; letter-spacing: 0.02em; color: #6b7280; background: none; border: 1px solid #e5e7eb; cursor: pointer; line-height: 1.5; transition: all 0.15s; }
-  .lr-met:first-child { border-radius: 4px 0 0 4px; }
-  .lr-met:last-child { border-radius: 0 4px 4px 0; }
-  .lr-met + .lr-met { border-left: none; }
-  .lr-met.on { background: #7c3aed; color: #fff; border-color: #7c3aed; }
+  .lr-w-icons { display: flex; gap: 6px; padding: 8px 14px; border-bottom: 1px solid #f3f4f6; align-items: center; }
+  .lr-w-ico { width: 30px; height: 30px; border: 1px solid #e5e7eb; border-radius: 6px; background: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #9ca3af; transition: all 0.15s; padding: 0; flex-shrink: 0; }
+  .lr-w-ico.on { background: #ede9fe; border-color: #7c3aed; color: #6d28d9; }
+  .lr-ctrl { display: flex; align-items: center; justify-content: space-between; padding: 5px 14px; border-bottom: 1px solid #f3f4f6; gap: 8px; }
+  .lr-met-grp { display: flex; border: 1px solid #e5e7eb; border-radius: 5px; overflow: hidden; flex-shrink: 0; }
+  .lr-met { padding: 4px 9px; font-size: 10px; font-weight: 700; letter-spacing: 0.02em; color: #9ca3af; background: #fff; border: none; border-right: 1px solid #e5e7eb; cursor: pointer; line-height: 1.4; transition: all 0.15s; }
+  .lr-met:last-child { border-right: none; }
+  .lr-met.on { color: #6d28d9; background: #ede9fe; }
   .lr-per-grp { display: flex; gap: 1px; }
-  .lr-per { padding: 3px 6px; font-size: 10px; font-weight: 700; color: #9ca3af; background: none; border: none; border-radius: 3px; cursor: pointer; line-height: 1.4; transition: all 0.15s; }
-  .lr-per.on { background: #f0e8f8; color: #7c3aed; }
-  /* Data rows */
-  .lr-rows { flex: 1; }
-  .lr-drow { display: flex; align-items: center; justify-content: space-between; padding: 9px 16px; border-bottom: 1px solid #f9fafb; font-size: 13px; }
+  .lr-per { padding: 4px 6px; font-size: 10px; font-weight: 700; color: #9ca3af; background: none; border: none; border-radius: 3px; cursor: pointer; line-height: 1.4; transition: all 0.15s; }
+  .lr-per.on { background: #ede9fe; color: #6d28d9; }
+  .lr-custom-row { display: none; align-items: center; gap: 8px; padding: 8px 14px; border-bottom: 1px solid #f3f4f6; }
+  .lr-custom-row.open { display: flex; }
+  .lr-date-field { flex: 1; border: 1.5px solid #d1d5db; border-radius: 7px; padding: 5px 8px; position: relative; display: flex; align-items: center; gap: 4px; }
+  .lr-date-lbl { position: absolute; top: -6px; left: 7px; background: #fff; padding: 0 3px; font-size: 9px; color: #6b7280; font-weight: 700; letter-spacing: 0.04em; }
+  .lr-date-field input[type=date] { border: none; outline: none; font-size: 11px; font-weight: 600; color: #111827; background: none; width: 100%; }
+  .lr-date-ico { color: #9ca3af; font-size: 12px; flex-shrink: 0; }
+  .lr-custom-x { width: 24px; height: 24px; background: #f3f4f6; border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #6b7280; font-size: 14px; font-weight: 700; flex-shrink: 0; line-height: 1; }
+  .lr-views { flex: 1; display: flex; flex-direction: column; }
+  .lr-view { display: none; flex-direction: column; flex: 1; }
+  .lr-view.active { display: flex; }
+  .lr-view-donut, .lr-view-bar { min-height: 180px; align-items: center; justify-content: center; }
+  .lr-view-chart { padding: 8px 14px 6px; width: 100%; box-sizing: border-box; }
+  .lr-rows { }
+  .lr-drow { display: flex; align-items: center; justify-content: space-between; padding: 8px 14px; border-bottom: 1px solid #f9fafb; font-size: 12px; }
   .lr-drow:last-child { border-bottom: none; }
-  .lr-dlbl { color: #374151; display: flex; align-items: center; gap: 6px; min-width: 0; }
+  .lr-drow.total { background: #fafafa; }
+  .lr-dlbl { color: #374151; display: flex; align-items: center; gap: 5px; min-width: 0; }
   .lr-dval { font-weight: 700; color: #111827; font-size: 13px; text-align: right; flex-shrink: 0; }
   .lr-dval.red { color: #dc2626; }
   .lr-dval.grn { color: #16a34a; }
   .lr-dval.pur { color: #7c3aed; }
   .lr-dval.amb { color: #d97706; }
-  /* Carrier tags */
+  .lr-dval.big { font-size: 16px; }
   .lr-ctag { font-size: 10px; font-weight: 700; padding: 1px 5px; border-radius: 3px; display: inline-block; flex-shrink: 0; }
   .c-xpo { background: #dbeafe; color: #1d4ed8; }
   .c-od  { background: #d1fae5; color: #065f46; }
   .c-est { background: #fef3c7; color: #92400e; }
   .c-oth { background: #f3f4f6; color: #6b7280; }
   .c-fxf { background: #f0e8f8; color: #4D148C; }
-  /* Win rate bars */
-  .lr-wr-row { display: flex; align-items: center; gap: 10px; padding: 8px 16px; border-bottom: 1px solid #f9fafb; }
+  .lr-wr-row { display: flex; align-items: center; gap: 10px; padding: 7px 14px; border-bottom: 1px solid #f9fafb; }
   .lr-wr-row:last-child { border-bottom: none; }
-  .lr-wr-lbl { font-size: 12px; color: #374151; width: 115px; flex-shrink: 0; }
-  .lr-wr-track { flex: 1; height: 10px; background: #f3f4f6; border-radius: 4px; overflow: hidden; }
+  .lr-wr-lbl { font-size: 11px; color: #374151; width: 105px; flex-shrink: 0; }
+  .lr-wr-track { flex: 1; height: 9px; background: #f3f4f6; border-radius: 4px; overflow: hidden; }
   .lr-wr-fill { height: 100%; border-radius: 4px; }
-  .lr-wr-pct { font-size: 12px; font-weight: 700; width: 30px; text-align: right; flex-shrink: 0; }
-  /* Premium grid */
-  .lr-prem-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 4px; padding: 8px 16px; border-top: 1px solid #f3f4f6; }
+  .lr-wr-pct { font-size: 11px; font-weight: 700; width: 28px; text-align: right; flex-shrink: 0; }
+  .lr-prem-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 4px; padding: 8px 14px; border-top: 1px solid #f3f4f6; }
   .lr-prem-cell { background: #f9fafb; border-radius: 4px; padding: 6px 4px; text-align: center; }
-  .lr-prem-val { font-size: 14px; font-weight: 800; line-height: 1; }
+  .lr-prem-val { font-size: 13px; font-weight: 800; line-height: 1; }
   .lr-prem-lbl { font-size: 9px; color: #9ca3af; margin-top: 2px; line-height: 1.3; }
-  /* Day-of-week bars */
-  .lr-day-wrap { padding: 12px 16px 0; display: flex; align-items: flex-end; gap: 8px; height: 80px; }
+  .lr-day-wrap { padding: 10px 14px 0; display: flex; align-items: flex-end; gap: 8px; height: 72px; }
   .lr-day-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; }
   .lr-day-bar { width: 100%; border-radius: 2px 2px 0 0; }
-  .lr-day-lbl { font-size: 10px; color: #9ca3af; }
-  .lr-day-pct { font-size: 10px; font-weight: 700; color: #374151; }
-  .lr-day-line { height: 1px; background: #f3f4f6; margin: 0 16px 0; }
-  /* Compact table */
+  .lr-day-lbl { font-size: 9px; color: #9ca3af; }
+  .lr-day-pct { font-size: 9px; font-weight: 700; color: #374151; }
+  .lr-day-line { height: 1px; background: #f3f4f6; margin: 0 14px; }
   .lr-tbl { width: 100%; border-collapse: collapse; }
-  .lr-tbl th { padding: 5px 16px; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: #9ca3af; text-align: left; background: #fafafa; border-bottom: 1px solid #f3f4f6; }
-  .lr-tbl td { padding: 7px 16px; border-bottom: 1px solid #f9fafb; font-size: 12px; color: #374151; vertical-align: middle; }
+  .lr-tbl th { padding: 5px 14px; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: #9ca3af; text-align: left; background: #fafafa; border-bottom: 1px solid #f3f4f6; }
+  .lr-tbl td { padding: 7px 14px; border-bottom: 1px solid #f9fafb; font-size: 11px; color: #374151; vertical-align: middle; }
   .lr-tbl tr:last-child td { border-bottom: none; }
   .lr-tbl .tg { color: #16a34a; font-weight: 600; }
   .lr-tbl .tr { color: #dc2626; font-weight: 700; }
   .lr-tbl .tb { font-weight: 600; color: #111827; }
-  /* Widget footer */
-  .lr-w-foot { padding: 7px 16px; background: #f9fafb; border-top: 1px solid #f3f4f6; font-size: 11px; color: #6b7280; line-height: 1.4; }
+  .lr-w-foot { padding: 7px 14px; background: #f9fafb; border-top: 1px solid #f3f4f6; font-size: 11px; color: #6b7280; line-height: 1.4; flex-shrink: 0; }
   .lr-w-foot strong { color: #374151; font-weight: 600; }
 </style>
 </head>
@@ -987,7 +988,6 @@
     <!-- ===== LANE REPORTING DASHBOARD ===== -->
     <div id="view-lane" class="lr-page" style="display:none;">
 
-      <!-- Header -->
       <div class="lr-topbar">
         <div>
           <div class="lr-topbar-title">Lane Reporting Dashboard</div>
@@ -996,19 +996,18 @@
         <span class="lr-concept-tag">CONCEPT PROTOTYPE</span>
       </div>
 
-      <!-- Widget grid -->
       <div class="lr-grid">
 
-        <!-- WIDGET 1: Win / Loss Overview -->
-        <div class="lr-widget">
+        <!-- W1: Win / Loss Overview -->
+        <div class="lr-widget" data-wid="1">
           <div class="lr-w-hdr">
             <span class="lr-w-title">FXF Win / Loss Overview</span>
-            <span class="lr-w-date">04/21/2026 &#8211; 07/19/2026</span>
+            <span class="lr-w-date"></span>
           </div>
           <div class="lr-w-icons">
-            <button class="lr-w-ico on" title="Table"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="0" y="0" width="5" height="5" rx="0.5"/><rect x="7" y="0" width="5" height="5" rx="0.5"/><rect x="0" y="7" width="5" height="5" rx="0.5"/><rect x="7" y="7" width="5" height="5" rx="0.5"/></svg></button>
-            <button class="lr-w-ico" title="Donut"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 0A6 6 0 1 0 6 12A6 6 0 0 0 6 0ZM6 4A2 2 0 1 1 6 8A2 2 0 0 1 6 4Z"/><path d="M6 0 L6 4 A2 2 0 0 1 8 6 L12 6 A6 6 0 0 0 6 0Z" fill="currentColor" opacity="0.4"/></svg></button>
-            <button class="lr-w-ico" title="Bar"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="0" y="5" width="3" height="7" rx="0.5"/><rect x="4.5" y="2" width="3" height="10" rx="0.5"/><rect x="9" y="0" width="3" height="12" rx="0.5"/></svg></button>
+            <button class="lr-w-ico on" data-view="table" title="Table"><svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor"><rect x="0.5" y="0.5" width="5" height="5" rx="0.5"/><rect x="7.5" y="0.5" width="5" height="5" rx="0.5"/><rect x="0.5" y="7.5" width="5" height="5" rx="0.5"/><rect x="7.5" y="7.5" width="5" height="5" rx="0.5"/></svg></button>
+            <button class="lr-w-ico" data-view="donut" title="Donut"><svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor"><path d="M6.5 0.5a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm0 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5z" fill-rule="evenodd"/><path d="M6.5 0.5v3.5a2.5 2.5 0 0 1 2.5 2.5h3.5a6 6 0 0 0-6-6z" fill="currentColor" opacity="0.35"/></svg></button>
+            <button class="lr-w-ico" data-view="bar" title="Bar"><svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor"><rect x="0" y="5" width="3.5" height="8" rx="0.5"/><rect x="4.75" y="2" width="3.5" height="11" rx="0.5"/><rect x="9.5" y="0" width="3.5" height="13" rx="0.5"/></svg></button>
           </div>
           <div class="lr-ctrl">
             <div class="lr-met-grp">
@@ -1017,33 +1016,52 @@
               <button class="lr-met">RATE</button>
             </div>
             <div class="lr-per-grp">
-              <button class="lr-per">1D</button>
-              <button class="lr-per">7D</button>
-              <button class="lr-per">1M</button>
-              <button class="lr-per on">3M</button>
-              <button class="lr-per">1Y</button>
-              <button class="lr-per">CUSTOM</button>
+              <button class="lr-per" data-per="1d">1D</button>
+              <button class="lr-per" data-per="7d">7D</button>
+              <button class="lr-per" data-per="1m">1M</button>
+              <button class="lr-per on" data-per="3m">3M</button>
+              <button class="lr-per" data-per="1y">1Y</button>
+              <button class="lr-per" data-per="custom">CUSTOM</button>
             </div>
           </div>
-          <div class="lr-rows">
-            <div class="lr-drow"><span class="lr-dlbl"><span class="lr-ctag c-fxf">FXF</span> Won</span><span class="lr-dval grn">1,985</span></div>
-            <div class="lr-drow"><span class="lr-dlbl">Competitor Won</span><span class="lr-dval red">3,841</span></div>
-            <div class="lr-drow"><span class="lr-dlbl">Quoted, Not Booked</span><span class="lr-dval">892</span></div>
-            <div class="lr-drow" style="background:#fafafa;"><span class="lr-dlbl" style="font-weight:700;color:#111827;">Total Quotes</span><span class="lr-dval" style="font-size:16px;">6,718</span></div>
+          <div class="lr-custom-row">
+          <div class="lr-date-field">
+            <span class="lr-date-lbl">START DATE</span>
+            <input type="date" value="2026-04-21">
+            <span class="lr-date-ico">&#128197;</span>
+          </div>
+          <div class="lr-date-field">
+            <span class="lr-date-lbl">END DATE</span>
+            <input type="date" value="2026-07-19">
+            <span class="lr-date-ico">&#128197;</span>
+          </div>
+          <button class="lr-custom-x">&#215;</button>
+        </div>
+          <div class="lr-views">
+            <div class="lr-view lr-view-table active">
+              <div class="lr-rows">
+                <div class="lr-drow"><span class="lr-dlbl"><span class="lr-ctag c-fxf">FXF</span> Won</span><span class="lr-dval grn">1,985</span></div>
+                <div class="lr-drow"><span class="lr-dlbl">Competitor Won</span><span class="lr-dval red">3,841</span></div>
+                <div class="lr-drow"><span class="lr-dlbl">Quoted, Not Booked</span><span class="lr-dval">892</span></div>
+                <div class="lr-drow total"><span class="lr-dlbl" style="font-weight:700;color:#111827;">Total Quotes</span><span class="lr-dval big">6,718</span></div>
+              </div>
+            </div>
+            <div class="lr-view lr-view-donut"></div>
+            <div class="lr-view lr-view-bar"></div>
           </div>
           <div class="lr-w-foot"><strong>Win rate: 34%</strong> &#8212; down 3pts vs. prior 90 days</div>
         </div>
 
-        <!-- WIDGET 2: Price Gap by Lane -->
-        <div class="lr-widget">
+        <!-- W2: Price Gap by Lane -->
+        <div class="lr-widget" data-wid="2">
           <div class="lr-w-hdr">
             <span class="lr-w-title">Price Gap by Lane</span>
-            <span class="lr-w-date">04/21/2026 &#8211; 07/19/2026</span>
+            <span class="lr-w-date"></span>
           </div>
           <div class="lr-w-icons">
-            <button class="lr-w-ico on" title="Table"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="0" y="0" width="5" height="5" rx="0.5"/><rect x="7" y="0" width="5" height="5" rx="0.5"/><rect x="0" y="7" width="5" height="5" rx="0.5"/><rect x="7" y="7" width="5" height="5" rx="0.5"/></svg></button>
-            <button class="lr-w-ico" title="Donut"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 0A6 6 0 1 0 6 12A6 6 0 0 0 6 0ZM6 4A2 2 0 1 1 6 8A2 2 0 0 1 6 4Z"/></svg></button>
-            <button class="lr-w-ico" title="Bar"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="0" y="5" width="3" height="7" rx="0.5"/><rect x="4.5" y="2" width="3" height="10" rx="0.5"/><rect x="9" y="0" width="3" height="12" rx="0.5"/></svg></button>
+            <button class="lr-w-ico on" data-view="table" title="Table"><svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor"><rect x="0.5" y="0.5" width="5" height="5" rx="0.5"/><rect x="7.5" y="0.5" width="5" height="5" rx="0.5"/><rect x="0.5" y="7.5" width="5" height="5" rx="0.5"/><rect x="7.5" y="7.5" width="5" height="5" rx="0.5"/></svg></button>
+            <button class="lr-w-ico" data-view="donut" title="Donut"><svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor"><path d="M6.5 0.5a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm0 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5z" fill-rule="evenodd"/><path d="M6.5 0.5v3.5a2.5 2.5 0 0 1 2.5 2.5h3.5a6 6 0 0 0-6-6z" fill="currentColor" opacity="0.35"/></svg></button>
+            <button class="lr-w-ico" data-view="bar" title="Bar"><svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor"><rect x="0" y="5" width="3.5" height="8" rx="0.5"/><rect x="4.75" y="2" width="3.5" height="11" rx="0.5"/><rect x="9.5" y="0" width="3.5" height="13" rx="0.5"/></svg></button>
           </div>
           <div class="lr-ctrl">
             <div class="lr-met-grp">
@@ -1052,35 +1070,54 @@
               <button class="lr-met">RANK</button>
             </div>
             <div class="lr-per-grp">
-              <button class="lr-per">1D</button>
-              <button class="lr-per">7D</button>
-              <button class="lr-per">1M</button>
-              <button class="lr-per on">3M</button>
-              <button class="lr-per">1Y</button>
-              <button class="lr-per">CUSTOM</button>
+              <button class="lr-per" data-per="1d">1D</button>
+              <button class="lr-per" data-per="7d">7D</button>
+              <button class="lr-per" data-per="1m">1M</button>
+              <button class="lr-per on" data-per="3m">3M</button>
+              <button class="lr-per" data-per="1y">1Y</button>
+              <button class="lr-per" data-per="custom">CUSTOM</button>
             </div>
           </div>
-          <div class="lr-rows">
-            <div class="lr-drow"><span class="lr-dlbl">Chicago &#8594; Los Angeles &nbsp;<span class="lr-ctag c-xpo">XPO</span></span><span class="lr-dval red">+$148</span></div>
-            <div class="lr-drow"><span class="lr-dlbl">Dallas &#8594; Atlanta &nbsp;<span class="lr-ctag c-od">OD</span></span><span class="lr-dval red">+$124</span></div>
-            <div class="lr-drow"><span class="lr-dlbl">New York &#8594; Miami &nbsp;<span class="lr-ctag c-est">Estes</span></span><span class="lr-dval amb">+$95</span></div>
-            <div class="lr-drow"><span class="lr-dlbl">Boston &#8594; Chicago &nbsp;<span class="lr-ctag c-est">Estes</span></span><span class="lr-dval amb">+$58</span></div>
-            <div class="lr-drow"><span class="lr-dlbl">Seattle &#8594; Phoenix &nbsp;<span class="lr-ctag c-xpo">XPO</span></span><span class="lr-dval amb">+$50</span></div>
-            <div class="lr-drow"><span class="lr-dlbl">Los Angeles &#8594; Denver &nbsp;<span class="lr-ctag c-od">OD</span></span><span class="lr-dval amb">+$37</span></div>
+          <div class="lr-custom-row">
+          <div class="lr-date-field">
+            <span class="lr-date-lbl">START DATE</span>
+            <input type="date" value="2026-04-21">
+            <span class="lr-date-ico">&#128197;</span>
+          </div>
+          <div class="lr-date-field">
+            <span class="lr-date-lbl">END DATE</span>
+            <input type="date" value="2026-07-19">
+            <span class="lr-date-ico">&#128197;</span>
+          </div>
+          <button class="lr-custom-x">&#215;</button>
+        </div>
+          <div class="lr-views">
+            <div class="lr-view lr-view-table active">
+              <div class="lr-rows">
+                <div class="lr-drow"><span class="lr-dlbl">Chicago &#8594; LA &nbsp;<span class="lr-ctag c-xpo">XPO</span></span><span class="lr-dval red">+$148</span></div>
+                <div class="lr-drow"><span class="lr-dlbl">Dallas &#8594; Atlanta &nbsp;<span class="lr-ctag c-od">OD</span></span><span class="lr-dval red">+$124</span></div>
+                <div class="lr-drow"><span class="lr-dlbl">New York &#8594; Miami &nbsp;<span class="lr-ctag c-est">Estes</span></span><span class="lr-dval amb">+$95</span></div>
+                <div class="lr-drow"><span class="lr-dlbl">Boston &#8594; Chicago &nbsp;<span class="lr-ctag c-est">Estes</span></span><span class="lr-dval amb">+$58</span></div>
+                <div class="lr-drow"><span class="lr-dlbl">Seattle &#8594; Phoenix &nbsp;<span class="lr-ctag c-xpo">XPO</span></span><span class="lr-dval amb">+$50</span></div>
+                <div class="lr-drow"><span class="lr-dlbl">Los Angeles &#8594; Denver &nbsp;<span class="lr-ctag c-od">OD</span></span><span class="lr-dval amb">+$37</span></div>
+              </div>
+            </div>
+            <div class="lr-view lr-view-donut"></div>
+            <div class="lr-view lr-view-bar"></div>
           </div>
           <div class="lr-w-foot"><strong>Avg gap when losing: +$52</strong> &#8212; FXF more expensive than winner</div>
         </div>
 
-        <!-- WIDGET 3: Carrier Win Share -->
-        <div class="lr-widget">
+        <!-- W3: Carrier Win Share -->
+        <div class="lr-widget" data-wid="3">
           <div class="lr-w-hdr">
             <span class="lr-w-title">Carrier Win Share vs. FXF</span>
-            <span class="lr-w-date">04/21/2026 &#8211; 07/19/2026</span>
+            <span class="lr-w-date"></span>
           </div>
           <div class="lr-w-icons">
-            <button class="lr-w-ico on" title="Table"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="0" y="0" width="5" height="5" rx="0.5"/><rect x="7" y="0" width="5" height="5" rx="0.5"/><rect x="0" y="7" width="5" height="5" rx="0.5"/><rect x="7" y="7" width="5" height="5" rx="0.5"/></svg></button>
-            <button class="lr-w-ico" title="Donut"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 0A6 6 0 1 0 6 12A6 6 0 0 0 6 0ZM6 4A2 2 0 1 1 6 8A2 2 0 0 1 6 4Z"/></svg></button>
-            <button class="lr-w-ico" title="Bar"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="0" y="5" width="3" height="7" rx="0.5"/><rect x="4.5" y="2" width="3" height="10" rx="0.5"/><rect x="9" y="0" width="3" height="12" rx="0.5"/></svg></button>
+            <button class="lr-w-ico on" data-view="table" title="Table"><svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor"><rect x="0.5" y="0.5" width="5" height="5" rx="0.5"/><rect x="7.5" y="0.5" width="5" height="5" rx="0.5"/><rect x="0.5" y="7.5" width="5" height="5" rx="0.5"/><rect x="7.5" y="7.5" width="5" height="5" rx="0.5"/></svg></button>
+            <button class="lr-w-ico" data-view="donut" title="Donut"><svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor"><path d="M6.5 0.5a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm0 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5z" fill-rule="evenodd"/><path d="M6.5 0.5v3.5a2.5 2.5 0 0 1 2.5 2.5h3.5a6 6 0 0 0-6-6z" fill="currentColor" opacity="0.35"/></svg></button>
+            <button class="lr-w-ico" data-view="bar" title="Bar"><svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor"><rect x="0" y="5" width="3.5" height="8" rx="0.5"/><rect x="4.75" y="2" width="3.5" height="11" rx="0.5"/><rect x="9.5" y="0" width="3.5" height="13" rx="0.5"/></svg></button>
           </div>
           <div class="lr-ctrl">
             <div class="lr-met-grp">
@@ -1089,34 +1126,53 @@
               <button class="lr-met">AVG GAP</button>
             </div>
             <div class="lr-per-grp">
-              <button class="lr-per">1D</button>
-              <button class="lr-per">7D</button>
-              <button class="lr-per">1M</button>
-              <button class="lr-per on">3M</button>
-              <button class="lr-per">1Y</button>
-              <button class="lr-per">CUSTOM</button>
+              <button class="lr-per" data-per="1d">1D</button>
+              <button class="lr-per" data-per="7d">7D</button>
+              <button class="lr-per" data-per="1m">1M</button>
+              <button class="lr-per on" data-per="3m">3M</button>
+              <button class="lr-per" data-per="1y">1Y</button>
+              <button class="lr-per" data-per="custom">CUSTOM</button>
             </div>
           </div>
-          <div class="lr-rows">
-            <div class="lr-drow"><span class="lr-dlbl"><span class="lr-ctag c-xpo">XPO</span>&nbsp; XPO Logistics</span><span class="lr-dval">1,459</span></div>
-            <div class="lr-drow"><span class="lr-dlbl"><span class="lr-ctag c-od">OD</span>&nbsp; Old Dominion</span><span class="lr-dval">1,114</span></div>
-            <div class="lr-drow"><span class="lr-dlbl"><span class="lr-ctag c-est">Est</span>&nbsp; Estes Express</span><span class="lr-dval">845</span></div>
-            <div class="lr-drow"><span class="lr-dlbl"><span class="lr-ctag c-oth">Oth</span>&nbsp; Other carriers</span><span class="lr-dval">423</span></div>
-            <div class="lr-drow" style="background:#fafafa;"><span class="lr-dlbl" style="font-weight:700;color:#111827;">Total FXF Losses</span><span class="lr-dval" style="font-size:16px;">3,841</span></div>
+          <div class="lr-custom-row">
+          <div class="lr-date-field">
+            <span class="lr-date-lbl">START DATE</span>
+            <input type="date" value="2026-04-21">
+            <span class="lr-date-ico">&#128197;</span>
           </div>
-          <div class="lr-w-foot">Competitors avg <strong>+1.1 days slower</strong> than FXF &#8212; customers choosing price over speed</div>
+          <div class="lr-date-field">
+            <span class="lr-date-lbl">END DATE</span>
+            <input type="date" value="2026-07-19">
+            <span class="lr-date-ico">&#128197;</span>
+          </div>
+          <button class="lr-custom-x">&#215;</button>
+        </div>
+          <div class="lr-views">
+            <div class="lr-view lr-view-table active">
+              <div class="lr-rows">
+                <div class="lr-drow"><span class="lr-dlbl"><span class="lr-ctag c-xpo">XPO</span>&nbsp; XPO Logistics</span><span class="lr-dval">1,459</span></div>
+                <div class="lr-drow"><span class="lr-dlbl"><span class="lr-ctag c-od">OD</span>&nbsp; Old Dominion</span><span class="lr-dval">1,114</span></div>
+                <div class="lr-drow"><span class="lr-dlbl"><span class="lr-ctag c-est">Est</span>&nbsp; Estes Express</span><span class="lr-dval">845</span></div>
+                <div class="lr-drow"><span class="lr-dlbl"><span class="lr-ctag c-oth">Oth</span>&nbsp; Other carriers</span><span class="lr-dval">423</span></div>
+                <div class="lr-drow total"><span class="lr-dlbl" style="font-weight:700;color:#111827;">Total FXF Losses</span><span class="lr-dval big">3,841</span></div>
+              </div>
+            </div>
+            <div class="lr-view lr-view-donut"></div>
+            <div class="lr-view lr-view-bar"></div>
+          </div>
+          <div class="lr-w-foot">Competitors avg <strong>+1.1 days slower</strong> &#8212; customers choosing price over speed</div>
         </div>
 
-        <!-- WIDGET 4: Win Rate by Price Position -->
-        <div class="lr-widget">
+        <!-- W4: Win Rate by Price Position -->
+        <div class="lr-widget" data-wid="4">
           <div class="lr-w-hdr">
             <span class="lr-w-title">Win Rate by Price Position</span>
-            <span class="lr-w-date">04/21/2026 &#8211; 07/19/2026</span>
+            <span class="lr-w-date"></span>
           </div>
           <div class="lr-w-icons">
-            <button class="lr-w-ico on" title="Table"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="0" y="0" width="5" height="5" rx="0.5"/><rect x="7" y="0" width="5" height="5" rx="0.5"/><rect x="0" y="7" width="5" height="5" rx="0.5"/><rect x="7" y="7" width="5" height="5" rx="0.5"/></svg></button>
-            <button class="lr-w-ico" title="Donut"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 0A6 6 0 1 0 6 12A6 6 0 0 0 6 0ZM6 4A2 2 0 1 1 6 8A2 2 0 0 1 6 4Z"/></svg></button>
-            <button class="lr-w-ico" title="Bar"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="0" y="5" width="3" height="7" rx="0.5"/><rect x="4.5" y="2" width="3" height="10" rx="0.5"/><rect x="9" y="0" width="3" height="12" rx="0.5"/></svg></button>
+            <button class="lr-w-ico on" data-view="table" title="Table"><svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor"><rect x="0.5" y="0.5" width="5" height="5" rx="0.5"/><rect x="7.5" y="0.5" width="5" height="5" rx="0.5"/><rect x="0.5" y="7.5" width="5" height="5" rx="0.5"/><rect x="7.5" y="7.5" width="5" height="5" rx="0.5"/></svg></button>
+            <button class="lr-w-ico" data-view="donut" title="Donut"><svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor"><path d="M6.5 0.5a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm0 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5z" fill-rule="evenodd"/><path d="M6.5 0.5v3.5a2.5 2.5 0 0 1 2.5 2.5h3.5a6 6 0 0 0-6-6z" fill="currentColor" opacity="0.35"/></svg></button>
+            <button class="lr-w-ico" data-view="bar" title="Bar"><svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor"><rect x="0" y="5" width="3.5" height="8" rx="0.5"/><rect x="4.75" y="2" width="3.5" height="11" rx="0.5"/><rect x="9.5" y="0" width="3.5" height="13" rx="0.5"/></svg></button>
           </div>
           <div class="lr-ctrl">
             <div class="lr-met-grp">
@@ -1125,37 +1181,56 @@
               <button class="lr-met">TREND</button>
             </div>
             <div class="lr-per-grp">
-              <button class="lr-per">1D</button>
-              <button class="lr-per">7D</button>
-              <button class="lr-per">1M</button>
-              <button class="lr-per on">3M</button>
-              <button class="lr-per">1Y</button>
-              <button class="lr-per">CUSTOM</button>
+              <button class="lr-per" data-per="1d">1D</button>
+              <button class="lr-per" data-per="7d">7D</button>
+              <button class="lr-per" data-per="1m">1M</button>
+              <button class="lr-per on" data-per="3m">3M</button>
+              <button class="lr-per" data-per="1y">1Y</button>
+              <button class="lr-per" data-per="custom">CUSTOM</button>
             </div>
           </div>
-          <div class="lr-wr-row"><span class="lr-wr-lbl">#1 Cheapest</span><div class="lr-wr-track"><div class="lr-wr-fill" style="width:87%;background:#16a34a;"></div></div><span class="lr-wr-pct" style="color:#16a34a;">87%</span></div>
-          <div class="lr-wr-row"><span class="lr-wr-lbl">#2 Cheapest</span><div class="lr-wr-track"><div class="lr-wr-fill" style="width:31%;background:#d97706;"></div></div><span class="lr-wr-pct" style="color:#d97706;">31%</span></div>
-          <div class="lr-wr-row"><span class="lr-wr-lbl">#3 Cheapest</span><div class="lr-wr-track"><div class="lr-wr-fill" style="width:8%;background:#dc2626;"></div></div><span class="lr-wr-pct" style="color:#dc2626;">8%</span></div>
-          <div class="lr-wr-row"><span class="lr-wr-lbl">#4+ Cheapest</span><div class="lr-wr-track"><div class="lr-wr-fill" style="width:2%;background:#dc2626;"></div></div><span class="lr-wr-pct" style="color:#dc2626;">2%</span></div>
-          <div class="lr-prem-grid">
-            <div class="lr-prem-cell"><div class="lr-prem-val" style="color:#065f46;">74%</div><div class="lr-prem-lbl">$1&#8211;$25<br>premium</div></div>
-            <div class="lr-prem-cell"><div class="lr-prem-val" style="color:#92400e;">41%</div><div class="lr-prem-lbl">$26&#8211;$50<br>premium</div></div>
-            <div class="lr-prem-cell" style="background:#fee2e2;"><div class="lr-prem-val" style="color:#991b1b;">18%</div><div class="lr-prem-lbl">$51&#8211;$100<br>premium</div></div>
-            <div class="lr-prem-cell" style="background:#fee2e2;"><div class="lr-prem-val" style="color:#991b1b;">4%</div><div class="lr-prem-lbl">$100+<br>premium</div></div>
+          <div class="lr-custom-row">
+          <div class="lr-date-field">
+            <span class="lr-date-lbl">START DATE</span>
+            <input type="date" value="2026-04-21">
+            <span class="lr-date-ico">&#128197;</span>
           </div>
-          <div class="lr-w-foot">Within <strong>$25 of cheapest</strong>, FXF still wins 74% &#8212; above $50, win rate collapses to 18%</div>
+          <div class="lr-date-field">
+            <span class="lr-date-lbl">END DATE</span>
+            <input type="date" value="2026-07-19">
+            <span class="lr-date-ico">&#128197;</span>
+          </div>
+          <button class="lr-custom-x">&#215;</button>
+        </div>
+          <div class="lr-views">
+            <div class="lr-view lr-view-table active">
+              <div class="lr-wr-row"><span class="lr-wr-lbl">#1 Cheapest</span><div class="lr-wr-track"><div class="lr-wr-fill" style="width:87%;background:#16a34a;"></div></div><span class="lr-wr-pct" style="color:#16a34a;">87%</span></div>
+              <div class="lr-wr-row"><span class="lr-wr-lbl">#2 Cheapest</span><div class="lr-wr-track"><div class="lr-wr-fill" style="width:31%;background:#d97706;"></div></div><span class="lr-wr-pct" style="color:#d97706;">31%</span></div>
+              <div class="lr-wr-row"><span class="lr-wr-lbl">#3 Cheapest</span><div class="lr-wr-track"><div class="lr-wr-fill" style="width:8%;background:#dc2626;"></div></div><span class="lr-wr-pct" style="color:#dc2626;">8%</span></div>
+              <div class="lr-wr-row"><span class="lr-wr-lbl">#4+ Cheapest</span><div class="lr-wr-track"><div class="lr-wr-fill" style="width:2%;background:#dc2626;"></div></div><span class="lr-wr-pct" style="color:#dc2626;">2%</span></div>
+              <div class="lr-prem-grid">
+                <div class="lr-prem-cell"><div class="lr-prem-val" style="color:#065f46;">74%</div><div class="lr-prem-lbl">$1&#8211;$25 prem.</div></div>
+                <div class="lr-prem-cell"><div class="lr-prem-val" style="color:#92400e;">41%</div><div class="lr-prem-lbl">$26&#8211;$50 prem.</div></div>
+                <div class="lr-prem-cell" style="background:#fee2e2;"><div class="lr-prem-val" style="color:#991b1b;">18%</div><div class="lr-prem-lbl">$51&#8211;$100</div></div>
+                <div class="lr-prem-cell" style="background:#fee2e2;"><div class="lr-prem-val" style="color:#991b1b;">4%</div><div class="lr-prem-lbl">$100+ prem.</div></div>
+              </div>
+            </div>
+            <div class="lr-view lr-view-donut"></div>
+            <div class="lr-view lr-view-bar"></div>
+          </div>
+          <div class="lr-w-foot">Within <strong>$25 of cheapest</strong>, FXF still wins 74% &#8212; above $50, win rate collapses</div>
         </div>
 
-        <!-- WIDGET 5: Transit Advantage Analysis -->
-        <div class="lr-widget">
+        <!-- W5: Transit Advantage -->
+        <div class="lr-widget" data-wid="5">
           <div class="lr-w-hdr">
             <span class="lr-w-title">Transit Advantage Analysis</span>
-            <span class="lr-w-date">04/21/2026 &#8211; 07/19/2026</span>
+            <span class="lr-w-date"></span>
           </div>
           <div class="lr-w-icons">
-            <button class="lr-w-ico on" title="Table"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="0" y="0" width="5" height="5" rx="0.5"/><rect x="7" y="0" width="5" height="5" rx="0.5"/><rect x="0" y="7" width="5" height="5" rx="0.5"/><rect x="7" y="7" width="5" height="5" rx="0.5"/></svg></button>
-            <button class="lr-w-ico" title="Donut"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 0A6 6 0 1 0 6 12A6 6 0 0 0 6 0ZM6 4A2 2 0 1 1 6 8A2 2 0 0 1 6 4Z"/></svg></button>
-            <button class="lr-w-ico" title="Bar"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="0" y="5" width="3" height="7" rx="0.5"/><rect x="4.5" y="2" width="3" height="10" rx="0.5"/><rect x="9" y="0" width="3" height="12" rx="0.5"/></svg></button>
+            <button class="lr-w-ico on" data-view="table" title="Table"><svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor"><rect x="0.5" y="0.5" width="5" height="5" rx="0.5"/><rect x="7.5" y="0.5" width="5" height="5" rx="0.5"/><rect x="0.5" y="7.5" width="5" height="5" rx="0.5"/><rect x="7.5" y="7.5" width="5" height="5" rx="0.5"/></svg></button>
+            <button class="lr-w-ico" data-view="donut" title="Donut"><svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor"><path d="M6.5 0.5a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm0 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5z" fill-rule="evenodd"/><path d="M6.5 0.5v3.5a2.5 2.5 0 0 1 2.5 2.5h3.5a6 6 0 0 0-6-6z" fill="currentColor" opacity="0.35"/></svg></button>
+            <button class="lr-w-ico" data-view="bar" title="Bar"><svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor"><rect x="0" y="5" width="3.5" height="8" rx="0.5"/><rect x="4.75" y="2" width="3.5" height="11" rx="0.5"/><rect x="9.5" y="0" width="3.5" height="13" rx="0.5"/></svg></button>
           </div>
           <div class="lr-ctrl">
             <div class="lr-met-grp">
@@ -1164,37 +1239,56 @@
               <button class="lr-met">BOTH</button>
             </div>
             <div class="lr-per-grp">
-              <button class="lr-per">1D</button>
-              <button class="lr-per">7D</button>
-              <button class="lr-per">1M</button>
-              <button class="lr-per on">3M</button>
-              <button class="lr-per">1Y</button>
-              <button class="lr-per">CUSTOM</button>
+              <button class="lr-per" data-per="1d">1D</button>
+              <button class="lr-per" data-per="7d">7D</button>
+              <button class="lr-per" data-per="1m">1M</button>
+              <button class="lr-per on" data-per="3m">3M</button>
+              <button class="lr-per" data-per="1y">1Y</button>
+              <button class="lr-per" data-per="custom">CUSTOM</button>
             </div>
           </div>
-          <table class="lr-tbl">
-            <thead><tr><th>Lane</th><th>FXF</th><th>Winner</th><th>Price Gap</th><th>Winner</th></tr></thead>
-            <tbody>
-              <tr><td class="tb">Chicago &#8594; Seattle</td><td class="tg">3.2d</td><td style="color:#9ca3af;">4.8d</td><td class="tr">&#8722;$112</td><td><span class="lr-ctag c-xpo">XPO</span></td></tr>
-              <tr><td class="tb">Atlanta &#8594; Phoenix</td><td class="tg">2.8d</td><td style="color:#9ca3af;">4.1d</td><td class="tr">&#8722;$87</td><td><span class="lr-ctag c-od">OD</span></td></tr>
-              <tr><td class="tb">New York &#8594; Dallas</td><td class="tg">3.5d</td><td style="color:#9ca3af;">5.2d</td><td class="tr">&#8722;$78</td><td><span class="lr-ctag c-est">Estes</span></td></tr>
-              <tr><td class="tb">Denver &#8594; Miami</td><td class="tg">3.1d</td><td style="color:#9ca3af;">4.6d</td><td class="tr">&#8722;$65</td><td><span class="lr-ctag c-xpo">XPO</span></td></tr>
-              <tr><td class="tb">Chicago &#8594; Phoenix</td><td class="tg">2.9d</td><td style="color:#9ca3af;">3.8d</td><td class="tr">&#8722;$55</td><td><span class="lr-ctag c-od">OD</span></td></tr>
-            </tbody>
-          </table>
-          <div class="lr-w-foot"><strong>23 lanes</strong> where FXF is faster but loses on price &#8212; transit advantage not converting</div>
+          <div class="lr-custom-row">
+          <div class="lr-date-field">
+            <span class="lr-date-lbl">START DATE</span>
+            <input type="date" value="2026-04-21">
+            <span class="lr-date-ico">&#128197;</span>
+          </div>
+          <div class="lr-date-field">
+            <span class="lr-date-lbl">END DATE</span>
+            <input type="date" value="2026-07-19">
+            <span class="lr-date-ico">&#128197;</span>
+          </div>
+          <button class="lr-custom-x">&#215;</button>
+        </div>
+          <div class="lr-views">
+            <div class="lr-view lr-view-table active">
+              <table class="lr-tbl">
+                <thead><tr><th>Lane</th><th>FXF</th><th>Comp</th><th>$ Gap</th><th>Winner</th></tr></thead>
+                <tbody>
+                  <tr><td class="tb">Chicago&#8594;Seattle</td><td class="tg">3.2d</td><td style="color:#9ca3af;">4.8d</td><td class="tr">&#8722;$112</td><td><span class="lr-ctag c-xpo">XPO</span></td></tr>
+                  <tr><td class="tb">Atlanta&#8594;Phoenix</td><td class="tg">2.8d</td><td style="color:#9ca3af;">4.1d</td><td class="tr">&#8722;$87</td><td><span class="lr-ctag c-od">OD</span></td></tr>
+                  <tr><td class="tb">New York&#8594;Dallas</td><td class="tg">3.5d</td><td style="color:#9ca3af;">5.2d</td><td class="tr">&#8722;$78</td><td><span class="lr-ctag c-est">Estes</span></td></tr>
+                  <tr><td class="tb">Denver&#8594;Miami</td><td class="tg">3.1d</td><td style="color:#9ca3af;">4.6d</td><td class="tr">&#8722;$65</td><td><span class="lr-ctag c-xpo">XPO</span></td></tr>
+                  <tr><td class="tb">Chicago&#8594;Phoenix</td><td class="tg">2.9d</td><td style="color:#9ca3af;">3.8d</td><td class="tr">&#8722;$55</td><td><span class="lr-ctag c-od">OD</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="lr-view lr-view-donut"></div>
+            <div class="lr-view lr-view-bar"></div>
+          </div>
+          <div class="lr-w-foot"><strong>23 lanes</strong> where FXF is faster but loses on price &#8212; transit not converting</div>
         </div>
 
-        <!-- WIDGET 6: Win Rate by Booking Day -->
-        <div class="lr-widget">
+        <!-- W6: Booking Day -->
+        <div class="lr-widget" data-wid="6">
           <div class="lr-w-hdr">
             <span class="lr-w-title">Win Rate by Booking Day</span>
-            <span class="lr-w-date">04/21/2026 &#8211; 07/19/2026</span>
+            <span class="lr-w-date"></span>
           </div>
           <div class="lr-w-icons">
-            <button class="lr-w-ico on" title="Table"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="0" y="0" width="5" height="5" rx="0.5"/><rect x="7" y="0" width="5" height="5" rx="0.5"/><rect x="0" y="7" width="5" height="5" rx="0.5"/><rect x="7" y="7" width="5" height="5" rx="0.5"/></svg></button>
-            <button class="lr-w-ico" title="Donut"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 0A6 6 0 1 0 6 12A6 6 0 0 0 6 0ZM6 4A2 2 0 1 1 6 8A2 2 0 0 1 6 4Z"/></svg></button>
-            <button class="lr-w-ico" title="Bar"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="0" y="5" width="3" height="7" rx="0.5"/><rect x="4.5" y="2" width="3" height="10" rx="0.5"/><rect x="9" y="0" width="3" height="12" rx="0.5"/></svg></button>
+            <button class="lr-w-ico on" data-view="table" title="Table"><svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor"><rect x="0.5" y="0.5" width="5" height="5" rx="0.5"/><rect x="7.5" y="0.5" width="5" height="5" rx="0.5"/><rect x="0.5" y="7.5" width="5" height="5" rx="0.5"/><rect x="7.5" y="7.5" width="5" height="5" rx="0.5"/></svg></button>
+            <button class="lr-w-ico" data-view="donut" title="Donut"><svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor"><path d="M6.5 0.5a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm0 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5z" fill-rule="evenodd"/><path d="M6.5 0.5v3.5a2.5 2.5 0 0 1 2.5 2.5h3.5a6 6 0 0 0-6-6z" fill="currentColor" opacity="0.35"/></svg></button>
+            <button class="lr-w-ico" data-view="bar" title="Bar"><svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor"><rect x="0" y="5" width="3.5" height="8" rx="0.5"/><rect x="4.75" y="2" width="3.5" height="11" rx="0.5"/><rect x="9.5" y="0" width="3.5" height="13" rx="0.5"/></svg></button>
           </div>
           <div class="lr-ctrl">
             <div class="lr-met-grp">
@@ -1203,39 +1297,58 @@
               <button class="lr-met">TREND</button>
             </div>
             <div class="lr-per-grp">
-              <button class="lr-per">1D</button>
-              <button class="lr-per">7D</button>
-              <button class="lr-per">1M</button>
-              <button class="lr-per on">3M</button>
-              <button class="lr-per">1Y</button>
-              <button class="lr-per">CUSTOM</button>
+              <button class="lr-per" data-per="1d">1D</button>
+              <button class="lr-per" data-per="7d">7D</button>
+              <button class="lr-per" data-per="1m">1M</button>
+              <button class="lr-per on" data-per="3m">3M</button>
+              <button class="lr-per" data-per="1y">1Y</button>
+              <button class="lr-per" data-per="custom">CUSTOM</button>
             </div>
           </div>
-          <div class="lr-day-wrap">
-            <div class="lr-day-col"><div class="lr-day-pct">42%</div><div class="lr-day-bar" style="height:58px;background:#4D148C;"></div><div class="lr-day-lbl">Mon</div></div>
-            <div class="lr-day-col"><div class="lr-day-pct">39%</div><div class="lr-day-bar" style="height:53px;background:#4D148C;"></div><div class="lr-day-lbl">Tue</div></div>
-            <div class="lr-day-col"><div class="lr-day-pct">35%</div><div class="lr-day-bar" style="height:48px;background:#7c3aed;"></div><div class="lr-day-lbl">Wed</div></div>
-            <div class="lr-day-col"><div class="lr-day-pct">32%</div><div class="lr-day-bar" style="height:44px;background:#f59e0b;"></div><div class="lr-day-lbl">Thu</div></div>
-            <div class="lr-day-col"><div class="lr-day-pct">28%</div><div class="lr-day-bar" style="height:38px;background:#dc2626;"></div><div class="lr-day-lbl">Fri</div></div>
+          <div class="lr-custom-row">
+          <div class="lr-date-field">
+            <span class="lr-date-lbl">START DATE</span>
+            <input type="date" value="2026-04-21">
+            <span class="lr-date-ico">&#128197;</span>
           </div>
-          <div class="lr-day-line" style="margin-top:0;"></div>
-          <div class="lr-rows">
-            <div class="lr-drow"><span class="lr-dlbl">Monday &#8211; Tuesday</span><span class="lr-dval grn">41% avg win</span></div>
-            <div class="lr-drow"><span class="lr-dlbl">Thursday &#8211; Friday</span><span class="lr-dval red">30% avg win</span></div>
+          <div class="lr-date-field">
+            <span class="lr-date-lbl">END DATE</span>
+            <input type="date" value="2026-07-19">
+            <span class="lr-date-ico">&#128197;</span>
           </div>
-          <div class="lr-w-foot">Fri bookings <strong>33% less likely</strong> to go to FXF vs Mon &#8212; day-of-week dynamic pricing opportunity</div>
+          <button class="lr-custom-x">&#215;</button>
+        </div>
+          <div class="lr-views">
+            <div class="lr-view lr-view-table active">
+              <div class="lr-day-wrap">
+                <div class="lr-day-col"><div class="lr-day-pct">42%</div><div class="lr-day-bar" style="height:54px;background:#4D148C;"></div><div class="lr-day-lbl">Mon</div></div>
+                <div class="lr-day-col"><div class="lr-day-pct">39%</div><div class="lr-day-bar" style="height:50px;background:#4D148C;"></div><div class="lr-day-lbl">Tue</div></div>
+                <div class="lr-day-col"><div class="lr-day-pct">35%</div><div class="lr-day-bar" style="height:45px;background:#7c3aed;"></div><div class="lr-day-lbl">Wed</div></div>
+                <div class="lr-day-col"><div class="lr-day-pct">32%</div><div class="lr-day-bar" style="height:41px;background:#f59e0b;"></div><div class="lr-day-lbl">Thu</div></div>
+                <div class="lr-day-col"><div class="lr-day-pct">28%</div><div class="lr-day-bar" style="height:36px;background:#dc2626;"></div><div class="lr-day-lbl">Fri</div></div>
+              </div>
+              <div class="lr-day-line" style="margin-top:0;"></div>
+              <div class="lr-rows">
+                <div class="lr-drow"><span class="lr-dlbl">Monday &#8211; Tuesday avg</span><span class="lr-dval grn">41%</span></div>
+                <div class="lr-drow"><span class="lr-dlbl">Thursday &#8211; Friday avg</span><span class="lr-dval red">30%</span></div>
+              </div>
+            </div>
+            <div class="lr-view lr-view-donut"></div>
+            <div class="lr-view lr-view-bar"></div>
+          </div>
+          <div class="lr-w-foot">Fri bookings <strong>33% less likely</strong> to choose FXF &#8212; day-of-week pricing opportunity</div>
         </div>
 
-        <!-- WIDGET 7: Accessorial Cost Inflation -->
-        <div class="lr-widget">
+        <!-- W7: Accessorial Cost -->
+        <div class="lr-widget" data-wid="7">
           <div class="lr-w-hdr">
             <span class="lr-w-title">Accessorial Cost Inflation</span>
-            <span class="lr-w-date">04/21/2026 &#8211; 07/19/2026</span>
+            <span class="lr-w-date"></span>
           </div>
           <div class="lr-w-icons">
-            <button class="lr-w-ico on" title="Table"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="0" y="0" width="5" height="5" rx="0.5"/><rect x="7" y="0" width="5" height="5" rx="0.5"/><rect x="0" y="7" width="5" height="5" rx="0.5"/><rect x="7" y="7" width="5" height="5" rx="0.5"/></svg></button>
-            <button class="lr-w-ico" title="Donut"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 0A6 6 0 1 0 6 12A6 6 0 0 0 6 0ZM6 4A2 2 0 1 1 6 8A2 2 0 0 1 6 4Z"/></svg></button>
-            <button class="lr-w-ico" title="Bar"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="0" y="5" width="3" height="7" rx="0.5"/><rect x="4.5" y="2" width="3" height="10" rx="0.5"/><rect x="9" y="0" width="3" height="12" rx="0.5"/></svg></button>
+            <button class="lr-w-ico on" data-view="table" title="Table"><svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor"><rect x="0.5" y="0.5" width="5" height="5" rx="0.5"/><rect x="7.5" y="0.5" width="5" height="5" rx="0.5"/><rect x="0.5" y="7.5" width="5" height="5" rx="0.5"/><rect x="7.5" y="7.5" width="5" height="5" rx="0.5"/></svg></button>
+            <button class="lr-w-ico" data-view="donut" title="Donut"><svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor"><path d="M6.5 0.5a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm0 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5z" fill-rule="evenodd"/><path d="M6.5 0.5v3.5a2.5 2.5 0 0 1 2.5 2.5h3.5a6 6 0 0 0-6-6z" fill="currentColor" opacity="0.35"/></svg></button>
+            <button class="lr-w-ico" data-view="bar" title="Bar"><svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor"><rect x="0" y="5" width="3.5" height="8" rx="0.5"/><rect x="4.75" y="2" width="3.5" height="11" rx="0.5"/><rect x="9.5" y="0" width="3.5" height="13" rx="0.5"/></svg></button>
           </div>
           <div class="lr-ctrl">
             <div class="lr-met-grp">
@@ -1244,34 +1357,53 @@
               <button class="lr-met">IMPACT</button>
             </div>
             <div class="lr-per-grp">
-              <button class="lr-per">1D</button>
-              <button class="lr-per">7D</button>
-              <button class="lr-per">1M</button>
-              <button class="lr-per on">3M</button>
-              <button class="lr-per">1Y</button>
-              <button class="lr-per">CUSTOM</button>
+              <button class="lr-per" data-per="1d">1D</button>
+              <button class="lr-per" data-per="7d">7D</button>
+              <button class="lr-per" data-per="1m">1M</button>
+              <button class="lr-per on" data-per="3m">3M</button>
+              <button class="lr-per" data-per="1y">1Y</button>
+              <button class="lr-per" data-per="custom">CUSTOM</button>
             </div>
           </div>
-          <div class="lr-rows">
-            <div class="lr-drow"><span class="lr-dlbl">Liftgate Delivery</span><span class="lr-dval red">+$78 <span style="font-size:10px;color:#9ca3af;font-weight:400;">vs +$59 comp</span></span></div>
-            <div class="lr-drow"><span class="lr-dlbl">Residential Delivery</span><span class="lr-dval red">+$65 <span style="font-size:10px;color:#9ca3af;font-weight:400;">vs +$48 comp</span></span></div>
-            <div class="lr-drow"><span class="lr-dlbl">Limited Access</span><span class="lr-dval">+$52 <span style="font-size:10px;color:#9ca3af;font-weight:400;">competitive</span></span></div>
-            <div class="lr-drow"><span class="lr-dlbl">Inside Delivery</span><span class="lr-dval">+$44 <span style="font-size:10px;color:#9ca3af;font-weight:400;">competitive</span></span></div>
-            <div class="lr-drow"><span class="lr-dlbl">Liftgate Pickup</span><span class="lr-dval">+$35 <span style="font-size:10px;color:#9ca3af;font-weight:400;">vs +$31 comp</span></span></div>
+          <div class="lr-custom-row">
+          <div class="lr-date-field">
+            <span class="lr-date-lbl">START DATE</span>
+            <input type="date" value="2026-04-21">
+            <span class="lr-date-ico">&#128197;</span>
           </div>
-          <div class="lr-w-foot">Liftgate + residential together add <strong>avg $143</strong> before base rate comparison even factors in</div>
+          <div class="lr-date-field">
+            <span class="lr-date-lbl">END DATE</span>
+            <input type="date" value="2026-07-19">
+            <span class="lr-date-ico">&#128197;</span>
+          </div>
+          <button class="lr-custom-x">&#215;</button>
+        </div>
+          <div class="lr-views">
+            <div class="lr-view lr-view-table active">
+              <div class="lr-rows">
+                <div class="lr-drow"><span class="lr-dlbl">Liftgate Delivery</span><span class="lr-dval red">+$78 <span style="font-size:10px;color:#9ca3af;font-weight:400;">vs +$59 comp</span></span></div>
+                <div class="lr-drow"><span class="lr-dlbl">Residential Delivery</span><span class="lr-dval red">+$65 <span style="font-size:10px;color:#9ca3af;font-weight:400;">vs +$48 comp</span></span></div>
+                <div class="lr-drow"><span class="lr-dlbl">Limited Access</span><span class="lr-dval">+$52 <span style="font-size:10px;color:#9ca3af;font-weight:400;">competitive</span></span></div>
+                <div class="lr-drow"><span class="lr-dlbl">Inside Delivery</span><span class="lr-dval">+$44 <span style="font-size:10px;color:#9ca3af;font-weight:400;">competitive</span></span></div>
+                <div class="lr-drow"><span class="lr-dlbl">Liftgate Pickup</span><span class="lr-dval">+$35 <span style="font-size:10px;color:#9ca3af;font-weight:400;">vs +$31 comp</span></span></div>
+              </div>
+            </div>
+            <div class="lr-view lr-view-donut"></div>
+            <div class="lr-view lr-view-bar"></div>
+          </div>
+          <div class="lr-w-foot">Liftgate + residential together add <strong>avg $143</strong> before base rate even factors in</div>
         </div>
 
-        <!-- WIDGET 8: Freight Direct Performance -->
-        <div class="lr-widget">
+        <!-- W8: Freight Direct -->
+        <div class="lr-widget" data-wid="8">
           <div class="lr-w-hdr">
             <span class="lr-w-title">Freight Direct Performance</span>
-            <span class="lr-w-date">04/21/2026 &#8211; 07/19/2026</span>
+            <span class="lr-w-date"></span>
           </div>
           <div class="lr-w-icons">
-            <button class="lr-w-ico on" title="Table"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="0" y="0" width="5" height="5" rx="0.5"/><rect x="7" y="0" width="5" height="5" rx="0.5"/><rect x="0" y="7" width="5" height="5" rx="0.5"/><rect x="7" y="7" width="5" height="5" rx="0.5"/></svg></button>
-            <button class="lr-w-ico" title="Donut"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 0A6 6 0 1 0 6 12A6 6 0 0 0 6 0ZM6 4A2 2 0 1 1 6 8A2 2 0 0 1 6 4Z"/></svg></button>
-            <button class="lr-w-ico" title="Bar"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="0" y="5" width="3" height="7" rx="0.5"/><rect x="4.5" y="2" width="3" height="10" rx="0.5"/><rect x="9" y="0" width="3" height="12" rx="0.5"/></svg></button>
+            <button class="lr-w-ico on" data-view="table" title="Table"><svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor"><rect x="0.5" y="0.5" width="5" height="5" rx="0.5"/><rect x="7.5" y="0.5" width="5" height="5" rx="0.5"/><rect x="0.5" y="7.5" width="5" height="5" rx="0.5"/><rect x="7.5" y="7.5" width="5" height="5" rx="0.5"/></svg></button>
+            <button class="lr-w-ico" data-view="donut" title="Donut"><svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor"><path d="M6.5 0.5a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm0 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5z" fill-rule="evenodd"/><path d="M6.5 0.5v3.5a2.5 2.5 0 0 1 2.5 2.5h3.5a6 6 0 0 0-6-6z" fill="currentColor" opacity="0.35"/></svg></button>
+            <button class="lr-w-ico" data-view="bar" title="Bar"><svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor"><rect x="0" y="5" width="3.5" height="8" rx="0.5"/><rect x="4.75" y="2" width="3.5" height="11" rx="0.5"/><rect x="9.5" y="0" width="3.5" height="13" rx="0.5"/></svg></button>
           </div>
           <div class="lr-ctrl">
             <div class="lr-met-grp">
@@ -1280,28 +1412,46 @@
               <button class="lr-met">PRICE</button>
             </div>
             <div class="lr-per-grp">
-              <button class="lr-per">1D</button>
-              <button class="lr-per">7D</button>
-              <button class="lr-per">1M</button>
-              <button class="lr-per on">3M</button>
-              <button class="lr-per">1Y</button>
-              <button class="lr-per">CUSTOM</button>
+              <button class="lr-per" data-per="1d">1D</button>
+              <button class="lr-per" data-per="7d">7D</button>
+              <button class="lr-per" data-per="1m">1M</button>
+              <button class="lr-per on" data-per="3m">3M</button>
+              <button class="lr-per" data-per="1y">1Y</button>
+              <button class="lr-per" data-per="custom">CUSTOM</button>
             </div>
           </div>
-          <div class="lr-rows">
-            <div class="lr-drow"><span class="lr-dlbl">Selected when eligible</span><span class="lr-dval pur">12%</span></div>
-            <div class="lr-drow"><span class="lr-dlbl">Competitive vs. alternatives</span><span class="lr-dval grn">71%</span></div>
-            <div class="lr-drow"><span class="lr-dlbl">Win rate when FD selected</span><span class="lr-dval grn">68%</span></div>
-            <div class="lr-drow"><span class="lr-dlbl">Win rate when FD not selected</span><span class="lr-dval red">28%</span></div>
-            <div class="lr-drow"><span class="lr-dlbl">Avg Freight Direct price</span><span class="lr-dval">$834</span></div>
-            <div class="lr-drow"><span class="lr-dlbl">Avg competitor price (eligible)</span><span class="lr-dval">$891</span></div>
+          <div class="lr-custom-row">
+          <div class="lr-date-field">
+            <span class="lr-date-lbl">START DATE</span>
+            <input type="date" value="2026-04-21">
+            <span class="lr-date-ico">&#128197;</span>
           </div>
-          <div class="lr-w-foot">FD wins at <strong>2.4&#215; the rate</strong> of standard LTL &#8212; low 12% selection rate is the near-term opportunity</div>
+          <div class="lr-date-field">
+            <span class="lr-date-lbl">END DATE</span>
+            <input type="date" value="2026-07-19">
+            <span class="lr-date-ico">&#128197;</span>
+          </div>
+          <button class="lr-custom-x">&#215;</button>
+        </div>
+          <div class="lr-views">
+            <div class="lr-view lr-view-table active">
+              <div class="lr-rows">
+                <div class="lr-drow"><span class="lr-dlbl">Selected when eligible</span><span class="lr-dval pur">12%</span></div>
+                <div class="lr-drow"><span class="lr-dlbl">Competitive vs. alternatives</span><span class="lr-dval grn">71%</span></div>
+                <div class="lr-drow"><span class="lr-dlbl">Win rate &#8212; FD selected</span><span class="lr-dval grn">68%</span></div>
+                <div class="lr-drow"><span class="lr-dlbl">Win rate &#8212; FD not selected</span><span class="lr-dval red">28%</span></div>
+                <div class="lr-drow"><span class="lr-dlbl">Avg Freight Direct price</span><span class="lr-dval">$834</span></div>
+                <div class="lr-drow"><span class="lr-dlbl">Avg competitor price (eligible)</span><span class="lr-dval">$891</span></div>
+              </div>
+            </div>
+            <div class="lr-view lr-view-donut"></div>
+            <div class="lr-view lr-view-bar"></div>
+          </div>
+          <div class="lr-w-foot">FD wins at <strong>2.4&#215; the rate</strong> of standard LTL &#8212; 12% selection is the opportunity</div>
         </div>
 
       </div>
     </div>
-
     </main>
 </div>
 
@@ -1565,21 +1715,273 @@ function revertToTuesday() {
 // Start on Dynamic Pricing view
 showView('dp');
 
-// Lane reporting widget controls — toggle active states on click
-document.addEventListener('click', function(e) {
-  var met = e.target.closest('.lr-met');
-  var per = e.target.closest('.lr-per');
-  var ico = e.target.closest('.lr-w-ico');
-  if (met) {
-    met.parentNode.querySelectorAll('.lr-met').forEach(function(b) { b.classList.remove('on'); });
-    met.classList.add('on');
-  } else if (per) {
-    per.parentNode.querySelectorAll('.lr-per').forEach(function(b) { b.classList.remove('on'); });
-    per.classList.add('on');
-  } else if (ico) {
-    ico.parentNode.querySelectorAll('.lr-w-ico').forEach(function(b) { b.classList.remove('on'); });
-    ico.classList.add('on');
+// ===== LANE REPORTING: CHARTS & CONTROLS =====
+
+var LR_DATA = {
+  1: {
+    donut: [
+      {l:'FXF Won', v:1985, c:'#16a34a'},
+      {l:'Comp. Won', v:3841, c:'#dc2626'},
+      {l:'Not Booked', v:892, c:'#9ca3af'}
+    ],
+    bar: {
+      labels: ['Feb','Mar','Apr','May','Jun','Jul'],
+      series: [
+        {l:'FXF Won', v:[620,680,650,700,720,680], c:'#16a34a'},
+        {l:'Comp Won', v:[1280,1340,1310,1380,1420,1390], c:'#ef4444'}
+      ]
+    }
+  },
+  2: {
+    donut: [
+      {l:'CHI→LA', v:148, c:'#7c3aed'},
+      {l:'DAL→ATL', v:124, c:'#1d4ed8'},
+      {l:'NY→MIA', v:95, c:'#d97706'},
+      {l:'BOS→CHI', v:58, c:'#065f46'},
+      {l:'SEA→PHX', v:50, c:'#dc2626'},
+      {l:'LA→DEN', v:37, c:'#9ca3af'}
+    ],
+    bar: {
+      labels: ['CHI→LA','DAL→ATL','NY→MIA','BOS→CHI','SEA→PHX','LA→DEN'],
+      series: [
+        {l:'FXF Price Gap ($)', v:[148,124,95,58,50,37], c:'#dc2626'}
+      ]
+    }
+  },
+  3: {
+    donut: [
+      {l:'XPO', v:1459, c:'#1d4ed8'},
+      {l:'Old Dominion', v:1114, c:'#16a34a'},
+      {l:'Estes', v:845, c:'#d97706'},
+      {l:'Other', v:423, c:'#9ca3af'}
+    ],
+    bar: {
+      labels: ['XPO','Old Dominion','Estes','Other'],
+      series: [
+        {l:'Wins vs FXF', v:[1459,1114,845,423], c:'#6d28d9'}
+      ]
+    }
+  },
+  4: {
+    donut: [
+      {l:'FXF Won', v:1985, c:'#16a34a'},
+      {l:'FXF Lost', v:3841, c:'#dc2626'},
+      {l:'Not Booked', v:892, c:'#9ca3af'}
+    ],
+    bar: {
+      labels: ['#1 Cheapest','#2 Cheapest','#3 Cheapest','#4+'],
+      series: [
+        {l:'Win Rate %', v:[87,31,8,2], c:'#6d28d9'}
+      ]
+    }
+  },
+  5: {
+    donut: [
+      {l:'FXF faster + lost (price)', v:23, c:'#dc2626'},
+      {l:'FXF slower + lost', v:41, c:'#f87171'},
+      {l:'FXF won', v:62, c:'#16a34a'}
+    ],
+    bar: {
+      labels: ['CHI→SEA','ATL→PHX','NY→DAL','DEN→MIA','CHI→PHX'],
+      series: [
+        {l:'Speed Adv (days)', v:[16,13,17,15,9], c:'#6d28d9'},
+        {l:'Price Gap ($10s)', v:[11,9,8,7,6], c:'#dc2626'}
+      ]
+    }
+  },
+  6: {
+    donut: [
+      {l:'Monday', v:42, c:'#4D148C'},
+      {l:'Tuesday', v:39, c:'#6d28d9'},
+      {l:'Wednesday', v:35, c:'#7c3aed'},
+      {l:'Thursday', v:32, c:'#f59e0b'},
+      {l:'Friday', v:28, c:'#dc2626'}
+    ],
+    bar: {
+      labels: ['Mon','Tue','Wed','Thu','Fri'],
+      series: [
+        {l:'Win Rate %', v:[42,39,35,32,28], c:'#6d28d9'}
+      ]
+    }
+  },
+  7: {
+    donut: [
+      {l:'Liftgate Del.', v:78, c:'#dc2626'},
+      {l:'Residential', v:65, c:'#ef4444'},
+      {l:'Ltd Access', v:52, c:'#f87171'},
+      {l:'Inside Del.', v:44, c:'#fca5a5'},
+      {l:'Liftgate Pkp', v:35, c:'#fecaca'}
+    ],
+    bar: {
+      labels: ['Liftgate','Residential','Ltd Access','Inside Del.','Liftgate Pkp'],
+      series: [
+        {l:'FXF Uplift ($)', v:[78,65,52,44,35], c:'#dc2626'},
+        {l:'Comp Uplift ($)', v:[59,48,49,42,31], c:'#9ca3af'}
+      ]
+    }
+  },
+  8: {
+    donut: [
+      {l:'FD Selected', v:12, c:'#4D148C'},
+      {l:'FD Not Selected', v:88, c:'#e5e7eb'}
+    ],
+    bar: {
+      labels: ['FD Selected','FD Not Selected'],
+      series: [
+        {l:'Win Rate %', v:[68,28], c:'#16a34a'}
+      ]
+    }
   }
+};
+
+function lrFmt(d) {
+  return String(d.getMonth()+1).padStart(2,'0')+'/'+String(d.getDate()).padStart(2,'0')+'/'+d.getFullYear();
+}
+
+function lrDateRange(period) {
+  var end = new Date('2026-07-19');
+  var start = new Date(end);
+  if (period==='1d') start.setDate(end.getDate()-1);
+  else if (period==='7d') start.setDate(end.getDate()-7);
+  else if (period==='1m') start.setMonth(end.getMonth()-1);
+  else if (period==='3m') start.setMonth(end.getMonth()-3);
+  else if (period==='1y') start.setFullYear(end.getFullYear()-1);
+  else start.setMonth(end.getMonth()-3);
+  return lrFmt(start)+' – '+lrFmt(end);
+}
+
+function lrDonut(el, data) {
+  if (!data || !data.length) return;
+  var total = data.reduce(function(s,d){return s+d.v;},0);
+  if (!total) return;
+  var W=240, H=200, cx=120, cy=88, ro=68, ri=40;
+  var a0 = -Math.PI/2;
+  var paths='', txts='', leg='';
+  data.forEach(function(seg,i){
+    var sweep=(seg.v/total)*2*Math.PI;
+    var a1=a0+sweep, lg=sweep>Math.PI?1:0;
+    var cos0=Math.cos(a0),sin0=Math.sin(a0),cos1=Math.cos(a1),sin1=Math.sin(a1);
+    paths+='<path d="M '+(cx+ro*cos0).toFixed(1)+' '+(cy+ro*sin0).toFixed(1)+
+           ' A '+ro+' '+ro+' 0 '+lg+' 1 '+(cx+ro*cos1).toFixed(1)+' '+(cy+ro*sin1).toFixed(1)+
+           ' L '+(cx+ri*cos1).toFixed(1)+' '+(cy+ri*sin1).toFixed(1)+
+           ' A '+ri+' '+ri+' 0 '+lg+' 0 '+(cx+ri*cos0).toFixed(1)+' '+(cy+ri*sin0).toFixed(1)+
+           ' Z" fill="'+seg.c+'" stroke="#fff" stroke-width="2.5"/>';
+    if(sweep>0.22){
+      var ma=a0+sweep/2,mr=(ro+ri)/2;
+      txts+='<text x="'+(cx+mr*Math.cos(ma)).toFixed(1)+'" y="'+(cy+mr*Math.sin(ma)+4).toFixed(1)+
+            '" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">'+
+            (seg.v>=1000?(seg.v/1000).toFixed(1)+'k':seg.v)+'</text>';
+    }
+    var lx=8+(i%3)*76, ly=170+Math.floor(i/3)*16;
+    leg+='<rect x="'+lx+'" y="'+(ly-5)+'" width="9" height="9" rx="2" fill="'+seg.c+'"/>'+
+         '<text x="'+(lx+12)+'" y="'+(ly+4)+'" font-size="9" fill="#6b7280">'+seg.l+'</text>';
+    a0=a1;
+  });
+  var center='<text x="'+cx+'" y="'+(cy-4)+'" text-anchor="middle" font-size="18" font-weight="800" fill="#111827">'+total.toLocaleString()+'</text>'+
+             '<text x="'+cx+'" y="'+(cy+11)+'" text-anchor="middle" font-size="9" fill="#9ca3af">Total</text>';
+  el.innerHTML='<div class="lr-view-chart"><svg viewBox="0 0 '+W+' '+H+'" style="width:100%;max-height:195px;">'+paths+txts+center+leg+'</svg></div>';
+}
+
+function lrBar(el, barData) {
+  var lbls=barData.labels, ser=barData.series;
+  var W=300,H=155,pL=28,pB=22,pT=18,pR=6;
+  var cW=W-pL-pR, cH=H-pB-pT, n=lbls.length;
+  var maxV=0;
+  for(var i=0;i<n;i++){var sv=0;ser.forEach(function(s){sv+=s.v[i];});if(sv>maxV)maxV=sv;}
+  maxV=Math.ceil(maxV*1.2)||100;
+  var bW=Math.max(14,Math.floor((cW/n)*0.55)), bGap=cW/n;
+  var s='';
+  for(var g=0;g<=3;g++){
+    var gy=(pT+cH-(g/3)*cH).toFixed(0);
+    s+='<line x1="'+pL+'" y1="'+gy+'" x2="'+(W-pR)+'" y2="'+gy+'" stroke="#f0f0f0" stroke-width="1"/>';
+    var yv=Math.round((g/3)*maxV);
+    s+='<text x="'+(pL-2)+'" y="'+(parseFloat(gy)+3).toFixed(0)+'" text-anchor="end" font-size="7.5" fill="#9ca3af">'+(yv>=1000?(yv/1000).toFixed(0)+'k':yv)+'</text>';
+  }
+  s+='<line x1="'+pL+'" y1="'+(pT+cH)+'" x2="'+(W-pR)+'" y2="'+(pT+cH)+'" stroke="#e5e7eb" stroke-width="1"/>';
+  for(var i=0;i<n;i++){
+    var bx=(pL+i*bGap+(bGap-bW)/2).toFixed(1);
+    var base=pT+cH, curY=base, totalV=0;
+    ser.forEach(function(ss){totalV+=ss.v[i];});
+    ser.forEach(function(ss){
+      var bh=(ss.v[i]/maxV)*cH;
+      s+='<rect x="'+bx+'" y="'+(curY-bh).toFixed(1)+'" width="'+bW+'" height="'+bh.toFixed(1)+'" fill="'+ss.c+'" rx="2"/>';
+      curY-=bh;
+    });
+    var th=(totalV/maxV)*cH;
+    s+='<text x="'+(parseFloat(bx)+bW/2).toFixed(1)+'" y="'+(base-th-3).toFixed(1)+'" text-anchor="middle" font-size="8" font-weight="600" fill="#6b7280">'+(totalV>=1000?(totalV/1000).toFixed(1)+'k':totalV)+'</text>';
+    var lbl=lbls[i].length>7?lbls[i].substring(0,7)+'…':lbls[i];
+    s+='<text x="'+(parseFloat(bx)+bW/2).toFixed(1)+'" y="'+(pT+cH+13)+'" text-anchor="middle" font-size="7.5" fill="#9ca3af">'+lbl+'</text>';
+  }
+  var lx=pL;
+  ser.forEach(function(ss,i){
+    s+='<rect x="'+(lx+i*95)+'" y="5" width="8" height="8" rx="1" fill="'+ss.c+'"/>'+
+       '<text x="'+(lx+i*95+11)+'" y="12" font-size="8" fill="#6b7280">'+ss.l+'</text>';
+  });
+  el.innerHTML='<div class="lr-view-chart"><svg viewBox="0 0 '+W+' '+H+'" style="width:100%;max-height:155px;">'+s+'</svg></div>';
+}
+
+document.addEventListener('click', function(e) {
+  // View icons
+  var ico = e.target.closest('.lr-w-ico[data-view]');
+  if (ico) {
+    var widget = ico.closest('.lr-widget');
+    var wid = parseInt(widget.dataset.wid, 10);
+    var view = ico.dataset.view;
+    widget.querySelectorAll('.lr-w-ico').forEach(function(b){b.classList.remove('on');});
+    ico.classList.add('on');
+    widget.querySelectorAll('.lr-view').forEach(function(v){v.classList.remove('active');});
+    var viewEl = widget.querySelector('.lr-view-'+view);
+    if (viewEl) {
+      viewEl.classList.add('active');
+      if (view==='donut' && LR_DATA[wid] && !viewEl.dataset.rendered) {
+        lrDonut(viewEl, LR_DATA[wid].donut);
+        viewEl.dataset.rendered='1';
+      }
+      if (view==='bar' && LR_DATA[wid] && !viewEl.dataset.rendered) {
+        lrBar(viewEl, LR_DATA[wid].bar);
+        viewEl.dataset.rendered='1';
+      }
+    }
+    return;
+  }
+  // Metric buttons
+  var met = e.target.closest('.lr-met');
+  if (met) {
+    met.parentNode.querySelectorAll('.lr-met').forEach(function(b){b.classList.remove('on');});
+    met.classList.add('on');
+    return;
+  }
+  // Period buttons
+  var per = e.target.closest('.lr-per[data-per]');
+  if (per) {
+    var widget = per.closest('.lr-widget');
+    per.parentNode.querySelectorAll('.lr-per').forEach(function(b){b.classList.remove('on');});
+    per.classList.add('on');
+    var cr = widget.querySelector('.lr-custom-row');
+    if (per.dataset.per==='custom') {
+      cr.classList.add('open');
+    } else {
+      cr.classList.remove('open');
+      widget.querySelector('.lr-w-date').textContent = lrDateRange(per.dataset.per);
+    }
+    return;
+  }
+  // Custom dismiss
+  var xbtn = e.target.closest('.lr-custom-x');
+  if (xbtn) {
+    var widget = xbtn.closest('.lr-widget');
+    widget.querySelector('.lr-custom-row').classList.remove('open');
+    widget.querySelectorAll('.lr-per').forEach(function(b){b.classList.remove('on');});
+    var dflt = widget.querySelector('.lr-per[data-per="3m"]');
+    if (dflt) { dflt.classList.add('on'); widget.querySelector('.lr-w-date').textContent=lrDateRange('3m'); }
+    return;
+  }
+});
+
+// Init dates on all widgets
+document.querySelectorAll('.lr-widget').forEach(function(w){
+  var d = w.querySelector('.lr-w-date');
+  if (d) d.textContent = lrDateRange('3m');
 });
 </script>
 </body>
