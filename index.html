@@ -350,6 +350,54 @@
   .lr-tbl .tb { font-weight: 600; color: #111827; }
   .lr-w-foot { padding: 7px 14px; background: #f9fafb; border-top: 1px solid #f3f4f6; font-size: 11px; color: #6b7280; line-height: 1.4; flex-shrink: 0; }
   .lr-w-foot strong { color: #374151; font-weight: 600; }
+  /* ===== GUEST CHECKOUT ===== */
+  .gc-page { flex-direction: column; overflow: hidden; background: #f0f0f0; }
+  .gc-header { background: #555; color: #fff; flex-shrink: 0; }
+  .gc-logo-row { text-align: center; padding: 22px 40px 10px; font-size: 30px; font-weight: 300; letter-spacing: 0.02em; color: #fff; }
+  .gc-logo-row span { color: #FF6200; font-weight: 600; }
+  .gc-hint { text-align: center; font-size: 12px; color: #ccc; padding: 0 40px 14px; }
+  .gc-hint a { color: #FF6200; text-decoration: none; }
+  .gc-hdiv { height: 1px; background: rgba(255,255,255,0.2); margin: 0 0 0; }
+  .gc-acct-row { display: flex; align-items: center; gap: 28px; padding: 14px 40px; }
+  .gc-acct-lbl { font-size: 14px; color: #fff; white-space: nowrap; flex-shrink: 0; }
+  .gc-acct-opts { display: flex; gap: 24px; flex-wrap: wrap; }
+  .gc-radio { display: flex; align-items: center; gap: 8px; cursor: pointer; user-select: none; }
+  .gc-radio-circle { width: 18px; height: 18px; border: 2px solid #aaa; border-radius: 50%; flex-shrink: 0; position: relative; transition: border-color 0.15s; }
+  .gc-radio.on .gc-radio-circle { border-color: #FF6200; }
+  .gc-radio.on .gc-radio-circle::after { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:9px; height:9px; border-radius:50%; background:#FF6200; }
+  .gc-radio-txt { font-size: 13px; color: #ddd; }
+  .gc-radio.on .gc-radio-txt { color: #fff; }
+  .gc-body { flex: 1; padding: 20px 40px 0; overflow-y: auto; }
+  .gc-form-card { background: #fff; border: 1px solid #ddd; padding: 26px 32px 16px; max-width: 740px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+  .gc-section-title { font-size: 18px; font-weight: 400; color: #222; margin: 0 0 22px; }
+  .gc-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 20px; }
+  .gc-field { display: flex; flex-direction: column; justify-content: flex-end; }
+  .gc-field label { font-size: 12px; color: #555; margin-bottom: 6px; }
+  .gc-field input, .gc-field select { border: none; border-bottom: 1.5px solid #aaa; background: none; font-size: 14px; color: #111; padding: 4px 0; outline: none; width: 100%; font-family: inherit; transition: border-color 0.15s; }
+  .gc-field input:focus, .gc-field select:focus { border-bottom-color: #FF6200; }
+  .gc-field-full { margin-bottom: 20px; }
+  .gc-alt-msg { display: none; text-align: center; padding: 60px 40px; }
+  .gc-alt-msg-ico { font-size: 44px; margin-bottom: 16px; }
+  .gc-alt-msg-title { font-size: 18px; font-weight: 600; color: #333; margin-bottom: 8px; }
+  .gc-alt-msg-sub { font-size: 14px; color: #666; max-width: 420px; margin: 0 auto; line-height: 1.6; }
+  .gc-terms-bar { background: #f5f5f5; border-top: 1px solid #ddd; padding: 12px 40px; display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+  .gc-check-wrap { display: flex; align-items: center; gap: 9px; flex: 1; font-size: 13px; color: #444; cursor: pointer; }
+  .gc-check-wrap input[type=checkbox] { width: 15px; height: 15px; cursor: pointer; accent-color: #FF6200; }
+  .gc-tandc-link { color: #1d4ed8; text-decoration: none; }
+  .gc-btn { padding: 9px 26px; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; border-radius: 3px; cursor: pointer; border: 2px solid; transition: all 0.15s; font-family: inherit; }
+  .gc-btn-cancel { color: #FF6200; border-color: #FF6200; background: none; }
+  .gc-btn-cancel:hover { background: #fff5f0; }
+  .gc-btn-signup { color: #bbb; border-color: #ccc; background: #f0f0f0; cursor: not-allowed; }
+  .gc-btn-signup.active { color: #fff; border-color: #FF6200; background: #FF6200; cursor: pointer; }
+  .gc-success-wrap { display: none; flex-direction: column; align-items: center; justify-content: center; flex: 1; text-align: center; gap: 14px; padding: 50px 40px; }
+  .gc-success-wrap.show { display: flex; }
+  .gc-success-logo { font-size: 28px; font-weight: 300; color: #444; }
+  .gc-success-logo span { color: #FF6200; font-weight: 600; }
+  .gc-success-check { width: 72px; height: 72px; border-radius: 50%; background: #16a34a; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 36px; margin: 4px 0; }
+  .gc-success-title { font-size: 24px; font-weight: 600; color: #1a1a2e; }
+  .gc-success-sub { font-size: 14px; color: #555; max-width: 440px; line-height: 1.7; }
+  .gc-success-cta { margin-top: 8px; padding: 12px 36px; background: #FF6200; color: #fff; border: none; border-radius: 4px; font-size: 14px; font-weight: 700; cursor: pointer; letter-spacing: 0.05em; font-family: inherit; }
+  .gc-success-cta:hover { background: #e55600; }
 </style>
 </head>
 <body>
@@ -389,7 +437,7 @@
     <div class="sb-item" id="sb-guest" onclick="showView('guest')">
       <span class="sb-item-ico">&#128722;</span>
       Guest Checkout
-      <span class="sb-badge sb-badge-soon">Soon</span>
+      <span class="sb-badge">Live</span>
     </div>
     <div class="sb-item" id="sb-lane" onclick="showView('lane')">
       <span class="sb-item-ico">&#128202;</span>
@@ -978,11 +1026,106 @@
     </div>
 
     <!-- ===== PLACEHOLDER: GUEST CHECKOUT ===== -->
-    <div id="view-guest" class="ph-view">
-      <div class="ph-icon">&#128722;</div>
-      <span class="ph-tag">COMING SOON</span>
-      <div class="ph-title">Guest Checkout on LTL Select</div>
-      <div class="ph-sub">This prototype is in development. Explore how a frictionless guest checkout experience could expand LTL Select's addressable market.</div>
+    <!-- ===== GUEST CHECKOUT ===== -->
+    <div id="view-guest" class="gc-page" style="display:none;">
+
+      <!-- Header -->
+      <div class="gc-header">
+        <div class="gc-logo-row">LTL <span>Select</span></div>
+        <div class="gc-hint">Don&#8217;t have a FedEx Freight account? <a href="#">Sign up here.</a></div>
+        <div class="gc-hdiv"></div>
+        <div class="gc-acct-row">
+          <span class="gc-acct-lbl">I want to sign up with:</span>
+          <div class="gc-acct-opts">
+            <div class="gc-radio on" data-acct="guest"><span class="gc-radio-circle"></span><span class="gc-radio-txt">FedEx Freight Guest Account</span></div>
+            <div class="gc-radio" data-acct="shipper"><span class="gc-radio-circle"></span><span class="gc-radio-txt">FedEx Freight Shipper Account</span></div>
+            <div class="gc-radio" data-acct="third"><span class="gc-radio-circle"></span><span class="gc-radio-txt">FedEx Freight Third Party Account</span></div>
+            <div class="gc-radio" data-acct="other"><span class="gc-radio-circle"></span><span class="gc-radio-txt">Other Carrier</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Body -->
+      <div class="gc-body">
+
+        <!-- Guest sign-up form -->
+        <div id="gc-guest-form">
+          <div class="gc-form-card">
+            <div class="gc-section-title">General Information</div>
+
+            <div class="gc-field-row">
+              <div class="gc-field">
+                <label>* First Name</label>
+                <input type="text" id="gc-fname" placeholder="First Name" autocomplete="given-name">
+              </div>
+              <div class="gc-field">
+                <label>* Last Name</label>
+                <input type="text" id="gc-lname" placeholder="Last Name" autocomplete="family-name">
+              </div>
+            </div>
+
+            <div class="gc-field-row">
+              <div class="gc-field">
+                <label>* Phone Number</label>
+                <input type="tel" id="gc-phone" placeholder="(XXX) XXX-XXXX" autocomplete="tel">
+              </div>
+              <div class="gc-field">
+                <label>Extension</label>
+                <input type="text" id="gc-ext" placeholder="">
+              </div>
+            </div>
+
+            <div class="gc-field-row">
+              <div class="gc-field">
+                <label>Mobile Number</label>
+                <input type="tel" id="gc-mobile" placeholder="" autocomplete="tel">
+              </div>
+              <div class="gc-field">
+                <label>* Language</label>
+                <select id="gc-lang">
+                  <option value="en">English</option>
+                  <option value="es">Espa&#241;ol</option>
+                  <option value="fr">Fran&#231;ais</option>
+                  <option value="zh">&#20013;&#25991;</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="gc-field gc-field-full">
+              <label>Email Address</label>
+              <input type="email" id="gc-email" value="hbasim+32433@metafora.net" autocomplete="email">
+            </div>
+          </div>
+        </div>
+
+        <!-- Non-guest placeholder -->
+        <div id="gc-alt-msg" class="gc-alt-msg">
+          <div class="gc-alt-msg-ico">&#128221;</div>
+          <div class="gc-alt-msg-title">Full Account Setup</div>
+          <div class="gc-alt-msg-sub">This prototype focuses on the Guest Account flow. Full shipper and third-party account registration coming soon.</div>
+        </div>
+
+        <!-- Success screen -->
+        <div id="gc-success-wrap" class="gc-success-wrap">
+          <div class="gc-success-logo">LTL <span>Select</span></div>
+          <div class="gc-success-check">&#10003;</div>
+          <div class="gc-success-title">Welcome, <span id="gc-welcome-name">there</span>!</div>
+          <div class="gc-success-sub">Your FedEx Freight Guest Account has been created. You can now get freight quotes instantly &#8212; no account number required.</div>
+          <button class="gc-success-cta" onclick="showView('dp')">GET YOUR FIRST QUOTE &#8594;</button>
+        </div>
+
+      </div>
+
+      <!-- Terms bar -->
+      <div class="gc-terms-bar" id="gc-terms-bar">
+        <label class="gc-check-wrap">
+          <input type="checkbox" id="gc-tandc">
+          I accept the <a href="#" class="gc-tandc-link" onclick="return false;">Terms And Conditions</a>
+        </label>
+        <button class="gc-btn gc-btn-cancel" onclick="showView('dashboard')">CANCEL</button>
+        <button class="gc-btn gc-btn-signup" id="gc-signup-btn">SIGN UP</button>
+      </div>
+
     </div>
 
     <!-- ===== LANE REPORTING DASHBOARD ===== -->
@@ -1710,6 +1853,62 @@ function revertToTuesday() {
 (function() {
   var d = new Date();
   document.getElementById('pickup-date').value = d.toISOString().split('T')[0];
+})();
+
+
+// ===== GUEST CHECKOUT FORM =====
+(function(){
+  var REQ = ['gc-fname','gc-lname','gc-phone'];
+
+  function gcCheck() {
+    var filled = REQ.every(function(id){
+      var el = document.getElementById(id);
+      return el && el.value.trim().length > 0;
+    });
+    var checked = !!(document.getElementById('gc-tandc') && document.getElementById('gc-tandc').checked);
+    var btn = document.getElementById('gc-signup-btn');
+    if (!btn) return;
+    if (filled && checked) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  }
+
+  document.addEventListener('input', function(e){
+    if (REQ.indexOf(e.target.id) > -1) gcCheck();
+  });
+  document.addEventListener('change', function(e){
+    if (e.target.id === 'gc-tandc') gcCheck();
+  });
+  document.addEventListener('click', function(e){
+    // Account type radio
+    var radio = e.target.closest('.gc-radio[data-acct]');
+    if (radio) {
+      document.querySelectorAll('#view-guest .gc-radio').forEach(function(r){ r.classList.remove('on'); });
+      radio.classList.add('on');
+      var acct = radio.dataset.acct;
+      var gf = document.getElementById('gc-guest-form');
+      var am = document.getElementById('gc-alt-msg');
+      var tb = document.getElementById('gc-terms-bar');
+      if (acct === 'guest') {
+        gf.style.display = ''; am.style.display = 'none'; tb.style.display = '';
+      } else {
+        gf.style.display = 'none'; am.style.display = 'block'; tb.style.display = 'none';
+      }
+      return;
+    }
+    // Sign up button
+    if (e.target.id === 'gc-signup-btn') {
+      if (!e.target.classList.contains('active')) return;
+      var fname = document.getElementById('gc-fname');
+      var nameEl = document.getElementById('gc-welcome-name');
+      if (fname && nameEl) nameEl.textContent = fname.value.trim().split(' ')[0] || 'there';
+      document.getElementById('gc-guest-form').style.display = 'none';
+      document.getElementById('gc-success-wrap').classList.add('show');
+      document.getElementById('gc-terms-bar').style.display = 'none';
+    }
+  });
 })();
 
 // Start on Dynamic Pricing view
