@@ -2514,7 +2514,7 @@ function revertToTuesday() {
 (function(){
   var REQ = ['gc-fname','gc-lname','gc-phone'];
 
-  function gcPrefill() {
+  window.gcPrefill = function() {
     var fields = {
       'gc-fname': 'Haley',
       'gc-lname': 'Basim',
@@ -2532,7 +2532,7 @@ function revertToTuesday() {
     var cb = document.getElementById('gc-tandc');
     if (cb) cb.checked = true;
     gcCheck();
-  }
+  };
 
   function gcCheck() {
     var filled = REQ.every(function(id){
