@@ -1208,7 +1208,10 @@
         <!-- Guest sign-up form -->
         <div id="gc-guest-form">
           <div class="gc-form-card">
-            <div class="gc-section-title">General Information</div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+              <div class="gc-section-title" style="margin-bottom:0;">General Information</div>
+              <button onclick="gcPrefill()" style="padding:5px 14px;background:none;border:1.5px solid #7c3aed;color:#7c3aed;border-radius:20px;font-size:11px;font-weight:700;cursor:pointer;letter-spacing:0.05em;font-family:inherit;">&#9889; FILL DEMO DATA</button>
+            </div>
 
             <div class="gc-field-row">
               <div class="gc-field">
@@ -2510,6 +2513,26 @@ function revertToTuesday() {
 // ===== GUEST CHECKOUT FORM =====
 (function(){
   var REQ = ['gc-fname','gc-lname','gc-phone'];
+
+  function gcPrefill() {
+    var fields = {
+      'gc-fname': 'Haley',
+      'gc-lname': 'Basim',
+      'gc-phone': '(425) 878-5654',
+      'gc-ext': '',
+      'gc-mobile': '(425) 960-2930',
+      'gc-email': 'hbasim@metafora.net'
+    };
+    Object.keys(fields).forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) el.value = fields[id];
+    });
+    var lang = document.getElementById('gc-lang');
+    if (lang) lang.value = 'en';
+    var cb = document.getElementById('gc-tandc');
+    if (cb) cb.checked = true;
+    gcCheck();
+  }
 
   function gcCheck() {
     var filled = REQ.every(function(id){
