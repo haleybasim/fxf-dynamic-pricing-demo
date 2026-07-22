@@ -739,6 +739,43 @@
   .gc-rate-amount-lbl { font-size: 10px; color: #aaa; margin-bottom: 4px; }
   .gc-rate-select { display: block; margin-top: 8px; padding: 7px 18px; background: #4D148C; color: #fff; border: none; border-radius: 5px; font-size: 12px; font-weight: 700; cursor: pointer; font-family: inherit; }
   .gc-rate-best { font-size: 10px; font-weight: 700; color: #FF6200; background: #fff5ee; padding: 2px 8px; border-radius: 4px; display: inline-block; margin-bottom: 6px; }
+
+  /* Sidebar mockup */
+  .mn-preview-section { background: #f8f7fc; }
+  .mn-preview-wrap { max-width: 960px; margin: 0 auto; display: flex; gap: 56px; align-items: flex-start; }
+  .mn-preview-left { flex: 0 0 auto; }
+  .mn-preview-right { flex: 1; padding-top: 12px; }
+  .mn-preview-plan-badge { display: inline-flex; align-items: center; gap: 6px; background: #fff; border: 1.5px solid #e0e0e8; border-radius: 20px; padding: 5px 14px; font-size: 11px; font-weight: 700; color: #555; margin-bottom: 18px; }
+  .mn-preview-plan-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: #4D148C; }
+  .mn-sb { width: 210px; background: linear-gradient(180deg, #160540 0%, #1e0a4a 100%); border-radius: 14px; padding: 14px 0 10px; box-shadow: 0 20px 60px rgba(0,0,0,0.25); overflow: visible; }
+  .mn-sb-logo { display: flex; align-items: center; gap: 8px; padding: 4px 16px 16px; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 8px; }
+  .mn-sb-logo-text { font-size: 15px; font-weight: 300; color: #fff; }
+  .mn-sb-logo-text b { color: #FF6200; font-weight: 700; }
+  .mn-sb-item { display: flex; align-items: center; gap: 10px; padding: 9px 16px; color: rgba(255,255,255,0.82); font-size: 12.5px; cursor: pointer; position: relative; transition: background 0.1s; }
+  .mn-sb-item:hover:not(.locked) { background: rgba(255,255,255,0.06); }
+  .mn-sb-ico { font-size: 14px; width: 18px; text-align: center; flex-shrink: 0; }
+  .mn-sb-item.locked { color: rgba(255,255,255,0.25); cursor: default; }
+  .mn-sb-item.locked .mn-sb-lock { display: flex; margin-left: auto; font-size: 11px; opacity: 0.5; }
+  .mn-sb-lock { display: none; }
+  .mn-sb-section-lbl { font-size: 9px; font-weight: 700; color: #FF6200; letter-spacing: 0.1em; text-transform: uppercase; padding: 10px 16px 4px; }
+  .mn-sb-divider { height: 1px; background: rgba(255,255,255,0.07); margin: 8px 0; }
+  /* Tooltip */
+  .mn-sb-tip { display: none; position: absolute; left: 220px; top: 50%; transform: translateY(-50%); background: #0f0525; color: #fff; border-radius: 8px; padding: 10px 14px; font-size: 12px; line-height: 1.5; width: 210px; z-index: 100; box-shadow: 0 8px 24px rgba(0,0,0,0.3); pointer-events: none; }
+  .mn-sb-tip::before { content:''; position: absolute; left: -6px; top: 50%; transform: translateY(-50%); border: 6px solid transparent; border-right-color: #0f0525; border-left: 0; }
+  .mn-sb-tip .tip-tier { font-size: 10px; font-weight: 700; letter-spacing: 0.06em; margin-bottom: 4px; }
+  .mn-sb-tip .tip-tier.standard { color: #a78bfa; }
+  .mn-sb-tip .tip-tier.pro { color: #FF6200; }
+  .mn-sb-item.locked:hover .mn-sb-tip { display: block; }
+  /* Right column */
+  .mn-preview-right h3 { font-size: 22px; font-weight: 800; color: #0f0525; margin: 0 0 10px; }
+  .mn-preview-right p { font-size: 14px; color: #666; line-height: 1.7; margin: 0 0 24px; }
+  .mn-lock-legend { display: flex; flex-direction: column; gap: 12px; }
+  .mn-lock-item { display: flex; gap: 12px; align-items: flex-start; }
+  .mn-lock-badge { flex-shrink: 0; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-top: 2px; white-space: nowrap; }
+  .mn-lock-badge.standard { background: #ede8f8; color: #4D148C; }
+  .mn-lock-badge.pro { background: #fff5ee; color: #FF6200; }
+  .mn-lock-desc { font-size: 13px; color: #444; line-height: 1.5; }
+  .mn-lock-desc strong { color: #0f0525; }
 </style>
 </head>
 <body>
@@ -1408,7 +1445,7 @@
       <div class="mn-section mn-section-center" style="background:#fff;">
         <div class="mn-section-eyebrow">Pricing</div>
         <div class="mn-section-title">Simple, transparent tiers</div>
-        <div class="mn-section-sub">Every tier includes core LTL quoting and booking. Upgrade for analytics, integrations, and priority support.</div>
+        <div class="mn-section-sub">Each plan builds on the last. Start free and unlock more as your operation grows.</div>
         <div class="mn-pricing-grid">
 
           <!-- FREE -->
@@ -1420,48 +1457,52 @@
             <div class="mn-plan-feature"><span class="chk">&#10003;</span> LTL rate quotes</div>
             <div class="mn-plan-feature"><span class="chk">&#10003;</span> Shipment booking &amp; eBOL</div>
             <div class="mn-plan-feature"><span class="chk">&#10003;</span> Guest checkout (no FedEx acct)</div>
-            <div class="mn-plan-feature"><span class="chk">&#10003;</span> Basic support</div>
-            <div class="mn-plan-feature"><span class="dash">&#8212;</span> Data retention <span class="soon">LIMITED</span></div>
-            <div class="mn-plan-feature"><span class="dash">&#8212;</span> Address book <span class="soon">LIMITED</span></div>
+            <div class="mn-plan-feature"><span class="chk">&#10003;</span> Address book <span class="soon">10 locations</span></div>
+            <div class="mn-plan-feature"><span class="chk">&#10003;</span> Data retention <span class="soon">30 days</span></div>
+            <div class="mn-plan-feature"><span class="chk">&#10003;</span> Email support</div>
             <div class="mn-plan-feature"><span class="dash">&#8212;</span> Analytics</div>
-            <div class="mn-plan-feature"><span class="dash">&#8212;</span> Order upload / SFTP</div>
-            <div class="mn-plan-feature"><span class="dash">&#8212;</span> Integrations</div>
+            <div class="mn-plan-feature"><span class="dash">&#8212;</span> Invoice &amp; audit management</div>
+            <div class="mn-plan-feature"><span class="dash">&#8212;</span> Integrations Hub</div>
+            <div class="mn-plan-feature"><span class="dash">&#8212;</span> Claims management</div>
             <button class="mn-plan-cta outline">Get Started Free</button>
           </div>
 
-          <!-- TIER 1 / STANDARD -->
+          <!-- STANDARD -->
           <div class="mn-plan featured">
             <div class="mn-plan-badge">MOST POPULAR</div>
             <div class="mn-plan-name">Standard</div>
             <div class="mn-plan-price">$99 <span>/mo</span></div>
             <div class="mn-plan-note">Per shipper account</div>
             <div class="mn-plan-divider"></div>
-            <div class="mn-plan-feature"><span class="chk">&#10003;</span> Everything in Free</div>
+            <div class="mn-plan-feature"><span class="chk">&#10003;</span> LTL rate quotes</div>
+            <div class="mn-plan-feature"><span class="chk">&#10003;</span> Shipment booking &amp; eBOL</div>
+            <div class="mn-plan-feature"><span class="chk">&#10003;</span> Guest checkout (no FedEx acct)</div>
             <div class="mn-plan-feature"><span class="chk">&#10003;</span> Unlimited address book</div>
             <div class="mn-plan-feature"><span class="chk">&#10003;</span> 12-month data retention</div>
             <div class="mn-plan-feature"><span class="chk">&#10003;</span> Live chat support</div>
-            <div class="mn-plan-feature"><span class="chk">&#10003;</span> Basic analytics &amp; reporting</div>
-            <div class="mn-plan-feature"><span class="chk">&#10003;</span> Manual CSV order upload</div>
+            <div class="mn-plan-feature"><span class="chk">&#10003;</span> Basic analytics &amp; lane reporting</div>
             <div class="mn-plan-feature"><span class="chk">&#10003;</span> Invoice &amp; audit management</div>
-            <div class="mn-plan-feature"><span class="dash">&#8212;</span> Advanced analytics</div>
-            <div class="mn-plan-feature"><span class="dash">&#8212;</span> ERP / SFTP integrations</div>
+            <div class="mn-plan-feature"><span class="chk">&#10003;</span> Integrations Hub + CSV upload</div>
+            <div class="mn-plan-feature"><span class="dash">&#8212;</span> Claims management</div>
             <button class="mn-plan-cta solid">Start Standard</button>
           </div>
 
-          <!-- TIER 2 / PRO -->
+          <!-- PRO -->
           <div class="mn-plan">
             <div class="mn-plan-name">Pro</div>
             <div class="mn-plan-price">$249 <span>/mo</span></div>
             <div class="mn-plan-note">Per shipper account</div>
             <div class="mn-plan-divider"></div>
-            <div class="mn-plan-feature"><span class="chk">&#10003;</span> Everything in Standard</div>
-            <div class="mn-plan-feature"><span class="chk">&#10003;</span> Advanced analytics &amp; lane reporting</div>
-            <div class="mn-plan-feature"><span class="chk">&#10003;</span> Automated SFTP order upload</div>
-            <div class="mn-plan-feature"><span class="chk">&#10003;</span> Direct ERP integration</div>
-            <div class="mn-plan-feature"><span class="chk">&#10003;</span> Accounting software sync <small style="color:#aaa;">(QuickBooks, Sage)</small></div>
-            <div class="mn-plan-feature"><span class="chk">&#10003;</span> eCommerce integration <small style="color:#aaa;">(Shopify)</small></div>
-            <div class="mn-plan-feature"><span class="chk">&#10003;</span> Claims management</div>
+            <div class="mn-plan-feature"><span class="chk">&#10003;</span> LTL rate quotes</div>
+            <div class="mn-plan-feature"><span class="chk">&#10003;</span> Shipment booking &amp; eBOL</div>
+            <div class="mn-plan-feature"><span class="chk">&#10003;</span> Guest checkout (no FedEx acct)</div>
+            <div class="mn-plan-feature"><span class="chk">&#10003;</span> Unlimited address book</div>
+            <div class="mn-plan-feature"><span class="chk">&#10003;</span> Unlimited data storage</div>
             <div class="mn-plan-feature"><span class="chk">&#10003;</span> Dedicated account manager</div>
+            <div class="mn-plan-feature"><span class="chk">&#10003;</span> Advanced analytics &amp; lane reporting</div>
+            <div class="mn-plan-feature"><span class="chk">&#10003;</span> Invoice &amp; audit management</div>
+            <div class="mn-plan-feature"><span class="chk">&#10003;</span> Full Integrations Hub <small style="color:#aaa;">(ERP, SFTP, accounting, Shopify)</small></div>
+            <div class="mn-plan-feature"><span class="chk">&#10003;</span> Claims management</div>
             <button class="mn-plan-cta orange">Start Pro</button>
           </div>
 
@@ -1527,45 +1568,84 @@
         </div>
       </div>
 
-      <!-- COMPARISON TABLE -->
-      <div class="mn-section mn-compare" style="padding-bottom:32px;">
+      <!-- SIDEBAR MOCKUP -->
+      <div class="mn-section mn-preview-section">
         <div class="mn-section-center" style="margin-bottom:40px;">
-          <div class="mn-section-eyebrow">How We Compare</div>
-          <div class="mn-section-title">More included. Less to pay for.</div>
-          <div class="mn-section-sub">Most freight platforms charge extra for the features you use every day. LTL Select includes them — often at no additional cost.</div>
+          <div class="mn-section-eyebrow">See It In Action</div>
+          <div class="mn-section-title">What free plan users see</div>
+          <div class="mn-section-sub">Locked features are greyed out in the app. Hover over any locked item to see what each upgrade unlocks.</div>
         </div>
-        <div class="mn-compare-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th class="feature-col">Feature</th>
-                <th class="ltl-col">&#128667;&nbsp; LTL Select</th>
-                <th class="comp-col">Competitors</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="group-hdr"><td colspan="3">Free Tier</td></tr>
-              <tr><td class="feature-col">LTL Rate Quotes &amp; Booking</td><td class="ltl-col"><span class="mn-chk">&#10003;</span></td><td class="comp-col"><span class="mn-chk">&#10003;</span></td></tr>
-              <tr><td class="feature-col">eBOL Generation</td><td class="ltl-col"><span class="mn-chk">&#10003;</span></td><td class="comp-col"><span class="mn-dollar">$</span></td></tr>
-              <tr><td class="feature-col">Guest Checkout (no account)</td><td class="ltl-col"><span class="mn-chk">&#10003;</span></td><td class="comp-col"><span class="mn-dollar">$</span></td></tr>
-              <tr><td class="feature-col">Basic Support</td><td class="ltl-col"><span class="mn-chk">&#10003;</span></td><td class="comp-col"><span class="mn-chk">&#10003;</span></td></tr>
-              <tr class="group-hdr"><td colspan="3">Standard / Tier 1</td></tr>
-              <tr><td class="feature-col">Unlimited Address Book</td><td class="ltl-col"><span class="mn-chk">&#10003;</span></td><td class="comp-col"><span class="mn-dollar">$</span></td></tr>
-              <tr><td class="feature-col">Unlimited Data Retention</td><td class="ltl-col"><span class="mn-chk">&#10003;</span></td><td class="comp-col"><span class="mn-dollar">$</span></td></tr>
-              <tr><td class="feature-col">Live Chat Support</td><td class="ltl-col"><span class="mn-chk">&#10003;</span></td><td class="comp-col"><span class="mn-dollar">$</span></td></tr>
-              <tr><td class="feature-col">Basic Analytics &amp; Lane Reporting</td><td class="ltl-col"><span class="mn-chk">&#10003;</span></td><td class="comp-col"><span class="mn-dollar">$</span></td></tr>
-              <tr><td class="feature-col">Manual CSV Order Upload</td><td class="ltl-col"><span class="mn-chk">&#10003;</span></td><td class="comp-col"><span class="mn-dollar">$</span></td></tr>
-              <tr class="group-hdr"><td colspan="3">Pro / Tier 2</td></tr>
-              <tr><td class="feature-col">Advanced Analytics</td><td class="ltl-col"><span class="mn-chk">&#10003;</span></td><td class="comp-col"><span class="mn-dollar">$</span></td></tr>
-              <tr><td class="feature-col">Automated SFTP Upload</td><td class="ltl-col"><span class="mn-soon-cell">Roadmap</span></td><td class="comp-col"><span class="mn-dollar">$</span></td></tr>
-              <tr><td class="feature-col">Direct ERP Integration</td><td class="ltl-col"><span class="mn-soon-cell">Roadmap</span></td><td class="comp-col"><span class="mn-dollar">$</span></td></tr>
-              <tr><td class="feature-col">Accounting Software Integration</td><td class="ltl-col"><span class="mn-soon-cell">Roadmap</span></td><td class="comp-col"><span class="mn-dollar">$</span></td></tr>
-              <tr><td class="feature-col">eCommerce Integration</td><td class="ltl-col"><span class="mn-soon-cell">Roadmap</span></td><td class="comp-col"><span class="mn-dollar">$</span></td></tr>
-              <tr><td class="feature-col">Claims Management</td><td class="ltl-col"><span class="mn-soon-cell">Roadmap</span></td><td class="comp-col"><span class="mn-dollar">$</span></td></tr>
-              <tr><td class="feature-col">Shipment Insurance</td><td class="ltl-col"><span class="mn-soon-cell">Roadmap</span></td><td class="comp-col"><span class="mn-dash-cell">&#8212;</span></td></tr>
-              <tr><td class="feature-col">NMFTA ClassIT Integration</td><td class="ltl-col"><span class="mn-soon-cell">Roadmap</span></td><td class="comp-col"><span class="mn-chk">&#10003;</span></td></tr>
-            </tbody>
-          </table>
+        <div class="mn-preview-wrap">
+
+          <!-- Sidebar mockup -->
+          <div class="mn-preview-left">
+            <div class="mn-preview-plan-badge"><span class="dot"></span> Free Plan</div>
+            <div class="mn-sb">
+              <div class="mn-sb-logo">
+                <div style="font-size:16px;font-weight:900;line-height:1;"><span style="color:#c9b0e8;">LTL</span></div>
+                <div class="mn-sb-logo-text">LTL <b>Select</b></div>
+              </div>
+              <div class="mn-sb-item"><span class="mn-sb-ico">&#9783;</span> Dashboard</div>
+              <div class="mn-sb-item"><span class="mn-sb-ico">&#9889;</span> Quick Rate</div>
+              <div class="mn-sb-item"><span class="mn-sb-ico">&#128230;</span> Orders</div>
+              <div class="mn-sb-item locked">
+                <span class="mn-sb-ico">&#9881;</span> Integrations Hub
+                <span class="mn-sb-lock">&#128274;</span>
+                <div class="mn-sb-tip">
+                  <div class="tip-tier standard">STANDARD PLAN</div>
+                  Connect your ERP, accounting software, and eCommerce store. Automate order entry and eliminate manual data sync.
+                </div>
+              </div>
+              <div class="mn-sb-item"><span class="mn-sb-ico">&#128230;</span> Items</div>
+              <div class="mn-sb-item"><span class="mn-sb-ico">&#128100;</span> Contacts</div>
+              <div class="mn-sb-item"><span class="mn-sb-ico">&#128205;</span> Locations <span style="font-size:9px;color:rgba(255,255,255,0.3);margin-left:auto;">10 max</span></div>
+              <div class="mn-sb-divider"></div>
+              <div class="mn-sb-section-lbl">FedEx Freight</div>
+              <div class="mn-sb-item locked">
+                <span class="mn-sb-ico">&#128196;</span> Invoice Center
+                <span class="mn-sb-lock">&#128274;</span>
+                <div class="mn-sb-tip">
+                  <div class="tip-tier standard">STANDARD PLAN</div>
+                  View and manage all your freight invoices, audit charges, and payment history in one place.
+                </div>
+              </div>
+              <div class="mn-sb-item locked">
+                <span class="mn-sb-ico">&#9888;</span> File a Claim
+                <span class="mn-sb-lock">&#128274;</span>
+                <div class="mn-sb-tip">
+                  <div class="tip-tier pro">PRO PLAN</div>
+                  File and track shipment claims directly inside LTL Select — no phone calls or separate portals required.
+                </div>
+              </div>
+              <div class="mn-sb-item"><span class="mn-sb-ico">&#8679;</span> Request Pickup</div>
+              <div class="mn-sb-item"><span class="mn-sb-ico">&#128197;</span> Calendar</div>
+              <div class="mn-sb-item locked">
+                <span class="mn-sb-ico">&#128196;</span> Trailer Manifest
+                <span class="mn-sb-lock">&#128274;</span>
+                <div class="mn-sb-tip">
+                  <div class="tip-tier pro">PRO PLAN</div>
+                  Build and manage trailer manifests for multi-stop loads and consolidation shipments.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: legend -->
+          <div class="mn-preview-right">
+            <h3>Upgrade when you need it.</h3>
+            <p>Free plan users can quote and book shipments right away. As your operation grows, locked features become available with a plan upgrade — no migration or setup required.</p>
+            <div class="mn-lock-legend">
+              <div class="mn-lock-item">
+                <span class="mn-lock-badge standard">Standard — $99/mo</span>
+                <div class="mn-lock-desc"><strong>Integrations Hub</strong> — Connect your ERP, accounting software (QuickBooks, Sage), and eCommerce store to automate order entry and invoice sync.<br><br><strong>Invoice Center</strong> — Full invoice visibility, audit management, and payment tracking across all your FedEx Freight shipments.</div>
+              </div>
+              <div class="mn-lock-item">
+                <span class="mn-lock-badge pro">Pro — $249/mo</span>
+                <div class="mn-lock-desc"><strong>File a Claim</strong> — Submit and track freight claims without leaving the platform. No calls, no paper forms.<br><br><strong>Trailer Manifest</strong> — Manage multi-stop loads and consolidation shipments with full manifest tooling built in.</div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
