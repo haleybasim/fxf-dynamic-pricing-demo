@@ -772,13 +772,13 @@
   /* Right column */
   .mn-preview-right h3 { font-size: 22px; font-weight: 800; color: #0f0525; margin: 0 0 10px; }
   .mn-preview-right p { font-size: 14px; color: #666; line-height: 1.7; margin: 0 0 24px; }
-  .mn-lock-legend { display: flex; flex-direction: column; gap: 12px; }
-  .mn-lock-item { display: flex; gap: 12px; align-items: flex-start; }
-  .mn-lock-badge { flex-shrink: 0; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-top: 2px; white-space: nowrap; }
+  .mn-lock-legend { display: flex; flex-direction: column; gap: 24px; }
+  .mn-lock-group-hdr { margin-bottom: 10px; }
+  .mn-lock-badge { display: inline-block; font-size: 10px; font-weight: 700; padding: 4px 12px; border-radius: 20px; white-space: nowrap; }
   .mn-lock-badge.standard { background: #ede8f8; color: #4D148C; }
   .mn-lock-badge.pro { background: #fff5ee; color: #FF6200; }
-  .mn-lock-desc { font-size: 13px; color: #444; line-height: 1.5; }
-  .mn-lock-desc strong { color: #0f0525; }
+  .mn-lock-feature { font-size: 13px; color: #444; line-height: 1.6; padding: 10px 0; border-top: 1px solid #eeeeee; }
+  .mn-lock-feature strong { color: #0f0525; }
 </style>
 </head>
 <body>
@@ -1642,13 +1642,15 @@
             <h3>Upgrade when you need it.</h3>
             <p>Free plan users can quote and book shipments right away. As your operation grows, locked features become available with a plan upgrade — no migration or setup required.</p>
             <div class="mn-lock-legend">
-              <div class="mn-lock-item">
-                <span class="mn-lock-badge standard">Standard — $99/mo</span>
-                <div class="mn-lock-desc"><strong>Integrations Hub</strong> — Connect your ERP, accounting software (QuickBooks, Sage), and eCommerce store to automate order entry and invoice sync.<br><br><strong>Invoice Center</strong> — Full invoice visibility, audit management, and payment tracking across all your FedEx Freight shipments.</div>
+              <div class="mn-lock-group">
+                <div class="mn-lock-group-hdr"><span class="mn-lock-badge standard">Standard — $99/mo</span></div>
+                <div class="mn-lock-feature"><strong>Integrations Hub</strong> — Connect your ERP, accounting software (QuickBooks, Sage), and eCommerce store to automate order entry and invoice sync.</div>
+                <div class="mn-lock-feature"><strong>Invoice Center</strong> — Full invoice visibility, audit management, and payment tracking across all your FedEx Freight shipments.</div>
               </div>
-              <div class="mn-lock-item">
-                <span class="mn-lock-badge pro">Pro — $249/mo</span>
-                <div class="mn-lock-desc"><strong>File a Claim</strong> — Submit and track freight claims without leaving the platform. No calls, no paper forms.<br><br><strong>Trailer Manifest</strong> — Manage multi-stop loads and consolidation shipments with full manifest tooling built in.</div>
+              <div class="mn-lock-group">
+                <div class="mn-lock-group-hdr"><span class="mn-lock-badge pro">Pro — $249/mo</span></div>
+                <div class="mn-lock-feature"><strong>File a Claim</strong> — Submit and track freight claims without leaving the platform. No calls, no paper forms.</div>
+                <div class="mn-lock-feature"><strong>Trailer Manifest</strong> — Manage multi-stop loads and consolidation shipments with full manifest tooling built in.</div>
               </div>
             </div>
           </div>
