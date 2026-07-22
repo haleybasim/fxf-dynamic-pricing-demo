@@ -765,7 +765,10 @@
   .mn-sb-tip .tip-tier { font-size: 10px; font-weight: 700; letter-spacing: 0.06em; margin-bottom: 4px; }
   .mn-sb-tip .tip-tier.standard { color: #a78bfa; }
   .mn-sb-tip .tip-tier.pro { color: #FF6200; }
-  .mn-sb-item.locked:hover .mn-sb-tip { display: block; }
+  /* tooltip shown via JS */
+
+  .mn-tip-cta { display: inline-block; margin-top: 9px; padding: 5px 12px; background: #7c3aed; color: #fff !important; border-radius: 5px; font-size: 11px; font-weight: 700; text-decoration: none; cursor: pointer; border: none; font-family: inherit; letter-spacing: 0.02em; }
+  .mn-tip-cta:hover { background: #6d28d9; }
   /* Right column */
   .mn-preview-right h3 { font-size: 22px; font-weight: 800; color: #0f0525; margin: 0 0 10px; }
   .mn-preview-right p { font-size: 14px; color: #666; line-height: 1.7; margin: 0 0 24px; }
@@ -1442,7 +1445,7 @@
       </div>
 
       <!-- PRICING TIERS -->
-      <div class="mn-section mn-section-center" style="background:#fff;">
+      <div id="mn-pricing" class="mn-section mn-section-center" style="background:#fff;">
         <div class="mn-section-eyebrow">Pricing</div>
         <div class="mn-section-title">Simple, transparent tiers</div>
         <div class="mn-section-sub">Each plan builds on the last. Start free and unlock more as your operation grows.</div>
@@ -1594,6 +1597,7 @@
                 <div class="mn-sb-tip">
                   <div class="tip-tier standard">STANDARD PLAN</div>
                   Connect your ERP, accounting software, and eCommerce store. Automate order entry and eliminate manual data sync.
+                  <br><button class="mn-tip-cta" onclick="mnScrollPricing(event,'standard')">View plans &amp; upgrade &rarr;</button>
                 </div>
               </div>
               <div class="mn-sb-item"><span class="mn-sb-ico">&#128230;</span> Items</div>
@@ -1607,6 +1611,7 @@
                 <div class="mn-sb-tip">
                   <div class="tip-tier standard">STANDARD PLAN</div>
                   View and manage all your freight invoices, audit charges, and payment history in one place.
+                  <br><button class="mn-tip-cta" onclick="mnScrollPricing(event,'standard')">View plans &amp; upgrade &rarr;</button>
                 </div>
               </div>
               <div class="mn-sb-item locked">
@@ -1615,6 +1620,7 @@
                 <div class="mn-sb-tip">
                   <div class="tip-tier pro">PRO PLAN</div>
                   File and track shipment claims directly inside LTL Select — no phone calls or separate portals required.
+                  <br><button class="mn-tip-cta" onclick="mnScrollPricing(event,'pro')">View plans &amp; upgrade &rarr;</button>
                 </div>
               </div>
               <div class="mn-sb-item"><span class="mn-sb-ico">&#8679;</span> Request Pickup</div>
@@ -1625,6 +1631,7 @@
                 <div class="mn-sb-tip">
                   <div class="tip-tier pro">PRO PLAN</div>
                   Build and manage trailer manifests for multi-stop loads and consolidation shipments.
+                  <br><button class="mn-tip-cta" onclick="mnScrollPricing(event,'pro')">View plans &amp; upgrade &rarr;</button>
                 </div>
               </div>
             </div>
@@ -3226,7 +3233,45 @@ function revertToTuesday() {
 })();
 
 
-// ===== GUEST CHECKOUT v2 =====
+
+// Sidebar tooltip hover persistence (so user can click CTA)
+(function(){
+  function initSbTips() {
+    document.querySelectorAll('.mn-sb-item.locked').forEach(function(item) {
+      var tip = item.querySelector('.mn-sb-tip');
+      if (!tip) return;
+      var t;
+      function show() { clearTimeout(t); tip.style.display = 'block'; }
+      function hide() { t = setTimeout(function(){ tip.style.display = 'none'; }, 220); }
+      item.addEventListener('mouseenter', show);
+      item.addEventListener('mouseleave', hide);
+      tip.addEventListener('mouseenter', show);
+      tip.addEventListener('mouseleave', hide);
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initSbTips);
+  else initSbTips();
+})();
+
+window.mnScrollPricing = function(e, tier) {
+  e.stopPropagation();
+  // Make sure monetize view is showing
+  showView('monetize');
+  setTimeout(function() {
+    var el = document.getElementById('mn-pricing');
+    if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    // Briefly highlight the relevant plan card
+    var cards = document.querySelectorAll('.mn-plan');
+    cards.forEach(function(c){ c.style.transition='box-shadow 0.3s'; c.style.boxShadow=''; });
+    var idx = tier === 'pro' ? 2 : 1;
+    if (cards[idx]) {
+      cards[idx].style.boxShadow = '0 0 0 3px #7c3aed, 0 8px 32px rgba(124,58,237,0.25)';
+      setTimeout(function(){ cards[idx].style.boxShadow = ''; }, 2000);
+    }
+  }, 80);
+};
+
+  // ===== GUEST CHECKOUT v2 =====
 (function(){
   var REQ = ['gc-fname','gc-lname','gc-phone','gc-email'];
 
