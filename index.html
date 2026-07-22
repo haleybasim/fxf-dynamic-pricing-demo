@@ -368,8 +368,10 @@
   .gc-journey-step { display: flex; align-items: center; gap: 7px; }
   .gc-jnum { width: 22px; height: 22px; border-radius: 50%; background: rgba(255,255,255,0.12); border: 1.5px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.7); flex-shrink: 0; }
   .gc-jnum.active { background: #FF6200; border-color: #FF6200; color: #fff; }
+  .gc-jnum.done { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.5); color: #fff; }
   .gc-jlbl { font-size: 11px; color: rgba(255,255,255,0.65); white-space: nowrap; }
   .gc-jlbl.active { color: #fff; font-weight: 600; }
+  .gc-jlbl.done { color: rgba(255,255,255,0.9); }
   .gc-jarr { color: rgba(255,255,255,0.25); margin: 0 10px; font-size: 14px; }
   /* Content */
   .gc-content { flex: 1; overflow-y: auto; padding: 28px 48px 20px; }
@@ -705,6 +707,38 @@
   .mn-banner h2 { font-size:30px; font-weight:800; margin:0 0 12px; }
   .mn-banner-sub { font-size:16px; color:rgba(255,255,255,0.65); margin:0 0 32px; }
   .mn-banner-btns { display:flex; gap:12px; justify-content:center; }
+
+  /* Guest flow panels */
+  .gc-panel { display: none; }
+  .gc-panel.active { display: block; }
+  .gc-panel-back { background: none; border: none; color: #4D148C; font-size: 12px; font-weight: 700; cursor: pointer; font-family: inherit; padding: 0 0 14px; display: flex; align-items: center; gap: 5px; }
+  .gc-panel-back:hover { opacity: 0.7; }
+  .gc-shipment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+  .gc-ship-section { font-size: 10px; font-weight: 700; color: #999; letter-spacing: 0.07em; text-transform: uppercase; margin: 0 0 12px; }
+  .gc-route-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+  .gc-route-col { background: #f8f7fc; border-radius: 8px; padding: 14px 16px; }
+  .gc-route-col-hdr { font-size: 10px; font-weight: 700; color: #4D148C; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 10px; }
+  .gc-freight-row { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 14px; margin-bottom: 20px; }
+  /* Rate cards */
+  .gc-rates-header { font-size: 12px; color: #888; margin-bottom: 16px; max-width: 680px; }
+  .gc-rates-header strong { color: #111; }
+  .gc-rate-card { background: #fff; border: 1.5px solid #e0e0e8; border-radius: 10px; padding: 18px 20px; max-width: 680px; margin-bottom: 12px; display: flex; align-items: center; gap: 16px; cursor: pointer; transition: all 0.15s; }
+  .gc-rate-card:hover { border-color: #4D148C; box-shadow: 0 0 0 3px rgba(77,20,140,0.07); }
+  .gc-rate-card.featured-rate { border-color: #4D148C; }
+  .gc-rate-carrier { min-width: 130px; }
+  .gc-rate-fxf { font-size: 16px; font-weight: 900; }
+  .gc-rate-fxf-pur { color: #4D148C; }
+  .gc-rate-fxf-org { color: #FF6200; }
+  .gc-rate-svc { font-size: 11px; color: #666; margin-top: 2px; }
+  .gc-rate-mid { flex: 1; }
+  .gc-rate-date { font-size: 13px; font-weight: 600; color: #222; }
+  .gc-rate-time { font-size: 12px; color: #555; }
+  .gc-rate-guar { font-size: 11px; color: #16a34a; font-weight: 600; margin-top: 2px; }
+  .gc-rate-price-col { text-align: right; }
+  .gc-rate-amount { font-size: 22px; font-weight: 800; color: #0f0525; }
+  .gc-rate-amount-lbl { font-size: 10px; color: #aaa; margin-bottom: 4px; }
+  .gc-rate-select { display: block; margin-top: 8px; padding: 7px 18px; background: #4D148C; color: #fff; border: none; border-radius: 5px; font-size: 12px; font-weight: 700; cursor: pointer; font-family: inherit; }
+  .gc-rate-best { font-size: 10px; font-weight: 700; color: #FF6200; background: #fff5ee; padding: 2px 8px; border-radius: 4px; display: inline-block; margin-bottom: 6px; }
 </style>
 </head>
 <body>
@@ -1562,70 +1596,220 @@
         </div>
         <h1>Ship freight without an account.</h1>
         <div class="gc-hero-sub">Get instant LTL rates, book your shipment, and pay by credit card &mdash; no FedEx account required.</div>
-        <div class="gc-journey">
-          <div class="gc-journey-step"><div class="gc-jnum active">1</div><span class="gc-jlbl active">Create Profile</span></div>
+        <div class="gc-journey" id="gc-journey">
+          <div class="gc-journey-step"><div class="gc-jnum active" id="gc-jn1">1</div><span class="gc-jlbl active" id="gc-jl1">Create Profile</span></div>
           <div class="gc-jarr">&#8594;</div>
-          <div class="gc-journey-step"><div class="gc-jnum">2</div><span class="gc-jlbl">Get Rates</span></div>
+          <div class="gc-journey-step"><div class="gc-jnum" id="gc-jn2">2</div><span class="gc-jlbl" id="gc-jl2">Get Rates</span></div>
           <div class="gc-jarr">&#8594;</div>
-          <div class="gc-journey-step"><div class="gc-jnum">3</div><span class="gc-jlbl">Book Shipment</span></div>
+          <div class="gc-journey-step"><div class="gc-jnum" id="gc-jn3">3</div><span class="gc-jlbl" id="gc-jl3">Book Shipment</span></div>
           <div class="gc-jarr">&#8594;</div>
-          <div class="gc-journey-step"><div class="gc-jnum">4</div><span class="gc-jlbl">Pay &amp; Confirm</span></div>
+          <div class="gc-journey-step"><div class="gc-jnum" id="gc-jn4">4</div><span class="gc-jlbl" id="gc-jl4">Pay &amp; Confirm</span></div>
         </div>
       </div>
 
       <!-- Content -->
       <div class="gc-content">
 
-        <!-- Account type selector -->
-        <div class="gc-type-row">
-          <div class="gc-type-card sel" data-type="guest">
-            <div class="gc-type-top"><div class="gc-type-dot"></div><div class="gc-type-name">Guest Account</div></div>
-            <div class="gc-type-desc">No FedEx account needed. Get a quote instantly and pay by credit card.</div>
-          </div>
-          <div class="gc-type-card" data-type="existing">
-            <div class="gc-type-top"><div class="gc-type-dot"></div><div class="gc-type-name">FedEx Freight Account</div></div>
-            <div class="gc-type-desc">Sign in with your FedEx account number and bill directly.</div>
-          </div>
-        </div>
+        <!-- PANEL 1: Create Profile -->
+        <div id="gc-panel-1" class="gc-panel active">
 
-        <!-- Guest form -->
-        <div id="gc-guest-form">
+          <!-- Account type selector -->
+          <div class="gc-type-row">
+            <div class="gc-type-card sel" data-type="guest">
+              <div class="gc-type-top"><div class="gc-type-dot"></div><div class="gc-type-name">Guest Account</div></div>
+              <div class="gc-type-desc">No FedEx account needed. Get a quote instantly and pay by credit card.</div>
+            </div>
+            <div class="gc-type-card" data-type="existing">
+              <div class="gc-type-top"><div class="gc-type-dot"></div><div class="gc-type-name">FedEx Freight Account</div></div>
+              <div class="gc-type-desc">Sign in with your FedEx account number and bill directly.</div>
+            </div>
+          </div>
+
+          <!-- Guest form -->
+          <div id="gc-guest-form">
+            <div class="gc-form-box">
+              <div class="gc-form-box-hdr">
+                <div class="gc-form-box-title">YOUR INFORMATION</div>
+                <button class="gc-prefill-btn" onclick="gcPrefill()">&#9889; Fill Demo Data</button>
+              </div>
+              <div class="gc-form-grid">
+                <div class="gc-form-field">
+                  <label>First Name *</label>
+                  <input type="text" id="gc-fname" placeholder="First name" autocomplete="given-name">
+                </div>
+                <div class="gc-form-field">
+                  <label>Last Name *</label>
+                  <input type="text" id="gc-lname" placeholder="Last name" autocomplete="family-name">
+                </div>
+                <div class="gc-form-field">
+                  <label>Phone *</label>
+                  <input type="tel" id="gc-phone" placeholder="(XXX) XXX-XXXX" autocomplete="tel">
+                </div>
+                <div class="gc-form-field">
+                  <label>Email *</label>
+                  <input type="email" id="gc-email" placeholder="you@company.com" autocomplete="email">
+                </div>
+              </div>
+              <div class="gc-form-actions">
+                <div class="gc-tos-note">By continuing you agree to the <a href="#" onclick="return false;">Terms of Service</a> and <a href="#" onclick="return false;">Privacy Policy</a>.</div>
+                <button class="gc-start-btn" id="gc-start-btn" onclick="gcSignUp()">CREATE ACCOUNT &amp; START QUOTING &#8594;</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Non-guest message -->
+          <div id="gc-alt-wrap" class="gc-alt-wrap">
+            <div class="gc-alt-ico">&#127970;</div>
+            <div class="gc-alt-title">Sign in with your FedEx Account</div>
+            <div class="gc-alt-sub">Enter your FedEx Freight account number to access your negotiated rates and billing preferences. Full account login coming soon to this prototype.</div>
+          </div>
+
+        </div><!-- /panel-1 -->
+
+        <!-- PANEL 2: Shipment Details -->
+        <div id="gc-panel-2" class="gc-panel">
+          <button class="gc-panel-back" onclick="gcSetStep(1)">&#8592; Back</button>
           <div class="gc-form-box">
             <div class="gc-form-box-hdr">
-              <div class="gc-form-box-title">YOUR INFORMATION</div>
-              <button class="gc-prefill-btn" onclick="gcPrefill()">&#9889; Fill Demo Data</button>
+              <div class="gc-form-box-title">SHIPMENT DETAILS</div>
+              <button class="gc-prefill-btn" onclick="gcPrefillShipment()">&#9889; Fill Demo Data</button>
             </div>
-            <div class="gc-form-grid">
-              <div class="gc-form-field">
-                <label>First Name *</label>
-                <input type="text" id="gc-fname" placeholder="First name" autocomplete="given-name">
+
+            <div class="gc-form-field" style="margin-bottom:20px;max-width:200px;">
+              <label>Ship Date *</label>
+              <input type="date" id="gc-shipdate2">
+            </div>
+
+            <div class="gc-route-row">
+              <div class="gc-route-col">
+                <div class="gc-route-col-hdr">&#128205; Origin</div>
+                <div class="gc-form-field" style="margin-bottom:12px;">
+                  <label>Company</label>
+                  <input type="text" id="gc-orig-company" placeholder="Company name">
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                  <div class="gc-form-field">
+                    <label>ZIP</label>
+                    <input type="text" id="gc-orig-zip" placeholder="ZIP code">
+                  </div>
+                  <div class="gc-form-field">
+                    <label>City, State</label>
+                    <input type="text" id="gc-orig-city" placeholder="City, ST">
+                  </div>
+                </div>
               </div>
-              <div class="gc-form-field">
-                <label>Last Name *</label>
-                <input type="text" id="gc-lname" placeholder="Last name" autocomplete="family-name">
-              </div>
-              <div class="gc-form-field">
-                <label>Phone *</label>
-                <input type="tel" id="gc-phone" placeholder="(XXX) XXX-XXXX" autocomplete="tel">
-              </div>
-              <div class="gc-form-field">
-                <label>Email *</label>
-                <input type="email" id="gc-email" placeholder="you@company.com" autocomplete="email">
+              <div class="gc-route-col">
+                <div class="gc-route-col-hdr">&#127987; Destination</div>
+                <div class="gc-form-field" style="margin-bottom:12px;">
+                  <label>Company</label>
+                  <input type="text" id="gc-dest-company" placeholder="Company name">
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                  <div class="gc-form-field">
+                    <label>ZIP</label>
+                    <input type="text" id="gc-dest-zip" placeholder="ZIP code">
+                  </div>
+                  <div class="gc-form-field">
+                    <label>City, State</label>
+                    <input type="text" id="gc-dest-city" placeholder="City, ST">
+                  </div>
+                </div>
               </div>
             </div>
+
+            <div class="gc-ship-section">Freight</div>
+            <div class="gc-freight-row">
+              <div class="gc-form-field">
+                <label>Description *</label>
+                <input type="text" id="gc-freight-desc" placeholder="e.g. Industrial parts">
+              </div>
+              <div class="gc-form-field">
+                <label>Weight (lbs) *</label>
+                <input type="number" id="gc-freight-wt" placeholder="1000">
+              </div>
+              <div class="gc-form-field">
+                <label>Freight Class</label>
+                <input type="text" id="gc-freight-class" placeholder="65">
+              </div>
+              <div class="gc-form-field">
+                <label>Pallets</label>
+                <input type="number" id="gc-freight-pallets" placeholder="1">
+              </div>
+            </div>
+
             <div class="gc-form-actions">
-              <div class="gc-tos-note">By continuing you agree to the <a href="#" onclick="return false;">Terms of Service</a> and <a href="#" onclick="return false;">Privacy Policy</a>.</div>
-              <button class="gc-start-btn" id="gc-start-btn" onclick="gcSignUp()">CREATE ACCOUNT &amp; START QUOTING &#8594;</button>
+              <div class="gc-tos-note"></div>
+              <button class="gc-start-btn ready" onclick="gcSetStep(3)">GET RATES &#8594;</button>
             </div>
           </div>
-        </div>
+        </div><!-- /panel-2 -->
 
-        <!-- Non-guest message -->
-        <div id="gc-alt-wrap" class="gc-alt-wrap">
-          <div class="gc-alt-ico">&#127970;</div>
-          <div class="gc-alt-title">Sign in with your FedEx Account</div>
-          <div class="gc-alt-sub">Enter your FedEx Freight account number to access your negotiated rates and billing preferences. Full account login coming soon to this prototype.</div>
-        </div>
+        <!-- PANEL 3: Rate Selection -->
+        <div id="gc-panel-3" class="gc-panel">
+          <button class="gc-panel-back" onclick="gcSetStep(2)">&#8592; Back to Shipment</button>
+          <div class="gc-rates-header">
+            Showing rates for <strong id="gc-rate-route">Beverly Hills, CA &rarr; Stock Yards, IL</strong> &nbsp;&middot;&nbsp; <span id="gc-rate-dateshow">Jul 21, 2026</span>
+          </div>
+
+          <!-- Rate 1: FXF Priority -->
+          <div class="gc-rate-card featured-rate" onclick="gcSelectRate('FedEx Freight®Priority','Fri, Jul 24','10:30 AM','US$2,364.50')">
+            <div class="gc-rate-carrier">
+              <div class="gc-rate-fxf"><span class="gc-rate-fxf-pur">Fed</span><span class="gc-rate-fxf-org">Ex</span><span style="color:#FF6200;font-size:10px;font-weight:700;">.</span></div>
+              <div style="font-size:9px;color:#FF6200;font-weight:700;margin:-1px 0 2px;">Freight</div>
+              <div class="gc-rate-svc">FedEx Freight&#174; Priority</div>
+            </div>
+            <div class="gc-rate-mid">
+              <div class="gc-rate-best">&#9889; Fastest</div>
+              <div class="gc-rate-date">Fri, Jul 24</div>
+              <div class="gc-rate-time">10:30 AM</div>
+              <div class="gc-rate-guar">Guaranteed</div>
+            </div>
+            <div class="gc-rate-price-col">
+              <div class="gc-rate-amount-lbl">3rd Party Pricing</div>
+              <div class="gc-rate-amount">$2,364.50</div>
+              <button class="gc-rate-select">SELECT</button>
+            </div>
+          </div>
+
+          <!-- Rate 2: FXF Priority PM -->
+          <div class="gc-rate-card" onclick="gcSelectRate('FedEx Freight®Priority','Fri, Jul 24','5:00 PM','US$2,059.86')">
+            <div class="gc-rate-carrier">
+              <div class="gc-rate-fxf"><span class="gc-rate-fxf-pur">Fed</span><span class="gc-rate-fxf-org">Ex</span><span style="color:#FF6200;font-size:10px;font-weight:700;">.</span></div>
+              <div style="font-size:9px;color:#FF6200;font-weight:700;margin:-1px 0 2px;">Freight</div>
+              <div class="gc-rate-svc">FedEx Freight&#174; Priority</div>
+            </div>
+            <div class="gc-rate-mid">
+              <div class="gc-rate-date">Fri, Jul 24</div>
+              <div class="gc-rate-time">5:00 PM</div>
+              <div class="gc-rate-guar">Guaranteed</div>
+            </div>
+            <div class="gc-rate-price-col">
+              <div class="gc-rate-amount-lbl">3rd Party Pricing</div>
+              <div class="gc-rate-amount">$2,059.86</div>
+              <button class="gc-rate-select">SELECT</button>
+            </div>
+          </div>
+
+          <!-- Rate 3: FXF Economy -->
+          <div class="gc-rate-card" onclick="gcSelectRate('FedEx Freight®Economy','Tue, Jul 28','5:00 PM','US$1,881.72')">
+            <div class="gc-rate-carrier">
+              <div class="gc-rate-fxf"><span class="gc-rate-fxf-pur">Fed</span><span class="gc-rate-fxf-org">Ex</span><span style="color:#FF6200;font-size:10px;font-weight:700;">.</span></div>
+              <div style="font-size:9px;color:#FF6200;font-weight:700;margin:-1px 0 2px;">Freight</div>
+              <div class="gc-rate-svc">FedEx Freight&#174; Economy</div>
+            </div>
+            <div class="gc-rate-mid">
+              <div class="gc-rate-date">Tue, Jul 28</div>
+              <div class="gc-rate-time">5:00 PM</div>
+            </div>
+            <div class="gc-rate-price-col">
+              <div class="gc-rate-amount-lbl">3rd Party Pricing</div>
+              <div class="gc-rate-amount">$1,881.72</div>
+              <button class="gc-rate-select">SELECT</button>
+            </div>
+          </div>
+
+          <div style="font-size:11px;color:#aaa;margin-top:8px;max-width:680px;">&#9432; Rates calculated using a 60% incentive discount estimate. Final rate confirmed at booking.</div>
+        </div><!-- /panel-3 -->
 
       </div>
     </div>
@@ -2595,7 +2779,7 @@
     <!-- ===== PAYMENT VIEW ===== -->
     <div id="view-payment" class="pv-page" style="display:none;">
       <div class="pv-header">
-        <button class="pv-back" onclick="showView('book');bkGoTo(7)">&#8592; Back to Review</button>
+        <button class="pv-back" onclick="showView('guest');gcSetStep(3)">&#8592; Back to Rates</button>
         <div class="pv-header-crumb">
           <span class="pv-crumb done">&#10003; Create Profile</span>
           <span class="pv-crumb-sep">&#8594;</span>
@@ -2965,6 +3149,7 @@ function revertToTuesday() {
 // ===== GUEST CHECKOUT v2 =====
 (function(){
   var REQ = ['gc-fname','gc-lname','gc-phone','gc-email'];
+
   function gcCheck() {
     var filled = REQ.every(function(id){
       var el = document.getElementById(id);
@@ -2973,21 +3158,61 @@ function revertToTuesday() {
     var btn = document.getElementById('gc-start-btn');
     if (btn) { if (filled) btn.classList.add('ready'); else btn.classList.remove('ready'); }
   }
+
   window.gcPrefill = function() {
     var vals = {'gc-fname':'Haley','gc-lname':'Basim','gc-phone':'(425) 878-5654','gc-email':'hbasim@metafora.net'};
     Object.keys(vals).forEach(function(id){ var el=document.getElementById(id); if(el) el.value=vals[id]; });
-    // prefill payment too
-    var pn=document.getElementById('pv-name'); if(pn) pn.value='Haley Basim';
-    var pe=document.getElementById('pv-email'); if(pe) pe.value='hbasim@metafora.net';
-    var pc=document.getElementById('pv-company'); if(pc) pc.value='LTL Select Demo LLC';
-    var pz=document.getElementById('pv-zip'); if(pz) pz.value='90210';
     gcCheck();
   };
+
+  window.gcPrefillShipment = function() {
+    var d = new Date(); d.setDate(d.getDate()+1);
+    var dateStr = d.toISOString().split('T')[0];
+    var sd = document.getElementById('gc-shipdate2'); if(sd) sd.value = dateStr;
+    var f = {'gc-orig-company':'LTL Select Demo LLC','gc-orig-zip':'90210','gc-orig-city':'Beverly Hills, CA',
+             'gc-dest-company':'Another Test','gc-dest-zip':'60609','gc-dest-city':'Stock Yards, IL',
+             'gc-freight-desc':'Test','gc-freight-wt':'1000','gc-freight-class':'65','gc-freight-pallets':'1'};
+    Object.keys(f).forEach(function(id){ var el=document.getElementById(id); if(el) el.value=f[id]; });
+    // update rate route display
+    var rr = document.getElementById('gc-rate-route');
+    if(rr) rr.innerHTML = 'Beverly Hills, CA &rarr; Stock Yards, IL';
+  };
+
+  window.gcSetStep = function(n) {
+    [1,2,3].forEach(function(i){
+      var p = document.getElementById('gc-panel-'+i);
+      if(p) { p.classList.remove('active'); }
+    });
+    var cur = document.getElementById('gc-panel-'+n);
+    if(cur) cur.classList.add('active');
+    // Update journey dots
+    var labels = ['','Create Profile','Get Rates','Book Shipment','Pay & Confirm'];
+    [1,2,3,4].forEach(function(i){
+      var num = document.getElementById('gc-jn'+i);
+      var lbl = document.getElementById('gc-jl'+i);
+      if(!num) return;
+      num.className = 'gc-jnum' + (i < n ? ' done' : (i === n ? ' active' : ''));
+      num.textContent = i < n ? '✓' : i;
+      if(lbl) lbl.className = 'gc-jlbl' + (i <= n ? (i === n ? ' active' : ' done') : '');
+    });
+    // Scroll content to top
+    var gc = document.querySelector('.gc-content');
+    if(gc) gc.scrollTop = 0;
+  };
+
   window.gcSignUp = function() {
     var btn = document.getElementById('gc-start-btn');
     if (!btn || !btn.classList.contains('ready')) return;
-    showView('book'); bkShowDash();
+    gcPrefillShipment();
+    gcSetStep(2);
   };
+
+  window.gcSelectRate = function(svc, date, time, price) {
+    bkSelectedRate = {svc: svc, date: date, time: time, price: price};
+    pvPrefill();
+    showView('payment');
+  };
+
   document.addEventListener('input', function(e){
     if (REQ.indexOf(e.target.id) > -1) gcCheck();
   });
