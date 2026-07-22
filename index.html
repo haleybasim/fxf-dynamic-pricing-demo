@@ -1762,9 +1762,15 @@
               <button class="gc-prefill-btn" onclick="gcPrefillShipment()">&#9889; Fill Demo Data</button>
             </div>
 
-            <div class="gc-form-field" style="margin-bottom:10px;max-width:200px;">
-              <label>Ship Date *</label>
-              <input type="date" id="gc-shipdate2">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:12px;">
+              <div class="gc-form-field">
+                <label>Ship Date *</label>
+                <input type="date" id="gc-shipdate2">
+              </div>
+              <div class="gc-form-field">
+                <label>PO / Reference # <span style="color:#aaa;font-weight:400;">(optional)</span></label>
+                <input type="text" id="gc-ref" placeholder="e.g. PO-10482">
+              </div>
             </div>
 
             <div class="gc-route-row">
